@@ -3,14 +3,21 @@
 
     <url>
         <loc>http://godweiyang.top/tags/Hexo/</loc>
-        <lastmod>2017-09-19T02:55:36.582Z</lastmod>
+        <lastmod>2017-09-19T05:28:16.830Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://godweiyang.top/tags/Blog/</loc>
-        <lastmod>2017-09-19T02:55:36.582Z</lastmod>
+        <lastmod>2017-09-19T05:28:16.830Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.top/tags/EOJ/</loc>
+        <lastmod>2017-09-19T06:02:54.045Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
