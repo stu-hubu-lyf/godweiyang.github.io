@@ -24,7 +24,28 @@
 
     <url>
         <loc>http://godweiyang.top/tags/%E4%BF%9D%E7%A0%94/</loc>
-        <lastmod>2017-09-19T06:43:51.958Z</lastmod>
+        <lastmod>2017-09-19T06:51:45.182Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.top/tags/ACL/</loc>
+        <lastmod>2017-09-19T09:33:20.415Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.top/tags/NLP/</loc>
+        <lastmod>2017-09-19T09:33:20.415Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.top/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
+        <lastmod>2017-09-19T09:33:20.415Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
