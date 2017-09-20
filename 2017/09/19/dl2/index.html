@@ -146,14 +146,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -223,8 +223,8 @@
 <p>下面给出一些以后要用到的符号表示。</p>
 <p>一个样本用\((x,y)\)表示，其中\(x \in {R^{ {n_x}}}\)，\(y \in \{ 0,1\} \)，那么\(m\)个训练样本就可以用集合\(\\{ ({x^{(1)}},{y^{(1)}}),({x^{(2)}},{y^{(2)}}), \ldots ,({x^{(m)}},{y^{(m)}})\\} \)来表示。</p>
 <p>我们还可以将所有样本特征值用一个矩阵表示：<br>\[X = \left[ {\begin{array}{*{20}{l}} \vdots &amp; \vdots &amp; \cdots &amp; \vdots \\\\{ {x^{(1)}}}&amp;{ {x^{(2)}}}&amp; \cdots &amp;{ {x^{(m)}}}\\\\ \vdots &amp; \vdots &amp; \cdots &amp; \vdots \end{array}} \right]\]</p>
-<p>其中<br>\(X \in {R^{ {n_x} \times m}}\)。<br>所有样本标签也可以用一个矩阵表示：<br>\[Y = \left[ {\begin{array}{*{20}{l}}{ {y^{(1)}}}&amp;{ {y^{(2)}}}&amp; \cdots &amp;{ {y^{(m)}}}\end{array}} \right]\]</p>
-<p>其中<br>\(Y \in {R^{1 \times m}}\)。</p>
+<p>其中\(X \in {R^{ {n_x} \times m}}\)。<br>所有样本标签也可以用一个矩阵表示：<br>\[Y = \left[ {\begin{array}{*{20}{l}}{ {y^{(1)}}}&amp;{ {y^{(2)}}}&amp; \cdots &amp;{ {y^{(m)}}}\end{array}} \right]\]</p>
+<p>其中\(Y \in {R^{1 \times m}}\)。</p>
 <h1><span id="22-logistic回归">2.2 logistic回归</span></h1><p>logistic回归就是用线性函数来拟合输出标签。具体定义为，输入特征\(X \in {R^{n_x}}\)，参数\(w \in {R^{n_x}}\)，\(b \in {R}\)。那么令输出标签<br>\[{ {\hat y}^{(i)}} = \sigma ({w^T}{x^{^{(i)}}} + b)\]<br>其中\[\sigma ({x^{^{(i)}}}) = \frac{1}{ {1 + {e^{ - {x^{^{(i)}}}}}}}\]</p>
 <h1><span id="23-logistic回归损失函数">2.3 logistic回归损失函数</span></h1><p>损失函数衡量的是输出标签\({\hat y}\)与真实标签\(y\)之间的差距，有很多种定义方法，下面是常用的两种：<br>\[L({ {\hat y}^{^{(i)}}},{y^{^{(i)}}}) = \frac{1}{2}{({ {\hat y}^{^{(i)}}} - {y^{^{(i)}}})^2}\]和<br>\[L({ {\hat y}^{^{(i)}}},{y^{^{(i)}}}) =  - [{y^{(i)}}\log ({ {\hat y}^{(i)}}) + (1 - {y^{(i)}})\log (1 - { {\hat y}^{(i)}})]\]<br>一般我们使用下面一种损失函数，具体原因最后一节课会讲到，因为它是个凸函数，方便梯度下降。</p>
 <p>如果有\(m\)个样本，那么总的损失函数就定义为<br>\[J(w,b) = \frac{1}{m}\sum\limits_{i - 1}^m {L({ {\hat y}^{^{(i)}}},{y^{^{(i)}}})}  =  - \frac{1}{m}\sum\limits_{i - 1}^m {[{y^{(i)}}\log ({ {\hat y}^{(i)}}) + (1 - {y^{(i)}})\log (1 - { {\hat y}^{(i)}})]} \]</p>
