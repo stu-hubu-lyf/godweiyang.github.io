@@ -219,29 +219,41 @@
 
                 <p>这周开始将会学到神经网络编程的基础知识。</p>
 
-<h1><span id="21-二分分类">2.1 二分分类</span></h1><p><img src="/2017/09/19/dl2/13.jpg" alt=""></p>
+<h1><span id="21-二分分类">2.1 二分分类</span></h1><hr>
+<p><img src="/2017/09/19/dl2/13.jpg" alt=""></p>
 <p>二分类问题就是给定一个输入\(x\)，预测它的标签\(y\)是0还是1。拿预测一张图片是不是猫来举例子，一张图片大小为\({\rm{64}} \times {\rm{64}}\)，将它转化为三个矩阵分别代表RGB分量。再将三个矩阵合并成一个大小为\({\rm{(64}} \times {\rm{64}} \times {\rm{3,1)}}\)的矩阵作为输入\(x\)。</p>
 <p>下面给出一些以后要用到的符号表示。</p>
 <p>一个样本用\((x,y)\)表示，其中\(x \in {R^{ {n_x}}}\)，\(y \in \{ 0,1\} \)，那么\(m\)个训练样本就可以用集合\(\\{ ({x^{(1)}},{y^{(1)}}),({x^{(2)}},{y^{(2)}}), \ldots ,({x^{(m)}},{y^{(m)}})\\} \)来表示。</p>
 <p>我们还可以将所有样本特征值用一个矩阵表示：<br>\[X = \left[ {\begin{array}{*{20}{l}} \vdots &amp; \vdots &amp; \cdots &amp; \vdots \\\\{ {x^{(1)}}}&amp;{ {x^{(2)}}}&amp; \cdots &amp;{ {x^{(m)}}}\\\\ \vdots &amp; \vdots &amp; \cdots &amp; \vdots \end{array}} \right]\]</p>
 <p>其中\(X \in {R^{ {n_x} \times m}}\)。<br>所有样本标签也可以用一个矩阵表示：<br>\[Y = \left[ {\begin{array}{*{20}{l}}{ {y^{(1)}}}&amp;{ {y^{(2)}}}&amp; \cdots &amp;{ {y^{(m)}}}\end{array}} \right]\]</p>
 <p>其中\(Y \in {R^{1 \times m}}\)。</p>
-<h1><span id="22-logistic回归">2.2 logistic回归</span></h1><p>logistic回归就是用线性函数来拟合输出标签。具体定义为，输入特征\(X \in {R^{n_x}}\)，参数\(w \in {R^{n_x}}\)，\(b \in {R}\)。那么令输出标签<br>\[{ {\hat y}^{(i)}} = \sigma ({w^T}{x^{^{(i)}}} + b)\]<br>其中\[\sigma ({x^{^{(i)}}}) = \frac{1}{ {1 + {e^{ - {x^{^{(i)}}}}}}}\]</p>
-<h1><span id="23-logistic回归损失函数">2.3 logistic回归损失函数</span></h1><p>损失函数衡量的是输出标签\({\hat y}\)与真实标签\(y\)之间的差距，有很多种定义方法，下面是常用的两种：<br>\[L({ {\hat y}^{^{(i)}}},{y^{^{(i)}}}) = \frac{1}{2}{({ {\hat y}^{^{(i)}}} - {y^{^{(i)}}})^2}\]和<br>\[L({ {\hat y}^{^{(i)}}},{y^{^{(i)}}}) =  - [{y^{(i)}}\log ({ {\hat y}^{(i)}}) + (1 - {y^{(i)}})\log (1 - { {\hat y}^{(i)}})]\]<br>一般我们使用下面一种损失函数，具体原因最后一节课会讲到，因为它是个凸函数，方便梯度下降。</p>
+<h1><span id="22-logistic回归">2.2 logistic回归</span></h1><hr>
+<p>logistic回归就是用线性函数来拟合输出标签。具体定义为，输入特征\(X \in {R^{n_x}}\)，参数\(w \in {R^{n_x}}\)，\(b \in {R}\)。那么令输出标签<br>\[{ {\hat y}^{(i)}} = \sigma ({w^T}{x^{^{(i)}}} + b)\]<br>其中\[\sigma ({x^{^{(i)}}}) = \frac{1}{ {1 + {e^{ - {x^{^{(i)}}}}}}}\]</p>
+<h1><span id="23-logistic回归损失函数">2.3 logistic回归损失函数</span></h1><hr>
+<p>损失函数衡量的是输出标签\({\hat y}\)与真实标签\(y\)之间的差距，有很多种定义方法，下面是常用的两种：<br>\[L({ {\hat y}^{^{(i)}}},{y^{^{(i)}}}) = \frac{1}{2}{({ {\hat y}^{^{(i)}}} - {y^{^{(i)}}})^2}\]和<br>\[L({ {\hat y}^{^{(i)}}},{y^{^{(i)}}}) =  - [{y^{(i)}}\log ({ {\hat y}^{(i)}}) + (1 - {y^{(i)}})\log (1 - { {\hat y}^{(i)}})]\]<br>一般我们使用下面一种损失函数，具体原因最后一节课会讲到，因为它是个凸函数，方便梯度下降。</p>
 <p>如果有\(m\)个样本，那么总的损失函数就定义为<br>\[J(w,b) = \frac{1}{m}\sum\limits_{i - 1}^m {L({ {\hat y}^{^{(i)}}},{y^{^{(i)}}})}  =  - \frac{1}{m}\sum\limits_{i - 1}^m {[{y^{(i)}}\log ({ {\hat y}^{(i)}}) + (1 - {y^{(i)}})\log (1 - { {\hat y}^{(i)}})]} \]</p>
-<h1><span id="24-梯度下降法">2.4 梯度下降法</span></h1><p>通过重复<br>\[w: = w - \alpha \frac{ {\partial J(w,b)}}{ {\partial w}}\]<br>和<br>\[b: = b - \alpha \frac{ {\partial J(w,b)}}{ {\partial b}}\]<br>来不断更新\(w\)和\(b\)，使得\(w\)和\(b\)接近最优值。</p>
-<h1><span id="27-计算图">2.7 计算图</span></h1><p><img src="/2017/09/19/dl2/14.jpg" alt=""></p>
+<h1><span id="24-梯度下降法">2.4 梯度下降法</span></h1><hr>
+<p>通过重复<br>\[w: = w - \alpha \frac{ {\partial J(w,b)}}{ {\partial w}}\]<br>和<br>\[b: = b - \alpha \frac{ {\partial J(w,b)}}{ {\partial b}}\]<br>来不断更新\(w\)和\(b\)，使得\(w\)和\(b\)接近最优值。</p>
+<h1><span id="27-计算图">2.7 计算图</span></h1><hr>
+<p><img src="/2017/09/19/dl2/14.jpg" alt=""></p>
 <p>如上图所示就是一个计算图，初始结点都是输入值，中间一个结点表示一个运算，最后一个结点就是输出值。</p>
-<h1><span id="28-计算图的导数计算">2.8 计算图的导数计算</span></h1><p><img src="/2017/09/19/dl2/15.jpg" alt=""></p>
+<h1><span id="28-计算图的导数计算">2.8 计算图的导数计算</span></h1><hr>
+<p><img src="/2017/09/19/dl2/15.jpg" alt=""></p>
 <p>反向传播的时候只要沿着红色的箭头利用求导链式法则来对每个参数求导就行了。</p>
-<h1><span id="29-logistic回归中的梯度下降">2.9 logistic回归中的梯度下降</span></h1><p><img src="/2017/09/19/dl2/16.jpg" alt=""></p>
+<h1><span id="29-logistic回归中的梯度下降">2.9 logistic回归中的梯度下降</span></h1><hr>
+<p><img src="/2017/09/19/dl2/16.jpg" alt=""></p>
 <p>logistic回归的计算图如上图所示，导数如下：<br>\[\frac{ {\partial L(a,y)}}{ {\partial a}} =  - \frac{y}{a} + \frac{ {1 - y}}{ {1 - a}}\]<br>\[\frac{ {\partial L(a,y)}}{ {\partial z}} = \frac{ {\partial L(a,y)}}{ {\partial a}} \cdot \frac{ {\partial a}}{ {\partial z}} = ( - \frac{y}{a} + \frac{ {1 - y}}{ {1 - a}}) \cdot a(1 - a) = a - y\]<br>\[\frac{ {\partial L(a,y)}}{ {\partial {w_1}}} = {x_1} \cdot \frac{ {\partial L(a,y)}}{ {\partial z}} = {x_1}(a - y)\]<br>\[\frac{ {\partial L(a,y)}}{ {\partial {w_2}}} = {x_2} \cdot \frac{ {\partial L(a,y)}}{ {\partial z}} = {x_2}(a - y)\]<br>\[\frac{ {\partial L(a,y)}}{ {\partial b}} = \frac{ {\partial L(a,y)}}{ {\partial z}} = a - y\]</p>
-<h1><span id="210-m个样本的梯度下降">2.10 \(m\)个样本的梯度下降</span></h1><p><img src="/2017/09/19/dl2/17.jpg" alt=""></p>
+<h1><span id="210-m个样本的梯度下降">2.10 \(m\)个样本的梯度下降</span></h1><hr>
+<p><img src="/2017/09/19/dl2/17.jpg" alt=""></p>
 <p>\(m\)个样本的梯度其实就是每个样本的梯度求和，如图所示的伪代码中，用一层<code>for</code>循环来对梯度进行求和。在后面的课程中我们将会摒弃这种做法，用更快速的向量化方法来进行计算。</p>
-<h1><span id="211-向量化">2.11 向量化</span></h1><p>向量化就是将例如\({w^T}x\)这样的矩阵点乘用python的<code>numpy</code>库函数<code>dot</code>代替普通的<code>for</code>循环。示例代码如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line"></div><div class="line"><span class="selector-tag">a</span> = np<span class="selector-class">.random</span><span class="selector-class">.rand</span>(<span class="number">1000000</span>)</div><div class="line"><span class="selector-tag">b</span> = np<span class="selector-class">.random</span><span class="selector-class">.rand</span>(<span class="number">1000000</span>)</div><div class="line">c = np.dot(<span class="selector-tag">a</span>, b)</div><div class="line">print c</div></pre></td></tr></table></figure></p>
-<h1><span id="212-向量化的更多例子">2.12 向量化的更多例子</span></h1><p>经验法则是能不使用<code>for</code>循环就尽量不要使用，用向量来代替。更多的向量化例子有<code>np.exp()</code>，<code>np.sum()</code>等等。</p>
-<h1><span id="213-向量化logistic回归">2.13 向量化logistic回归</span></h1><p>之前提到的算法是用<code>for</code>循环来计算所有的\({ {\hat y}^{(i)}} = \sigma ({w^T}{x^{^{(i)}}} + b)\)。现在可以使用向量化来加快计算速度，只要计算\(Y = \sigma ({w^T}X + b)\)即可。</p>
-<h1><span id="214-向量化logistic回归的梯度输出">2.14 向量化logistic回归的梯度输出</span></h1><p>logistic回归的梯度用向量可以表示为<br>\[dz = A - Y\]<br>\[dw = \frac{1}{m}Xd{z^T}\]<br>下面两节课都是讲的python的广播和向量的一些说明，在此就不细讲了，大家可以去查看python文档。其中讲到的一个写python程序的好习惯就是用到向量的时候如果不确定维数，那么你就<code>reshape()</code>一下，还有就是加一句<code>assert()</code>语句判断一下维数。</p>
+<h1><span id="211-向量化">2.11 向量化</span></h1><hr>
+<p>向量化就是将例如\({w^T}x\)这样的矩阵点乘用python的<code>numpy</code>库函数<code>dot</code>代替普通的<code>for</code>循环。示例代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">a = np.random.rand(<span class="number">1000000</span>)</div><div class="line">b = np.random.rand(<span class="number">1000000</span>)</div><div class="line">c = np.dot(a, b)</div><div class="line"><span class="keyword">print</span> c</div></pre></td></tr></table></figure></p>
+<h1><span id="212-向量化的更多例子">2.12 向量化的更多例子</span></h1><hr>
+<p>经验法则是能不使用<code>for</code>循环就尽量不要使用，用向量来代替。更多的向量化例子有<code>np.exp()</code>，<code>np.sum()</code>等等。</p>
+<h1><span id="213-向量化logistic回归">2.13 向量化logistic回归</span></h1><hr>
+<p>之前提到的算法是用<code>for</code>循环来计算所有的\({ {\hat y}^{(i)}} = \sigma ({w^T}{x^{^{(i)}}} + b)\)。现在可以使用向量化来加快计算速度，只要计算\(Y = \sigma ({w^T}X + b)\)即可。</p>
+<h1><span id="214-向量化logistic回归的梯度输出">2.14 向量化logistic回归的梯度输出</span></h1><hr>
+<p>logistic回归的梯度用向量可以表示为<br>\[dz = A - Y\]<br>\[dw = \frac{1}{m}Xd{z^T}\]<br>下面两节课都是讲的python的广播和向量的一些说明，在此就不细讲了，大家可以去查看python文档。其中讲到的一个写python程序的好习惯就是用到向量的时候如果不确定维数，那么你就<code>reshape()</code>一下，还有就是加一句<code>assert()</code>语句判断一下维数。</p>
 
                 
 
