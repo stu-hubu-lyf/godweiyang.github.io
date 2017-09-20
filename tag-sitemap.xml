@@ -16,20 +16,6 @@
     </url>
 
     <url>
-        <loc>http://godweiyang.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
-        <lastmod>2017-09-20T02:26:20.613Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://godweiyang.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2017-09-20T02:26:20.613Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://godweiyang.com/tags/EOJ/</loc>
         <lastmod>2017-09-20T02:26:30.805Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -39,6 +25,20 @@
     <url>
         <loc>http://godweiyang.com/tags/%E4%BF%9D%E7%A0%94/</loc>
         <lastmod>2017-09-20T02:26:44.029Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
+        <lastmod>2017-09-20T04:00:37.050Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2017-09-20T04:00:37.050Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
