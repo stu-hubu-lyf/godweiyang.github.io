@@ -556,6 +556,9 @@ pre code {
   }
 }
 .post-content-preview {
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow: hidden;
   font-size: 13px;
   font-style: italic;
   color: #a3a3a3;
