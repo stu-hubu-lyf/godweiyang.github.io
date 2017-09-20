@@ -19,7 +19,7 @@
         
     </title>
 
-    <link rel="canonical" href="http://godweiyang.com/tags/ACL/">
+    <link rel="canonical" href="http://godweiyang.com/archives/2/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -70,8 +70,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/undefined')
-            /*page*/
+            background-image: url('/img/header_img/home-bg-2-dark.png') 
+            /*config*/
         
     }
     
@@ -209,122 +209,53 @@
                 post-container
             ">
             
-                
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 归档列表 -->
-            
-            
-
-             <!-- 归档列表 -->
-
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2017">
-                    <span class="tag-text">2017</span>
-                </span>
-                <ul>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    09-19
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/09/19/dl2/" style="color: #0085a1">
-                        <span>
-                            吴恩达深度学习公开课第二周(神经网络基础)学习笔记
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    09-19
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/09/19/dl1/" style="color: #0085a1">
-                        <span>
-                            吴恩达深度学习公开课第一周(深度学习概论)学习笔记
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    09-19
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/09/19/context/" style="color: #0085a1">
-                        <span>
-                            ACL2017论文解读[P17-2036]
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    09-19
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/09/19/baoyan/" style="color: #0085a1">
-                        <span>
-                            保研第一，我还是选择留在了本校
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    09-19
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/09/19/recommend/" style="color: #0085a1">
-                        <span>
-                            一位长者关于保研的一些人生经验
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    09-19
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/09/19/eoj3328/" style="color: #0085a1">
-                        <span>
-                            EOJ3328
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                </ul>
-            </div>
-            
+                <!-- Main Content -->
 
 
+<div class="post-preview">
+
+    <a href="/2017/09/19/eoj3328/">
+        <h2 class="post-title">
+            EOJ3328
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            题意
+给定\(n\)个点和每个点在\(x\)轴上面的位置和每个点的权值，求出点对之间的费用总和。其中某两个点\(i\)，\(j\)之间的费用定义为\( | p_i - p_j | \times max\{v_i, v_j\} \)。
+题解
+对于每个点，计算它左边权值小于它的点与它点对费用之和：\[{v_i}\sum\limits_j {({p_i} - {p_j})}  = k{v_i}{p......
         </div>
-    </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by WeiYang on
+            2017-09-19
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#EOJ" title="EOJ">EOJ</a>
+            
+        </div>
+    
+
 </div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/">&larr; Newer Posts</a>
+        </li>
+    
+    
+</ul>
+
 
                 <!-- 如果开启评论功能 -->
                 
