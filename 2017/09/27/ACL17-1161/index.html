@@ -15,11 +15,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          WeiYang Blog
+          基于双向语言模型的半监督序列标注 - WeiYang Blog
         
     </title>
 
-    <link rel="canonical" href="http://godweiyang.com/">
+    <link rel="canonical" href="http://godweiyang.com/2017/09/27/ACL17-1161/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -70,8 +70,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/header_img/home-bg-2-dark.png') 
-            /*config*/
+            background-image: url('header.jpg')
+            /*post*/
         
     }
     
@@ -88,10 +88,24 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>WeiYang Blog</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">Never give up studying</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#ACL" title="ACL">ACL</a>
+                            
+                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                            
+                              <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                            
+                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                            
+                        </div>
+                        <h1>基于双向语言模型的半监督序列标注</h1>
+                        <h2 class="subheading">Semi-supervised sequence tagging with bidirectional language models</h2>
+                        <span class="meta">
+                            Posted by WeiYang on
+                            2017-09-27
+                        </span>
                     </div>
                 
 
@@ -194,391 +208,139 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
+                <p>论文链接：<a href="https://www.aclweb.org/anthology/P/P17/P17-1161.pdf" target="_blank" rel="external">P17-1161</a></p>
+<h1><span id="摘要">摘要</span></h1><hr>
+<p>从未标注文本中学习到的预训练词向量已经成为NLP任务神经网络结构的重要组成部分。但是大多数情况下，现在的循环神经网络还是从极少的标注数据中学习上下文相关的表示。所以我们这篇论文研究一种通用的半监督学习方法，将从双向语言模型中预训练出来的词向量加到NLP系统中，把它应用到序列标注任务中。我们在两个任务上做实验：NER和chunking。</p>
+<h1><span id="介绍">介绍</span></h1><hr>
+<p>这篇论文我们探讨一种半监督学习方法，不需要额外的标注数据。我们使用一个神经语言模型，在大量未标注数据上训练，计算出每个位置上下文的编码，然后应用到半监督的标注模型中。<br>我们第一个主要贡献是证明了语言模型训练出的上下文相关表示在半监督标注模型中是很有用的。第二个贡献是多使用一个后向的语言模型效果更好。同时我们发现没必要针对某个领域数据来专门训练。</p>
 
-<div class="post-preview">
+                
 
-    <a href="/2017/09/27/ACL17-1161/">
-        <h2 class="post-title">
-            基于双向语言模型的半监督序列标注
-        </h2>
-        <h3 class="post-subtitle">
-            Semi-supervised sequence tagging with bidirectional language models
-        </h3>
-        <div class="post-content-preview">
-            论文链接：P17-1161
-摘要
-从未标注文本中学习到的预训练词向量已经成为NLP任务神经网络结构的重要组成部分。但是大多数情况下，现在的循环神经网络还是从极少的标注数据中学习上下文相关的表示。所以我们这篇论文研究一种通用的半监督学习方法，将从双向语言模型中预训练出来的词向量加到NLP系统中，把它应用到序列标注任务中。我们在两个任务上做实验：NER和chunking。
-介绍
-这篇论文我们探讨......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by WeiYang on
-            2017-09-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#ACL" title="ACL">ACL</a>
-            
-              <a href="/tags/#NLP" title="NLP">NLP</a>
-            
-              <a href="/tags/#神经网络" title="神经网络">神经网络</a>
-            
-              <a href="/tags/#深度学习" title="深度学习">深度学习</a>
-            
-        </div>
-    
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/09/20/dlhw2/" data-toggle="tooltip" data-placement="top" title="吴恩达深度学习公开课第二周编程练习2">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
-</div>
-<hr>
+                <p></p>
+                <div id="cyReward" role="cylabs" data-use="reward" align="center"></div>
+                    
+                    <div id="SOHUCS" ></div> 
+                    <script type="text/javascript"> 
+                    (function(){ 
+                    var appid = 'cytdwHIyN'; 
+                    var conf = 'prod_a8118d12ad20449218d5a5d7e94c0000'; 
+                    var width = window.innerWidth || document.documentElement.clientWidth; 
+                    if (width < 960) { 
+                    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
 
-<div class="post-preview">
-
-    <a href="/2017/09/20/dlhw2/">
-        <h2 class="post-title">
-            吴恩达深度学习公开课第二周编程练习2
-        </h2>
-        <h3 class="post-subtitle">
-            Logistic Regression with a Neural Network mindset
-        </h3>
-        <div class="post-content-preview">
-            这次练习是实现logistic回归模型的神经网络，来预测一张图片是不是一只猫。
-我把代码整合在了一起，如下：
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by WeiYang on
-            2017-09-20
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#神经网络" title="神经网络">神经网络</a>
-            
-              <a href="/tags/#深度学习" title="深度学习">深度学习</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/09/20/dlhw1/">
-        <h2 class="post-title">
-            吴恩达深度学习公开课第二周编程练习1
-        </h2>
-        <h3 class="post-subtitle">
-            Python Basics with Numpy
-        </h3>
-        <div class="post-content-preview">
-            这次编程练习是吴恩达深度学习公开课第二周的配套练习，地址：coursera。
-1 - Building basic functions with numpy
-
-1.1 - sigmoid function, np.exp()
-Exercise: Build a function that returns the sigmoid of a real number x. Use math.exp......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by WeiYang on
-            2017-09-20
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#神经网络" title="神经网络">神经网络</a>
-            
-              <a href="/tags/#深度学习" title="深度学习">深度学习</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/09/19/dl2/">
-        <h2 class="post-title">
-            吴恩达深度学习公开课第二周学习笔记
-        </h2>
-        <h3 class="post-subtitle">
-            神经网络基础
-        </h3>
-        <div class="post-content-preview">
-            这周开始将会学到神经网络编程的基础知识。
-2.1 二分分类
-
-
-二分类问题就是给定一个输入\(x\)，预测它的标签\(y\)是0还是1。拿预测一张图片是不是猫来举例子，一张图片大小为\({\rm{64}} \times {\rm{64}}\)，将它转化为三个矩阵分别代表RGB分量。再将三个矩阵合并成一个大小为\({\rm{(64}} \times {\rm{64}} \times {\rm{......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by WeiYang on
-            2017-09-19
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#神经网络" title="神经网络">神经网络</a>
-            
-              <a href="/tags/#深度学习" title="深度学习">深度学习</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/09/19/dl1/">
-        <h2 class="post-title">
-            吴恩达深度学习公开课第一周学习笔记
-        </h2>
-        <h3 class="post-subtitle">
-            深度学习概论
-        </h3>
-        <div class="post-content-preview">
-            保了研暂时也没什么事干，从今天开始学一学吴恩达最近发布的深度学习课程。顺便在博客上做做笔记，梳理一下。
-coursera上面的课程要钱，还贼贵。所以我就直接在网易公开课上面看免费版的了，免费版没有作业和练习，是一个很大的缺憾。因为这门课很大的一个亮点就是高质量的编程题。顺带附上这门课的地址：吴恩达深度学习公开课
-1.2 什么是神经网络？
-
-这节课是深度学习的入门课，首先给出了深度学习的定义：......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by WeiYang on
-            2017-09-19
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#神经网络" title="神经网络">神经网络</a>
-            
-              <a href="/tags/#深度学习" title="深度学习">深度学习</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-
-
-<!-- Pager -->
-
-<ul class="pager">
-    
-    
-        <li class="next">
-            <a href="/archives/2/">Older Posts &rarr;</a>
-        </li>
-    
-</ul>
-
-
+                    <script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
+                    <script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cytdwHIyN"></script>
             </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
 
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-            <a href="/tags/#ACL" title="ACL" rel="2">ACL</a>
-            
-        
-            
-            <a href="/tags/#NLP" title="NLP" rel="2">NLP</a>
-            
-        
-            
-            <a href="/tags/#神经网络" title="神经网络" rel="6">神经网络</a>
-            
-        
-            
-            <a href="/tags/#深度学习" title="深度学习" rel="6">深度学习</a>
-            
-        
-            
-            <a href="/tags/#保研" title="保研" rel="2">保研</a>
-            
-        
-            
-            <a href="/tags/#EOJ" title="EOJ" rel="1">EOJ</a>
-            
-        
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#ACL" title="ACL">ACL</a>
+                        
+                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                        
+                          <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                        
+                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://www.itaowei.cn/" target="_blank">望城风景</a></li>
+                    
+                        <li><a href="https://www.jxtxzzw.com/wordpress" target="_blank">jxtxzzw空间</a></li>
+                    
+                        <li><a href="http://blog.csdn.net/cww97" target="_blank">cww97</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/ironman-draw.png" />
-        
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- <script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script> -->
+<style>
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-        
-            <p>Undergraduate from ECNU NLP group</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
 
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/godweiyang">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-            
-                <li>
-                    <a target="_blank" href="http://weibo.com/godweiyang">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-
-            
-                <li>
-                    <a target="_blank" href="https://user.qzone.qq.com/792321264">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-qq fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-
-            
-                <li>
-                    <a target="_blank" href="https://www.instagram.com/godweiyang">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-
-            
-            
-            
-        </ul>
-    </div>
-</section>
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2017/09/27/ACL17-1161/">基于双向语言模型的半监督序列标注</a>
-        </li>
-      
-        <li>
-          <a href="/2017/09/20/dlhw2/">吴恩达深度学习公开课第二周编程练习2</a>
-        </li>
-      
-        <li>
-          <a href="/2017/09/20/dlhw1/">吴恩达深度学习公开课第二周编程练习1</a>
-        </li>
-      
-        <li>
-          <a href="/2017/09/19/dl2/">吴恩达深度学习公开课第二周学习笔记</a>
-        </li>
-      
-        <li>
-          <a href="/2017/09/19/dl1/">吴恩达深度学习公开课第一周学习笔记</a>
-        </li>
-      
-    </ul>
-  </div>
-
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<h5>FRIENDS</h5>
-<ul class="list-inline">
-
-    
-        <li><a href="http://www.itaowei.cn/" target="_blank">望城风景</a></li>
-    
-        <li><a href="https://www.jxtxzzw.com/wordpress" target="_blank">jxtxzzw空间</a></li>
-    
-        <li><a href="http://blog.csdn.net/cww97" target="_blank">cww97</a></li>
-    
-</ul>
-
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">9</span></li></ul>
-    </div>
-
-        <hr>
-    
-        <!-- Categories -->
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
 
 
     <!-- Footer -->
