@@ -7,8 +7,40 @@
     </url>
 
     <url>
+        <loc>http://godweiyang.com/2017/09/19/recommend/</loc>
+        <lastmod>2017-10-02T08:54:20.583Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/2017/09/19/dl2/</loc>
+        <lastmod>2017-10-02T08:53:10.814Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/2017/09/19/dl1/</loc>
+        <lastmod>2017-10-02T08:51:58.645Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/2017/09/19/context/</loc>
+        <lastmod>2017-10-02T08:50:33.182Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://godweiyang.com/2017/10/02/sublime/</loc>
-        <lastmod>2017-10-02T06:38:57.458Z</lastmod>
+        <lastmod>2017-10-02T08:47:00.125Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -23,32 +55,8 @@
     </url>
 
     <url>
-        <loc>http://godweiyang.com/2017/09/19/dl1/</loc>
-        <lastmod>2017-09-20T08:56:41.433Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://godweiyang.com/2017/09/19/eoj3328/</loc>
         <lastmod>2017-09-20T08:06:04.811Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://godweiyang.com/2017/09/19/dl2/</loc>
-        <lastmod>2017-09-20T08:05:16.536Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://godweiyang.com/2017/09/19/context/</loc>
-        <lastmod>2017-09-20T08:04:51.877Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -65,14 +73,6 @@
     <url>
         <loc>http://godweiyang.com/2017/09/20/dlhw1/</loc>
         <lastmod>2017-09-20T04:37:30.505Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://godweiyang.com/2017/09/19/recommend/</loc>
-        <lastmod>2017-09-20T02:26:44.029Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

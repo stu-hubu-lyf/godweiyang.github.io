@@ -147,14 +147,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -220,7 +220,7 @@
                 <p>这周开始将会学到神经网络编程的基础知识。</p>
 
 <h1><span id="21-二分分类">2.1 二分分类</span></h1><hr>
-<p><img src="/2017/09/19/dl2/13.jpg" alt=""></p>
+<p><img src="/2017/09/19/dl2/13.jpg" data-action="zoom"></p>
 <p>二分类问题就是给定一个输入\(x\)，预测它的标签\(y\)是0还是1。拿预测一张图片是不是猫来举例子，一张图片大小为\({\rm{64}} \times {\rm{64}}\)，将它转化为三个矩阵分别代表RGB分量。再将三个矩阵合并成一个大小为\({\rm{(64}} \times {\rm{64}} \times {\rm{3,1)}}\)的矩阵作为输入\(x\)。</p>
 <p>下面给出一些以后要用到的符号表示。</p>
 <p>一个样本用\((x,y)\)表示，其中\(x \in {R^{ {n_x}}}\)，\(y \in \{ 0,1\} \)，那么\(m\)个训练样本就可以用集合\(\\{ ({x^{(1)}},{y^{(1)}}),({x^{(2)}},{y^{(2)}}), \ldots ,({x^{(m)}},{y^{(m)}})\\} \)来表示。</p>
@@ -235,16 +235,16 @@
 <h1><span id="24-梯度下降法">2.4 梯度下降法</span></h1><hr>
 <p>通过重复<br>\[w: = w - \alpha \frac{ {\partial J(w,b)}}{ {\partial w}}\]<br>和<br>\[b: = b - \alpha \frac{ {\partial J(w,b)}}{ {\partial b}}\]<br>来不断更新\(w\)和\(b\)，使得\(w\)和\(b\)接近最优值。</p>
 <h1><span id="27-计算图">2.7 计算图</span></h1><hr>
-<p><img src="/2017/09/19/dl2/14.jpg" alt=""></p>
+<p><img src="/2017/09/19/dl2/14.jpg" data-action="zoom"></p>
 <p>如上图所示就是一个计算图，初始结点都是输入值，中间一个结点表示一个运算，最后一个结点就是输出值。</p>
 <h1><span id="28-计算图的导数计算">2.8 计算图的导数计算</span></h1><hr>
-<p><img src="/2017/09/19/dl2/15.jpg" alt=""></p>
+<p><img src="/2017/09/19/dl2/15.jpg" data-action="zoom"></p>
 <p>反向传播的时候只要沿着红色的箭头利用求导链式法则来对每个参数求导就行了。</p>
 <h1><span id="29-logistic回归中的梯度下降">2.9 logistic回归中的梯度下降</span></h1><hr>
-<p><img src="/2017/09/19/dl2/16.jpg" alt=""></p>
+<p><img src="/2017/09/19/dl2/16.jpg" data-action="zoom"></p>
 <p>logistic回归的计算图如上图所示，导数如下：<br>\[\frac{ {\partial L(a,y)}}{ {\partial a}} =  - \frac{y}{a} + \frac{ {1 - y}}{ {1 - a}}\]<br>\[\frac{ {\partial L(a,y)}}{ {\partial z}} = \frac{ {\partial L(a,y)}}{ {\partial a}} \cdot \frac{ {\partial a}}{ {\partial z}} = ( - \frac{y}{a} + \frac{ {1 - y}}{ {1 - a}}) \cdot a(1 - a) = a - y\]<br>\[\frac{ {\partial L(a,y)}}{ {\partial {w_1}}} = {x_1} \cdot \frac{ {\partial L(a,y)}}{ {\partial z}} = {x_1}(a - y)\]<br>\[\frac{ {\partial L(a,y)}}{ {\partial {w_2}}} = {x_2} \cdot \frac{ {\partial L(a,y)}}{ {\partial z}} = {x_2}(a - y)\]<br>\[\frac{ {\partial L(a,y)}}{ {\partial b}} = \frac{ {\partial L(a,y)}}{ {\partial z}} = a - y\]</p>
 <h1><span id="210-m个样本的梯度下降">2.10 \(m\)个样本的梯度下降</span></h1><hr>
-<p><img src="/2017/09/19/dl2/17.jpg" alt=""></p>
+<p><img src="/2017/09/19/dl2/17.jpg" data-action="zoom"></p>
 <p>\(m\)个样本的梯度其实就是每个样本的梯度求和，如图所示的伪代码中，用一层<code>for</code>循环来对梯度进行求和。在后面的课程中我们将会摒弃这种做法，用更快速的向量化方法来进行计算。</p>
 <h1><span id="211-向量化">2.11 向量化</span></h1><hr>
 <p>向量化就是将例如\({w^T}x\)这样的矩阵点乘用python的<code>numpy</code>库函数<code>dot</code>代替普通的<code>for</code>循环。示例代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">a = np.random.rand(<span class="number">1000000</span>)</div><div class="line">b = np.random.rand(<span class="number">1000000</span>)</div><div class="line">c = np.dot(a, b)</div><div class="line"><span class="keyword">print</span> c</div></pre></td></tr></table></figure></p>
@@ -366,8 +366,7 @@
 </style>
 
 
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+<script type="text/javascript" src="/js/zooming.js"></script>
 
 
 
