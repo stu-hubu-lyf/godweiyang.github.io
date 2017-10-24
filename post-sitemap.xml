@@ -8,7 +8,15 @@
 
     <url>
         <loc>http://godweiyang.com/2017/10/03/ACL17-1161/</loc>
-        <lastmod>2017-10-03T09:47:02.249Z</lastmod>
+        <lastmod>2017-10-24T16:55:14.210Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/2017/10/25/ACL17-2027/</loc>
+        <lastmod>2017-10-24T16:50:25.581Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
