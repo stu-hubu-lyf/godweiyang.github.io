@@ -137,13 +137,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -152,6 +145,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -223,10 +223,8 @@
         </h3>
         <div class="post-content-preview">
             题意
-
-给定\(n\)个点和每个点在\(x\)轴上面的位置和每个点的权值，求出点对之间的费用总和。其中某两个点\(i\)，\(j\)之间的费用定义为\( | p_i - p_j | \times max{v_i, v_j} \)。
+给定\(n\)个点和每个点在\(x\)轴上面的位置和每个点的权值，求出点对之间的费用总和。其中某两个点\(i\)，\(j\)之间的费用定义为\( | p_i - p_j | \times max\{v_i, v_j\} \)。
 题解
-
 对于每个点，计算它左边权值小于它的点与它点对费用之和：\[{v_i}\sum\limits_j {({p_i} - {p_j})}  = k{v_i}{p......
         </div>
     </a>
