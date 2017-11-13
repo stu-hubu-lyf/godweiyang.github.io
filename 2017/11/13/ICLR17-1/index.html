@@ -15,11 +15,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          吴恩达深度学习公开课第二周学习笔记 - WeiYang Blog
+          ICLR2017论文解读 - WeiYang Blog
         
     </title>
 
-    <link rel="canonical" href="http://godweiyang.com/2017/09/19/dl2/">
+    <link rel="canonical" href="http://godweiyang.com/2017/11/13/ICLR17-1/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -91,16 +91,20 @@
                     <div class="post-heading">
                         <div class="tags">
                             
+                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                            
                               <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
                             
                               <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
                             
+                              <a class="tag" href="/tags/#ICLR" title="ICLR">ICLR</a>
+                            
                         </div>
-                        <h1>吴恩达深度学习公开课第二周学习笔记</h1>
-                        <h2 class="subheading">神经网络基础</h2>
+                        <h1>ICLR2017论文解读</h1>
+                        <h2 class="subheading">基于层次递归网络的序列标注迁移学习</h2>
                         <span class="meta">
                             Posted by WeiYang on
-                            2017-09-19
+                            2017-11-13
                         </span>
                     </div>
                 
@@ -217,43 +221,25 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>这周开始将会学到神经网络编程的基础知识。</p>
-
-<h1><span id="21-二分分类">2.1 二分分类</span></h1><hr>
-<p><img src="/2017/09/19/dl2/13.jpg" data-action="zoom"></p>
-<p>二分类问题就是给定一个输入\(x\)，预测它的标签\(y\)是0还是1。拿预测一张图片是不是猫来举例子，一张图片大小为\({\rm{64}} \times {\rm{64}}\)，将它转化为三个矩阵分别代表RGB分量。再将三个矩阵合并成一个大小为\({\rm{(64}} \times {\rm{64}} \times {\rm{3,1)}}\)的矩阵作为输入\(x\)。</p>
-<p>下面给出一些以后要用到的符号表示。</p>
-<p>一个样本用\((x,y)\)表示，其中\(x \in {R^{ {n_x}}}\)，\(y \in \{ 0,1\} \)，那么\(m\)个训练样本就可以用集合\(\\{ ({x^{(1)}},{y^{(1)}}),({x^{(2)}},{y^{(2)}}), \ldots ,({x^{(m)}},{y^{(m)}})\\} \)来表示。</p>
-<p>我们还可以将所有样本特征值用一个矩阵表示：<br>\[X = \left[ {\begin{array}{*{20}{l}} \vdots &amp; \vdots &amp; \cdots &amp; \vdots \\\\{ {x^{(1)}}}&amp;{ {x^{(2)}}}&amp; \cdots &amp;{ {x^{(m)}}}\\\\ \vdots &amp; \vdots &amp; \cdots &amp; \vdots \end{array}} \right]\]</p>
-<p>其中\(X \in {R^{ {n_x} \times m}}\)。<br>所有样本标签也可以用一个矩阵表示：<br>\[Y = \left[ {\begin{array}{*{20}{l}}{ {y^{(1)}}}&amp;{ {y^{(2)}}}&amp; \cdots &amp;{ {y^{(m)}}}\end{array}} \right]\]</p>
-<p>其中\(Y \in {R^{1 \times m}}\)。</p>
-<h1><span id="22-logistic回归">2.2 logistic回归</span></h1><hr>
-<p>logistic回归就是用线性函数来拟合输出标签。具体定义为，输入特征\(X \in {R^{n_x}}\)，参数\(w \in {R^{n_x}}\)，\(b \in {R}\)。那么令输出标签<br>\[{ {\hat y}^{(i)}} = \sigma ({w^T}{x^{^{(i)}}} + b)\]<br>其中\[\sigma ({x^{^{(i)}}}) = \frac{1}{ {1 + {e^{ - {x^{^{(i)}}}}}}}\]</p>
-<h1><span id="23-logistic回归损失函数">2.3 logistic回归损失函数</span></h1><hr>
-<p>损失函数衡量的是输出标签\({\hat y}\)与真实标签\(y\)之间的差距，有很多种定义方法，下面是常用的两种：<br>\[L({ {\hat y}^{^{(i)}}},{y^{^{(i)}}}) = \frac{1}{2}{({ {\hat y}^{^{(i)}}} - {y^{^{(i)}}})^2}\]和<br>\[L({ {\hat y}^{^{(i)}}},{y^{^{(i)}}}) =  - [{y^{(i)}}\log ({ {\hat y}^{(i)}}) + (1 - {y^{(i)}})\log (1 - { {\hat y}^{(i)}})]\]<br>一般我们使用下面一种损失函数，具体原因最后一节课会讲到，因为它是个凸函数，方便梯度下降。</p>
-<p>如果有\(m\)个样本，那么总的损失函数就定义为<br>\[J(w,b) = \frac{1}{m}\sum\limits_{i - 1}^m {L({ {\hat y}^{^{(i)}}},{y^{^{(i)}}})}  =  - \frac{1}{m}\sum\limits_{i - 1}^m {[{y^{(i)}}\log ({ {\hat y}^{(i)}}) + (1 - {y^{(i)}})\log (1 - { {\hat y}^{(i)}})]} \]</p>
-<h1><span id="24-梯度下降法">2.4 梯度下降法</span></h1><hr>
-<p>通过重复<br>\[w: = w - \alpha \frac{ {\partial J(w,b)}}{ {\partial w}}\]<br>和<br>\[b: = b - \alpha \frac{ {\partial J(w,b)}}{ {\partial b}}\]<br>来不断更新\(w\)和\(b\)，使得\(w\)和\(b\)接近最优值。</p>
-<h1><span id="27-计算图">2.7 计算图</span></h1><hr>
-<p><img src="/2017/09/19/dl2/14.jpg" data-action="zoom"></p>
-<p>如上图所示就是一个计算图，初始结点都是输入值，中间一个结点表示一个运算，最后一个结点就是输出值。</p>
-<h1><span id="28-计算图的导数计算">2.8 计算图的导数计算</span></h1><hr>
-<p><img src="/2017/09/19/dl2/15.jpg" data-action="zoom"></p>
-<p>反向传播的时候只要沿着红色的箭头利用求导链式法则来对每个参数求导就行了。</p>
-<h1><span id="29-logistic回归中的梯度下降">2.9 logistic回归中的梯度下降</span></h1><hr>
-<p><img src="/2017/09/19/dl2/16.jpg" data-action="zoom"></p>
-<p>logistic回归的计算图如上图所示，导数如下：<br>\[\frac{ {\partial L(a,y)}}{ {\partial a}} =  - \frac{y}{a} + \frac{ {1 - y}}{ {1 - a}}\]<br>\[\frac{ {\partial L(a,y)}}{ {\partial z}} = \frac{ {\partial L(a,y)}}{ {\partial a}} \cdot \frac{ {\partial a}}{ {\partial z}} = ( - \frac{y}{a} + \frac{ {1 - y}}{ {1 - a}}) \cdot a(1 - a) = a - y\]<br>\[\frac{ {\partial L(a,y)}}{ {\partial {w_1}}} = {x_1} \cdot \frac{ {\partial L(a,y)}}{ {\partial z}} = {x_1}(a - y)\]<br>\[\frac{ {\partial L(a,y)}}{ {\partial {w_2}}} = {x_2} \cdot \frac{ {\partial L(a,y)}}{ {\partial z}} = {x_2}(a - y)\]<br>\[\frac{ {\partial L(a,y)}}{ {\partial b}} = \frac{ {\partial L(a,y)}}{ {\partial z}} = a - y\]</p>
-<h1><span id="210-m个样本的梯度下降">2.10 \(m\)个样本的梯度下降</span></h1><hr>
-<p><img src="/2017/09/19/dl2/17.jpg" data-action="zoom"></p>
-<p>\(m\)个样本的梯度其实就是每个样本的梯度求和，如图所示的伪代码中，用一层<code>for</code>循环来对梯度进行求和。在后面的课程中我们将会摒弃这种做法，用更快速的向量化方法来进行计算。</p>
-<h1><span id="211-向量化">2.11 向量化</span></h1><hr>
-<p>向量化就是将例如\({w^T}x\)这样的矩阵点乘用python的<code>numpy</code>库函数<code>dot</code>代替普通的<code>for</code>循环。示例代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">a = np.random.rand(<span class="number">1000000</span>)</div><div class="line">b = np.random.rand(<span class="number">1000000</span>)</div><div class="line">c = np.dot(a, b)</div><div class="line"><span class="keyword">print</span> c</div></pre></td></tr></table></figure></p>
-<h1><span id="212-向量化的更多例子">2.12 向量化的更多例子</span></h1><hr>
-<p>经验法则是能不使用<code>for</code>循环就尽量不要使用，用向量来代替。更多的向量化例子有<code>np.exp()</code>，<code>np.sum()</code>等等。</p>
-<h1><span id="213-向量化logistic回归">2.13 向量化logistic回归</span></h1><hr>
-<p>之前提到的算法是用<code>for</code>循环来计算所有的\({ {\hat y}^{(i)}} = \sigma ({w^T}{x^{^{(i)}}} + b)\)。现在可以使用向量化来加快计算速度，只要计算\(Y = \sigma ({w^T}X + b)\)即可。</p>
-<h1><span id="214-向量化logistic回归的梯度输出">2.14 向量化logistic回归的梯度输出</span></h1><hr>
-<p>logistic回归的梯度用向量可以表示为<br>\[dz = A - Y\]<br>\[dw = \frac{1}{m}Xd{z^T}\]<br>下面两节课都是讲的python的广播和向量的一些说明，在此就不细讲了，大家可以去查看python文档。其中讲到的一个写python程序的好习惯就是用到向量的时候如果不确定维数，那么你就<code>reshape()</code>一下，还有就是加一句<code>assert()</code>语句判断一下维数。</p>
+                <p>论文链接：<a href="https://arxiv.org/pdf/1703.06345.pdf" target="_blank" rel="external">链接</a></p>
+<h1><span id="摘要">摘要</span></h1><hr>
+<p>探索一种神经序列标注的迁移学习方法，适用于源任务有大量标注标签，但是目标任务标注标签很少的情况，主要有三个方面：跨领域、跨应用、跨语言。</p>
+<h1><span id="1-介绍">1 介绍</span></h1><hr>
+<p>序列标注任务的一个难点就是怎样将知识从一个任务迁移到另一个任务上面去，通常被叫做“迁移学习”。<br>这里对三种任务（跨领域、跨应用、跨语言）分别提出了参数共享的神经网络结构，实验结果也很好。即使标注标签很多，结果也比以前的结果更好。</p>
+<h1><span id="2-相关工作">2 相关工作</span></h1><hr>
+<p>NLP迁移学习通常有两种方法，一种是基于资源的迁移，另一种是基于模型的迁移。<br>基于资源的迁移需要大量的跨语言语料，而且通常只用在跨语言任务了，在跨领域和跨应用方面还没什么应用。<br>基于模型的迁移就不需要大量的额外资源了，只要探索源任务和目标任务之间的相似性和相关性，通过修改模型结构、训练算法、特征表示。<br>这里的模型就是基于模型的迁移。和以往不同的是，这个模型利用了深度递归神经网之间的一般性，可以在跨领域、跨应用、跨语言之间转换。</p>
+<h1><span id="3-方法">3 方法</span></h1><hr>
+<p><img src="/2017/11/13/ICLR17-1/1.png" data-action="zoom"><br>上图分别是基本模型、跨领域模型、跨应用模型、跨语言模型。</p>
+<h3><span id="31-基本模型">3.1 基本模型</span></h3><p>首先字符层输入每个字符表示，输出单词的字符层表示，然后和词向量结合作为每个词的表示，然后经过一个CNN或者RNN，隐含层输出再经过一个CRF得到每个词的标签。</p>
+<h3><span id="32-迁移学习结构">3.2 迁移学习结构</span></h3><p>跨领域、跨应用、跨语言每种一个迁移结构，和基本模型不同的是，共享的参数不同。</p>
+<h4><span id="321-跨领域迁移">3.2.1 跨领域迁移</span></h4><p>跨领域迁移有两种情况，一种是两个领域标签存在映射关系，一种是不存在映射关系。<br>第一种情况结构如图b所示，可以共享CRF层以及下面的所有层，最后加一个标签映射的步骤就行了<br>第二种情况结构如图c所示，CRF层独立训练。</p>
+<h4><span id="322-跨应用迁移">3.2.2 跨应用迁移</span></h4><p>这里假设两种应用是同一种语言，所以和跨领域标签无映射关系类似，用的是图c的结构。</p>
+<h4><span id="323-跨语言迁移">3.2.3 跨语言迁移</span></h4><p>这里重点放在两种字母表相同的语言上，比如英语和西班牙语。<br>由于字符相同，所以采用图d结构，共享字符层和词向量。</p>
+<h3><span id="33-训练">3.3 训练</span></h3><p>假设从任务\(s\)迁移到任务\(t\)，训练集分为\(X_s\)和\(X_t\)，参数分为\(W_s\)和\(W_t\)。其中模型参数还分为任务特定参数和共享参数：<br>\[{W_s} = {W_{s,spec}} \cup {W_{shared}},{W_t} = {W_{t,spec}} \cup {W_{shared}}\]训练过程如下：<br>每一次迭代，都采用二项分布随机抽取一个任务\(s\)或\(t\)，然后训练该任务特定模型参数和共享参数。由于源任务和目标任务收敛速度不一定一样，所以对目标任务提前停止。</p>
+<h3><span id="34-模型实现">3.4 模型实现</span></h3><p>RNN采用GRU，假设隐含层输出为\(h\)，输出标签为\(y\)，定义CRF的目标函数为<br>\[f(h,y) - \log \sum\limits_{y’ \in \gamma (h)} {\exp (f(h,y’) + \cos {\rm{t}}(y,y’))} \]</p>
+<h1><span id="4-实验">4 实验</span></h1><p><img src="/2017/11/13/ICLR17-1/2.png" data-action="zoom"><br><img src="/2017/11/13/ICLR17-1/3.png" data-action="zoom"><br>上图是实验结果，其中跨领域迁移：ade，跨应用迁移：fgh，跨语言迁移：ij，跨领域和应用：b，跨领域、应用和语言：c。<br><img src="/2017/11/13/ICLR17-1/4.png" data-action="zoom"><br>上表是各类任务在不同标签率下迁移学习和无迁移学习的性能对比。<br>可以看出三种迁移结构性能提升的顺序是A&gt;B&gt;C，因为结构C比如跨语言模型，源任务和目标任务相似性很小。<br><img src="/2017/11/13/ICLR17-1/5.png" data-action="zoom"><br>上图是和其他模型比较的结果。</p>
+<h1><span id="5-结论">5 结论</span></h1><hr>
+<p>提出一种神经序列标注的迁移学习方法，主要有三个方面：跨领域、跨应用、跨语言。<br>以下三个因素对迁移学习性能有很大影响：目标任务标签数量、源任务和目标任务相关性、能够共享的参数数量。<br>在以后的工作中，可以在跨语言迁移学习中尝试结合基于模型的迁移和基于资源的迁移。</p>
 
                 
 
@@ -261,13 +247,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2017/09/20/dlhw1/" data-toggle="tooltip" data-placement="top" title="吴恩达深度学习公开课第二周编程练习1">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/09/19/dl1/" data-toggle="tooltip" data-placement="top" title="吴恩达深度学习公开课第一周学习笔记">Next Post &rarr;</a>
+                            <a href="/2017/10/25/ACL17-2027/" data-toggle="tooltip" data-placement="top" title="ACL2017论文解读[P17-2027]">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -305,9 +287,13 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
+                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                        
                           <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
                         
                           <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                        
+                          <a class="tag" href="/tags/#ICLR" title="ICLR">ICLR</a>
                         
                     </div>
                 </section>
