@@ -38,28 +38,49 @@
 
     <url>
         <loc>http://godweiyang.com/tags/NLP/</loc>
-        <lastmod>2017-11-13T07:16:25.084Z</lastmod>
+        <lastmod>2017-11-13T07:17:14.170Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://godweiyang.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
-        <lastmod>2017-11-13T07:16:25.084Z</lastmod>
+        <lastmod>2017-11-13T07:17:14.170Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://godweiyang.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2017-11-13T07:16:25.084Z</lastmod>
+        <lastmod>2017-11-13T07:17:14.170Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://godweiyang.com/tags/ICLR/</loc>
-        <lastmod>2017-11-13T07:16:25.084Z</lastmod>
+        <lastmod>2017-11-13T07:17:14.170Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</loc>
+        <lastmod>2017-11-16T09:33:43.031Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/tags/%E7%BC%96%E8%AF%91%E5%99%A8/</loc>
+        <lastmod>2017-11-16T09:33:43.031Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/tags/C/</loc>
+        <lastmod>2017-11-16T09:33:43.031Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
