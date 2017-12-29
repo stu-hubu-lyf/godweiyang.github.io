@@ -86,6 +86,13 @@
     </url>
 
     <url>
+        <loc>http://godweiyang.com/tags/EMNLP/</loc>
+        <lastmod>2017-12-19T09:29:57.376Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://godweiyang.com/tags/NLP/</loc>
         <lastmod>2017-12-19T09:29:57.376Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -114,8 +121,22 @@
     </url>
 
     <url>
-        <loc>http://godweiyang.com/tags/EMNLP/</loc>
-        <lastmod>2017-12-19T09:29:57.376Z</lastmod>
+        <loc>http://godweiyang.com/tags/LaTeX/</loc>
+        <lastmod>2017-12-29T11:03:08.850Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/tags/Beamer/</loc>
+        <lastmod>2017-12-29T11:03:08.850Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/tags/ppt/</loc>
+        <lastmod>2017-12-29T11:03:08.850Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
