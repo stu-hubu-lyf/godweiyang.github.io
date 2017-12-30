@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="baidu-site-verification" content="rlXUrNbP8h" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ECNU NLPer - WeiYang">
+    <meta name="keyword"  content="ECNU NLP DeepLearning">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          基于少量标注数据的序列标注 - WeiYang Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://godweiyang.com/2017/12/30/text-minning-ppt/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('header.jpg')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                            
+                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                            
+                              <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
+                            
+                              <a class="tag" href="/tags/#序列标注" title="序列标注">序列标注</a>
+                            
+                              <a class="tag" href="/tags/#自然语言处理" title="自然语言处理">自然语言处理</a>
+                            
+                              <a class="tag" href="/tags/#半监督学习" title="半监督学习">半监督学习</a>
+                            
+                        </div>
+                        <h1>基于少量标注数据的序列标注</h1>
+                        <h2 class="subheading">Sequence Tagging with Little Labeled Data</h2>
+                        <span class="meta">
+                            Posted by WeiYang on
+                            2017-12-30
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">WeiYang Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>历经几个星期的磨难，文本挖掘课的presentation课件初稿基本完成了，1月中下旬开讲，这次讲的是基于少量标注数据的序列标注，下面是我的综述。</p>
+<h1><span id="outline">Outline</span></h1><hr>
+<ul>
+<li>Sequence Tagging</li>
+<li>Semi-supervised Learning</li>
+<li>Transfer Learning</li>
+<li>Conclusions</li>
+<li>References</li>
+</ul>
+<h1><span id="sequence-tagging">Sequence Tagging</span></h1><hr>
+<h3><span id="introduction">Introduction</span></h3><p><strong>Definition</strong><br>Sequence tagging is a type of pattern recognition task that involves the algorithmic assignment of a categorical label to each member of a sequence of observed values.<br><strong>Significance</strong><br>Sequence tagging is one of the first stages in most natural language processing applications, such as part-of-speech tagging, chunking and named entity recognition.<br><strong>Approaches</strong></p>
+<ul>
+<li><del>Traditional models</del><ul>
+<li><del>Hidden Markov Models</del></li>
+<li><del>Conditional Random Fields</del></li>
+</ul>
+</li>
+<li>Neural network models<ul>
+<li>RNN, LSTM, GRU</li>
+</ul>
+</li>
+</ul>
+<h3><span id="neural-network-model">Neural Network Model</span></h3><p><img src="/2017/12/30/text-minning-ppt/1.png" data-action="zoom"></p>
+<h3><span id="results">Results</span></h3><p><img src="/2017/12/30/text-minning-ppt/3.png" data-action="zoom"></p>
+<h3><span id="sequence-tagging-with-little-labeled-data">Sequence Tagging with Little Labeled Data</span></h3><p><strong>Backgrounds</strong><br>Although recent neural networks obtain state-of-the-art performance on several sequence tagging tasks, they can’t be used for tasks with little labeled data.<br><strong>Approaches</strong></p>
+<ul>
+<li><del>Self-taught learning</del></li>
+<li><del>Active learning</del></li>
+<li><del>Transductive learning</del></li>
+<li>Semi-supervised learning</li>
+<li>Transfer learning</li>
+</ul>
+<h1><span id="semi-supervised-learning">Semi-supervised Learning</span></h1><hr>
+<h3><span id="references">References</span></h3><p><strong>Language Models Added</strong></p>
+<ul>
+<li>Semi-supervised Multitask Learning for Sequence Labeling. Marek Rei. ACL17.</li>
+<li>Semi-supervised Sequence Tagging with Bidirectional Language Models. Matthew et al. ACL17.</li>
+</ul>
+<p><strong>Graph-based</strong></p>
+<ul>
+<li>Efficient Graph-Based Semi-Supervised Learning of Structured Tagging Models. Subramanya et al. EMNLP10.</li>
+<li>Scientific Information Extraction with Semi-supervised Neural Tagging. Luan et al. EMNLP17.</li>
+<li>Graph-based Semi-supervised Acoustic Modeling in DNN-based Speech Recognition. Liu et al. IEEE SLT14.</li>
+</ul>
+<h3><span id="language-models-added">Language Models Added</span></h3><p><img src="/2017/12/30/text-minning-ppt/2.png" data-action="zoom"></p>
+<h3><span id="language-modeling-objective">Language Modeling Objective</span></h3><p>\[\begin{array}{l}\overrightarrow { {m_t}}  = \tanh (\overrightarrow { {W_m}} \overrightarrow { {h_t}} )\\\overleftarrow { {m_t}}  = \tanh (\overleftarrow { {W_m}} \overleftarrow { {h_t}} )\\P({w_{t + 1}}|\overrightarrow { {m_t}} ) = {\rm{softmax}}(\overrightarrow { {W_q}} \overrightarrow { {m_t}} )\\P({w_{t - 1}}|\overleftarrow { {m_t}} ) = {\rm{softmax}}(\overleftarrow { {W_q}} \overleftarrow { {m_t}} )\\\overrightarrow E  =  - \sum\limits_{t = 1}^{T - 1} {\log (P({w_{t + 1}}|\overrightarrow { {m_t}} ))} \\\overleftarrow E  =  - \sum\limits_{t = 2}^T {\log (P({w_{t - 1}}|\overleftarrow { {m_t}} ))} \\E = E + \gamma (\overrightarrow E  + \overleftarrow E )\end{array}\]</p>
+<h3><span id="results">Results</span></h3><p><img src="/2017/12/30/text-minning-ppt/4.png" data-action="zoom"><br><img src="/2017/12/30/text-minning-ppt/5.png" data-action="zoom"></p>
+<h3><span id="language-models-added">Language Models Added</span></h3><p><img src="/2017/12/30/text-minning-ppt/6.png" data-action="zoom"></p>
+<h3><span id="bidirectional-language-model">Bidirectional Language Model</span></h3><p>\[\begin{array}{l}h_k^{LM} = [\overrightarrow {h_k^{LM}} ;\overleftarrow {h_k^{LM}} ]\\{h_{k,1}} = [\overrightarrow { {h_{k,1}}} ;\overleftarrow { {h_{k,1}}} ;h_k^{LM}]\end{array}\]<br><strong>Alternative</strong></p>
+<ul>
+<li>Replace \([\overrightarrow { {h_{k,1}}} ;\overleftarrow { {h_{k,1}}} ;h_k^{LM}]\) with \(f([\overrightarrow { {h_{k,1}}} ;\overleftarrow { {h_{k,1}}} ;h_k^{LM}])\).</li>
+<li>Concatenate the LM embeddings at different locations in the baseline sequence tagger.</li>
+<li>Decrease the number of parameters in the second RNN layer.</li>
+</ul>
+<h3><span id="results">Results</span></h3><p><img src="/2017/12/30/text-minning-ppt/7.png" data-action="zoom"><br><img src="/2017/12/30/text-minning-ppt/8.png" data-action="zoom"></p>
+<h3><span id="conclusions">Conclusions</span></h3><ul>
+<li>The language model transfer across domains.</li>
+<li>The model is robust even when trained on a large number of labeled data.</li>
+<li>Training the sequence tagging model and language model together increases performance.</li>
+</ul>
+<h3><span id="graph-based">Graph-based</span></h3><ul>
+<li>Steps<ul>
+<li>Construct a graph of tokens based on their semantic similarity.</li>
+<li>Use the CRF marginal as a regularization term to do label propagation on the graph.</li>
+<li>The smoothed posterior is then used to either interpolate with the CRF marginal or as an additional feature to the neural network.</li>
+</ul>
+</li>
+<li>Graph Construction<ul>
+<li>\({w_{uv}} = {d_e}(u,v)\) if \(v \in K(u)\) or \(u \in K(v)\).</li>
+</ul>
+</li>
+<li>Label Propagation<br><img src="/2017/12/30/text-minning-ppt/9.png" data-action="zoom"></li>
+<li>Uncertain Label Marginalizing<br>\[\mathcal{Y}({x_t}) = \left\{ {\begin{array}{*{20}{c}}{\{ {y_t}\} }&amp;{ {\rm{if \ }}p({y_t}|x;\theta ) &gt; \eta }\\{ {\rm{All \ label \ types}}}&amp;{ {\rm{otherwise}}}\end{array}} \right.\]</li>
+<li>Score<br>\[\phi (y;x,\theta ) = \sum\limits_{t = 0}^n { {T_{ {y_t},{y_{t + 1}}}}}  + \sum\limits_{t = 1}^n { {P_{t,{y_t}}}} \]</li>
+<li>Probability<br>\[{p_\theta }(\mathcal{Y}({x^k})|{x^k}) = \frac{ {\sum\nolimits_{ {y^k} \in \mathcal{Y}({x^k})} {\exp (\phi ({y^k};{x^k},\theta ))} }}{ {\sum\nolimits_{y’ \in Y} {\exp (\phi (y’;x,\theta ))} }}\]<br><img src="/2017/12/30/text-minning-ppt/10.png" data-action="zoom"></li>
+</ul>
+<h3><span id="results">Results</span></h3><p><img src="/2017/12/30/text-minning-ppt/11.png" data-action="zoom"></p>
+<h3><span id="conclusions">Conclusions</span></h3><ul>
+<li>In-domain data performs better than cross-domain data.</li>
+<li>The combination of in-domain data and ULM algorithms performs well.</li>
+<li>We can add language models into the model in the future to capture the context information.</li>
+</ul>
+<h1><span id="transfer-learning">Transfer Learning</span></h1><hr>
+<h3><span id="references">References</span></h3><p><strong>Cross-domain Transfer</strong></p>
+<ul>
+<li>Transfer Learning for Sequence Tagging with Hierarchical Recurrent Networks. Yang et al. ICLR17.</li>
+<li>Improving Named Entity Recognition for Chinese Social Media with Word Segmentation Representation Learning. Peng et al. ACL16.</li>
+<li>Multi-task Domain Adaptation for Sequence Tagging. Peng et al. Workshop17.</li>
+</ul>
+<p><strong>Cross-lingual Transfer</strong></p>
+<ul>
+<li>Transfer Learning for Sequence Tagging with Hierarchical Recurrent Networks. Yang et al. ICLR17.</li>
+<li>Cross-Lingual Transfer Learning for POS Tagging without Cross-Lingual Resources. Kim et al. EMNLP17.</li>
+</ul>
+<h3><span id="cross-domain-transfer">Cross-domain Transfer</span></h3><ul>
+<li>Label mapping exist<br><img src="/2017/12/30/text-minning-ppt/13.png" data-action="zoom"></li>
+<li>Disparate label sets<br><img src="/2017/12/30/text-minning-ppt/12.png" data-action="zoom"></li>
+</ul>
+<p><img src="/2017/12/30/text-minning-ppt/20.png" data-action="zoom"><br><img src="/2017/12/30/text-minning-ppt/15.png" data-action="zoom"></p>
+<h3><span id="domain-projections">Domain Projections</span></h3><ul>
+<li>Domain Masks<br>\[\begin{array}{l}{m_1} = [\overrightarrow 1 ,\overrightarrow 1 ,\overrightarrow 0 ],{m_2} = [\overrightarrow 1 ,\overrightarrow 0 ,\overrightarrow 1 ]\\\hat h = {m_d} \odot h\end{array}\]</li>
+<li>Linear Projection<br>\[\hat h = {T_d}h\]</li>
+</ul>
+<h3><span id="results">Results</span></h3><p><img src="/2017/12/30/text-minning-ppt/16.png" data-action="zoom"></p>
+<h3><span id="conclusions">Conclusions</span></h3><ul>
+<li>Multi-task learning can help domain adaptation.</li>
+<li>The number of shared parameters has great impact on the performance.</li>
+<li>We may use other domain adaptation methods besides parameter sharing and representation learning.</li>
+</ul>
+<h3><span id="cross-lingual-transfer">Cross-lingual Transfer</span></h3><p><img src="/2017/12/30/text-minning-ppt/17.png" data-action="zoom"><br><img src="/2017/12/30/text-minning-ppt/18.png" data-action="zoom"></p>
+<ul>
+<li>Sequence Tagging Loss<br>\[{\mathcal{L}_p} =  - \sum\limits_{i = 1}^S {\sum\limits_{j = 1}^N { {p_{i,j}}\log ({ {\hat p}_{i,j}})} }\]</li>
+<li>Language Classifier Loss<br>\[{\mathcal{L}_a} =  - \sum\limits_{i = 1}^S { {l_i}\log ({ {\hat l}_i})}\]</li>
+<li>Bidirectional Language Model Loss<br>\[{\mathcal{L}_l} =  - \sum\limits_{i = 1}^S {\sum\limits_{j = 1}^N {\log (P({w_{j + 1}}|{f_j})) + \log (P({w_{j - 1}}|{b_j}))} }\]</li>
+<li>Total Loss<br>\[\mathcal{L} = {w_s}({\mathcal{L}_p} + \lambda {\mathcal{L}_a} + \lambda {\mathcal{L}_l})\]</li>
+</ul>
+<h3><span id="results">Results</span></h3><p><img src="/2017/12/30/text-minning-ppt/19.png" data-action="zoom"></p>
+<h3><span id="conclusions">Conclusions</span></h3><ul>
+<li>The language classifier can train the common LSTM to be language-agnostic.</li>
+<li>Either too many or too little labeled data decrease the performance.</li>
+<li>Multiple source languages can be used to increase the performance.</li>
+</ul>
+<h1><span id="conclusions">Conclusions</span></h1><hr>
+<h3><span id="semi-supervised-learning-vs-transfer-learning">Semi-supervised Learning vs Transfer Learning</span></h3><ul>
+<li>It seems that semi-supervised learning is better than transfer learning on some tasks.</li>
+<li>Semi-supervised learning is not always useful for the lack of unlabeled data in the same domain.</li>
+<li>Andrew Ng had said that transfer learning is an important research direction in the next five years.</li>
+</ul>
+<h3><span id="future">Future</span></h3><ul>
+<li>Semi-supervised learning and transfer learning can be combined to increase performance.</li>
+<li>Other methods like active learning can be added.</li>
+</ul>
+<h1><span id="references">References</span></h1><hr>
+<p>Xuezhe Ma and Eduard Hovy. (2016).<br><strong>End-to-end Sequence Labeling via Bi-directional LSTM-CNNs-CRF.</strong><br><em>In Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics, pages 1064–1074, Berlin, Germany, August 7-12, 2016.</em></p>
+<p>Marek Rei. (2017).<br><strong>Semi-supervised Multitask Learning for Sequence Labeling.</strong><br><em>In Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics, pages 2121–2130, Vancouver, Canada, July 30 - August 4, 2017.</em></p>
+<p>Matthew E. Peters, Waleed Ammar, Chandra Bhagavatula, Russell Power. (2017).<br><strong>Semi-supervised Sequence Tagging with Bidirectional Language Models.</strong><br><em>In Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics, pages 1756–1765, Vancouver, Canada, July 30 - August 4, 2017.</em></p>
+<p>Yi Luan, Mari Ostendorf, Hannaneh Hajishirzi. (2017).<br><strong>Scientific Information Extraction with Semi-supervised Neural Tagging.</strong><br><em>In Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing, pages 2631–2641, Copenhagen, Denmark, September 7–11, 2017.</em></p>
+<p>Zhilin Yang, Ruslan Salakhutdinov, William W. Cohen. (2017).<br><strong>Transfer Learning for Sequence Tagging with Hierarchical Recurrent Networks.</strong><br><em>In ICLR 2017.</em></p>
+<p>Joo-Kyung Kim, Young-Bum Kim, Ruhi Sarikaya, Eric Fosler-Lussier. (2017).<br><strong>Cross-Lingual Transfer Learning for POS Tagging without Cross-Lingual Resources.</strong><br><em>In Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing, pages 2822–2828, Copenhagen, Denmark, September 7–11, 2017.</em></p>
+<p>Nanyun Peng, Mark Dredze. (2017).<br><strong>Multi-task Domain Adaptation for Sequence Tagging.</strong><br><em>In Proceedings of the 2nd Workshop on Representation Learning for NLP, pages 91–100, Vancouver, Canada, August 3, 2017.</em></p>
+<p>Amarnag Subramanya, Slav Petrov, Fernando Pereira. (2010).<br><strong>Efficient Graph-Based Semi-Supervised Learning of Structured Tagging Models.</strong><br><em>In Proceedings of the 2010 Conference on Empirical Methods in Natural Language Processing, pages 167–176, MIT, Massachusetts, USA, 9-11 October 2010.</em></p>
+<p>Yuzong Liu, Katrin Kirchhoff. (2014).<br><strong>Graph-based Semi-supervised Acoustic Modeling in DNN-based Speech Recognition.</strong><br><em>In IEEE SLT 2014.</em></p>
+<p>Nanyun Peng, Mark Dredze. (2016).<br><strong>Improving Named Entity Recognition for Chinese Social Media with Word Segmentation Representation Learning.</strong><br><em>In Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics, pages 149–155, Berlin, Germany, August 7-12, 2016.</em></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/12/29/ecnu-ppt/" data-toggle="tooltip" data-placement="top" title="华东师范大学LaTeX幻灯片模板">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <p></p>
+                <div id="cyReward" role="cylabs" data-use="reward" align="center"></div>
+                    
+                    <div id="SOHUCS" ></div> 
+                    <script type="text/javascript"> 
+                    (function(){ 
+                    var appid = 'cytdwHIyN'; 
+                    var conf = 'prod_a8118d12ad20449218d5a5d7e94c0000'; 
+                    var width = window.innerWidth || document.documentElement.clientWidth; 
+                    if (width < 960) { 
+                    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+                    <script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
+                    <script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cytdwHIyN"></script>
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                        
+                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                        
+                          <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
+                        
+                          <a class="tag" href="/tags/#序列标注" title="序列标注">序列标注</a>
+                        
+                          <a class="tag" href="/tags/#自然语言处理" title="自然语言处理">自然语言处理</a>
+                        
+                          <a class="tag" href="/tags/#半监督学习" title="半监督学习">半监督学习</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://www.itaowei.cn/" target="_blank">望城风景</a></li>
+                    
+                        <li><a href="https://www.jxtxzzw.com/wordpress" target="_blank">jxtxzzw空间</a></li>
+                    
+                        <li><a href="http://blog.csdn.net/cww97" target="_blank">cww97</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- <script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script> -->
+<style>
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<script type="text/javascript" src="/js/zooming.js"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://user.qzone.qq.com/792321264">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-qq fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.instagram.com/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; WeiYang 2017 
+                </p>
+                <p class="copyright text-muted">
+                    <a><img alt="web trackers" src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_visitors/counter.png" 
+                    style="border-width:0"/></a>
+                    visitors since 2017/09/11
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://godweiyang.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://godweiyang.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>
