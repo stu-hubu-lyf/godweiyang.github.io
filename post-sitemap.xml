@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://godweiyang.com/2017/11/29/TextMinning/</loc>
+        <lastmod>2017-12-30T03:46:42.967Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://godweiyang.com/2017/12/29/ecnu-ppt/</loc>
         <lastmod>2017-12-29T11:08:06.931Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,14 +33,6 @@
     <url>
         <loc>http://godweiyang.com/2017/12/19/EMNLP17-1/</loc>
         <lastmod>2017-12-19T08:52:53.048Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://godweiyang.com/2017/11/29/TextMinning/</loc>
-        <lastmod>2017-12-08T10:08:03.261Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

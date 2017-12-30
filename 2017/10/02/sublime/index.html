@@ -217,49 +217,38 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>Sublime Text是我一直使用的代码编辑器，我喜爱它的原因就是好看啊！当然打开速度毋庸置疑啦，毕竟不是IDE。这里我把我的安装与配置步骤教给大家，如有未尽之处，大家自己摸索咯，也欢迎与我交流。<br>
-先附上一张美图：<br>
-<img src="/2017/10/02/sublime/sublime.png" data-action="zoom"></p>
-<h1><span id="安装sublime-text-3">安装Sublime Text 3</span></h1>
-<hr>
-<p>下载地址请点击<a href="https://download.sublimetext.com/Sublime%20Text%20Build%203143%20x64%20Setup.exe" target="_blank" rel="external">这里</a>。<br>
-安装过程就不多说了，一直点<code>next</code>就行了。</p>
-<h1><span id="配置c运行环境">配置C++运行环境</span></h1>
-<hr>
+                <p>Sublime Text是我一直使用的代码编辑器，我喜爱它的原因就是好看啊！当然打开速度毋庸置疑啦，毕竟不是IDE。这里我把我的安装与配置步骤教给大家，如有未尽之处，大家自己摸索咯，也欢迎与我交流。<br>先附上一张美图：<br><img src="/2017/10/02/sublime/sublime.png" data-action="zoom"></p>
+<h1><span id="安装sublime-text-3">安装Sublime Text 3</span></h1><hr>
+<p>下载地址请点击<a href="https://download.sublimetext.com/Sublime%20Text%20Build%203143%20x64%20Setup.exe" target="_blank" rel="external">这里</a>。<br>安装过程就不多说了，一直点<code>next</code>就行了。</p>
+<h1><span id="配置c运行环境">配置C++运行环境</span></h1><hr>
 <p>装完后可以直接写代码了，但是不能运行C++的哦，还需要配置运行环境。</p>
 <ul>
 <li>首先要安装C++的编译器MinGW，可以直接去官网下（<a href="http://www.mingw.org/" target="_blank" rel="external">传送门</a>）。不过我自己是直接下的CodeBlocks（<a href="https://downloads.sourceforge.net/project/codeblocks/Binaries/16.01/Windows/codeblocks-16.01mingw-setup.exe" target="_blank" rel="external">传送门</a>），然后用的自带的MinGW。</li>
 <li>装完编译器之后在<code>我的电脑</code>右键，依次点击<code>属性 - 高级系统设置 - 环境变量</code>，在<code>系统变量</code>中找到<code>Path</code>，编辑它，新建一条，添加MinGW路径，以我的为例是<code>E:\software\codeblocks\MinGW\bin</code>。</li>
-<li>打开Sublime Text，依次点击<code>Tools - Build System - new Build System</code>，粘贴以下代码：</li>
-</ul>
+<li><p>打开Sublime Text，依次点击<code>Tools - Build System - new Build System</code>，粘贴以下代码：</p>
 <figure class="highlight nsis"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="string">"encoding"</span>: <span class="string">"utf-8"</span>,</div><div class="line">	<span class="string">"working_dir"</span>: <span class="string">"<span class="variable">$file_path</span>"</span>,</div><div class="line">	<span class="string">"shell_cmd"</span>: <span class="string">"g++ -Wall -std=c++11 \"</span><span class="variable">$file_name</span>\<span class="string">" -o \"</span><span class="variable">$file_base_name</span>\<span class="string">""</span>,</div><div class="line">	<span class="string">"file_regex"</span>: <span class="string">"^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"</span>,</div><div class="line">	<span class="string">"selector"</span>: <span class="string">"source.c++"</span>,</div><div class="line"> </div><div class="line">	<span class="string">"variants"</span>: </div><div class="line">	[</div><div class="line">		&#123;	</div><div class="line">		<span class="string">"name"</span>: <span class="string">"Run"</span>,</div><div class="line">        	<span class="string">"shell_cmd"</span>: <span class="string">"g++ -Wall -std=c++11 \"</span><span class="variable">$file</span>\<span class="string">" -o \"</span><span class="variable">$file_base_name</span>\<span class="string">" &amp;&amp; start cmd /c \"</span>\<span class="string">"<span class="variable">$&#123;file_path&#125;</span>/<span class="variable">$&#123;file_base_name&#125;</span>\"</span> &amp; pause\<span class="string">""</span></div><div class="line">		&#125;</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>然后<code>ctrl+s</code>保存，命名为c++11。</li>
+</li>
+<li><p>然后<code>ctrl+s</code>保存，命名为c++11。</p>
+</li>
 </ul>
-<p>这时候随便写一个C++代码，然后<code>Tools - Build System</code>选择<code>c++11</code>，然后按<code>ctrl+b</code>就可以运行啦。<br>
-我这配置的是控制台运行的C++，所以支持输入数据的哦！</p>
-<h1><span id="配置java运行环境">配置Java运行环境</span></h1>
-<hr>
+<p>这时候随便写一个C++代码，然后<code>Tools - Build System</code>选择<code>c++11</code>，然后按<code>ctrl+b</code>就可以运行啦。<br>我这配置的是控制台运行的C++，所以支持输入数据的哦！</p>
+<h1><span id="配置java运行环境">配置Java运行环境</span></h1><hr>
 <ul>
 <li>首先下载Java的编译器jdk（<a href="http://download.oracle.com/otn-pub/java/jdk/9+181/jdk-9_windows-x64_bin.exe" target="_blank" rel="external">传送门</a>），安装过程就不说了。</li>
 <li>环境变量应该不用自己添加了，安装过程会帮你自动添加。</li>
-<li>打开Sublime Text，依次点击<code>Tools - Build System - new Build System</code>，粘贴以下代码：</li>
-</ul>
+<li><p>打开Sublime Text，依次点击<code>Tools - Build System - new Build System</code>，粘贴以下代码：</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="string">"cmd"</span>: [<span class="string">"javac"</span>,<span class="string">"-d"</span>,<span class="string">"."</span>,<span class="string">"<span class="variable">$file</span>"</span>],</div><div class="line">	<span class="string">"file_regex"</span>: <span class="string">"^(...*?):([0-9]*):?([0-9]*)"</span>,</div><div class="line">	<span class="string">"selector"</span>: <span class="string">"source.java"</span>,</div><div class="line">	<span class="string">"encoding"</span>:<span class="string">"cp936"</span>,</div><div class="line">	<span class="comment">//执行完上面的命令就结束</span></div><div class="line">	<span class="comment">// 下面的命令需要按Ctrl+Shift+b来运行</span></div><div class="line">	<span class="string">"variants"</span>:</div><div class="line">	[</div><div class="line">		&#123;</div><div class="line">			<span class="string">"name"</span>: <span class="string">"Run"</span>,</div><div class="line">			<span class="string">"shell"</span>: <span class="literal">true</span>,</div><div class="line">			<span class="string">"cmd"</span> : [<span class="string">"start"</span>,<span class="string">"cmd"</span>,<span class="string">"/c"</span>, <span class="string">"java <span class="subst">$&#123;file_base_name&#125;</span> &amp;echo. &amp; pause"</span>],</div><div class="line"> 			<span class="comment">//c是执行完命令后关闭cmd窗口,</span></div><div class="line">			<span class="comment">//k是执行完命令后不关闭cmd窗口。</span></div><div class="line">			<span class="comment">// echo. 相当于输入一个回车</span></div><div class="line">			<span class="comment">// pause命令使cmd窗口按任意键后才关闭</span></div><div class="line">			<span class="string">"working_dir"</span>: <span class="string">"<span class="subst">$&#123;file_path&#125;</span>"</span>,</div><div class="line">			<span class="string">"encoding"</span>:<span class="string">"cp936"</span></div><div class="line">		&#125;</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>然后<code>ctrl+s</code>保存，命名为JavaC。</li>
+</li>
+<li><p>然后<code>ctrl+s</code>保存，命名为JavaC。</p>
+</li>
 </ul>
-<p>这时候随便写一个Java代码，然后<code>Tools - Build System</code>选择<code>JavaC</code>，然后按<code>ctrl+b</code>就可以运行啦。<br>
-我这配置的是控制台运行的Java，所以支持输入数据的哦！</p>
-<h1><span id="配置python运行环境">配置Python运行环境</span></h1>
-<hr>
+<p>这时候随便写一个Java代码，然后<code>Tools - Build System</code>选择<code>JavaC</code>，然后按<code>ctrl+b</code>就可以运行啦。<br>我这配置的是控制台运行的Java，所以支持输入数据的哦！</p>
+<h1><span id="配置python运行环境">配置Python运行环境</span></h1><hr>
 <ul>
 <li>强烈推荐配合Python发行版本Anaconda使用，下载地址（<a href="https://www.anaconda.com/download/" target="_blank" rel="external">传送门</a>），下载速度有点慢，推荐使用迅雷下载。安装过程就不多说了。一定要记得安装过程中有一步添加系统变量一定要勾上！</li>
 <li>然后…就没有然后了，Python运行环境安装就是这么简单，直接按<code>ctrl+b</code>就能运行了，但是不支持输入数据哦，想要输入数据的话要安装<code>Sublime REPL</code>插件，请看后面的教程。</li>
 </ul>
-<h1><span id="安装插件">安装插件</span></h1>
-<p>Sublime Text的强大之处就是可以安装各种插件满足你的需求。<br>
-安装过程很简单：</p>
+<h1><span id="安装插件">安装插件</span></h1><p>Sublime Text的强大之处就是可以安装各种插件满足你的需求。<br>安装过程很简单：</p>
 <ul>
 <li>首先要安装插件管理工具<code>Package Control</code>，按<code>ctrl+shift+p</code>，输入<code>Install Package</code>，按回车，等待安装完毕。</li>
 <li>然后<code>Preferences</code>选项菜单就会出现<code>Package Control</code>子菜单。</li>
@@ -267,28 +256,16 @@
 </ul>
 <p>下面推荐几个我使用的插件，其他的可以自行百度搜索。</p>
 <ul>
-<li>
-<p>SublimeHighLight<br>
-装完之后选中你要复制的代码，右键<code>Copy as RTF</code>，然后粘贴到Word里就会保留代码格式，很漂亮的啊！</p>
+<li>SublimeHighLight<br>装完之后选中你要复制的代码，右键<code>Copy as RTF</code>，然后粘贴到Word里就会保留代码格式，很漂亮的啊！</li>
+<li><p>SublimeREPL<br>这个是为了Python输入数据准备的插件，装完之后点击<code>Preferences - Key Bindings</code>，在<code>User</code>文件里粘贴以下代码：</p>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[ </div><div class="line">	&#123; <span class="attr">"keys"</span>: [<span class="string">"f5"</span>],</div><div class="line">		<span class="attr">"caption"</span>: <span class="string">"SublimeREPL: Python - RUN current file"</span>,</div><div class="line">		<span class="attr">"command"</span>: <span class="string">"run_existing_window_command"</span>, <span class="attr">"args"</span>:</div><div class="line">		&#123;</div><div class="line">			<span class="attr">"id"</span>: <span class="string">"repl_python_run"</span>,</div><div class="line">			<span class="attr">"file"</span>: <span class="string">"config/Python/Main.sublime-menu"</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>  然后运行Python代码时直接按<code>F5</code>就行啦！</p>
 </li>
-<li>
-<p>SublimeREPL<br>
-这个是为了Python输入数据准备的插件，装完之后点击<code>Preferences - Key Bindings</code>，在<code>User</code>文件里粘贴以下代码：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[ </div><div class="line">	&#123; <span class="attr">"keys"</span>: [<span class="string">"f5"</span>],</div><div class="line">		<span class="attr">"caption"</span>: <span class="string">"SublimeREPL: Python - RUN current file"</span>,</div><div class="line">		<span class="attr">"command"</span>: <span class="string">"run_existing_window_command"</span>, <span class="attr">"args"</span>:</div><div class="line">		&#123;</div><div class="line">			<span class="attr">"id"</span>: <span class="string">"repl_python_run"</span>,</div><div class="line">			<span class="attr">"file"</span>: <span class="string">"config/Python/Main.sublime-menu"</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">]</div></pre></td></tr></table></figure>
-<p>然后运行Python代码时直接按<code>F5</code>就行啦！</p>
-</li>
-<li>
-<p>SublimeCodeIntel<br>
-这是一款代码自动提示插件，不用多说。</p>
-</li>
-<li>
-<p>ConvertToUTF8<br>
-这是为了某些中文显示准备的插件，貌似不怎么用得到，随意装吧。</p>
-</li>
+<li>SublimeCodeIntel<br>这是一款代码自动提示插件，不用多说。</li>
+<li>ConvertToUTF8<br>这是为了某些中文显示准备的插件，貌似不怎么用得到，随意装吧。</li>
 </ul>
 <p>我用的就这些啦，Sublime Text写代码还是很方便的，现在基本不用其他的IDE了，能少打开一个软件是一个嘛。</p>
-<h1><span id="快捷键">快捷键</span></h1>
-<hr>
+<h1><span id="快捷键">快捷键</span></h1><hr>
 <p>直接递上<a href="http://www.jb51.net/softjc/180873.html" target="_blank" rel="external">传送门</a>。</p>
 
                 
