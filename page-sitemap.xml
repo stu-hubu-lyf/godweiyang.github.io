@@ -8,21 +8,21 @@
     
     <url>
         <loc>http://godweiyang.com/about/</loc>
-        <lastmod>2017-09-20T06:44:10.688Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>http://godweiyang.com/archive/</loc>
-        <lastmod>2017-09-19T12:59:56.760Z</lastmod>
+        <lastmod>2017-12-31T09:06:16.357Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>http://godweiyang.com/tags/</loc>
-        <lastmod>2017-09-19T12:59:53.488Z</lastmod>
+        <lastmod>2017-12-31T08:48:57.578Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://godweiyang.com/archive/</loc>
+        <lastmod>2017-12-31T08:48:16.354Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
