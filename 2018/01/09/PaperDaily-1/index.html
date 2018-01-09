@@ -162,14 +162,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -228,7 +228,7 @@
                 <p>自从这学期没课以来，一直过着非正常人的生活，作息时间比正常人推迟了3个小时：<strong>3点睡觉、12点起床、15点吃午饭、21点吃晚饭。</strong>因此决定不再如此颓废，每日泛读一篇顶会paper，了解其大概思想即可，然后大概将思想发出来，美其名曰：PaperDaily，就从今天开始吧。</p>
 <p>今天要讲的这篇是昨天偶然看到的，AAAI18的paper，正好与我文本挖掘课大作业主题一样，所以就看了一下。</p>
 <h1><span id="介绍">介绍</span></h1><hr>
-<p>这篇paper提出的模型叫做LM-LSTM-CRF，看起来和前面讲过的加入语言模型的两篇没有大区别，事实是区别的确不是很大，最大的区别就是在character level LSTM之上加入了一个highway layer，用来将LSTM产生的字符表示映射到不同的表示空间，这样语言模型（这里的语言模型是基于字符层面的）和序列标注模型就可以共享character level LSTM。</p>
+<p>这篇paper提出的模型叫做LM-LSTM-CRF，看起来和前面讲过的加入语言模型的两篇没有大区别，事实是区别的确不是很大。之前讲过的transfer模型基本都是共享一部分模型（底层模型），上层模型都是每个任务有各自独立的模型。然而这篇paper的模型所有部分全部共享，这就会带来许多表示上面的问题。于是这篇paper和以往最大的区别就是在character level LSTM之上加入了一个highway layer，用来将LSTM产生的字符表示映射到不同的表示空间，这样语言模型（这里的语言模型是基于字符层面的）和序列标注模型就可以共享character level LSTM。</p>
 <h1><span id="模型">模型</span></h1><hr>
 <p>不多说，直接上图：<br><img src="/2018/01/09/PaperDaily-1/1.png" data-action="zoom"></p>
 <h3><span id="character-level-lstm">character level LSTM</span></h3><p>这里和传统的差不多，只是改每个token单独训练一个LSTM为所有字符联合训练上下文表示（为了语言模型共用嘛），但是只在两个tokens之间输出token表示。</p>
