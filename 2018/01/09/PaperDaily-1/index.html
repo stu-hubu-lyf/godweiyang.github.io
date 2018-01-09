@@ -15,11 +15,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          About - WeiYang Blog
+          PaperDaily-1 - WeiYang Blog
         
     </title>
 
-    <link rel="canonical" href="http://godweiyang.com/about/">
+    <link rel="canonical" href="http://godweiyang.com/2018/01/09/PaperDaily-1/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -70,8 +70,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/header_img/home-bg-2-dark.png')
-            /*page*/
+            background-image: url('header.jpg')
+            /*post*/
         
     }
     
@@ -88,10 +88,28 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>About</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">Never Give Up Studying</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                            
+                              <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                            
+                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                            
+                              <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
+                            
+                              <a class="tag" href="/tags/#序列标注" title="序列标注">序列标注</a>
+                            
+                              <a class="tag" href="/tags/#AAAI" title="AAAI">AAAI</a>
+                            
+                        </div>
+                        <h1>PaperDaily-1</h1>
+                        <h2 class="subheading">Empower Sequence Labeling with Task-Aware Neural Language Model</h2>
+                        <span class="meta">
+                            Posted by WeiYang on
+                            2018-01-09
+                        </span>
                     </div>
                 
 
@@ -194,276 +212,153 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <p>I’m an undergraduate in the Department of Computer Science and Technology at East China Normal University (expected to graduate in 2018).<br>My interest is deep learning for natural language processing.<br>All of my study materials are uploaded to <a href="https://pan.baidu.com/s/1eT1cWAe" target="_blank" rel="external">Baidu Cloud</a> whose password is “e7ew”.</p>
-<h1><span id="education">Education</span></h1><ul>
-<li><b>Undergraduate in the Department of Computer Science</b><br>East China Normal University<br>Graduating in June 2018</li>
-</ul>
-<h1><span id="awards">Awards</span></h1><ul>
-<li><b>No.1</b><br>2017 Postgraduate Recommendation</li>
-<li><b>Gold Medal</b><br>2017 ACM-ICPC China Shaanxi Provincial Programming Contest</li>
-<li><b>Silver Medal</b><br>2016 ACM-ICPC Asia Qingdao Regional Contest</li>
-<li><b>National Scholarship</b><br>2015 Freshman</li>
-</ul>
-<h1><span id="contact">Contact</span></h1><ul>
-<li><b>Email</b><br>weiyang@godweiyang.com<br>weiyang951213@outlook.com<br>792321264@qq.com</li>
-<li><b>Address</b><br>3663 North Zhongshan Road, Shanghai, 200062</li>
-<li><b>Phone</b><br>+86 15221856016</li>
-<li><b>WeChat</b><br>weiyang792321264</li>
-<li><b>QQ</b><br>792321264</li>
-</ul>
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
+                <p>自从这学期没课以来，一直过着非正常人的生活，作息时间比正常人推迟了3个小时：<strong>3点睡觉、12点起床、15点吃午饭、21点吃晚饭。</strong>因此决定不再如此颓废，每日泛读一篇顶会paper，了解其大概思想即可，然后大概将思想发出来，美其名曰：PaperDaily，就从今天开始吧。</p>
+<p>今天要讲的这篇是昨天偶然看到的，AIII18的paper，正好与我文本挖掘课大作业主题一样，所以就看了一下。</p>
+<h1><span id="介绍">介绍</span></h1><hr>
+<p>这篇paper提出的模型叫做LM-LSTM-CRF，看起来和前面讲过的加入语言模型的两篇没有大区别，事实是区别的确不是很大，最大的区别就是在character level LSTM之上加入了一个highway layer，用来将LSTM产生的字符表示映射到不同的表示空间，这样语言模型（这里的语言模型是基于字符层面的）和序列标注模型就可以共享character level LSTM。</p>
+<h1><span id="模型">模型</span></h1><hr>
+<p>不多说，直接上图：<br><img src="/2018/01/09/PaperDaily-1/1.png" data-action="zoom"></p>
+<h3><span id="character-level-lstm">character level LSTM</span></h3><p>这里和传统的差不多，只是改每个token单独训练一个LSTM为所有字符联合训练上下文表示（为了语言模型共用嘛），但是只在两个tokens之间输出token表示。</p>
+<h3><span id="highway-layer">highway layer</span></h3><p>其实就是对输出做了线性变换+门操作，具体表示如下：<br>\[\begin{array}{l}m = H(n) = t \odot g({W_H}n + {b_H}) + (1 - t) \odot n\\t = \sigma ({W_T}n + {b_T})\end{array}\]最终一共产生四个highway输出，分别是前后向序列标注表示和前后向语言模型表示。而序列标注的LSTM输入共有三个，分别是词向量、前后向序列标注表示。</p>
+<h3><span id="word-level-lstm">word level LSTM</span></h3><p>和传统的没什么不同。。。</p>
+<h3><span id="crf-layer">CRF layer</span></h3><p>没什么不一样。。。</p>
+<h3><span id="joint-training">joint training</span></h3><p>总的损失函数就是语言模型损失函数加上序列标注损失函数，系数这里设置为1:1。</p>
+<h1><span id="实验结果">实验结果</span></h1><hr>
+<p>直接上图，这里和之前我看过的几篇paper都进行了比较，还是非常bang的！<br><img src="/2018/01/09/PaperDaily-1/2.png" data-action="zoom"><br>注意到，他们的结果和<code>Peter 2017.</code>比较还是差了一点，因为<code>Peter 2017.</code>虽然也使用了语言模型作为辅助训练，但是他们语言模型是在大量无标注数据下进行训练的，而且花费时间特别长！而本文根本不需要任何辅助数据，少量标注数据？足够了！就在他们上面联合训练一个语言模型就行了，花费时间大大缩短。</p>
+<p>其实我个人认为，这零点几的提升意义并不是很大，时间大大缩短倒是挺不错的，毕竟<code>Peter 2017.</code>那篇32个GPU都要训练半个月。。。<br>更远一步思考，也许可以将语言模型和序列标注独立开来训练，先用语言模型来训练character level LSTM，再用它产生每个token的表示，直接输入到序列标注的LSTM中，当然highway layer还是必要的，毕竟表示空间是不同的。这样可以利用大量的无标注数据了，但是训练时间也会大大加长，而且感觉和<code>Peter 2017.</code>的模型区别貌似不大了？只是联合训练了一个character level LSTM而已。</p>
+<p>以上都是我的拙见，毕竟这篇也就粗略读了一下没仔细看，各位有什么想法也欢迎和我讨论。</p>
 
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/01/01/POS-LM/" data-toggle="tooltip" data-placement="top" title="词性标注+语言模型简易实现">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <p></p>
+                <div id="cyReward" role="cylabs" data-use="reward" align="center"></div>
+                    
+                    <div id="SOHUCS" ></div> 
+                    <script type="text/javascript"> 
+                    (function(){ 
+                    var appid = 'cytdwHIyN'; 
+                    var conf = 'prod_a8118d12ad20449218d5a5d7e94c0000'; 
+                    var width = window.innerWidth || document.documentElement.clientWidth; 
+                    if (width < 960) { 
+                    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+                    <script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
+                    <script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cytdwHIyN"></script>
             </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
 
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-            <a href="/tags/#ACL" title="ACL" rel="4">ACL</a>
-            
-        
-            
-            <a href="/tags/#NLP" title="NLP" rel="8">NLP</a>
-            
-        
-            
-            <a href="/tags/#神经网络" title="神经网络" rel="14">神经网络</a>
-            
-        
-            
-            <a href="/tags/#深度学习" title="深度学习" rel="14">深度学习</a>
-            
-        
-            
-            <a href="/tags/#EMNLP" title="EMNLP" rel="2">EMNLP</a>
-            
-        
-            
-            <a href="/tags/#迁移学习" title="迁移学习" rel="4">迁移学习</a>
-            
-        
-            
-            <a href="/tags/#序列标注" title="序列标注" rel="5">序列标注</a>
-            
-        
-            
-            <a href="/tags/#ICLR" title="ICLR" rel="1">ICLR</a>
-            
-        
-            
-            <a href="/tags/#AAAI" title="AAAI" rel="1">AAAI</a>
-            
-        
-            
-            <a href="/tags/#自然语言处理" title="自然语言处理" rel="2">自然语言处理</a>
-            
-        
-            
-            <a href="/tags/#半监督学习" title="半监督学习" rel="2">半监督学习</a>
-            
-        
-            
-            <a href="/tags/#dynet" title="dynet" rel="1">dynet</a>
-            
-        
-            
-            <a href="/tags/#保研" title="保研" rel="2">保研</a>
-            
-        
-            
-            <a href="/tags/#LaTeX" title="LaTeX" rel="1">LaTeX</a>
-            
-        
-            
-            <a href="/tags/#Beamer" title="Beamer" rel="1">Beamer</a>
-            
-        
-            
-            <a href="/tags/#ppt" title="ppt" rel="1">ppt</a>
-            
-        
-            
-            <a href="/tags/#EOJ" title="EOJ" rel="1">EOJ</a>
-            
-        
-            
-            <a href="/tags/#编译原理" title="编译原理" rel="1">编译原理</a>
-            
-        
-            
-            <a href="/tags/#编译器" title="编译器" rel="1">编译器</a>
-            
-        
-            
-            <a href="/tags/#C#" title="C#" rel="1">C#</a>
-            
-        
-            
-            <a href="/tags/#Sublime Text" title="Sublime Text" rel="1">Sublime Text</a>
-            
-        
-            
-            <a href="/tags/#软件安装与配置" title="软件安装与配置" rel="1">软件安装与配置</a>
-            
-        
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                        
+                          <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                        
+                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                        
+                          <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
+                        
+                          <a class="tag" href="/tags/#序列标注" title="序列标注">序列标注</a>
+                        
+                          <a class="tag" href="/tags/#AAAI" title="AAAI">AAAI</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://www.itaowei.cn/" target="_blank">望城风景</a></li>
+                    
+                        <li><a href="https://www.jxtxzzw.com/wordpress" target="_blank">jxtxzzw空间</a></li>
+                    
+                        <li><a href="http://blog.csdn.net/cww97" target="_blank">cww97</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/ironman-draw.png" />
-        
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- <script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script> -->
+<style>
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-        
-            <p>Undergraduate from ECNU AntNLP group</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
+<script type="text/javascript" src="/js/zooming.js"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/godweiyang">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-
-            
-                <li>
-                    <a target="_blank" href="http://weibo.com/godweiyang">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-
-            
-                <li>
-                    <a target="_blank" href="https://user.qzone.qq.com/792321264">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-qq fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-
-            
-
-            
-            
-            
-        </ul>
-    </div>
-</section>
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2018/01/09/PaperDaily-1/">PaperDaily-1</a>
-        </li>
-      
-        <li>
-          <a href="/2018/01/01/POS-LM/">词性标注+语言模型简易实现</a>
-        </li>
-      
-        <li>
-          <a href="/2017/12/30/text-minning-ppt/">基于少量标注数据的序列标注</a>
-        </li>
-      
-        <li>
-          <a href="/2017/12/29/ecnu-ppt/">华东师范大学LaTeX幻灯片模板</a>
-        </li>
-      
-        <li>
-          <a href="/2017/12/19/EMNLP17-2/">基于半监督神经序列标注的科学信息抽取</a>
-        </li>
-      
-    </ul>
-  </div>
-
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<h5>FRIENDS</h5>
-<ul class="list-inline">
-
-    
-        <li><a href="http://www.itaowei.cn/" target="_blank">望城风景</a></li>
-    
-        <li><a href="https://www.jxtxzzw.com/wordpress" target="_blank">jxtxzzw空间</a></li>
-    
-        <li><a href="http://blog.csdn.net/cww97" target="_blank">cww97</a></li>
-    
-</ul>
-
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li></ul>
-    </div>
-
-        <hr>
-    
-        <!-- Categories -->
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
 
 
     <!-- Footer -->
