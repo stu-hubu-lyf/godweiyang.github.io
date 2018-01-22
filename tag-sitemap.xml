@@ -170,6 +170,13 @@
     </url>
 
     <url>
+        <loc>http://godweiyang.com/tags/LSTM/</loc>
+        <lastmod>2018-01-18T09:21:16.829Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://godweiyang.com/tags/NAACL/</loc>
         <lastmod>2018-01-18T09:21:16.829Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -177,8 +184,8 @@
     </url>
 
     <url>
-        <loc>http://godweiyang.com/tags/LSTM/</loc>
-        <lastmod>2018-01-18T09:21:16.829Z</lastmod>
+        <loc>http://godweiyang.com/tags/%E9%9A%8F%E7%AC%94/</loc>
+        <lastmod>2018-01-22T06:36:10.704Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
