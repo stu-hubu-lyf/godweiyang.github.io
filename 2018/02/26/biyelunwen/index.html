@@ -151,13 +151,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -166,6 +159,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -222,6 +222,10 @@
                 post-container">
 
                 <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=526307800&auto=1&height=66"></iframe></div>
+
+<h1><span id="数据预处理">数据预处理</span></h1><hr>
+<p>首先使用的是PTB数据集，原始的数据是长这样的：<br>(S (NP-SBJ (NNP Ms.) (NNP Haag) ) (VP (VBZ plays) (NP (NNP Elianti) )) (. .) )<br>因为不一定是二叉树，所以要先预处理成二叉树，这里全部借用了github上别人的代码来进行预处理，二叉化之后变成了这样：<br>(S (S<em>^. (NP-SBJ (NNP Ms.) (NNP Haag)) (VP (VBZ plays) (NP_NNP Elianti))) (. .))<br>然后将整个数据集中出现次数过小的单词替换为unk：<br>(S (S</em>^. (NP-SBJ (NNP Ms.) (NNP Haag)) (VP (VBZ plays) (NP_NNP &lt; unk&gt;))) (. .))</p>
+
                 
 
                 <hr>
