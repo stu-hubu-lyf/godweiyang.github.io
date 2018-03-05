@@ -15,11 +15,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          无跨语言资源下的序列标注跨语言迁移学习 - WeiYang Blog
+          具体数学-第2课 - WeiYang Blog
         
     </title>
 
-    <link rel="canonical" href="http://godweiyang.com/2017/12/19/EMNLP17-1/">
+    <link rel="canonical" href="http://godweiyang.com/2018/03/05/concrete-math-2/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -91,24 +91,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                              <a class="tag" href="/tags/#具体数学" title="具体数学">具体数学</a>
                             
-                              <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
-                            
-                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
-                            
-                              <a class="tag" href="/tags/#EMNLP" title="EMNLP">EMNLP</a>
-                            
-                              <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
-                            
-                              <a class="tag" href="/tags/#序列标注" title="序列标注">序列标注</a>
+                              <a class="tag" href="/tags/#Concrete Mathematics" title="Concrete Mathematics">Concrete Mathematics</a>
                             
                         </div>
-                        <h1>无跨语言资源下的序列标注跨语言迁移学习</h1>
-                        <h2 class="subheading">Cross-Lingual Transfer Learning for POS Tagging without Cross-Lingual Resources</h2>
+                        <h1>具体数学-第2课</h1>
+                        <h2 class="subheading">Concrete Mathematics</h2>
                         <span class="meta">
                             Posted by WeiYang on
-                            2017-12-19
+                            2018-03-05
                         </span>
                     </div>
                 
@@ -225,17 +217,12 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>论文链接：<a href="https://www.aclweb.org/anthology/D/D17/D17-1302.pdf" target="_blank" rel="external">D17-1302</a></p>
-<h1><span id="摘要">摘要</span></h1><hr>
-<p>本文介绍了一个跨语言的序列标注迁移模型，和以往不同的是，不需要大量的跨语言语料。</p>
-<h1><span id="1-介绍">1 介绍</span></h1><hr>
-<p>之前正好才看过一篇Yang et al. (2017)的论文Transfer Learning for Sequence Tagging with Hierarchical Recurrent Networks，还写了博客笔记<a href="http://godweiyang.com/2017/11/13/ICLR17-1/">[传送门]</a>。然而本文上来就说，他的模型不好！因为他的模型共享了字符层，其他层都是独立的，这样就导致了两种字符没有交集的语言迁移会很困难。<br>于是本文提出了基于一个公有LSTM和一个私有LSTM的模型。不过，我还是没明白这个字符层和前文批判的那个有啥区别。。。</p>
-<h1><span id="2-模型">2 模型</span></h1><hr>
-<p>模型结构如下图所示：<br><img src="/2017/12/19/EMNLP17-1/1.png" data-action="zoom"></p>
-<h3><span id="跨语言训练">跨语言训练</span></h3><p>整体训练过程是这样的：首先输入一个句子，对于每个单词中的每个字符，输入到双向LSTM中，取前向后向LSTM的最后一个隐含层输出，连接到一起来作为词的表示。然后输入到公有和私有LSTM中训练，最后的损失函数有三个。<br>图中蓝色部分是公有部分，红色部分是私有部分。紫色部分是不同语言预测出的结果，三个红色方框是三个损失函数。<br>其中softmax层的损失函数定义为：<br><img src="/2017/12/19/EMNLP17-1/2.png" data-action="zoom"><br>\(S\)是句子个数，\(N\)是当前句子单词数，\({p_{i,j}}\)第\(i\)个句子的第\(j\)个标签，\({\hat p_{i,j}}\)是预测标签。</p>
-<h3><span id="语言对抗训练">语言对抗训练</span></h3><p>为了让公有的LSTM部分变得语言无关，所以要对他进行语言对抗训练。<br>首先对公有LSTM的输出进行CNN/MaxPool编码（其实就是每一个维度取最大值），三个卷积层，得到三个向量，再连接到一起得到最终的向量表示，经过一个梯度反转层，最后输入到语言鉴别器。<br>这个语言鉴别器就是一个单隐含层的全连接的神经网络，激活函数用的是Leaky ReLU，具体就是当x&gt;=0时，f(x)=x；当x<0时，f(x)=ax，这里a取0.2。 最后得到的损失函数定义为：="" <img="" src="3.png" data-action="zoom"><br>其中\({l_{i}}\)是第i个句子的语言，\({\hat l_{i}}\)是预测出的语言（原文说的是softmax输出的标签？？？这里不是很理解）。<br>由于经过了梯度反转层，所以这个语言鉴别器并不能鉴别出是哪一种语言，反而对两种语言的界限混淆了，使得它变得越来越语言无关了。</0时，f(x)=ax，这里a取0.2。></p>
-<h3><span id="双向语言模型">双向语言模型</span></h3><p>这个就不用多说了，很多地方都用到了，之前的两篇半监督序列标注的论文也都提到了加入语言模型来提升效果，而且注意的是，就算是没有标注的数据也可以加入进语言模型的训练。<br>语言模型的损失函数定义为：<br><img src="/2017/12/19/EMNLP17-1/4.png" data-action="zoom"><br>其中f和b分别代表前向和后向LSTM输出。<br>最终，三个损失函数合并起来定义一个总的损失函数：<br><img src="/2017/12/19/EMNLP17-1/5.png" data-action="zoom"><br>其中\(\lambda \)随着训练进行缓慢的从0上升到1，这是为了增加额外损失函数的训练稳定性。<br>而\(w_{s}\)是为了给源语言和目标语言不同的权重的，当训练目标语言是，权重为1，否则权重为目标语言训练集大小/源语言训练集大小。</p>
-<h1><span id="3-实验">3 实验</span></h1><p>实验针对目标语言训练句子数为1280、320和32分别做了对比。<br>其中1280个句子的结果如下：<br><img src="/2017/12/19/EMNLP17-1/6.png" data-action="zoom"><br>可以看出加入迁移学习后结果提升还是比较大的，表格中c表示公有LSTM，l表示语言模型，p表示私有LSTM，a表示语言对抗训练。本文的模型(c,p,l+a)结果是最好的。<br>320个句子的结果如下：<br><img src="/2017/12/19/EMNLP17-1/7.png" data-action="zoom"><br>依然有提升，但是提升很不明显了，而且有几种语言直接采用私有LSTM+语言模型效果反而最好。原因就是目标语言的训练数据太少了，不足以训练出完美的公有和私有模型。<br>32个句子的训练数据就没有放出具体结果，结果依然有略微提升的，但是已经可以忽略不计了。<br>反过来思考，如果用上全部的目标语言训练数据，那么出来的结果会怎么样？事实是反而下降了，还不如直接用私有LSTM。<br>最后还做了一个实验，就是用多种不同的源语言+目标语言来训练模型，发现效果比用单种源语言效果好。</p>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=31814005&auto=1&height=66"></iframe></div>
+
+<p>今天主要讲了关于递推式和求和的一些方法，主要是成套方法。</p>
+<h1><span id="约瑟夫环推广">约瑟夫环推广</span></h1><p>上一节课说到，约瑟夫环问题的解是<br>\[f(n) = 2l + 1\]<br>其中\(n = {2^m} + l\)<br>将\(n\)写成二进制可以发现，\(f(n)\)就是\(n\)的二进制循环左移1位。<br>现在做一下推广，求解如下递推式：<br>\[\begin{array}{l}f(1) = \alpha \\f(2n) = 2f(n) + \beta \\f(2n + 1) = 2f(n) + \gamma \end{array}\]<br>可以设<br>\[f(n) = A(n)\alpha  + B(n)\beta  + C(n)\gamma \]<br>同样，令\(n = {2^m} + l\)<br>可以解出<br>\[\begin{array}{l}A(n) = {2^m}\\B(n) = {2^m} - 1 - l\\C(n) = l\end{array}\]<br>再从二进制角度理解一下，将递推式继续推广：<br>\[\begin{array}{l}f(j) = {\alpha _j},1 \le j &lt; d\\f(dn + j) = cf(n) + {\beta _j},0 \le j \le d,n \ge 1\end{array}\]<br>可以得到解为<br>\[f({({b_m}{b_{m - 1}} \ldots {b_1}{b_0})_d}) = {({\alpha _{ {b_m}}}{\beta _{ {b_{m - 1}}}}{\beta _{ {b_{m - 2}}}} \ldots {\beta _{ {b_1}}}{\beta _{ {b_0}}})_c}\]</p>
+<h1><span id="递推式求和">递推式求和</span></h1><p>求解如下递推式：<br>\[\begin{array}{l}{R_0} = \alpha \\{R_n} = {R_{n - 1}} + \beta n + \gamma \end{array}\]<br>用成套方法求解，设<br>\[{R_n} = A(n)\alpha  + B(n)\beta  + C(n)\gamma \]<br>首先令\({R_n} = 1\)，可以得到\(\alpha  = 1,\beta  = 0,\gamma  = 0\)，所以\(A(n) = 1\)。<br>再令\({R_n} = n\)，可以得到\(\alpha  = 0,\beta  = 0,\gamma  = 1\)，所以\(C(n) = n\)。<br>最后令\({R_n} = {n^2}\)，可以得到\(\alpha  = 0,\beta  = 2,\gamma  =  - 1\)，所以\(2B(n) - C(n) = {n^2}\)，所以\(B(n) = ({n^2} + n)/2\)</p>
+<p>再来一个更复杂的递推式：<br>\[\begin{array}{l}{R_0} = \alpha \\{R_n} = 2{R_{n - 1}} + \beta n + \gamma \end{array}\]<br>同样的方法，设<br>\[{R_n} = A(n)\alpha  + B(n)\beta  + C(n)\gamma \]<br>首先令\({R_n} = 1\)，可以得到\(\alpha  = 1,\beta  = 0,\gamma  = -1\)，所以\(A(n) - C(n) = 1\)。<br>再令\({R_n} = n\)，可以得到\(\alpha  = 0,\beta  = -1,\gamma  = 2\)，所以\(2C(n) - B(n) = n\)。<br>这时候能不能令\({R_n} = {n^2}\)呢？答案是不能，因为如果\({R_n} = {n^2}\)，那么<br>\[{n^2} = 2{(n - 1)^2} + \beta n + \gamma \]显然不可能成立。<br>观察系数，可以令\({R_n} = 2^n\)，可以得到\(\alpha  = 1,\beta  = 0,\gamma  = 0\)，所以\(A(n) = 2^n\)。<br>所以<br>\[A(n) = {2^n},B(n) = {2^{n + 1}} - n + 2,C(n) = {2^n} + 1\]</p>
 
                 
 
@@ -243,13 +230,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2017/12/19/EMNLP17-2/" data-toggle="tooltip" data-placement="top" title="基于半监督神经序列标注的科学信息抽取">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/11/29/TextMinning/" data-toggle="tooltip" data-placement="top" title="Sequence Tagging with Little Labeled Data">Next Post &rarr;</a>
+                            <a href="/2018/03/04/cs224n-introduction/" data-toggle="tooltip" data-placement="top" title="ECNU自然语言处理与深度学习2018春季讨论班开讲啦">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -287,17 +270,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                          <a class="tag" href="/tags/#具体数学" title="具体数学">具体数学</a>
                         
-                          <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
-                        
-                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
-                        
-                          <a class="tag" href="/tags/#EMNLP" title="EMNLP">EMNLP</a>
-                        
-                          <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
-                        
-                          <a class="tag" href="/tags/#序列标注" title="序列标注">序列标注</a>
+                          <a class="tag" href="/tags/#Concrete Mathematics" title="Concrete Mathematics">Concrete Mathematics</a>
                         
                     </div>
                 </section>
