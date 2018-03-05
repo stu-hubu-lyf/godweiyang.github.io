@@ -15,11 +15,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Empower Sequence Labeling with Task-Aware Neural Language Model - WeiYang Blog
+          具体数学-第一章作业解答 - WeiYang Blog
         
     </title>
 
-    <link rel="canonical" href="http://godweiyang.com/2018/01/09/PaperDaily-1/">
+    <link rel="canonical" href="http://godweiyang.com/2018/03/05/concrete-math-hw1/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -91,24 +91,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                              <a class="tag" href="/tags/#具体数学" title="具体数学">具体数学</a>
                             
-                              <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
-                            
-                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
-                            
-                              <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
-                            
-                              <a class="tag" href="/tags/#序列标注" title="序列标注">序列标注</a>
-                            
-                              <a class="tag" href="/tags/#AAAI" title="AAAI">AAAI</a>
+                              <a class="tag" href="/tags/#Concrete Mathematics" title="Concrete Mathematics">Concrete Mathematics</a>
                             
                         </div>
-                        <h1>Empower Sequence Labeling with Task-Aware Neural Language Model</h1>
-                        <h2 class="subheading">基于任务感知神经语言模型的序列标注</h2>
+                        <h1>具体数学-第一章作业解答</h1>
+                        <h2 class="subheading">Homework to Concrete Mathematics</h2>
                         <span class="meta">
                             Posted by WeiYang on
-                            2018-01-09
+                            2018-03-05
                         </span>
                     </div>
                 
@@ -225,21 +217,11 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>自从这学期没课以来，一直过着非正常人的生活，作息时间比正常人推迟了3个小时：<strong>3点睡觉、12点起床、15点吃午饭、21点吃晚饭。</strong>因此决定不再如此颓废，每日泛读一篇顶会paper，了解其大概思想即可，然后大概将思想发出来，美其名曰：PaperDaily，就从今天开始吧。</p>
-<p>今天要讲的这篇是昨天偶然看到的，AAAI18的paper，正好与我文本挖掘课大作业主题一样，所以就看了一下。</p>
-<h1><span id="介绍">介绍</span></h1><hr>
-<p>这篇paper提出的模型叫做LM-LSTM-CRF，看起来和前面讲过的加入语言模型的两篇没有大区别，事实是区别的确不是很大。之前讲过的transfer模型基本都是共享一部分模型（底层模型），上层模型都是每个任务有各自独立的模型。然而这篇paper的模型所有部分全部共享，这就会带来许多表示上面的问题。于是这篇paper和以往最大的区别就是在character level LSTM之上加入了一个highway layer，用来将LSTM产生的字符表示映射到不同的表示空间，这样语言模型（这里的语言模型是基于字符层面的）和序列标注模型就可以共享character level LSTM。</p>
-<h1><span id="模型">模型</span></h1><hr>
-<p>不多说，直接上图：<br><img src="/2018/01/09/PaperDaily-1/1.png" data-action="zoom"></p>
-<h3><span id="character-level-lstm">character level LSTM</span></h3><p>这里和传统的差不多，只是改每个token单独训练一个LSTM为所有字符联合训练上下文表示（为了语言模型共用嘛），但是只在两个tokens之间输出token表示。</p>
-<h3><span id="highway-layer">highway layer</span></h3><p>其实就是对输出做了线性变换+门操作，具体表示如下：<br>\[\begin{array}{l}m = H(n) = t \odot g({W_H}n + {b_H}) + (1 - t) \odot n\\t = \sigma ({W_T}n + {b_T})\end{array}\]最终一共产生四个highway输出，分别是前后向序列标注表示和前后向语言模型表示。而序列标注的LSTM输入共有三个，分别是词向量、前后向序列标注表示。</p>
-<h3><span id="word-level-lstm">word level LSTM</span></h3><p>和传统的没什么不同。。。</p>
-<h3><span id="crf-layer">CRF layer</span></h3><p>没什么不一样。。。</p>
-<h3><span id="joint-training">joint training</span></h3><p>总的损失函数就是语言模型损失函数加上序列标注损失函数，系数这里设置为1:1。</p>
-<h1><span id="实验结果">实验结果</span></h1><hr>
-<p>直接上图，这里和之前我看过的几篇paper都进行了比较，还是非常bang的！<br><img src="/2018/01/09/PaperDaily-1/2.png" data-action="zoom"><br>注意到，他们的结果和<code>Peter 2017.</code>比较还是差了一点，因为<code>Peter 2017.</code>虽然也使用了语言模型作为辅助训练，但是他们语言模型是在大量无标注数据下进行训练的，而且花费时间特别长！而本文根本不需要任何辅助数据，少量标注数据？足够了！就在他们上面联合训练一个语言模型就行了，花费时间大大缩短。</p>
-<p>其实我个人认为，这零点几的提升意义并不是很大，时间大大缩短倒是挺不错的，毕竟<code>Peter 2017.</code>那篇32个GPU都要训练半个月。。。<br>更远一步思考，也许可以将语言模型和序列标注独立开来训练，先用语言模型来训练character level LSTM，再用它产生每个token的表示，直接输入到序列标注的LSTM中，当然highway layer还是必要的，毕竟表示空间是不同的。这样可以利用大量的无标注数据了，但是训练时间也会大大加长，而且感觉和<code>Peter 2017.</code>的模型区别貌似不大了？只是联合训练了一个character level LSTM而已。</p>
-<p>以上都是我的拙见，毕竟这篇也就粗略读了一下没仔细看，各位有什么想法也欢迎和我讨论。</p>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=371362&auto=1&height=66"></iframe></div>
+
+<p>这是我的第一章作业答案，只有四题，标准答案太精简了。</p>
+<p>总体做下来，只有最后一题的第二小问一开始算错了，正如题目所说，的确有点难想。我看了标准答案的式子，想了一会儿才想出来的。。。</p>
+<p><img src="/2018/03/05/concrete-math-hw1/1.jpg" data-action="zoom"><br><img src="/2018/03/05/concrete-math-hw1/2.jpg" data-action="zoom"><br><img src="/2018/03/05/concrete-math-hw1/3.jpg" data-action="zoom"><br><img src="/2018/03/05/concrete-math-hw1/4.jpg" data-action="zoom"></p>
 
                 
 
@@ -247,13 +229,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2018/01/10/PaperDaily-2/" data-toggle="tooltip" data-placement="top" title="Parsing with Compositional Vector Grammars">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2018/01/01/POS-LM/" data-toggle="tooltip" data-placement="top" title="词性标注+语言模型简易实现">Next Post &rarr;</a>
+                            <a href="/2018/03/05/concrete-math-2/" data-toggle="tooltip" data-placement="top" title="具体数学-第2课">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -291,17 +269,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                          <a class="tag" href="/tags/#具体数学" title="具体数学">具体数学</a>
                         
-                          <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
-                        
-                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
-                        
-                          <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
-                        
-                          <a class="tag" href="/tags/#序列标注" title="序列标注">序列标注</a>
-                        
-                          <a class="tag" href="/tags/#AAAI" title="AAAI">AAAI</a>
+                          <a class="tag" href="/tags/#Concrete Mathematics" title="Concrete Mathematics">Concrete Mathematics</a>
                         
                     </div>
                 </section>
