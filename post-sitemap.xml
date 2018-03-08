@@ -7,8 +7,16 @@
     </url>
 
     <url>
+        <loc>http://godweiyang.com/2018/03/09/nvidia-cuda-dynet/</loc>
+        <lastmod>2018-03-08T16:58:29.622Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://godweiyang.com/2017/12/19/EMNLP17-1/</loc>
-        <lastmod>2018-03-08T04:32:58.268Z</lastmod>
+        <lastmod>2018-03-08T04:32:58.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +24,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/02/27/concrete-math-1/</loc>
-        <lastmod>2018-03-08T04:32:27.178Z</lastmod>
+        <lastmod>2018-03-08T04:32:26.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -24,7 +32,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/03/05/concrete-math-hw1/</loc>
-        <lastmod>2018-03-05T13:03:00.280Z</lastmod>
+        <lastmod>2018-03-05T13:03:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -32,7 +40,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/03/05/concrete-math-2/</loc>
-        <lastmod>2018-03-05T06:24:23.066Z</lastmod>
+        <lastmod>2018-03-05T06:24:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -40,7 +48,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/03/04/cs224n-introduction/</loc>
-        <lastmod>2018-03-04T04:51:11.882Z</lastmod>
+        <lastmod>2018-03-04T04:51:10.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -48,7 +56,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/02/26/biyelunwen/</loc>
-        <lastmod>2018-02-27T03:44:06.413Z</lastmod>
+        <lastmod>2018-02-27T03:44:06.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -56,7 +64,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/01/15/PaperDaily-4/</loc>
-        <lastmod>2018-01-23T05:37:37.745Z</lastmod>
+        <lastmod>2018-01-23T05:37:36.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -64,7 +72,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/01/13/PaperDaily-3/</loc>
-        <lastmod>2018-01-23T05:00:22.803Z</lastmod>
+        <lastmod>2018-01-23T05:00:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -72,7 +80,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/01/10/PaperDaily-2/</loc>
-        <lastmod>2018-01-23T04:29:07.416Z</lastmod>
+        <lastmod>2018-01-23T04:29:06.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -80,7 +88,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/01/09/PaperDaily-1/</loc>
-        <lastmod>2018-01-23T04:27:21.065Z</lastmod>
+        <lastmod>2018-01-23T04:27:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -88,7 +96,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/01/22/mood/</loc>
-        <lastmod>2018-01-22T06:36:10.704Z</lastmod>
+        <lastmod>2018-01-22T06:36:10.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -96,7 +104,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/01/01/POS-LM/</loc>
-        <lastmod>2018-01-01T11:20:58.070Z</lastmod>
+        <lastmod>2018-01-01T11:20:58.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -104,7 +112,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/12/30/text-minning-ppt/</loc>
-        <lastmod>2017-12-30T05:18:08.561Z</lastmod>
+        <lastmod>2017-12-30T05:18:08.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -112,7 +120,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/11/29/TextMinning/</loc>
-        <lastmod>2017-12-30T03:53:48.526Z</lastmod>
+        <lastmod>2017-12-30T03:53:48.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -120,7 +128,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/12/29/ecnu-ppt/</loc>
-        <lastmod>2017-12-29T11:08:06.931Z</lastmod>
+        <lastmod>2017-12-29T11:08:06.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -128,7 +136,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/12/19/EMNLP17-2/</loc>
-        <lastmod>2017-12-19T09:29:57.376Z</lastmod>
+        <lastmod>2017-12-19T09:29:56.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -136,7 +144,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/11/16/sw-compiler/</loc>
-        <lastmod>2017-11-19T07:30:00.093Z</lastmod>
+        <lastmod>2017-11-19T07:30:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -144,7 +152,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/11/13/ICLR17-1/</loc>
-        <lastmod>2017-11-13T07:17:14.170Z</lastmod>
+        <lastmod>2017-11-13T07:17:14.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -152,7 +160,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/10/25/ACL17-2027/</loc>
-        <lastmod>2017-10-25T09:19:30.835Z</lastmod>
+        <lastmod>2017-10-25T09:19:30.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -160,7 +168,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/10/03/ACL17-1161/</loc>
-        <lastmod>2017-10-24T16:57:14.708Z</lastmod>
+        <lastmod>2017-10-24T16:57:14.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -168,7 +176,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/09/19/recommend/</loc>
-        <lastmod>2017-10-02T08:54:20.583Z</lastmod>
+        <lastmod>2017-10-02T08:54:20.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -176,7 +184,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/09/19/dl2/</loc>
-        <lastmod>2017-10-02T08:53:10.814Z</lastmod>
+        <lastmod>2017-10-02T08:53:10.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -184,7 +192,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/09/19/dl1/</loc>
-        <lastmod>2017-10-02T08:51:58.645Z</lastmod>
+        <lastmod>2017-10-02T08:51:58.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -192,7 +200,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/09/19/context/</loc>
-        <lastmod>2017-10-02T08:50:33.182Z</lastmod>
+        <lastmod>2017-10-02T08:50:32.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -200,7 +208,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/10/02/sublime/</loc>
-        <lastmod>2017-10-02T08:47:00.125Z</lastmod>
+        <lastmod>2017-10-02T08:47:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -208,7 +216,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/09/19/eoj3328/</loc>
-        <lastmod>2017-09-20T08:06:04.811Z</lastmod>
+        <lastmod>2017-09-20T08:06:04.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -216,7 +224,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/09/20/dlhw2/</loc>
-        <lastmod>2017-09-20T07:27:38.658Z</lastmod>
+        <lastmod>2017-09-20T07:27:38.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -224,7 +232,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/09/20/dlhw1/</loc>
-        <lastmod>2017-09-20T04:37:30.505Z</lastmod>
+        <lastmod>2017-09-20T04:37:30.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -232,7 +240,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/09/19/baoyan/</loc>
-        <lastmod>2017-09-19T18:18:39.912Z</lastmod>
+        <lastmod>2017-09-19T18:18:38.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
