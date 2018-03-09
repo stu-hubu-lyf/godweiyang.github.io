@@ -15,7 +15,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Ubuntu16.04+Nvidia+Cuda9.1+Dynet安装教程 - WeiYang Blog
+          Ubuntu16.04下Nvidia+Cuda8.0+Dynet安装教程 - WeiYang Blog
         
     </title>
 
@@ -94,7 +94,7 @@
                               <a class="tag" href="/tags/#软件安装与配置" title="软件安装与配置">软件安装与配置</a>
                             
                         </div>
-                        <h1>Ubuntu16.04+Nvidia+Cuda9.1+Dynet安装教程</h1>
+                        <h1>Ubuntu16.04下Nvidia+Cuda8.0+Dynet安装教程</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by WeiYang on
@@ -145,14 +145,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -217,7 +217,9 @@
 
                 <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28936057&auto=1&height=66"></iframe></div>
 
-<p>之前也在笔记本上装过几次cuda，均以失败告终，网上的教程都没有完全能拿来用的，多多少少都会出现一些问题。</p>
+<p>之前也在笔记本上装过几次cuda，均以失败告终，网上的教程都没有完全能拿来用的，多多少少都会出现一些问题。<br>这次终于完完全全安装成功了，可喜可贺。。。说起来都是泪。</p>
+<p>注意显卡驱动安装最新版就行了，但是cuda最好还是别安装最新版了，装个8.0版本吧，不然都是泪。</p>
+<p>最终版本为ubuntu16.04 + cuda8.0 + gcc5.4。</p>
 <h1><span id="nvidia驱动安装">NVIDIA驱动安装</span></h1><hr>
 <p>进入<a href="http://www.nvidia.com/Download/index.aspx?lang=en-us" target="_blank" rel="external">NVIDIA官网</a>，选择适合自己显卡的驱动，下载后是一个.run文件。</p>
 <p>清除之前安装过的NVIDIA：<code>sudo apt-get remove --purge nvidia*</code></p>
@@ -232,12 +234,17 @@
 <h1><span id="cuda安装">CUDA安装</span></h1><hr>
 <p>进入<a href="https://developer.nvidia.com/cuda-toolkit" target="_blank" rel="external">cuda官网</a>，根据自己版本下载cuda.run文件。</p>
 <p>执行<code>sudo sh cuda.run</code>，注意中间问你要不要安装驱动程序，选择no</p>
-<p>执行<code>sudo gedit /etc/profile</code><br>添加下列语句并保存：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=/usr/local/cuda-9.1/bin:$PATH</div><div class="line"><span class="builtin-name">export</span> <span class="attribute">LD_LIBRARY_PATH</span>=/usr/local/cuda-9.1/lib64$LD_LIBRARY_PATH</div></pre></td></tr></table></figure></p>
-<p>重启，打开<code>/NVIDIA_CUDA-9.1_Samples/1_Utilities/deviceQuery</code></p>
+<p>执行<code>sudo gedit /etc/profile</code><br>添加下列语句并保存：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=/usr/local/cuda-8.0/bin:$PATH</div><div class="line"><span class="builtin-name">export</span> <span class="attribute">LD_LIBRARY_PATH</span>=/usr/local/cuda-8.0/lib64$LD_LIBRARY_PATH</div></pre></td></tr></table></figure></p>
+<p>重启，打开<code>/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery</code></p>
 <p>执行<code>sudo make</code>和<code>./deviceQuery</code>，如果出现显卡信息，那么cuda安装成功了。</p>
 <h1><span id="dynet安装">Dynet安装</span></h1><hr>
-<p>CPU版本的话很简单，直接执行<code>pip install dynet</code>就行了。<br>但是注意暂时先别装Anaconda，不然环境会出问题，怎么解决的我忘了。。。</p>
-<p>GPU版本暂时有点问题。<br>cuda9.1和gcc5.4或者gcc4.7版本貌似不兼容，反正编译的时候一堆问题吧，再说了。。。</p>
+<p>首先安装Anaconda，过程就不说了，直接运行shell脚本就行了。</p>
+<p>然后重要的地方来了，创建虚拟环境，在虚拟环境里安装dynet！！！</p>
+<p>执行<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">conda <span class="keyword">create</span> <span class="comment">--name python2 python=2 cython numpy</span></div><div class="line"><span class="keyword">source</span> <span class="keyword">activate</span> python2</div></pre></td></tr></table></figure></p>
+<p>然后CPU版本的话很简单，直接执行<code>pip install dynet</code>就行了。</p>
+<p>GPU版本执行<code>BACKEND=cuda pip install git+https://github.com/clab/dynet#egg=dynet -i https://pypi.tuna.tsinghua.edu.cn/simple</code>。</p>
+<p>然后就成功啦，但是运行dynet程序的时候还是会报错，找不到libcudart库，这时执行下面三条语句就行了：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo cp /usr/local/cuda-<span class="number">8.0</span>/lib64/libcudart.so.<span class="number">8.0</span> /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">libcudart</span>.<span class="title">so</span>.8.0 &amp;&amp; <span class="title">sudo</span> <span class="title">ldconfig</span></span></div><div class="line">sudo cp /usr/local/cuda-<span class="number">8.0</span>/lib64/libcublas.so.<span class="number">8.0</span> /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">libcublas</span>.<span class="title">so</span>.8.0 &amp;&amp; <span class="title">sudo</span> <span class="title">ldconfig</span></span></div><div class="line">sudo cp /usr/local/cuda-<span class="number">8.0</span>/lib64/libcurand.so.<span class="number">8.0</span> /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">libcurand</span>.<span class="title">so</span>.8.0 &amp;&amp; <span class="title">sudo</span> <span class="title">ldconfig</span></span></div></pre></td></tr></table></figure></p>
+<p>然后终于可以运行了，感动哭了。。。</p>
 
                 
 
