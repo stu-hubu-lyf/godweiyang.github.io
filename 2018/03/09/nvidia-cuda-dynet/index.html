@@ -15,7 +15,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Ubuntu16.04+Nvidia+Cuda9.0+Dynet安装教程 - WeiYang Blog
+          Ubuntu16.04+Nvidia+Cuda9.1+Dynet安装教程 - WeiYang Blog
         
     </title>
 
@@ -94,7 +94,7 @@
                               <a class="tag" href="/tags/#软件安装与配置" title="软件安装与配置">软件安装与配置</a>
                             
                         </div>
-                        <h1>Ubuntu16.04+Nvidia+Cuda9.0+Dynet安装教程</h1>
+                        <h1>Ubuntu16.04+Nvidia+Cuda9.1+Dynet安装教程</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by WeiYang on
@@ -215,7 +215,9 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>之前也在笔记本上装过几次cuda，均以失败告终，网上的教程都没有完全能拿来用的，多多少少都会出现一些问题。</p>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28936057&auto=1&height=66"></iframe></div>
+
+<p>之前也在笔记本上装过几次cuda，均以失败告终，网上的教程都没有完全能拿来用的，多多少少都会出现一些问题。</p>
 <h1><span id="nvidia驱动安装">NVIDIA驱动安装</span></h1><hr>
 <p>进入<a href="http://www.nvidia.com/Download/index.aspx?lang=en-us" target="_blank" rel="external">NVIDIA官网</a>，选择适合自己显卡的驱动，下载后是一个.run文件。</p>
 <p>清除之前安装过的NVIDIA：<code>sudo apt-get remove --purge nvidia*</code></p>
@@ -234,7 +236,8 @@
 <p>重启，打开<code>/NVIDIA_CUDA-9.1_Samples/1_Utilities/deviceQuery</code></p>
 <p>执行<code>sudo make</code>和<code>./deviceQuery</code>，如果出现显卡信息，那么cuda安装成功了。</p>
 <h1><span id="dynet安装">Dynet安装</span></h1><hr>
-<p>GPU版本暂时有点问题。</p>
+<p>CPU版本的话很简单，直接执行<code>pip install dynet</code>就行了。<br>但是注意暂时先别装Anaconda，不然环境会出问题，怎么解决的我忘了。。。</p>
+<p>GPU版本暂时有点问题。<br>cuda9.1和gcc5.4或者gcc4.7版本貌似不兼容，反正编译的时候一堆问题吧，再说了。。。</p>
 
                 
 
@@ -319,7 +322,7 @@
       s.parentNode.insertBefore(o, s);
     }
 </script>
- <script>
+<!--  <script>
     async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
         anchors.options = {
           visible: 'hover',
@@ -328,7 +331,7 @@
         };
         anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
     })
-</script> 
+</script> --> 
 <style>
     @media all and (min-width: 800px) {
         .anchorjs-link{
