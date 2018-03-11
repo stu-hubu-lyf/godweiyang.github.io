@@ -15,11 +15,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Ubuntu16.04下Nvidia+Cuda8.0+Dynet安装教程 - WeiYang Blog
+          毕业论文目录（草稿） - WeiYang Blog
         
     </title>
 
-    <link rel="canonical" href="http://godweiyang.com/2018/03/09/nvidia-cuda-dynet/">
+    <link rel="canonical" href="http://godweiyang.com/2018/03/11/graduate-outline/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -91,14 +91,20 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#软件安装与配置" title="软件安装与配置">软件安装与配置</a>
+                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                            
+                              <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                            
+                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                            
+                              <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
                             
                         </div>
-                        <h1>Ubuntu16.04下Nvidia+Cuda8.0+Dynet安装教程</h1>
+                        <h1>毕业论文目录（草稿）</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by WeiYang on
-                            2018-03-09
+                            2018-03-11
                         </span>
                     </div>
                 
@@ -215,36 +221,16 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=28936057&auto=1&height=66"></iframe></div>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=579954&auto=1&height=66"></iframe></div>
 
-<p>之前也在笔记本上装过几次cuda，均以失败告终，网上的教程都没有完全能拿来用的，多多少少都会出现一些问题。<br>这次终于完完全全安装成功了，可喜可贺。。。说起来都是泪。</p>
-<p>注意显卡驱动安装最新版就行了，但是cuda最好还是别安装最新版了，装个8.0版本吧，不然都是泪。</p>
-<p>最终版本为ubuntu16.04 + cuda8.0 + gcc5.4。</p>
-<h1><span id="nvidia驱动安装">NVIDIA驱动安装</span></h1><hr>
-<p>进入<a href="http://www.nvidia.com/Download/index.aspx?lang=en-us" target="_blank" rel="external">NVIDIA官网</a>，选择适合自己显卡的驱动，下载后是一个.run文件。</p>
-<p>清除之前安装过的NVIDIA：<code>sudo apt-get remove --purge nvidia*</code></p>
-<p>禁止nouveau等驱动：<code>sudo gedit /etc/modprob.d/blacklist.conf</code></p>
-<p>加入下列语句并保存：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">blacklist </span>vga16fb</div><div class="line"><span class="keyword">blacklist </span>nouveau</div><div class="line"><span class="keyword">blacklist </span>rivafb</div><div class="line"><span class="keyword">blacklist </span>nvidiafb</div><div class="line"><span class="keyword">blacklist </span>rivatv</div></pre></td></tr></table></figure></p>
-<p>执行<code>sudo update-initramfs -u</code>并重启<code>reboot</code>。</p>
-<p>按<code>ctrl+alt+f1</code>，登录命令行界面。</p>
-<p>执行<code>sudo service lightdm stop</code></p>
-<p>进入NVIDIA.run目录，运行<code>sudo sh ./NVIDIA.run –no-x-check –no-nouveau-check –no-opengl-files</code></p>
-<p>安装过程中会报错，直接无视。会问你要不要自动更新X配置文件，选择是就行了。</p>
-<p>重启。输入<code>sudo nvidia-smi</code>或者<code>nvidia-settings</code>，如果显示显卡信息，那么恭喜你安装成功了。</p>
-<h1><span id="cuda安装">CUDA安装</span></h1><hr>
-<p>进入<a href="https://developer.nvidia.com/cuda-toolkit" target="_blank" rel="external">cuda官网</a>，根据自己版本下载cuda.run文件。</p>
-<p>执行<code>sudo sh cuda.run</code>，注意中间问你要不要安装驱动程序，选择no</p>
-<p>执行<code>sudo gedit /etc/profile</code><br>添加下列语句并保存：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=/usr/local/cuda-8.0/bin:$PATH</div><div class="line"><span class="builtin-name">export</span> <span class="attribute">LD_LIBRARY_PATH</span>=/usr/local/cuda-8.0/lib64$LD_LIBRARY_PATH</div></pre></td></tr></table></figure></p>
-<p>重启，打开<code>/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery</code></p>
-<p>执行<code>sudo make</code>和<code>./deviceQuery</code>，如果出现显卡信息，那么cuda安装成功了。</p>
-<h1><span id="dynet安装">Dynet安装</span></h1><hr>
-<p>首先安装Anaconda，过程就不说了，直接运行shell脚本就行了。</p>
-<p>然后重要的地方来了，创建虚拟环境，在虚拟环境里安装dynet！！！</p>
-<p>执行<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">conda <span class="keyword">create</span> <span class="comment">--name python2 python=2 cython numpy</span></div><div class="line"><span class="keyword">source</span> <span class="keyword">activate</span> python2</div></pre></td></tr></table></figure></p>
-<p>然后CPU版本的话很简单，直接执行<code>pip install dynet</code>就行了。</p>
-<p>GPU版本执行<code>BACKEND=cuda pip install git+https://github.com/clab/dynet#egg=dynet -i https://pypi.tuna.tsinghua.edu.cn/simple</code>。</p>
-<p>然后就成功啦，但是运行dynet程序的时候还是会报错，找不到libcudart库，这时执行下面三条语句就行了：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo cp /usr/local/cuda-<span class="number">8.0</span>/lib64/libcudart.so.<span class="number">8.0</span> /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">libcudart</span>.<span class="title">so</span>.8.0 &amp;&amp; <span class="title">sudo</span> <span class="title">ldconfig</span></span></div><div class="line">sudo cp /usr/local/cuda-<span class="number">8.0</span>/lib64/libcublas.so.<span class="number">8.0</span> /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">libcublas</span>.<span class="title">so</span>.8.0 &amp;&amp; <span class="title">sudo</span> <span class="title">ldconfig</span></span></div><div class="line">sudo cp /usr/local/cuda-<span class="number">8.0</span>/lib64/libcurand.so.<span class="number">8.0</span> /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">libcurand</span>.<span class="title">so</span>.8.0 &amp;&amp; <span class="title">sudo</span> <span class="title">ldconfig</span></span></div></pre></td></tr></table></figure></p>
-<p>然后终于可以运行了，感动哭了。。。</p>
+<h1><span id="1-引言">1 引言</span></h1><hr>
+<h2><span id="11-研究背景">1.1 研究背景</span></h2><h2><span id="12-相关研究">1.2 相关研究</span></h2><h2><span id="13-我们的工作">1.3 我们的工作</span></h2><h2><span id="14-本文的组织结构">1.4 本文的组织结构</span></h2><h1><span id="2-相关概念与背景知识">2 相关概念与背景知识</span></h1><hr>
+<h2><span id="21-开源深度学习平台">2.1 开源深度学习平台</span></h2><h2><span id="22-上下文无关文法">2.2 上下文无关文法</span></h2><h3><span id="221-形式化定义">2.2.1 形式化定义</span></h3><h3><span id="222-乔姆斯基范式">2.2.2 乔姆斯基范式</span></h3><h3><span id="223-概率上下文无关文法">2.2.3 概率上下文无关文法</span></h3><h2><span id="23-cyk算法">2.3 CYK算法</span></h2><h2><span id="24-树的二叉化">2.4 树的二叉化</span></h2><h2><span id="25-长短期记忆神经网络">2.5 长短期记忆神经网络</span></h2><h1><span id="3-基于rnn的成分句法分析">3 基于RNN的成分句法分析</span></h1><hr>
+<h2><span id="31-组合向量文法">3.1 组合向量文法</span></h2><h2><span id="32-树状长短期记忆神经网络">3.2 树状长短期记忆神经网络</span></h2><h2><span id="33-结合cyk算法和长短期记忆神经网络的成分句法分析">3.3 结合CYK算法和长短期记忆神经网络的成分句法分析</span></h2><h3><span id="331-词向量">3.3.1 词向量</span></h3><h3><span id="332-模型结构">3.3.2 模型结构</span></h3><h3><span id="333-评分函数">3.3.3 评分函数</span></h3><h2><span id="34-模型训练">3.4 模型训练</span></h2><h3><span id="341-损失函数">3.4.1 损失函数</span></h3><h3><span id="342-反向传播">3.4.2 反向传播</span></h3><h1><span id="4-实验">4 实验</span></h1><hr>
+<h2><span id="41-实验数据集及实验设置">4.1 实验数据集及实验设置</span></h2><h2><span id="42-实验结果及分析">4.2 实验结果及分析</span></h2><h2><span id="43-实验超参数调整">4.3 实验超参数调整</span></h2><h1><span id="5-总结与展望">5 总结与展望</span></h1><hr>
+<h2><span id="51-总结">5.1 总结</span></h2><h2><span id="52-进一步的工作">5.2 进一步的工作</span></h2><h1><span id="参考文献">参考文献</span></h1><hr>
+<h1><span id="附录一">附录一</span></h1><hr>
+<h1><span id="致谢">致谢</span></h1><hr>
 
                 
 
@@ -252,13 +238,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2018/03/11/graduate-outline/" data-toggle="tooltip" data-placement="top" title="毕业论文目录（草稿）">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2018/03/05/concrete-math-hw1/" data-toggle="tooltip" data-placement="top" title="具体数学-第一章作业解答">Next Post &rarr;</a>
+                            <a href="/2018/03/09/nvidia-cuda-dynet/" data-toggle="tooltip" data-placement="top" title="Ubuntu16.04下Nvidia+Cuda8.0+Dynet安装教程">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -296,7 +278,13 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#软件安装与配置" title="软件安装与配置">软件安装与配置</a>
+                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                        
+                          <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                        
+                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                        
+                          <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
                         
                     </div>
                 </section>
