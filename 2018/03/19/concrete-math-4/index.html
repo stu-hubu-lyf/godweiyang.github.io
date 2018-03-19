@@ -147,14 +147,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -222,7 +222,7 @@
 <p>今天讲了多重求和，也就是一个和式由多个下标来指定。</p>
 <p>首先是最简单的形式：<br>\[\sum\limits_{1 \le j,k \le n} { {a_j}{b_k}}  = (\sum\limits_{1 \le j \le n} { {a_j}} )(\sum\limits_{1 \le k \le n} { {a_k}} )\]</p>
 <h1><span id="例题1">例题1</span></h1><hr>
-<p>下面给出一个对称矩阵：<br>\[A(i,j) = {a_i}{a_j}\]<br>求：<br>\[S = \sum\limits_{1 \le j \le k \le n} { {a_j}{a_k}} \]<br>这是这个矩阵的上三角求和，因为是对称的嘛，可以补全下三角，减去对角线就行了。<br>\[2S = \sum\limits_{1 \le j,k \le n} { {a_j}{a_k}}  - \sum\limits_{1 \le j = k \le n} { {a_j}{a_k}}  = {(\sum\limits_{1 \le k \le n} { {a_k}} )^2} - \sum\limits_{1 \le k \le n}^{} { {a_k}^2} \]<br>所以<br>\[S = \frac{1}{2}({(\sum\limits_{1 \le k \le n} { {a_k}} )^2} - \sum\limits_{1 \le k \le n}^{} { {a_k}^2} )\]</p>
+<p>下面给出一个对称矩阵：<br>\[A(i,j) = {a_i}{a_j}\]<br>求：<br>\[S = \sum\limits_{1 \le j \le k \le n} { {a_j}{a_k}} \]<br>这是这个矩阵的上三角加对角线求和，因为是对称的嘛，可以补全下三角，加上对角线就行了。<br>\[2S = \sum\limits_{1 \le j,k \le n} { {a_j}{a_k}}  + \sum\limits_{1 \le j = k \le n} { {a_j}{a_k}}  = {(\sum\limits_{1 \le k \le n} { {a_k}} )^2} + \sum\limits_{1 \le k \le n}^{} { {a_k}^2} \]<br>所以<br>\[S = \frac{1}{2}({(\sum\limits_{1 \le k \le n} { {a_k}} )^2} + \sum\limits_{1 \le k \le n}^{} { {a_k}^2} )\]</p>
 <h1><span id="例题2">例题2</span></h1><hr>
 <p>下面再看一个例子：<br>\[S = \sum\limits_{1 \le j &lt; k \le n} {({a_j} - {a_k})({b_j} - {b_k})} \]<br>同样模仿上例调换\(j,k\)位置，得到：<br>\[\begin{array}{l}2S = \sum\limits_{1 \le j,k \le n} {({a_j} - {a_k})({b_j} - {b_k})}  - \sum\limits_{1 \le j = k \le n} {({a_j} - {a_k})({b_j} - {b_k})} \\ = \sum\limits_{1 \le j,k \le n} {({a_j}{b_j} - {a_j}{b_k} - {a_k}{b_j} + {a_k}{b_k})} \\ = 2\sum\limits_{1 \le j,k \le n} { {a_j}{b_j}}  - 2\sum\limits_{1 \le j,k \le n} { {a_j}{b_k}} \\ = 2n\sum\limits_{1 \le j \le n} { {a_j}{b_j}}  - 2(\sum\limits_{1 \le j \le n} { {a_j}} )(\sum\limits_{1 \le k \le n} { {b_k}} )\end{array}\]<br>所以<br>\[S = n\sum\limits_{1 \le j \le n} { {a_j}{b_j}}  - (\sum\limits_{1 \le j \le n} { {a_j}} )(\sum\limits_{1 \le k \le n} { {b_k}} )\]<br>至此解完，然后可以推出一个著名的不等式————切比雪夫不等式：<br>\[(\sum\limits_{1 \le j \le n} { {a_j}} )(\sum\limits_{1 \le k \le n} { {b_k}} ) = n\sum\limits_{1 \le j \le n} { {a_j}{b_j}}  - \sum\limits_{1 \le j &lt; k \le n} {({a_j} - {a_k})({b_j} - {b_k})} \]<br>如果<br>\[{a_1} \le {a_2} \le  \cdots  \le {a_n},{b_1} \le {b_2} \le  \cdots  \le {b_n}\]<br>那么<br>\[(\sum\limits_{1 \le j \le n} { {a_j}} )(\sum\limits_{1 \le k \le n} { {b_k}} ) \le n\sum\limits_{1 \le j \le n} { {a_j}{b_j}} \]<br>反之如果<br>\[{a_1} \le {a_2} \le  \cdots  \le {a_n},{b_1} \ge {b_2} \ge  \cdots  \ge {b_n}\]<br>那么<br>\[(\sum\limits_{1 \le j \le n} { {a_j}} )(\sum\limits_{1 \le k \le n} { {b_k}} ) \ge n\sum\limits_{1 \le j \le n} { {a_j}{b_j}} \]<br>更一般的结论，给定两个序列\(a\)和\(b\)，求下面式子最大值与最小值：<br>\[\sum\limits_{k = 1}^n { {a_k}{b_{p(k)}}} \]<br>其中\(p(k)\)是\(\{ 1,2, \cdots ,n\} \)的一个排列。<br>答案是\(b\)增序最大，降序最小，至于为什么，留给大家思考QAQ。</p>
 <p>题外话，其实切比雪夫不等式原来是以微积分形式给出的：<br>如果函数\(f(x)\)和\(g(x)\)非单调递减，那么有：<br>\[(\int_a^b {f(x)dx} )(\int_a^b {g(x)dx} ) \le (b - a)(\int_a^b {f(x)g(x)dx} )\]</p>
