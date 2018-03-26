@@ -154,14 +154,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -217,7 +217,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=31814005&auto=1&height=66"></iframe></div>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=316275&auto=1&height=66"></iframe></div>
 
 <p>今天主要讲了关于递推式和求和的一些方法，主要是成套方法。</p>
 <h1><span id="约瑟夫环推广">约瑟夫环推广</span></h1><p>上一节课说到，约瑟夫环问题的解是<br>\[f(n) = 2l + 1\]<br>其中\(n = {2^m} + l\)<br>将\(n\)写成二进制可以发现，\(f(n)\)就是\(n\)的二进制循环左移1位。<br>现在做一下推广，求解如下递推式：<br>\[\begin{array}{l}f(1) = \alpha \\f(2n) = 2f(n) + \beta \\f(2n + 1) = 2f(n) + \gamma \end{array}\]<br>可以设<br>\[f(n) = A(n)\alpha  + B(n)\beta  + C(n)\gamma \]<br>同样，令\(n = {2^m} + l\)<br>可以解出<br>\[\begin{array}{l}A(n) = {2^m}\\B(n) = {2^m} - 1 - l\\C(n) = l\end{array}\]<br>再从二进制角度理解一下，将递推式继续推广：<br>\[\begin{array}{l}f(j) = {\alpha _j},1 \le j &lt; d\\f(dn + j) = cf(n) + {\beta _j},0 \le j \le d,n \ge 1\end{array}\]<br>可以得到解为<br>\[f({({b_m}{b_{m - 1}} \ldots {b_1}{b_0})_d}) = {({\alpha _{ {b_m}}}{\beta _{ {b_{m - 1}}}}{\beta _{ {b_{m - 2}}}} \ldots {\beta _{ {b_1}}}{\beta _{ {b_0}}})_c}\]</p>

@@ -154,14 +154,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -217,7 +217,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=36471573&auto=1&height=66"></iframe></div>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=539941039&auto=1&height=66"></iframe></div>
 
 <p>今天讲了一种将递归式转化为求和的方法。</p>
 <p>考虑如下递归式：<br>\[{a_n}{T_n} = {b_n}{T_{n - 1}} + {c_n}\]<br>两边同时乘以\(s_n\)得到：<br>\[{s_n}{a_n}{T_n} = {s_n}{b_n}{T_{n - 1}} + {s_n}{c_n}\]<br>要想转化成可以求和的递归式，那么必须有：<br>\[{s_n}{b_n} = {s_{n - 1}}{a_{n - 1}}\]<br>也就是：<br>\[{s_n} = \frac { { {a_{n - 1}}{a_{n - 2}} \cdots {a_1}}}{ { {b_n}{b_{n - 1}} \cdots {b_2}}}\]<br>这时令<br>\[{S_n} = {s_n}{a_n}{T_n}\]<br>得到：<br>\[{S_n} = {S_{n - 1}} + {s_n}{c_n}\]<br>这时就可以转化为求和了，解出：<br>\[{S_n} = {s_0}{a_0}{T_0} + \sum\limits_{k = 1}^n { {s_k}{c_k}} \]<br>所以<br>\[{T_n} = \frac{1}{ { {s_n}{a_n}}}({s_0}{a_0}{T_0} + \sum\limits_{k = 1}^n { {s_k}{c_k}} )\]</p>
