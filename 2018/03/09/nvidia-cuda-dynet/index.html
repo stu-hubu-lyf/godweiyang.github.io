@@ -145,14 +145,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -227,7 +227,7 @@
 <p>之前也在笔记本上装过几次cuda，均以失败告终，网上的教程都没有完全能拿来用的，多多少少都会出现一些问题。<br>这次终于完完全全安装成功了，可喜可贺。。。说起来都是泪。</p>
 <p>注意显卡驱动安装最新版就行了，但是cuda最好还是别安装最新版了，装个8.0版本吧，不然都是泪。</p>
 <p>最终版本为ubuntu16.04 + cuda8.0 + gcc5.4。</p>
-<h1><span id="nvidia驱动安装">NVIDIA驱动安装</span></h1><hr>
+<h1 id="NVIDIA驱动安装"><a href="#NVIDIA驱动安装" class="headerlink" title="NVIDIA驱动安装"></a>NVIDIA驱动安装</h1><hr>
 <p>进入<a href="http://www.nvidia.com/Download/index.aspx?lang=en-us" target="_blank" rel="external">NVIDIA官网</a>，选择适合自己显卡的驱动，下载后是一个.run文件。</p>
 <p>清除之前安装过的NVIDIA：<code>sudo apt-get remove --purge nvidia*</code></p>
 <p>禁止nouveau等驱动：<code>sudo gedit /etc/modprob.d/blacklist.conf</code></p>
@@ -238,13 +238,13 @@
 <p>进入NVIDIA.run目录，运行<code>sudo sh ./NVIDIA.run –no-x-check –no-nouveau-check –no-opengl-files</code></p>
 <p>安装过程中会报错，直接无视。会问你要不要自动更新X配置文件，选择是就行了。</p>
 <p>重启。输入<code>sudo nvidia-smi</code>或者<code>nvidia-settings</code>，如果显示显卡信息，那么恭喜你安装成功了。</p>
-<h1><span id="cuda安装">CUDA安装</span></h1><hr>
+<h1 id="CUDA安装"><a href="#CUDA安装" class="headerlink" title="CUDA安装"></a>CUDA安装</h1><hr>
 <p>进入<a href="https://developer.nvidia.com/cuda-toolkit" target="_blank" rel="external">cuda官网</a>，根据自己版本下载cuda.run文件。</p>
 <p>执行<code>sudo sh cuda.run</code>，注意中间问你要不要安装驱动程序，选择no</p>
 <p>执行<code>sudo gedit /etc/profile</code><br>添加下列语句并保存：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=/usr/local/cuda-8.0/bin:$PATH</div><div class="line"><span class="builtin-name">export</span> <span class="attribute">LD_LIBRARY_PATH</span>=/usr/local/cuda-8.0/lib64$LD_LIBRARY_PATH</div></pre></td></tr></table></figure></p>
 <p>重启，打开<code>/NVIDIA_CUDA-8.0_Samples/1_Utilities/deviceQuery</code></p>
 <p>执行<code>sudo make</code>和<code>./deviceQuery</code>，如果出现显卡信息，那么cuda安装成功了。</p>
-<h1><span id="dynet安装">Dynet安装</span></h1><hr>
+<h1 id="Dynet安装"><a href="#Dynet安装" class="headerlink" title="Dynet安装"></a>Dynet安装</h1><hr>
 <p>首先安装Anaconda，过程就不说了，直接运行shell脚本就行了。</p>
 <p>然后重要的地方来了，创建虚拟环境，在虚拟环境里安装dynet！！！</p>
 <p>执行<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">conda <span class="keyword">create</span> <span class="comment">--name python2 python=2 cython numpy</span></div><div class="line"><span class="keyword">source</span> <span class="keyword">activate</span> python2</div></pre></td></tr></table></figure></p>
@@ -287,6 +287,17 @@
             
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#NVIDIA驱动安装"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">NVIDIA驱动安装</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#CUDA安装"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">CUDA安装</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Dynet安装"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Dynet安装</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
 
                 
             <!-- Sidebar Container -->

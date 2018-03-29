@@ -151,14 +151,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -231,14 +231,14 @@
                 <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=526307800&auto=1&height=66"></iframe></div>
 
 <p>一个寒假就写了个基本的代码，难受啊，整理一下思路吧，好久不看代码头都大了。</p>
-<h1><span id="数据预处理">数据预处理</span></h1><hr>
+<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h1><hr>
 <p>首先使用的是PTB数据集，原始的数据是长这样的：<br>(S (NP-SBJ (NNP Ms.) (NNP Haag) ) (VP (VBZ plays) (NP (NNP Elianti) )) (. .) )</p>
 <p>因为不一定是二叉树，所以要先预处理成二叉树，这里全部借用了github上别人的代码来进行预处理，二叉化之后变成了这样：<br>(S (S*^. (NP-SBJ (NNP Ms.) (NNP Haag)) (VP (VBZ plays) (NP_NNP Elianti))) (. .))</p>
 <p>然后将整个数据集中出现次数过小的单词替换为unk：<br>(S (S*^. (NP-SBJ (NNP Ms.) (NNP Haag)) (VP (VBZ plays) (NP_NNP &lt; unk&gt;))) (. .))</p>
 <p>最后还需要将每个训练数据对应的句子单独提取出来，方便训练时用，比如上面的例子提取出来就是：<br>Ms. Haag plays Elianti . </p>
-<h1><span id="文法规则提取">文法规则提取</span></h1><hr>
+<h1 id="文法规则提取"><a href="#文法规则提取" class="headerlink" title="文法规则提取"></a>文法规则提取</h1><hr>
 <p>接着还是利用现成代码将数据集中出现的所有文法生成规则提取出来，保存到文件pcfg中。</p>
-<h1><span id="训练">训练</span></h1><hr>
+<h1 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h1><hr>
 <p>这部分大部分代码是自己写的，也有一部分是从CKY算法代码修改得到的。</p>
 <p>首先将数据集中出现的所有单词和词向量数组下标一一映射，词性类别也做一个映射吧。</p>
 <p>然后初始化神经网络的各个参数，要训练的权值矩阵一共有两个，\(W\)和\(d\)，接下来就是训练了。</p>
@@ -247,10 +247,10 @@
 <p>但是这棵树很不准确的，刚开始就是随意生成的，所以要和标准树进行对比，计算出损失函数进行反向传播。</p>
 <p>所以接下来用当前的权值矩阵计算出标准树的分数，然后对刚刚生成的结果和这个标准括号序列进行对比，我就直接粗暴统计出两个字符串有多少位置不同，记为\(cnt\)。</p>
 <p>总的损失函数就是：<br>\[\left| {result - gold + cnt} \right|\]<br>然后进行反向传播就行了。</p>
-<h1><span id="测试">测试</span></h1><hr>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><hr>
 <p>在测试集上面直接照搬训练过程代码就行了，按照动态规划生成一棵树就行了。</p>
 <p>然后用现成的代码和标准结果进行对比，得出F1值。</p>
-<h1><span id="一些问题">一些问题</span></h1><hr>
+<h1 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h1><hr>
 <p>总的来说，大体就是这样的了，但是还有很多问题没有解决。</p>
 <ul>
 <li>动态规划结合一个节点的两个子节点的时候，现在还只是直接连接的，准备将其改成LSTM的结点函数。</li>
@@ -293,6 +293,17 @@
             
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#数据预处理"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">数据预处理</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#文法规则提取"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">文法规则提取</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#训练"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">训练</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#测试"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">测试</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#一些问题"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">一些问题</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
 
                 
             <!-- Sidebar Container -->

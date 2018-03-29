@@ -155,14 +155,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -233,7 +233,7 @@
                 post-container">
 
                 <p>历经几个星期的磨难，文本挖掘课的presentation课件初稿基本完成了，1月中下旬开讲，这次讲的是基于少量标注数据的序列标注，下面是我的综述。</p>
-<h1><span id="outline">Outline</span></h1><hr>
+<h1 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h1><hr>
 <ul>
 <li>Sequence Tagging</li>
 <li>Semi-supervised Learning</li>
@@ -241,8 +241,8 @@
 <li>Conclusions</li>
 <li>References</li>
 </ul>
-<h1><span id="sequence-tagging">Sequence Tagging</span></h1><hr>
-<h3><span id="introduction">Introduction</span></h3><p><strong>Definition</strong><br>Sequence tagging is a type of pattern recognition task that involves the algorithmic assignment of a categorical label to each member of a sequence of observed values.<br><strong>Significance</strong><br>Sequence tagging is one of the first stages in most natural language processing applications, such as part-of-speech tagging, chunking and named entity recognition.<br><strong>Approaches</strong></p>
+<h1 id="Sequence-Tagging"><a href="#Sequence-Tagging" class="headerlink" title="Sequence Tagging"></a>Sequence Tagging</h1><hr>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>Definition</strong><br>Sequence tagging is a type of pattern recognition task that involves the algorithmic assignment of a categorical label to each member of a sequence of observed values.<br><strong>Significance</strong><br>Sequence tagging is one of the first stages in most natural language processing applications, such as part-of-speech tagging, chunking and named entity recognition.<br><strong>Approaches</strong></p>
 <ul>
 <li><del>Traditional models</del><ul>
 <li><del>Hidden Markov Models</del></li>
@@ -254,9 +254,9 @@
 </ul>
 </li>
 </ul>
-<h3><span id="neural-network-model">Neural Network Model</span></h3><p><img src="/2017/12/30/text-minning-ppt/1.png" data-action="zoom"></p>
-<h3><span id="results">Results</span></h3><p><img src="/2017/12/30/text-minning-ppt/3.png" data-action="zoom"></p>
-<h3><span id="sequence-tagging-with-little-labeled-data">Sequence Tagging with Little Labeled Data</span></h3><p><strong>Backgrounds</strong><br>Although recent neural networks obtain state-of-the-art performance on several sequence tagging tasks, they can’t be used for tasks with little labeled data.<br><strong>Approaches</strong></p>
+<h3 id="Neural-Network-Model"><a href="#Neural-Network-Model" class="headerlink" title="Neural Network Model"></a>Neural Network Model</h3><p><img src="/2017/12/30/text-minning-ppt/1.png" data-action="zoom"></p>
+<h3 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h3><p><img src="/2017/12/30/text-minning-ppt/3.png" data-action="zoom"></p>
+<h3 id="Sequence-Tagging-with-Little-Labeled-Data"><a href="#Sequence-Tagging-with-Little-Labeled-Data" class="headerlink" title="Sequence Tagging with Little Labeled Data"></a>Sequence Tagging with Little Labeled Data</h3><p><strong>Backgrounds</strong><br>Although recent neural networks obtain state-of-the-art performance on several sequence tagging tasks, they can’t be used for tasks with little labeled data.<br><strong>Approaches</strong></p>
 <ul>
 <li><del>Self-taught learning</del></li>
 <li><del>Active learning</del></li>
@@ -264,8 +264,8 @@
 <li>Semi-supervised learning</li>
 <li>Transfer learning</li>
 </ul>
-<h1><span id="semi-supervised-learning">Semi-supervised Learning</span></h1><hr>
-<h3><span id="references">References</span></h3><p><strong>Language Models Added</strong></p>
+<h1 id="Semi-supervised-Learning"><a href="#Semi-supervised-Learning" class="headerlink" title="Semi-supervised Learning"></a>Semi-supervised Learning</h1><hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><strong>Language Models Added</strong></p>
 <ul>
 <li>Semi-supervised Multitask Learning for Sequence Labeling. Marek Rei. ACL17.</li>
 <li>Semi-supervised Sequence Tagging with Bidirectional Language Models. Matthew et al. ACL17.</li>
@@ -276,23 +276,23 @@
 <li>Scientific Information Extraction with Semi-supervised Neural Tagging. Luan et al. EMNLP17.</li>
 <li>Graph-based Semi-supervised Acoustic Modeling in DNN-based Speech Recognition. Liu et al. IEEE SLT14.</li>
 </ul>
-<h3><span id="language-models-added">Language Models Added</span></h3><p><img src="/2017/12/30/text-minning-ppt/2.png" data-action="zoom"></p>
-<h3><span id="language-modeling-objective">Language Modeling Objective</span></h3><p>\[\begin{array}{l}\overrightarrow { {m_t}}  = \tanh (\overrightarrow { {W_m}} \overrightarrow { {h_t}} )\\\overleftarrow { {m_t}}  = \tanh (\overleftarrow { {W_m}} \overleftarrow { {h_t}} )\\P({w_{t + 1}}|\overrightarrow { {m_t}} ) = {\rm{softmax}}(\overrightarrow { {W_q}} \overrightarrow { {m_t}} )\\P({w_{t - 1}}|\overleftarrow { {m_t}} ) = {\rm{softmax}}(\overleftarrow { {W_q}} \overleftarrow { {m_t}} )\\\overrightarrow E  =  - \sum\limits_{t = 1}^{T - 1} {\log (P({w_{t + 1}}|\overrightarrow { {m_t}} ))} \\\overleftarrow E  =  - \sum\limits_{t = 2}^T {\log (P({w_{t - 1}}|\overleftarrow { {m_t}} ))} \\E = E + \gamma (\overrightarrow E  + \overleftarrow E )\end{array}\]</p>
-<h3><span id="results">Results</span></h3><p><img src="/2017/12/30/text-minning-ppt/4.png" data-action="zoom"><br><img src="/2017/12/30/text-minning-ppt/5.png" data-action="zoom"></p>
-<h3><span id="language-models-added">Language Models Added</span></h3><p><img src="/2017/12/30/text-minning-ppt/6.png" data-action="zoom"></p>
-<h3><span id="bidirectional-language-model">Bidirectional Language Model</span></h3><p>\[\begin{array}{l}h_k^{LM} = [\overrightarrow {h_k^{LM}} ;\overleftarrow {h_k^{LM}} ]\\{h_{k,1}} = [\overrightarrow { {h_{k,1}}} ;\overleftarrow { {h_{k,1}}} ;h_k^{LM}]\end{array}\]<br><strong>Alternative</strong></p>
+<h3 id="Language-Models-Added"><a href="#Language-Models-Added" class="headerlink" title="Language Models Added"></a>Language Models Added</h3><p><img src="/2017/12/30/text-minning-ppt/2.png" data-action="zoom"></p>
+<h3 id="Language-Modeling-Objective"><a href="#Language-Modeling-Objective" class="headerlink" title="Language Modeling Objective"></a>Language Modeling Objective</h3><p>\[\begin{array}{l}\overrightarrow { {m_t}}  = \tanh (\overrightarrow { {W_m}} \overrightarrow { {h_t}} )\\\overleftarrow { {m_t}}  = \tanh (\overleftarrow { {W_m}} \overleftarrow { {h_t}} )\\P({w_{t + 1}}|\overrightarrow { {m_t}} ) = {\rm{softmax}}(\overrightarrow { {W_q}} \overrightarrow { {m_t}} )\\P({w_{t - 1}}|\overleftarrow { {m_t}} ) = {\rm{softmax}}(\overleftarrow { {W_q}} \overleftarrow { {m_t}} )\\\overrightarrow E  =  - \sum\limits_{t = 1}^{T - 1} {\log (P({w_{t + 1}}|\overrightarrow { {m_t}} ))} \\\overleftarrow E  =  - \sum\limits_{t = 2}^T {\log (P({w_{t - 1}}|\overleftarrow { {m_t}} ))} \\E = E + \gamma (\overrightarrow E  + \overleftarrow E )\end{array}\]</p>
+<h3 id="Results-1"><a href="#Results-1" class="headerlink" title="Results"></a>Results</h3><p><img src="/2017/12/30/text-minning-ppt/4.png" data-action="zoom"><br><img src="/2017/12/30/text-minning-ppt/5.png" data-action="zoom"></p>
+<h3 id="Language-Models-Added-1"><a href="#Language-Models-Added-1" class="headerlink" title="Language Models Added"></a>Language Models Added</h3><p><img src="/2017/12/30/text-minning-ppt/6.png" data-action="zoom"></p>
+<h3 id="Bidirectional-Language-Model"><a href="#Bidirectional-Language-Model" class="headerlink" title="Bidirectional Language Model"></a>Bidirectional Language Model</h3><p>\[\begin{array}{l}h_k^{LM} = [\overrightarrow {h_k^{LM}} ;\overleftarrow {h_k^{LM}} ]\\{h_{k,1}} = [\overrightarrow { {h_{k,1}}} ;\overleftarrow { {h_{k,1}}} ;h_k^{LM}]\end{array}\]<br><strong>Alternative</strong></p>
 <ul>
 <li>Replace \([\overrightarrow { {h_{k,1}}} ;\overleftarrow { {h_{k,1}}} ;h_k^{LM}]\) with \(f([\overrightarrow { {h_{k,1}}} ;\overleftarrow { {h_{k,1}}} ;h_k^{LM}])\).</li>
 <li>Concatenate the LM embeddings at different locations in the baseline sequence tagger.</li>
 <li>Decrease the number of parameters in the second RNN layer.</li>
 </ul>
-<h3><span id="results">Results</span></h3><p><img src="/2017/12/30/text-minning-ppt/7.png" data-action="zoom"><br><img src="/2017/12/30/text-minning-ppt/8.png" data-action="zoom"></p>
-<h3><span id="conclusions">Conclusions</span></h3><ul>
+<h3 id="Results-2"><a href="#Results-2" class="headerlink" title="Results"></a>Results</h3><p><img src="/2017/12/30/text-minning-ppt/7.png" data-action="zoom"><br><img src="/2017/12/30/text-minning-ppt/8.png" data-action="zoom"></p>
+<h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><ul>
 <li>The language model transfer across domains.</li>
 <li>The model is robust even when trained on a large number of labeled data.</li>
 <li>Training the sequence tagging model and language model together increases performance.</li>
 </ul>
-<h3><span id="graph-based">Graph-based</span></h3><ul>
+<h3 id="Graph-based"><a href="#Graph-based" class="headerlink" title="Graph-based"></a>Graph-based</h3><ul>
 <li>Steps<ul>
 <li>Construct a graph of tokens based on their semantic similarity.</li>
 <li>Use the CRF marginal as a regularization term to do label propagation on the graph.</li>
@@ -308,14 +308,14 @@
 <li>Score<br>\[\phi (y;x,\theta ) = \sum\limits_{t = 0}^n { {T_{ {y_t},{y_{t + 1}}}}}  + \sum\limits_{t = 1}^n { {P_{t,{y_t}}}} \]</li>
 <li>Probability<br>\[{p_\theta }(\mathcal{Y}({x^k})|{x^k}) = \frac{ {\sum\nolimits_{ {y^k} \in \mathcal{Y}({x^k})} {\exp (\phi ({y^k};{x^k},\theta ))} }}{ {\sum\nolimits_{y’ \in Y} {\exp (\phi (y’;x,\theta ))} }}\]<br><img src="/2017/12/30/text-minning-ppt/10.png" data-action="zoom"></li>
 </ul>
-<h3><span id="results">Results</span></h3><p><img src="/2017/12/30/text-minning-ppt/11.png" data-action="zoom"></p>
-<h3><span id="conclusions">Conclusions</span></h3><ul>
+<h3 id="Results-3"><a href="#Results-3" class="headerlink" title="Results"></a>Results</h3><p><img src="/2017/12/30/text-minning-ppt/11.png" data-action="zoom"></p>
+<h3 id="Conclusions-1"><a href="#Conclusions-1" class="headerlink" title="Conclusions"></a>Conclusions</h3><ul>
 <li>In-domain data performs better than cross-domain data.</li>
 <li>The combination of in-domain data and ULM algorithms performs well.</li>
 <li>We can add language models into the model in the future to capture the context information.</li>
 </ul>
-<h1><span id="transfer-learning">Transfer Learning</span></h1><hr>
-<h3><span id="references">References</span></h3><p><strong>Cross-domain Transfer</strong></p>
+<h1 id="Transfer-Learning"><a href="#Transfer-Learning" class="headerlink" title="Transfer Learning"></a>Transfer Learning</h1><hr>
+<h3 id="References-1"><a href="#References-1" class="headerlink" title="References"></a>References</h3><p><strong>Cross-domain Transfer</strong></p>
 <ul>
 <li>Transfer Learning for Sequence Tagging with Hierarchical Recurrent Networks. Yang et al. ICLR17.</li>
 <li>Improving Named Entity Recognition for Chinese Social Media with Word Segmentation Representation Learning. Peng et al. ACL16.</li>
@@ -326,45 +326,45 @@
 <li>Transfer Learning for Sequence Tagging with Hierarchical Recurrent Networks. Yang et al. ICLR17.</li>
 <li>Cross-Lingual Transfer Learning for POS Tagging without Cross-Lingual Resources. Kim et al. EMNLP17.</li>
 </ul>
-<h3><span id="cross-domain-transfer">Cross-domain Transfer</span></h3><ul>
+<h3 id="Cross-domain-Transfer"><a href="#Cross-domain-Transfer" class="headerlink" title="Cross-domain Transfer"></a>Cross-domain Transfer</h3><ul>
 <li>Label mapping exist<br><img src="/2017/12/30/text-minning-ppt/13.png" data-action="zoom"></li>
 <li>Disparate label sets<br><img src="/2017/12/30/text-minning-ppt/12.png" data-action="zoom"></li>
 </ul>
 <p><img src="/2017/12/30/text-minning-ppt/20.png" data-action="zoom"><br><img src="/2017/12/30/text-minning-ppt/15.png" data-action="zoom"></p>
-<h3><span id="domain-projections">Domain Projections</span></h3><ul>
+<h3 id="Domain-Projections"><a href="#Domain-Projections" class="headerlink" title="Domain Projections"></a>Domain Projections</h3><ul>
 <li>Domain Masks<br>\[\begin{array}{l}{m_1} = [\overrightarrow 1 ,\overrightarrow 1 ,\overrightarrow 0 ],{m_2} = [\overrightarrow 1 ,\overrightarrow 0 ,\overrightarrow 1 ]\\\hat h = {m_d} \odot h\end{array}\]</li>
 <li>Linear Projection<br>\[\hat h = {T_d}h\]</li>
 </ul>
-<h3><span id="results">Results</span></h3><p><img src="/2017/12/30/text-minning-ppt/16.png" data-action="zoom"></p>
-<h3><span id="conclusions">Conclusions</span></h3><ul>
+<h3 id="Results-4"><a href="#Results-4" class="headerlink" title="Results"></a>Results</h3><p><img src="/2017/12/30/text-minning-ppt/16.png" data-action="zoom"></p>
+<h3 id="Conclusions-2"><a href="#Conclusions-2" class="headerlink" title="Conclusions"></a>Conclusions</h3><ul>
 <li>Multi-task learning can help domain adaptation.</li>
 <li>The number of shared parameters has great impact on the performance.</li>
 <li>We may use other domain adaptation methods besides parameter sharing and representation learning.</li>
 </ul>
-<h3><span id="cross-lingual-transfer">Cross-lingual Transfer</span></h3><p><img src="/2017/12/30/text-minning-ppt/17.png" data-action="zoom"><br><img src="/2017/12/30/text-minning-ppt/18.png" data-action="zoom"></p>
+<h3 id="Cross-lingual-Transfer"><a href="#Cross-lingual-Transfer" class="headerlink" title="Cross-lingual Transfer"></a>Cross-lingual Transfer</h3><p><img src="/2017/12/30/text-minning-ppt/17.png" data-action="zoom"><br><img src="/2017/12/30/text-minning-ppt/18.png" data-action="zoom"></p>
 <ul>
 <li>Sequence Tagging Loss<br>\[{\mathcal{L}_p} =  - \sum\limits_{i = 1}^S {\sum\limits_{j = 1}^N { {p_{i,j}}\log ({ {\hat p}_{i,j}})} }\]</li>
 <li>Language Classifier Loss<br>\[{\mathcal{L}_a} =  - \sum\limits_{i = 1}^S { {l_i}\log ({ {\hat l}_i})}\]</li>
 <li>Bidirectional Language Model Loss<br>\[{\mathcal{L}_l} =  - \sum\limits_{i = 1}^S {\sum\limits_{j = 1}^N {\log (P({w_{j + 1}}|{f_j})) + \log (P({w_{j - 1}}|{b_j}))} }\]</li>
 <li>Total Loss<br>\[\mathcal{L} = {w_s}({\mathcal{L}_p} + \lambda {\mathcal{L}_a} + \lambda {\mathcal{L}_l})\]</li>
 </ul>
-<h3><span id="results">Results</span></h3><p><img src="/2017/12/30/text-minning-ppt/19.png" data-action="zoom"></p>
-<h3><span id="conclusions">Conclusions</span></h3><ul>
+<h3 id="Results-5"><a href="#Results-5" class="headerlink" title="Results"></a>Results</h3><p><img src="/2017/12/30/text-minning-ppt/19.png" data-action="zoom"></p>
+<h3 id="Conclusions-3"><a href="#Conclusions-3" class="headerlink" title="Conclusions"></a>Conclusions</h3><ul>
 <li>The language classifier can train the common LSTM to be language-agnostic.</li>
 <li>Either too many or too little labeled data decrease the performance.</li>
 <li>Multiple source languages can be used to increase the performance.</li>
 </ul>
-<h1><span id="conclusions">Conclusions</span></h1><hr>
-<h3><span id="semi-supervised-learning-vs-transfer-learning">Semi-supervised Learning vs Transfer Learning</span></h3><ul>
+<h1 id="Conclusions-4"><a href="#Conclusions-4" class="headerlink" title="Conclusions"></a>Conclusions</h1><hr>
+<h3 id="Semi-supervised-Learning-vs-Transfer-Learning"><a href="#Semi-supervised-Learning-vs-Transfer-Learning" class="headerlink" title="Semi-supervised Learning vs Transfer Learning"></a>Semi-supervised Learning vs Transfer Learning</h3><ul>
 <li>It seems that semi-supervised learning is better than transfer learning on some tasks.</li>
 <li>Semi-supervised learning is not always useful for the lack of unlabeled data in the same domain.</li>
 <li>Andrew Ng had said that transfer learning is an important research direction in the next five years.</li>
 </ul>
-<h3><span id="future">Future</span></h3><ul>
+<h3 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h3><ul>
 <li>Semi-supervised learning and transfer learning can be combined to increase performance.</li>
 <li>Other methods like active learning can be added.</li>
 </ul>
-<h1><span id="references">References</span></h1><hr>
+<h1 id="References-2"><a href="#References-2" class="headerlink" title="References"></a>References</h1><hr>
 <p>Xuezhe Ma and Eduard Hovy. (2016).<br><strong>End-to-end Sequence Labeling via Bi-directional LSTM-CNNs-CRF.</strong><br><em>In Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics, pages 1064–1074, Berlin, Germany, August 7-12, 2016.</em></p>
 <p>Marek Rei. (2017).<br><strong>Semi-supervised Multitask Learning for Sequence Labeling.</strong><br><em>In Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics, pages 2121–2130, Vancouver, Canada, July 30 - August 4, 2017.</em></p>
 <p>Matthew E. Peters, Waleed Ammar, Chandra Bhagavatula, Russell Power. (2017).<br><strong>Semi-supervised Sequence Tagging with Bidirectional Language Models.</strong><br><em>In Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics, pages 1756–1765, Vancouver, Canada, July 30 - August 4, 2017.</em></p>
@@ -410,6 +410,17 @@
             
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Outline"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Outline</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Sequence-Tagging"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Sequence Tagging</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Introduction"><span class="toc-nav-number">2.0.1.</span> <span class="toc-nav-text">Introduction</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Neural-Network-Model"><span class="toc-nav-number">2.0.2.</span> <span class="toc-nav-text">Neural Network Model</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Results"><span class="toc-nav-number">2.0.3.</span> <span class="toc-nav-text">Results</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Sequence-Tagging-with-Little-Labeled-Data"><span class="toc-nav-number">2.0.4.</span> <span class="toc-nav-text">Sequence Tagging with Little Labeled Data</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Semi-supervised-Learning"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Semi-supervised Learning</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#References"><span class="toc-nav-number">3.0.1.</span> <span class="toc-nav-text">References</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Language-Models-Added"><span class="toc-nav-number">3.0.2.</span> <span class="toc-nav-text">Language Models Added</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Language-Modeling-Objective"><span class="toc-nav-number">3.0.3.</span> <span class="toc-nav-text">Language Modeling Objective</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Results-1"><span class="toc-nav-number">3.0.4.</span> <span class="toc-nav-text">Results</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Language-Models-Added-1"><span class="toc-nav-number">3.0.5.</span> <span class="toc-nav-text">Language Models Added</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Bidirectional-Language-Model"><span class="toc-nav-number">3.0.6.</span> <span class="toc-nav-text">Bidirectional Language Model</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Results-2"><span class="toc-nav-number">3.0.7.</span> <span class="toc-nav-text">Results</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Conclusions"><span class="toc-nav-number">3.0.8.</span> <span class="toc-nav-text">Conclusions</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Graph-based"><span class="toc-nav-number">3.0.9.</span> <span class="toc-nav-text">Graph-based</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Results-3"><span class="toc-nav-number">3.0.10.</span> <span class="toc-nav-text">Results</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Conclusions-1"><span class="toc-nav-number">3.0.11.</span> <span class="toc-nav-text">Conclusions</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Transfer-Learning"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Transfer Learning</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#References-1"><span class="toc-nav-number">4.0.1.</span> <span class="toc-nav-text">References</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Cross-domain-Transfer"><span class="toc-nav-number">4.0.2.</span> <span class="toc-nav-text">Cross-domain Transfer</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Domain-Projections"><span class="toc-nav-number">4.0.3.</span> <span class="toc-nav-text">Domain Projections</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Results-4"><span class="toc-nav-number">4.0.4.</span> <span class="toc-nav-text">Results</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Conclusions-2"><span class="toc-nav-number">4.0.5.</span> <span class="toc-nav-text">Conclusions</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Cross-lingual-Transfer"><span class="toc-nav-number">4.0.6.</span> <span class="toc-nav-text">Cross-lingual Transfer</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Results-5"><span class="toc-nav-number">4.0.7.</span> <span class="toc-nav-text">Results</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Conclusions-3"><span class="toc-nav-number">4.0.8.</span> <span class="toc-nav-text">Conclusions</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Conclusions-4"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Conclusions</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Semi-supervised-Learning-vs-Transfer-Learning"><span class="toc-nav-number">5.0.1.</span> <span class="toc-nav-text">Semi-supervised Learning vs Transfer Learning</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Future"><span class="toc-nav-number">5.0.2.</span> <span class="toc-nav-text">Future</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#References-2"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">References</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
 
                 
             <!-- Sidebar Container -->

@@ -91,9 +91,9 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#软件安装与配置" title="软件安装与配置">软件安装与配置</a>
-                            
                               <a class="tag" href="/tags/#Sublime Text" title="Sublime Text">Sublime Text</a>
+                            
+                              <a class="tag" href="/tags/#软件安装与配置" title="软件安装与配置">软件安装与配置</a>
                             
                         </div>
                         <h1>Sublime Text安装与配置教程</h1>
@@ -147,14 +147,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -225,9 +225,9 @@
                 post-container">
 
                 <p>Sublime Text是我一直使用的代码编辑器，我喜爱它的原因就是好看啊！当然打开速度毋庸置疑啦，毕竟不是IDE。这里我把我的安装与配置步骤教给大家，如有未尽之处，大家自己摸索咯，也欢迎与我交流。<br>先附上一张美图：<br><img src="/2017/10/02/sublime/sublime.png" data-action="zoom"></p>
-<h1><span id="安装sublime-text-3">安装Sublime Text 3</span></h1><hr>
+<h1 id="安装Sublime-Text-3"><a href="#安装Sublime-Text-3" class="headerlink" title="安装Sublime Text 3"></a>安装Sublime Text 3</h1><hr>
 <p>下载地址请点击<a href="https://download.sublimetext.com/Sublime%20Text%20Build%203143%20x64%20Setup.exe" target="_blank" rel="external">这里</a>。<br>安装过程就不多说了，一直点<code>next</code>就行了。</p>
-<h1><span id="配置c运行环境">配置C++运行环境</span></h1><hr>
+<h1 id="配置C-运行环境"><a href="#配置C-运行环境" class="headerlink" title="配置C++运行环境"></a>配置C++运行环境</h1><hr>
 <p>装完后可以直接写代码了，但是不能运行C++的哦，还需要配置运行环境。</p>
 <ul>
 <li>首先要安装C++的编译器MinGW，可以直接去官网下（<a href="http://www.mingw.org/" target="_blank" rel="external">传送门</a>）。不过我自己是直接下的CodeBlocks（<a href="https://downloads.sourceforge.net/project/codeblocks/Binaries/16.01/Windows/codeblocks-16.01mingw-setup.exe" target="_blank" rel="external">传送门</a>），然后用的自带的MinGW。</li>
@@ -239,7 +239,7 @@
 </li>
 </ul>
 <p>这时候随便写一个C++代码，然后<code>Tools - Build System</code>选择<code>c++11</code>，然后按<code>ctrl+b</code>就可以运行啦。<br>我这配置的是控制台运行的C++，所以支持输入数据的哦！</p>
-<h1><span id="配置java运行环境">配置Java运行环境</span></h1><hr>
+<h1 id="配置Java运行环境"><a href="#配置Java运行环境" class="headerlink" title="配置Java运行环境"></a>配置Java运行环境</h1><hr>
 <ul>
 <li>首先下载Java的编译器jdk（<a href="http://download.oracle.com/otn-pub/java/jdk/9+181/jdk-9_windows-x64_bin.exe" target="_blank" rel="external">传送门</a>），安装过程就不说了。</li>
 <li>环境变量应该不用自己添加了，安装过程会帮你自动添加。</li>
@@ -250,12 +250,12 @@
 </li>
 </ul>
 <p>这时候随便写一个Java代码，然后<code>Tools - Build System</code>选择<code>JavaC</code>，然后按<code>ctrl+b</code>就可以运行啦。<br>我这配置的是控制台运行的Java，所以支持输入数据的哦！</p>
-<h1><span id="配置python运行环境">配置Python运行环境</span></h1><hr>
+<h1 id="配置Python运行环境"><a href="#配置Python运行环境" class="headerlink" title="配置Python运行环境"></a>配置Python运行环境</h1><hr>
 <ul>
 <li>强烈推荐配合Python发行版本Anaconda使用，下载地址（<a href="https://www.anaconda.com/download/" target="_blank" rel="external">传送门</a>），下载速度有点慢，推荐使用迅雷下载。安装过程就不多说了。一定要记得安装过程中有一步添加系统变量一定要勾上！</li>
 <li>然后…就没有然后了，Python运行环境安装就是这么简单，直接按<code>ctrl+b</code>就能运行了，但是不支持输入数据哦，想要输入数据的话要安装<code>Sublime REPL</code>插件，请看后面的教程。</li>
 </ul>
-<h1><span id="安装插件">安装插件</span></h1><p>Sublime Text的强大之处就是可以安装各种插件满足你的需求。<br>安装过程很简单：</p>
+<h1 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h1><p>Sublime Text的强大之处就是可以安装各种插件满足你的需求。<br>安装过程很简单：</p>
 <ul>
 <li>首先要安装插件管理工具<code>Package Control</code>，按<code>ctrl+shift+p</code>，输入<code>Install Package</code>，按回车，等待安装完毕。</li>
 <li>然后<code>Preferences</code>选项菜单就会出现<code>Package Control</code>子菜单。</li>
@@ -272,7 +272,7 @@
 <li>ConvertToUTF8<br>这是为了某些中文显示准备的插件，貌似不怎么用得到，随意装吧。</li>
 </ul>
 <p>我用的就这些啦，Sublime Text写代码还是很方便的，现在基本不用其他的IDE了，能少打开一个软件是一个嘛。</p>
-<h1><span id="快捷键">快捷键</span></h1><hr>
+<h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><hr>
 <p>直接递上<a href="http://www.jb51.net/softjc/180873.html" target="_blank" rel="external">传送门</a>。</p>
 
                 
@@ -310,6 +310,17 @@
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
 
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#安装Sublime-Text-3"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">安装Sublime Text 3</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#配置C-运行环境"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">配置C++运行环境</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#配置Java运行环境"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">配置Java运行环境</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#配置Python运行环境"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">配置Python运行环境</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#安装插件"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">安装插件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#快捷键"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">快捷键</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
                 
             <!-- Sidebar Container -->
             <div class="
@@ -324,9 +335,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#软件安装与配置" title="软件安装与配置">软件安装与配置</a>
-                        
                           <a class="tag" href="/tags/#Sublime Text" title="Sublime Text">Sublime Text</a>
+                        
+                          <a class="tag" href="/tags/#软件安装与配置" title="软件安装与配置">软件安装与配置</a>
                         
                     </div>
                 </section>

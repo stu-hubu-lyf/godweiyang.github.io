@@ -153,14 +153,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -231,17 +231,17 @@
                 post-container">
 
                 <p>论文链接：<a href="https://www.aclweb.org/anthology/D/D17/D17-1279.pdf" target="_blank" rel="external">D17-1279</a></p>
-<h1><span id="摘要">摘要</span></h1><hr>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><hr>
 <p>这篇论文研究的是科技论文的信息抽取问题，比如给你一篇paper，你要找出其中的Task（任务）、Process（过程方法）、Material（资料数据）三种实体。<br>这个问题可以归类为序列标注问题，但是科技论文的标注数据还是很少的，于是本文提出了一种基于图的半监督序列标注算法。</p>
-<h1><span id="1-介绍">1 介绍</span></h1><hr>
+<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h1><hr>
 <p>背景就是近几年来论文发表数量越来越多，要对这些论文进行信息抽取，概括这篇论文的摘要。<br>由于标注过的论文很少，大量论文那都是无标注的，所以需要一个半监督的方法来进行序列标注。本文有三大贡献：一是结果比以往的更好啦，二是提出一种半监督序列标注方法，使用基于图的标签传播和可信度数据选择，三是探索了不同的利用无标注数据的方法，比如无监督的表示初始化和半监督的模型训练。</p>
 <p>以往的工作大多是基于迁移学习的，本文提出的模型比他们结果都要好（ps.迁移学习和半监督方法都说自己最好。。。）</p>
-<h1><span id="2-模型">2 模型</span></h1><hr>
+<h1 id="2-模型"><a href="#2-模型" class="headerlink" title="2 模型"></a>2 模型</h1><hr>
 <p>基本的模型就不用说了，就是传统的CNN+LSTM+CRF序列标注模型。<br>本文的重点就在于无标注数据的使用上，采用了基于图的标签传播算法，来对无标注数据进行标注，并添加到序列标注模型中进行训练。</p>
-<h1><span id="3-半监督学习">3 半监督学习</span></h1><hr>
+<h1 id="3-半监督学习"><a href="#3-半监督学习" class="headerlink" title="3 半监督学习"></a>3 半监督学习</h1><hr>
 <p>具体是怎么标注的呢？<br>概括起来就是首先计算出每个无标注数据的后验概率，然后改进基本序列标注模型中的CRF，使它能够考虑到标签的不确定性。</p>
-<h3><span id="基于图的后验估计">基于图的后验估计</span></h3><p>估计后验概率方法如下：<br>首先基于词的语义相似度构造出一个图，然后使用CRF边际函数作为正则化因子在图上进行标签传播，最后应用到神经网络中。</p>
-<h4><span id="图的构造">图的构造</span></h4><p>图中的结点代表单词，边代表词之间的语义相似性。整个图的结点数量等于标注数据和未标注数据总单词数。<br>单词的表示是用前后共5个单词的词向量、和他最近的动词的词向量、一组离散特征例如词性和大写连接而成，然后用PCA降维到100维。<br>定义两个结点之间的边权重等于欧几里得距离，如果两个点中至少一个点在另一个点的K近邻里。</p>
+<h3 id="基于图的后验估计"><a href="#基于图的后验估计" class="headerlink" title="基于图的后验估计"></a>基于图的后验估计</h3><p>估计后验概率方法如下：<br>首先基于词的语义相似度构造出一个图，然后使用CRF边际函数作为正则化因子在图上进行标签传播，最后应用到神经网络中。</p>
+<h4 id="图的构造"><a href="#图的构造" class="headerlink" title="图的构造"></a>图的构造</h4><p>图中的结点代表单词，边代表词之间的语义相似性。整个图的结点数量等于标注数据和未标注数据总单词数。<br>单词的表示是用前后共5个单词的词向量、和他最近的动词的词向量、一组离散特征例如词性和大写连接而成，然后用PCA降维到100维。<br>定义两个结点之间的边权重等于欧几里得距离，如果两个点中至少一个点在另一个点的K近邻里。</p>
 
                 
 
@@ -277,6 +277,17 @@
             
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-介绍"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">1 介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-模型"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">2 模型</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#3-半监督学习"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">3 半监督学习</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#基于图的后验估计"><span class="toc-nav-number">4.0.1.</span> <span class="toc-nav-text">基于图的后验估计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#图的构造"><span class="toc-nav-number">4.0.1.1.</span> <span class="toc-nav-text">图的构造</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
 
                 
             <!-- Sidebar Container -->
