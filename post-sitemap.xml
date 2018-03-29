@@ -39,6 +39,14 @@
     </url>
 
     <url>
+        <loc>http://godweiyang.com/2017/09/19/recommend/</loc>
+        <lastmod>2018-03-29T17:21:25.055Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://godweiyang.com/2018/01/01/POS-LM/</loc>
         <lastmod>2018-03-29T17:21:22.433Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -273,14 +281,6 @@
     <url>
         <loc>http://godweiyang.com/2017/10/03/ACL17-1161/</loc>
         <lastmod>2018-03-29T17:19:41.436Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://godweiyang.com/2017/09/19/recommend/</loc>
-        <lastmod>2018-03-29T17:03:36.320Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

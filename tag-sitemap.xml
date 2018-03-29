@@ -2,13 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://godweiyang.com/tags/%E4%BF%9D%E7%A0%94/</loc>
-        <lastmod>2018-03-29T17:19:49.642Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://godweiyang.com/tags/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/</loc>
         <lastmod>2018-03-29T17:20:19.171Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -128,14 +121,21 @@
     </url>
 
     <url>
-        <loc>http://godweiyang.com/tags/Sublime-Text/</loc>
-        <lastmod>2018-03-29T17:21:27.595Z</lastmod>
+        <loc>http://godweiyang.com/tags/%E4%BF%9D%E7%A0%94/</loc>
+        <lastmod>2018-03-29T17:21:25.055Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://godweiyang.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</loc>
+        <lastmod>2018-03-29T17:21:27.595Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/tags/Sublime-Text/</loc>
         <lastmod>2018-03-29T17:21:27.595Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
