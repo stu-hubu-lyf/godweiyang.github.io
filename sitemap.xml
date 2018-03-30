@@ -3,7 +3,7 @@
 
     <sitemap>
         <loc>http://godweiyang.com/post-sitemap.xml</loc>
-        <lastmod>2018-03-29T17:21:35.137Z</lastmod>
+        <lastmod>2018-03-30T01:48:32.886Z</lastmod>
     </sitemap>
 
     <sitemap>
@@ -12,8 +12,13 @@
     </sitemap>
 
     <sitemap>
+        <loc>http://godweiyang.com/category-sitemap.xml</loc>
+        <lastmod>2018-03-30T01:41:06.141Z</lastmod>
+    </sitemap>
+
+    <sitemap>
         <loc>http://godweiyang.com/tag-sitemap.xml</loc>
-        <lastmod>2018-03-29T17:20:19.171Z</lastmod>
+        <lastmod>2018-03-30T01:39:52.584Z</lastmod>
     </sitemap>
 
 </sitemapindex>
