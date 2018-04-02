@@ -79,13 +79,6 @@
     </url>
 
     <url>
-        <loc>http://godweiyang.com/tags/NAACL/</loc>
-        <lastmod>2018-03-30T01:47:26.550Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://godweiyang.com/tags/LSTM/</loc>
         <lastmod>2018-03-30T01:47:26.550Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -93,14 +86,21 @@
     </url>
 
     <url>
-        <loc>http://godweiyang.com/tags/NLP/</loc>
-        <lastmod>2018-03-30T01:47:52.949Z</lastmod>
+        <loc>http://godweiyang.com/tags/NAACL/</loc>
+        <lastmod>2018-03-30T01:47:26.550Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://godweiyang.com/tags/ACL/</loc>
+        <lastmod>2018-03-30T01:47:52.949Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/tags/NLP/</loc>
         <lastmod>2018-03-30T01:47:52.949Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -114,14 +114,14 @@
     </url>
 
     <url>
-        <loc>http://godweiyang.com/tags/Sublime-Text/</loc>
+        <loc>http://godweiyang.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</loc>
         <lastmod>2018-03-30T01:48:00.818Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://godweiyang.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</loc>
+        <loc>http://godweiyang.com/tags/Sublime-Text/</loc>
         <lastmod>2018-03-30T01:48:00.818Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -192,14 +192,14 @@
 
     <url>
         <loc>http://godweiyang.com/tags/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/</loc>
-        <lastmod>2018-04-02T05:31:49.753Z</lastmod>
+        <lastmod>2018-04-02T06:10:59.416Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://godweiyang.com/tags/Concrete-Mathematics/</loc>
-        <lastmod>2018-04-02T05:31:49.753Z</lastmod>
+        <lastmod>2018-04-02T06:10:59.416Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
