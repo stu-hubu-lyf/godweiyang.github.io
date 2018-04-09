@@ -15,11 +15,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          ICLR2017论文解读 - WeiYang Blog | 韦阳的博客
+          具体数学-第7课 - WeiYang Blog | 韦阳的博客
         
     </title>
 
-    <link rel="canonical" href="http://godweiyang.com/2017/11/13/ICLR17-1/">
+    <link rel="canonical" href="http://godweiyang.com/2018/04/09/concrete-math-7/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -91,20 +91,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                              <a class="tag" href="/tags/#具体数学" title="具体数学">具体数学</a>
                             
-                              <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
-                            
-                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
-                            
-                              <a class="tag" href="/tags/#ICLR" title="ICLR">ICLR</a>
+                              <a class="tag" href="/tags/#Concrete Mathematics" title="Concrete Mathematics">Concrete Mathematics</a>
                             
                         </div>
-                        <h1>ICLR2017论文解读</h1>
-                        <h2 class="subheading">基于层次递归网络的序列标注迁移学习</h2>
+                        <h1>具体数学-第7课</h1>
+                        <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by WeiYang on
-                            2017-11-13
+                            2018-04-09
                         </span>
                     </div>
                 
@@ -228,25 +224,32 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>论文链接：<a href="https://arxiv.org/pdf/1703.06345.pdf" target="_blank" rel="external">链接</a></p>
-<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><hr>
-<p>探索一种神经序列标注的迁移学习方法，适用于源任务有大量标注标签，但是目标任务标注标签很少的情况，主要有三个方面：跨领域、跨应用、跨语言。</p>
-<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h1><hr>
-<p>序列标注任务的一个难点就是怎样将知识从一个任务迁移到另一个任务上面去，通常被叫做“迁移学习”。<br>这里对三种任务（跨领域、跨应用、跨语言）分别提出了参数共享的神经网络结构，实验结果也很好。即使标注标签很多，结果也比以前的结果更好。</p>
-<h1 id="2-相关工作"><a href="#2-相关工作" class="headerlink" title="2 相关工作"></a>2 相关工作</h1><hr>
-<p>NLP迁移学习通常有两种方法，一种是基于资源的迁移，另一种是基于模型的迁移。<br>基于资源的迁移需要大量的跨语言语料，而且通常只用在跨语言任务了，在跨领域和跨应用方面还没什么应用。<br>基于模型的迁移就不需要大量的额外资源了，只要探索源任务和目标任务之间的相似性和相关性，通过修改模型结构、训练算法、特征表示。<br>这里的模型就是基于模型的迁移。和以往不同的是，这个模型利用了深度递归神经网之间的一般性，可以在跨领域、跨应用、跨语言之间转换。</p>
-<h1 id="3-方法"><a href="#3-方法" class="headerlink" title="3 方法"></a>3 方法</h1><hr>
-<p><img src="/2017/11/13/ICLR17-1/1.png" data-action="zoom"><br>上图分别是基本模型、跨领域模型、跨应用模型、跨语言模型。</p>
-<h3 id="3-1-基本模型"><a href="#3-1-基本模型" class="headerlink" title="3.1 基本模型"></a>3.1 基本模型</h3><p>首先字符层输入每个字符表示，输出单词的字符层表示，然后和词向量结合作为每个词的表示，然后经过一个CNN或者RNN，隐含层输出再经过一个CRF得到每个词的标签。</p>
-<h3 id="3-2-迁移学习结构"><a href="#3-2-迁移学习结构" class="headerlink" title="3.2 迁移学习结构"></a>3.2 迁移学习结构</h3><p>跨领域、跨应用、跨语言每种一个迁移结构，和基本模型不同的是，共享的参数不同。</p>
-<h4 id="3-2-1-跨领域迁移"><a href="#3-2-1-跨领域迁移" class="headerlink" title="3.2.1 跨领域迁移"></a>3.2.1 跨领域迁移</h4><p>跨领域迁移有两种情况，一种是两个领域标签存在映射关系，一种是不存在映射关系。<br>第一种情况结构如图b所示，可以共享CRF层以及下面的所有层，最后加一个标签映射的步骤就行了<br>第二种情况结构如图c所示，CRF层独立训练。</p>
-<h4 id="3-2-2-跨应用迁移"><a href="#3-2-2-跨应用迁移" class="headerlink" title="3.2.2 跨应用迁移"></a>3.2.2 跨应用迁移</h4><p>这里假设两种应用是同一种语言，所以和跨领域标签无映射关系类似，用的是图c的结构。</p>
-<h4 id="3-2-3-跨语言迁移"><a href="#3-2-3-跨语言迁移" class="headerlink" title="3.2.3 跨语言迁移"></a>3.2.3 跨语言迁移</h4><p>这里重点放在两种字母表相同的语言上，比如英语和西班牙语。<br>由于字符相同，所以采用图d结构，共享字符层和词向量。</p>
-<h3 id="3-3-训练"><a href="#3-3-训练" class="headerlink" title="3.3 训练"></a>3.3 训练</h3><p>假设从任务\(s\)迁移到任务\(t\)，训练集分为\(X_s\)和\(X_t\)，参数分为\(W_s\)和\(W_t\)。其中模型参数还分为任务特定参数和共享参数：<br>\[{W_s} = {W_{s,spec}} \cup {W_{shared}},{W_t} = {W_{t,spec}} \cup {W_{shared}}\]训练过程如下：<br>每一次迭代，都采用二项分布随机抽取一个任务\(s\)或\(t\)，然后训练该任务特定模型参数和共享参数。由于源任务和目标任务收敛速度不一定一样，所以对目标任务提前停止。</p>
-<h3 id="3-4-模型实现"><a href="#3-4-模型实现" class="headerlink" title="3.4 模型实现"></a>3.4 模型实现</h3><p>RNN采用GRU，假设隐含层输出为\(h\)，输出标签为\(y\)，定义CRF的目标函数为<br>\[f(h,y) - \log \sum\limits_{y’ \in \gamma (h)} {\exp (f(h,y’) + \cos {\rm{t}}(y,y’))} \]</p>
-<h1 id="4-实验"><a href="#4-实验" class="headerlink" title="4 实验"></a>4 实验</h1><p><img src="/2017/11/13/ICLR17-1/2.png" data-action="zoom"><br><img src="/2017/11/13/ICLR17-1/3.png" data-action="zoom"><br>上图是实验结果，其中跨领域迁移：ade，跨应用迁移：fgh，跨语言迁移：ij，跨领域和应用：b，跨领域、应用和语言：c。<br><img src="/2017/11/13/ICLR17-1/4.png" data-action="zoom"><br>上表是各类任务在不同标签率下迁移学习和无迁移学习的性能对比。<br>可以看出三种迁移结构性能提升的顺序是A&gt;B&gt;C，因为结构C比如跨语言模型，源任务和目标任务相似性很小。<br><img src="/2017/11/13/ICLR17-1/5.png" data-action="zoom"><br>上图是和其他模型比较的结果。</p>
-<h1 id="5-结论"><a href="#5-结论" class="headerlink" title="5 结论"></a>5 结论</h1><hr>
-<p>提出一种神经序列标注的迁移学习方法，主要有三个方面：跨领域、跨应用、跨语言。<br>以下三个因素对迁移学习性能有很大影响：目标任务标签数量、源任务和目标任务相关性、能够共享的参数数量。<br>在以后的工作中，可以在跨语言迁移学习中尝试结合基于模型的迁移和基于资源的迁移。</p>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=509728841&auto=1&height=66"></iframe></div>
+
+<p>首先声明一下，最近这段时间忙毕设，没时间更新博客了，大家见谅。</p>
+<p>今天这节课开始讲解整数取整相关知识，主要是数论相关的了。</p>
+<h1 id="符号定义"><a href="#符号定义" class="headerlink" title="符号定义"></a>符号定义</h1><hr>
+<p>向下取整函数\(\left\lfloor x \right\rfloor \)定义为小于等于\(x\)的最大整数。<br>向上取整函数\(\left\lceil x \right\rceil \)定义为大于等于\(x\)的最小整数。<br>\(\{ x\} \)定义为实数\(x\)的小数部分，即<br>\[\{ x\}  = x - \left\lfloor x \right\rfloor \]</p>
+<h1 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h1><hr>
+<h2 id="性质1"><a href="#性质1" class="headerlink" title="性质1"></a>性质1</h2><p>\[\left\lceil x \right\rceil  - \left\lfloor x \right\rfloor  = [x \in \mathbb{Z}]\]</p>
+<h2 id="性质2"><a href="#性质2" class="headerlink" title="性质2"></a>性质2</h2><p>取整函数范围：<br>\[x - 1 &lt; \left\lfloor x \right\rfloor  \le x \le \left\lceil x \right\rceil  &lt; x + 1\]</p>
+<h2 id="性质3"><a href="#性质3" class="headerlink" title="性质3"></a>性质3</h2><p>负数的取整：<br>\[\begin{array}{l}\left\lfloor { - x} \right\rfloor  =  - \left\lceil x \right\rceil \\\left\lceil { - x} \right\rceil  =  - \left\lfloor x \right\rfloor \end{array}\]</p>
+<h2 id="性质4"><a href="#性质4" class="headerlink" title="性质4"></a>性质4</h2><p>取整函数中的整数可以提取出来：<br>\[\left\lfloor {x + n} \right\rfloor  = \left\lfloor x \right\rfloor  + n\]</p>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><hr>
+<h2 id="应用1"><a href="#应用1" class="headerlink" title="应用1"></a>应用1</h2><p>证明：<br>\[\left\lfloor {\sqrt {\left\lfloor x \right\rfloor } } \right\rfloor  = \left\lfloor {\sqrt x } \right\rfloor \]</p>
+<p>更一般的，我们还可以证明，对于任意连续、递增的函数\(f(x)\)，如果它满足<br>\[f(x) \in \mathbb{Z} \Rightarrow x \in \mathbb{Z}\]<br>那么有<br>\[\begin{array}{l}\left\lfloor {f(x)} \right\rfloor  = \left\lfloor {f(\left\lfloor x \right\rfloor )} \right\rfloor \\\left\lceil {f(x)} \right\rceil  = \left\lceil {f(\left\lceil x \right\rceil )} \right\rceil \end{array}\]</p>
+<p>我们证明第2个式子，第1个同理可证。</p>
+<p>如果\(x = \left\lceil x \right\rceil \)，显然成立。</p>
+<p>否则\(x &lt; \left\lceil x \right\rceil \)，因为\(f(x)\)递增，所以有<br>\[f(x) &lt; f(\left\lceil x \right\rceil )\]<br>两边同时取整，有<br>\[\left\lceil {f(x)} \right\rceil  \le \left\lceil {f(\left\lceil x \right\rceil )} \right\rceil \]<br>要证左右两边相等，那么只要证<br>\[\left\lceil {f(x)} \right\rceil  &lt; \left\lceil {f(\left\lceil x \right\rceil )} \right\rceil \]<br>不成立即可。假设上式成立，那么由中间值定理，一定存在\(x \le y &lt; \left\lceil x \right\rceil \)，使得<br>\[f(y) = \left\lceil {f(x)} \right\rceil \]<br><strong>敲黑板！！</strong>这里是怎么来的呢？<br>由下图可以看出，当下面式子成立时，满足中间值定理<br>\[f(x) &lt; \left\lceil {f(x)} \right\rceil  &lt; f(\left\lceil x \right\rceil )\]<br>但是在这里，我们假设是<br>\[\left\lceil {f(x)} \right\rceil  &lt; \left\lceil {f(\left\lceil x \right\rceil )} \right\rceil \]<br>那么由\(\left\lceil {f(x)} \right\rceil  &lt; \left\lceil {f(\left\lceil x \right\rceil )} \right\rceil \)能否推出\(\left\lceil {f(x)} \right\rceil  &lt; f(\left\lceil x \right\rceil )\)呢？当然是可以的。<br>\[\begin{array}{l}\left\lceil {f(x)} \right\rceil  &lt; \left\lceil {f(\left\lceil x \right\rceil )} \right\rceil \\ \Rightarrow \left\lceil {f(x)} \right\rceil  \le \left\lceil {f(\left\lceil x \right\rceil )} \right\rceil  - 1 &lt; f(\left\lceil x \right\rceil )\end{array}\]<br><img src="/2018/04/09/concrete-math-7/1.jpg" data-action="zoom"><br>所以<br>\[f(y) \in \mathbb{Z} \Rightarrow y \in \mathbb{Z}\]<br>又因为\(x \le y &lt; \left\lceil x \right\rceil \)，所以不存在整数\(y\)，矛盾！</p>
+<p>所以证得<br>\[\left\lceil {f(x)} \right\rceil  = \left\lceil {f(\left\lceil x \right\rceil )} \right\rceil \]</p>
+<p>另一个特殊的例子是<br>\[\left\lfloor {\frac{ {x + m}}{n}} \right\rfloor  = \left\lfloor {\frac{ {\left\lfloor x \right\rfloor  + m}}{n}} \right\rfloor \]<br>其中\(m\)和\(n\)都是整数，并且\(n\)是正整数。</p>
+<h2 id="应用2"><a href="#应用2" class="headerlink" title="应用2"></a>应用2</h2><p>接着介绍区间相关的性质。</p>
+<p>求1到1000中使得下列式子成立的\(n\)一共有多少个？<br>\[\left\lfloor {\sqrt[3]{n}} \right\rfloor |n\]<br>求解方法如下：<br>\[\begin{array}{l}W{\rm{ = }}\sum\limits_{1 \le n \le 1000} {\left[ {\left\lfloor {\sqrt[3]{n}} \right\rfloor |n} \right]} \\ = \sum\limits_{k,n} {\left[ {k = \left\lfloor {\sqrt[3]{n}} \right\rfloor } \right]\left[ {k|n} \right]\left[ {1 \le n \le 1000} \right]} \\ = \sum\limits_{k,m,n} {\left[ { {k^3} \le n &lt; { {(k + 1)}^3}} \right]\left[ {n = km} \right]} \left[ {1 \le n \le 1000} \right]\\ = 1 + \sum\limits_{k,m} {\left[ { {k^3} \le km &lt; { {(k + 1)}^3}} \right]} \left[ {1 \le k &lt; 10} \right]\\ = 1 + \sum\limits_{k,m} {\left[ {m \in [{k^2},{ {(k + 1)}^3}/k)} \right]} \left[ {1 \le k &lt; 10} \right]\\ = 1 + \sum\limits_{1 \le k &lt; 10} {(\left\lceil { {k^2} + 3k + 3 + 1/k} \right\rceil  - \left\lceil { {k^2}} \right\rceil )} \\ = 1 + \sum\limits_{1 \le k &lt; 10} {(3k + 4)} \\ = 172\end{array}\]</p>
+<p>继续推广，求1到\(N\)中使得上面式子成立的\(n\)有多少个？<br>令<br>\[K = \left\lfloor {\sqrt[3]{N}} \right\rfloor \]<br>也就是小于等于\(\left\lfloor {\sqrt[3]{N}} \right\rfloor \)的最大整数。<br>所以<br>\[\begin{array}{l}W = \sum\limits_{1 \le k &lt; K} {(3k + 4)}  + \sum\limits_m {\left[ { {K^3} \le Km \le N} \right]} \\ = \left\lfloor {N/K} \right\rfloor  + \frac{1}{2}{K^2} + \frac{5}{2}K - 3\end{array}\]<br>渐进地等于<br>\[W = \frac{3}{2}{N^{2/3}} + O({N^{1/3}})\]</p>
+<h2 id="应用3"><a href="#应用3" class="headerlink" title="应用3"></a>应用3</h2><p>定义一个实数的谱为：<br>\[Spec(\alpha ) = \{ \left\lfloor \alpha  \right\rfloor ,\left\lfloor {2\alpha } \right\rfloor ,\left\lfloor {3\alpha } \right\rfloor , \ldots \} \]</p>
+<p>很容易证明如果两个实数\(\alpha  \ne \beta \)，那么<br>\[Spec(\alpha ) \ne Spec(\beta )\]</p>
+<p>假设\(\alpha  &lt; \beta \)，那么令<br>\[m(\beta  - \alpha ) \ge 1\]<br>所以<br>\(m\beta  \ge m\alpha  + 1 \Rightarrow \left\lfloor {m\beta } \right\rfloor  &gt; \left\lfloor {m\alpha } \right\rfloor \)<br>所以集合\(Spec(\beta )\)中小于\(\left\lfloor {m\alpha } \right\rfloor \)的元素个数小于\(m\)。而集合\(Spec(\alpha )\)中小于\(\left\lfloor {m\alpha } \right\rfloor \)的元素个数大于等于\(m\)。所以两个集合不相等。</p>
+<p>谱有很多奇妙的性质，例如下面两个谱：<br>\[\begin{array}{l}Spec(\sqrt 2 ) = \{ \left\lfloor {\sqrt 2 } \right\rfloor ,\left\lfloor {2\sqrt 2 } \right\rfloor ,\left\lfloor {3\sqrt 2 } \right\rfloor , \ldots \} \\Spec(2{\rm{ + }}\sqrt 2 ) = \{ \left\lfloor {2{\rm{ + }}\sqrt 2 } \right\rfloor ,\left\lfloor {2(2{\rm{ + }}\sqrt 2 )} \right\rfloor ,\left\lfloor {3(2{\rm{ + }}\sqrt 2 )} \right\rfloor , \ldots \} \end{array}\]<br>可以发现，这两个谱正好划分了正整数集。<br>证明方法也很简单，只要证明对任意正整数\(n\)，两个集合中小于\(n\)的元素个数之和为\(n\)，过程如下：<br>\[\begin{array}{l}\left\lfloor {k\sqrt 2 } \right\rfloor  \le n\\ \Rightarrow k\sqrt 2  &lt; n + 1\\ \Rightarrow k &lt; \frac{ {n + 1}}{ {\sqrt 2 }}\end{array}\]<br>所以第一个集合中小于\(n\)的元素个数为<br>\[\left\lfloor {\frac{ {n + 1}}{ {\sqrt 2 }}} \right\rfloor \]<br>同理第二个集合中小于\(n\)的元素个数为<br>\[\left\lfloor {\frac{ {n + 1}}{ {2 + \sqrt 2 }}} \right\rfloor \]<br>所以总个数为<br>\[\begin{array}{l}\left\lfloor {\frac{ {n + 1}}{ {\sqrt 2 }}} \right\rfloor  + \left\lfloor {\frac{ {n + 1}}{ {2 + \sqrt 2 }}} \right\rfloor \\ = \left\lfloor {\frac{ {\sqrt 2 }}{2}(n + 1)} \right\rfloor  + \left\lfloor {\frac{ {2 - \sqrt 2 }}{2}(n + 1)} \right\rfloor \\ = n + 1 + \left\lfloor {\frac{ {\sqrt 2 }}{2}(n + 1)} \right\rfloor  + \left\lfloor { - \frac{ {\sqrt 2 }}{2}(n + 1)} \right\rfloor \\ = n + 1 + \left\lfloor {\frac{ {\sqrt 2 }}{2}(n + 1)} \right\rfloor  + \left\lfloor {\frac{ {\sqrt 2 }}{2}(n + 1)} \right\rfloor  - 1\\ = n\end{array}\]<br>得证。</p>
 
                 
 
@@ -254,13 +257,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2017/11/16/sw-compiler/" data-toggle="tooltip" data-placement="top" title="编译原理实践期末大作业">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/10/25/ACL17-2027/" data-toggle="tooltip" data-placement="top" title="ACL2017论文解读[P17-2027]">Next Post &rarr;</a>
+                            <a href="/2018/04/02/concrete-math-6/" data-toggle="tooltip" data-placement="top" title="具体数学-第6课">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -288,7 +287,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-介绍"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">1 介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-相关工作"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">2 相关工作</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#3-方法"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">3 方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-1-基本模型"><span class="toc-nav-number">4.0.1.</span> <span class="toc-nav-text">3.1 基本模型</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-2-迁移学习结构"><span class="toc-nav-number">4.0.2.</span> <span class="toc-nav-text">3.2 迁移学习结构</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-2-1-跨领域迁移"><span class="toc-nav-number">4.0.2.1.</span> <span class="toc-nav-text">3.2.1 跨领域迁移</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-2-2-跨应用迁移"><span class="toc-nav-number">4.0.2.2.</span> <span class="toc-nav-text">3.2.2 跨应用迁移</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-2-3-跨语言迁移"><span class="toc-nav-number">4.0.2.3.</span> <span class="toc-nav-text">3.2.3 跨语言迁移</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-3-训练"><span class="toc-nav-number">4.0.3.</span> <span class="toc-nav-text">3.3 训练</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-4-模型实现"><span class="toc-nav-number">4.0.4.</span> <span class="toc-nav-text">3.4 模型实现</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#4-实验"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">4 实验</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#5-结论"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">5 结论</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#符号定义"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">符号定义</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#性质"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">性质</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性质1"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">性质1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性质2"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">性质2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性质3"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">性质3</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性质4"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">性质4</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#应用"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">应用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#应用1"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">应用1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#应用2"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">应用2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#应用3"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">应用3</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -308,13 +307,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                          <a class="tag" href="/tags/#具体数学" title="具体数学">具体数学</a>
                         
-                          <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
-                        
-                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
-                        
-                          <a class="tag" href="/tags/#ICLR" title="ICLR">ICLR</a>
+                          <a class="tag" href="/tags/#Concrete Mathematics" title="Concrete Mathematics">Concrete Mathematics</a>
                         
                     </div>
                 </section>

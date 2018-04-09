@@ -137,13 +137,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -152,6 +145,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -218,6 +218,41 @@
             
                 <!-- Main Content -->
 
+
+<div class="post-preview">
+
+    <a href="/2018/03/09/nvidia-cuda-dynet/">
+        <h2 class="post-title">
+            
+            Ubuntu16.04下Nvidia+Cuda8.0+Dynet安装教程
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            
+
+之前也在笔记本上装过几次cuda，均以失败告终，网上的教程都没有完全能拿来用的，多多少少都会出现一些问题。这次终于完完全全安装成功了，可喜可贺。。。说起来都是泪。
+注意显卡驱动安装最新版就行了，但是cuda最好还是别安装最新版了，装个8.0版本吧，不然都是泪。
+最终版本为ubuntu16.04 + cuda8.0 + gcc5.4。
+NVIDIA驱动安装
+进入NVIDIA官网，选择适合自......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by WeiYang on
+            2018-03-09
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#软件安装与配置" title="软件安装与配置">软件安装与配置</a>
+            
+        </div>
+    
+
+</div>
+<hr>
 
 <div class="post-preview">
 
@@ -552,49 +587,11 @@ Semina......
             
               <a href="/tags/#深度学习" title="深度学习">深度学习</a>
             
-              <a href="/tags/#序列标注" title="序列标注">序列标注</a>
-            
               <a href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
             
+              <a href="/tags/#序列标注" title="序列标注">序列标注</a>
+            
               <a href="/tags/#AAAI" title="AAAI">AAAI</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2018/01/01/POS-LM/">
-        <h2 class="post-title">
-            
-            词性标注+语言模型简易实现
-        </h2>
-        <h3 class="post-subtitle">
-            基于Semi-supervised sequence tagging with bidirectional language models
-        </h3>
-        <div class="post-content-preview">
-            文本挖掘课的project，实现的是词性标注，增加了语言模型表示。语言模型在小数据下会过拟合，但是大数据训练要三个星期。。。所以还是放弃了，不添加语言模型好了。词性标注的话如果添加CRF效果反而会下降，也是很奇怪哦。。。如果直接用最裸的BiLSTM+charRNN的话，F1也能有97%左右，知足了，就这样吧。数据和完整程序下载地址：传送门
-下面是两组实验结果，由于速度太慢了，一组要1小时训练......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by WeiYang on
-            2018-01-01
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#ACL" title="ACL">ACL</a>
-            
-              <a href="/tags/#NLP" title="NLP">NLP</a>
-            
-              <a href="/tags/#神经网络" title="神经网络">神经网络</a>
-            
-              <a href="/tags/#深度学习" title="深度学习">深度学习</a>
-            
-              <a href="/tags/#dynet" title="dynet">dynet</a>
             
         </div>
     
@@ -659,6 +656,10 @@ Semina......
             
         
             
+            <a href="/tags/#迁移学习" title="迁移学习" rel="4">迁移学习</a>
+            
+        
+            
             <a href="/tags/#序列标注" title="序列标注" rel="5">序列标注</a>
             
         
@@ -667,19 +668,11 @@ Semina......
             
         
             
-            <a href="/tags/#迁移学习" title="迁移学习" rel="4">迁移学习</a>
-            
-        
-            
-            <a href="/tags/#dynet" title="dynet" rel="1">dynet</a>
-            
-        
-            
             <a href="/tags/#AAAI" title="AAAI" rel="1">AAAI</a>
             
         
             
-            <a href="/tags/#句法分析" title="句法分析" rel="4">句法分析</a>
+            <a href="/tags/#dynet" title="dynet" rel="1">dynet</a>
             
         
             
@@ -691,7 +684,7 @@ Semina......
             
         
             
-            <a href="/tags/#NAACL" title="NAACL" rel="1">NAACL</a>
+            <a href="/tags/#保研" title="保研" rel="2">保研</a>
             
         
             
@@ -703,19 +696,19 @@ Semina......
             
         
             
-            <a href="/tags/#保研" title="保研" rel="2">保研</a>
+            <a href="/tags/#NAACL" title="NAACL" rel="1">NAACL</a>
             
         
             
-            <a href="/tags/#具体数学" title="具体数学" rel="8">具体数学</a>
+            <a href="/tags/#句法分析" title="句法分析" rel="4">句法分析</a>
             
         
             
-            <a href="/tags/#Concrete Mathematics" title="Concrete Mathematics" rel="8">Concrete Mathematics</a>
+            <a href="/tags/#具体数学" title="具体数学" rel="9">具体数学</a>
             
         
             
-            <a href="/tags/#EOJ" title="EOJ" rel="1">EOJ</a>
+            <a href="/tags/#Concrete Mathematics" title="Concrete Mathematics" rel="9">Concrete Mathematics</a>
             
         
             
@@ -735,11 +728,7 @@ Semina......
             
         
             
-            <a href="/tags/#软件安装与配置" title="软件安装与配置" rel="2">软件安装与配置</a>
-            
-        
-            
-            <a href="/tags/#Sublime Text" title="Sublime Text" rel="1">Sublime Text</a>
+            <a href="/tags/#EOJ" title="EOJ" rel="1">EOJ</a>
             
         
             
@@ -752,6 +741,14 @@ Semina......
         
             
             <a href="/tags/#C#" title="C#" rel="1">C#</a>
+            
+        
+            
+            <a href="/tags/#软件安装与配置" title="软件安装与配置" rel="2">软件安装与配置</a>
+            
+        
+            
+            <a href="/tags/#Sublime Text" title="Sublime Text" rel="1">Sublime Text</a>
             
         
     </div>
@@ -827,6 +824,10 @@ Semina......
     <ul>
       
         <li>
+          <a href="/2018/04/09/concrete-math-7/">具体数学-第7课</a>
+        </li>
+      
+        <li>
           <a href="/2018/04/02/concrete-math-6/">具体数学-第6课</a>
         </li>
       
@@ -840,10 +841,6 @@ Semina......
       
         <li>
           <a href="/2018/03/19/concrete-math-4/">具体数学-第4课</a>
-        </li>
-      
-        <li>
-          <a href="/2018/03/18/graduate-technique/">毕业论文相关细节记录</a>
         </li>
       
     </ul>
@@ -876,7 +873,7 @@ Semina......
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li></ul>
     </div>
 
         <hr>
@@ -885,7 +882,7 @@ Semina......
 
     <h5>categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/EOJ/">EOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/句法分析/">句法分析</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/序列标注/">序列标注</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/">数学</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/树形LSTM/">树形LSTM</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/模板/">模板</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/问答系统/">问答系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/EOJ/">EOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/句法分析/">句法分析</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/序列标注/">序列标注</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/">数学</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/树形LSTM/">树形LSTM</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/模板/">模板</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/问答系统/">问答系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
     </div>
 
         <hr>
@@ -955,7 +952,7 @@ Semina......
                     <a><img alt="web trackers" src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_visitors/counter.png" 
                     style="border-width:0"/></a>
                     visitors since 2017/09/11, 
-                    <span class="post-count">34.5k words altogether</span>
+                    <span class="post-count">36.0k words altogether</span>
                 </p>
                   
                 </div>
