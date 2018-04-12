@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="baidu-site-verification" content="rlXUrNbP8h" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ECNU AntNLP Group - WeiYang">
+    <meta name="keyword"  content="ECNU NLP DeepLearning">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Hexo+Github博客搭建教程 - WeiYang Blog | 韦阳的博客
+        
+    </title>
+
+    <link rel="canonical" href="http://godweiyang.com/2018/04/13/hexo-blog/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('header.jpg')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                            
+                              <a class="tag" href="/tags/#Github" title="Github">Github</a>
+                            
+                              <a class="tag" href="/tags/#博客" title="博客">博客</a>
+                            
+                        </div>
+                        <h1>Hexo+Github博客搭建教程</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by WeiYang on
+                            2018-04-13
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">WeiYang Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/bbs/">BBS</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>去年9月的时候开始搭建了第一个自己的独立博客，到现在也稍微像模像样了。很多小伙伴应该也想过搭建一个自己的博客，网上也有一堆详细教程。我在此稍稍总结一下具体的搭建步骤，另外网上很少有修改博客源码的个性化教程，我就稍稍分享一下我的一些修改经验，更多的个性化操作需要你自己以后去摸索。</p>
+<p>我不是一个前端程序员，有些东西不是很了解，说的不好大家见谅。</p>
+<p>首先要了解一下我们搭建博客要用到的框架。Hexo是高效的静态站点生成框架，它基于Node.js。通过Hexo，你可以直接使用Markdown语法来撰写博客。相信很多小伙伴写工程都写过README.md文件吧，对，就是这个格式的！写完后只需两三条命令即可将生成的网页上传到你的github上，然后别人就可以看到你的网页啦。是不是很简单？你无需关心网页源代码的具体细节，你只需要用心写好你的博客内容就行。</p>
+<h1 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h1><hr>
+<p>首先下载最新版<a href="https://nodejs.org/dist/v9.11.1/node-v9.11.1-x64.msi" target="_blank" rel="external">Node.js</a>，我这里给的是64位的。</p>
+<p>安装选项全部默认，一路点击<code>Next</code>。</p>
+<p>最后安装好之后，按<code>Win+R</code>打开命令提示符，输入<code>node -v</code>和<code>npm -v</code>，如果出现版本号，那么就安装成功了。</p>
+<h1 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h1><hr>
+<p>为了把本地的网页文件上传到github上面去，我们需要用到分布式版本控制工具————Git<a href="https://git-scm.com/download/win" target="_blank" rel="external">[下载地址]</a>。</p>
+<p>安装选项还是全部默认，只不过最后一步添加路径时选择<code>Use Git from the Windows Command Prompt</code>，这样我们就可以直接在命令提示符里打开git了。</p>
+<p>安装完成后在命令提示符中输入<code>git --version</code>验证是否安装成功。</p>
+<h1 id="注册Github账号"><a href="#注册Github账号" class="headerlink" title="注册Github账号"></a>注册Github账号</h1><hr>
+<p>接下来就去注册一个github账号，用来存放我们的网站。大多数小伙伴应该都有了吧，作为一个合格的程序猿（媛）还是要有一个的。</p>
+<p>打开<a href="https://github.com/" target="_blank" rel="external">https://github.com/</a>，新建一个项目，如下所示：<br><img src="/2018/04/13/hexo-blog/1.jpg" data-action="zoom"><br>然后如下图所示，输入自己的项目名字，后面一定要加<code>.github.io</code>后缀，README初始化也要勾上。<br><img src="/2018/04/13/hexo-blog/2.jpg" data-action="zoom"><br>然后项目就建成了，点击<code>Settings</code>，向下拉到最后有个<code>GitHub Pages</code>，点击<code>Choose a theme</code>选择一个主题。然后等一会儿，再回到<code>GitHub Pages</code>，会变成下面这样：<br><img src="/2018/04/13/hexo-blog/3.jpg" data-action="zoom"><br>点击那个链接，就会出现自己的网页啦，效果如下：<br><img src="/2018/04/13/hexo-blog/4.jpg" data-action="zoom"></p>
+<h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><hr>
+<p>在合适的地方新建一个文件夹，用来存放自己的博客文件，比如我的博客文件都存放在<code>D:\study\program\blog</code>目录下。</p>
+<p>在该目录下右键点击<code>Git Bash Here</code>，打开git的控制台窗口，以后我们所有的操作都在git控制台进行，就不要用Windows自带的控制台了。</p>
+<p>定位到该目录下，输入<code>npm install hexo-cli -g</code>安装Hexo。会有几个报错，无视它就行。</p>
+<p>然后输入<code>npm install hexo --save</code>继续安装。</p>
+<p>安装完后输入<code>hexo -v</code>验证是否安装成功。</p>
+<p>然后就要初始化我们的网站，输入<code>hexo init</code>初始化文件夹，接着输入<code>npm install</code>安装必备的组件。</p>
+<p>这样本地的网站配置也弄好啦，输入<code>hexo g</code>生成静态网页，然后输入<code>hexo s</code>打开本地服务器，然后浏览器打开<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a>，就可以看到我们的博客啦，效果如下：<br><img src="/2018/04/13/hexo-blog/5.jpg" data-action="zoom"></p>
+<p>按<code>ctrl+c</code>关闭本地服务器。</p>
+<h1 id="连接Github与本地"><a href="#连接Github与本地" class="headerlink" title="连接Github与本地"></a>连接Github与本地</h1><hr>
+<p>首先右键打开git bash，然后输入下面命令：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git<span class="built_in"> config </span>--global user.name <span class="string">"godweiyang"</span></div><div class="line">git<span class="built_in"> config </span>--global user.email <span class="string">"792321264@qq.com"</span></div></pre></td></tr></table></figure></p>
+<p>用户名和邮箱根据你注册github的信息自行修改。</p>
+<p>然后生成密钥SSH key：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ssh-keygen</span> <span class="selector-tag">-t</span> <span class="selector-tag">rsa</span> <span class="selector-tag">-C</span> "792321264@<span class="keyword">qq</span>.<span class="keyword">com</span>"</div></pre></td></tr></table></figure></p>
+<p>输入<code>eval &quot;$(ssh-agent -s)&quot;</code>，添加密钥到ssh-agent。</p>
+<p>再输入<code>ssh-add ~/.ssh/id_rsa</code>，添加生成的SSH key到ssh-agent。</p>
+<p>打开<a href="http://github.com" target="_blank" rel="external">github</a>，在头像下面点击<code>settings</code>，再点击<code>SSH and GPG keys</code>，新建一个SSH，名字随便。</p>
+<p>打开<code>C:\Users\Administrator\.ssh\id_rsa.pub</code>，注意是隐藏文件夹，将其中的内容复制到新建的SSH中。</p>
+<p>输入<code>ssh -T git@github.com</code>，如果如下图所示，出现你的用户名，那就成功了。<br><img src="/2018/04/13/hexo-blog/6.jpg" data-action="zoom"></p>
+<p>打开博客根目录下的<code>_config.yml</code>文件，这是博客的配置文件，在这里你可以修改与博客相关的各种信息。</p>
+<p>修改最后一行的配置：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">deploy</span>:</div><div class="line">  <span class="attribute">type</span>: git</div><div class="line">  <span class="attribute">repository</span>: <span class="attribute">https</span>:<span class="comment">//github.com/godweiyang/godweiyang.github.io</span></div><div class="line">  <span class="attribute">branch</span>: master</div></pre></td></tr></table></figure></p>
+<p>repository修改为你自己的github项目地址。<strong>不过你这里看到的可能与我有点不一样，因为我已经修改过主题了，所以这一步先不用管，换完主题之后记得回来修改！</strong></p>
+<h1 id="写文章、发布文章"><a href="#写文章、发布文章" class="headerlink" title="写文章、发布文章"></a>写文章、发布文章</h1><hr>
+<p>首先在博客根目录下右键打开git，安装一个扩展<code>npm install hexo-deployer-git --save</code>。</p>
+<p>然后输入<code>hexo new post &quot;article title&quot;</code>，新建一篇文章。</p>
+<p>然后打开<code>D:\study\program\blog\source\_posts</code>的目录，可以发现下面多了一个文件夹和一个<code>.md</code>文件，一个用来存放你的图片等数据，另一个就是你的文章文件啦。</p>
+<p>编写完markdown文件后，根目录下输入<code>hexo g</code>生成静态网页，然后输入<code>hexo s</code>可以本地预览效果，最后输入<code>hexo d</code>上传到github上。这时打开你的github.io主页就能看到发布的文章啦。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/04/09/concrete-math-7/" data-toggle="tooltip" data-placement="top" title="具体数学-第7课">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+                <p></p>
+                <div id="cyReward" role="cylabs" data-use="reward" align="center"></div>
+                    
+                    <div id="SOHUCS" ></div> 
+                    <script type="text/javascript"> 
+                    (function(){ 
+                    var appid = 'cytdwHIyN'; 
+                    var conf = 'prod_a8118d12ad20449218d5a5d7e94c0000'; 
+                    var width = window.innerWidth || document.documentElement.clientWidth; 
+                    if (width < 960) { 
+                    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+                    <script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
+                    <script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cytdwHIyN"></script>
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#安装Node-js"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">安装Node.js</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#安装Git"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">安装Git</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#注册Github账号"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">注册Github账号</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#安装Hexo"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">安装Hexo</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#连接Github与本地"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">连接Github与本地</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#写文章、发布文章"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">写文章、发布文章</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                        
+                          <a class="tag" href="/tags/#Github" title="Github">Github</a>
+                        
+                          <a class="tag" href="/tags/#博客" title="博客">博客</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.csdn.net/cww97" target="_blank">cww97</a></li>
+                    
+                        <li><a href="https://www.dreamwings.cn/" target="_blank">dreamwings</a></li>
+                    
+                        <li><a href="http://hzwer.com/" target="_blank">hzwer</a></li>
+                    
+                        <li><a href="https://www.jxtxzzw.com/wordpress" target="_blank">jxtxzzw空间</a></li>
+                    
+                        <li><a href="http://zerol.me/" target="_blank">zerol</a></li>
+                    
+                        <li><a href="http://www.itaowei.cn/" target="_blank">望城风景</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!--  <script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>  -->
+<style>
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<script type="text/javascript" src="/js/zooming.js"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://user.qzone.qq.com/792321264">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-qq fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; WeiYang 2018 
+                </p>
+                <p class="copyright text-muted">
+                    <a><img alt="web trackers" src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_visitors/counter.png" 
+                    style="border-width:0"/></a>
+                    visitors since 2017/09/11, 
+                    <span class="post-count">37.5k words altogether</span>
+                </p>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://godweiyang.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://godweiyang.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>
