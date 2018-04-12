@@ -137,13 +137,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -152,6 +145,13 @@
                         
                         <li>
                             <a href="/bbs/">BBS</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -222,13 +222,17 @@
                 
                     <a href="#序列标注" title="序列标注" rel="5">序列标注</a>
                 
-                    <a href="#AAAI" title="AAAI" rel="1">AAAI</a>
+                    <a href="#ICLR" title="ICLR" rel="1">ICLR</a>
                 
                     <a href="#dynet" title="dynet" rel="1">dynet</a>
                 
-                    <a href="#ICLR" title="ICLR" rel="1">ICLR</a>
+                    <a href="#AAAI" title="AAAI" rel="1">AAAI</a>
                 
                     <a href="#句法分析" title="句法分析" rel="4">句法分析</a>
+                
+                    <a href="#自然语言处理" title="自然语言处理" rel="3">自然语言处理</a>
+                
+                    <a href="#半监督学习" title="半监督学习" rel="2">半监督学习</a>
                 
                     <a href="#TACL" title="TACL" rel="1">TACL</a>
                 
@@ -237,10 +241,6 @@
                     <a href="#NAACL" title="NAACL" rel="1">NAACL</a>
                 
                     <a href="#保研" title="保研" rel="2">保研</a>
-                
-                    <a href="#自然语言处理" title="自然语言处理" rel="3">自然语言处理</a>
-                
-                    <a href="#半监督学习" title="半监督学习" rel="2">半监督学习</a>
                 
                     <a href="#具体数学" title="具体数学" rel="9">具体数学</a>
                 
@@ -258,11 +258,11 @@
                 
                     <a href="#博客" title="博客" rel="1">博客</a>
                 
-                    <a href="#EOJ" title="EOJ" rel="1">EOJ</a>
+                    <a href="#随笔" title="随笔" rel="1">随笔</a>
                 
                     <a href="#软件安装与配置" title="软件安装与配置" rel="2">软件安装与配置</a>
                 
-                    <a href="#随笔" title="随笔" rel="1">随笔</a>
+                    <a href="#EOJ" title="EOJ" rel="1">EOJ</a>
                 
                     <a href="#Sublime Text" title="Sublime Text" rel="1">Sublime Text</a>
                 
@@ -1663,8 +1663,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="AAAI">
-                    <span class="tag-text">AAAI</span>
+                <span class="fa fa-tag listing-seperator" id="ICLR">
+                    <span class="tag-text">ICLR</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -1672,13 +1672,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2018/01/09/PaperDaily-1/">
+                     <a href="/2017/11/13/ICLR17-1/">
                         <h2 class="post-title">
-                            Empower Sequence Labeling with Task-Aware Neural Language Model
+                            ICLR2017论文解读
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                基于任务感知神经语言模型的序列标注
+                                基于层次递归网络的序列标注迁移学习
                             </h3>
                         
                     </a>
@@ -1715,8 +1715,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="ICLR">
-                    <span class="tag-text">ICLR</span>
+                <span class="fa fa-tag listing-seperator" id="AAAI">
+                    <span class="tag-text">AAAI</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -1724,13 +1724,13 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2017/11/13/ICLR17-1/">
+                     <a href="/2018/01/09/PaperDaily-1/">
                         <h2 class="post-title">
-                            ICLR2017论文解读
+                            Empower Sequence Labeling with Task-Aware Neural Language Model
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                基于层次递归网络的序列标注迁移学习
+                                基于任务感知神经语言模型的序列标注
                             </h3>
                         
                     </a>
@@ -1806,6 +1806,111 @@
                         
                             <h3 class="post-subtitle">
                                 基于组合向量文法的句法分析
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="自然语言处理">
+                    <span class="tag-text">自然语言处理</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2018/03/04/cs224n-introduction/">
+                        <h2 class="post-title">
+                            ECNU自然语言处理与深度学习2018春季讨论班开讲啦
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2017/12/30/text-minning-ppt/">
+                        <h2 class="post-title">
+                            基于少量标注数据的序列标注
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Sequence Tagging with Little Labeled Data
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2017/11/29/TextMinning/">
+                        <h2 class="post-title">
+                            Sequence Tagging with Little Labeled Data
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Presentation of Text Minning course
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="半监督学习">
+                    <span class="tag-text">半监督学习</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2017/12/30/text-minning-ppt/">
+                        <h2 class="post-title">
+                            基于少量标注数据的序列标注
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Sequence Tagging with Little Labeled Data
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2017/11/29/TextMinning/">
+                        <h2 class="post-title">
+                            Sequence Tagging with Little Labeled Data
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                Presentation of Text Minning course
                             </h3>
                         
                     </a>
@@ -1941,111 +2046,6 @@
                         <h2 class="post-title">
                             保研第一，我还是选择留在了本校
                         </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="自然语言处理">
-                    <span class="tag-text">自然语言处理</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2018/03/04/cs224n-introduction/">
-                        <h2 class="post-title">
-                            ECNU自然语言处理与深度学习2018春季讨论班开讲啦
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2017/12/30/text-minning-ppt/">
-                        <h2 class="post-title">
-                            基于少量标注数据的序列标注
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Sequence Tagging with Little Labeled Data
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2017/11/29/TextMinning/">
-                        <h2 class="post-title">
-                            Sequence Tagging with Little Labeled Data
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Presentation of Text Minning course
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="半监督学习">
-                    <span class="tag-text">半监督学习</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2017/12/30/text-minning-ppt/">
-                        <h2 class="post-title">
-                            基于少量标注数据的序列标注
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Sequence Tagging with Little Labeled Data
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2017/11/29/TextMinning/">
-                        <h2 class="post-title">
-                            Sequence Tagging with Little Labeled Data
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                Presentation of Text Minning course
-                            </h3>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -2547,8 +2547,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="EOJ">
-                    <span class="tag-text">EOJ</span>
+                <span class="fa fa-tag listing-seperator" id="随笔">
+                    <span class="tag-text">随笔</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -2556,10 +2556,14 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2017/09/19/eoj3328/">
+                     <a href="/2018/01/22/mood/">
                         <h2 class="post-title">
-                            EOJ3328. 时空交织的代价
+                            有感而发，无病呻吟
                         </h2>
+                        
+                            <h3 class="post-subtitle">
+                                回顾2017，畅想2018
+                            </h3>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
@@ -2606,8 +2610,8 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="随笔">
-                    <span class="tag-text">随笔</span>
+                <span class="fa fa-tag listing-seperator" id="EOJ">
+                    <span class="tag-text">EOJ</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -2615,14 +2619,10 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2018/01/22/mood/">
+                     <a href="/2017/09/19/eoj3328/">
                         <h2 class="post-title">
-                            有感而发，无病呻吟
+                            EOJ3328. 时空交织的代价
                         </h2>
-                        
-                            <h3 class="post-subtitle">
-                                回顾2017，畅想2018
-                            </h3>
                         
                     </a>
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
