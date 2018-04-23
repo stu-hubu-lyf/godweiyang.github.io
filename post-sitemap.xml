@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://godweiyang.com/2017/09/19/recommend/</loc>
+        <lastmod>2018-04-23T07:54:53.630Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://godweiyang.com/2018/04/23/concrete-math-9/</loc>
         <lastmod>2018-04-23T06:32:43.379Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -337,14 +345,6 @@
     <url>
         <loc>http://godweiyang.com/2017/10/03/ACL17-1161/</loc>
         <lastmod>2018-03-30T01:39:30.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://godweiyang.com/2017/09/19/recommend/</loc>
-        <lastmod>2018-03-30T01:36:44.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
