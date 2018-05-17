@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="baidu-site-verification" content="rlXUrNbP8h" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ECNU AntNLP Group - WeiYang">
+    <meta name="keyword"  content="ECNU NLP DeepLearning">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          具体数学-第12课 - WeiYang Blog | 韦阳的博客
+        
+    </title>
+
+    <link rel="canonical" href="http://godweiyang.com/2018/05/14/concrete-math-12/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('header.jpg')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#具体数学" title="具体数学">具体数学</a>
+                            
+                              <a class="tag" href="/tags/#Concrete Mathematics" title="Concrete Mathematics">Concrete Mathematics</a>
+                            
+                        </div>
+                        <h1>具体数学-第12课</h1>
+                        <h2 class="subheading">数论进阶与组合数入门</h2>
+                        <span class="meta">
+                            Posted by WeiYang on
+                            2018-05-14
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">WeiYang Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/bbs/">BBS</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=554191378&auto=1&height=66"></iframe></div>
+
+<blockquote>
+<p>这节课内容太多了，再加上感冒身体不舒服，下面的定理就不一一证明了，大家可以自行练习。以后有空我会补上的！</p>
+</blockquote>
+<h1 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a>例题1</h1><hr>
+<p>首先接着上节课同余继续讲，在<a href="http://godweiyang.com/2018/04/23/concrete-math-9/">第三章例题2</a>中，我们遗留了一个问题：对于如下序列<br>\[0\bmod m,n\bmod m,2n\bmod m, \ldots ,(m - 1)n\bmod m\]<br>它的值就是<br>\[0,d,2d, \ldots ,(m/d - 1)d\]<br>的某个排列，并且重复了\(d\)次。其中\(d = gcd(m, n)\)</p>
+<p>首先我们有如下同余式：<br>\[jn \equiv kn(\bmod m) \Leftrightarrow j(n/d) \equiv k(n/d)(\bmod m/d)\]<br>这就可以看出该序列的确是重复出现了\(d\)次，那么剩下的问题就是证明这\(m/d\)个数恰好就是<br>\[\{ 0,d,2d, \ldots ,m - d\} \]<br>的某个排列。<br>令\(m = m’d,n = n’d\)，所以有<br>\[kn\bmod m = d(kn’\bmod m’)\]<br>所以我们只考虑\(m \bot n\)的情形，在此情形下，我们可以得到<br>\[jn \equiv kn(\bmod m) \Leftrightarrow j \equiv k(\bmod m)\]<br>由此可以看出，这\(m-1\)个数一定就是<br>\[\{ 0,1,2, \ldots ,m - 1\} \]<br>至此得证。</p>
+<p>下面介绍几个著名的数论定理。</p>
+<h1 id="费马最后定理"><a href="#费马最后定理" class="headerlink" title="费马最后定理"></a>费马最后定理</h1><hr>
+<p>对于所有的正整数\(a,b,c,n&gt;2\)，有<br>\[{a^n} + {b^n} \ne {c^n}\]</p>
+<h1 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h1><hr>
+<p>如果\(n \bot p\)，那么有<br>\[{n^{p - 1}} \equiv 1(\bmod p)\]</p>
+<p>证明也很好证。</p>
+<p>之前证过了，序列<br>\[n\bmod p,2n\bmod p, \ldots ,(p - 1)n\bmod p\]<br>结果就是<br>\[1,2, \ldots ,p-1\]<br>的某个排列，所以有<br>\[n \cdot (2n) \cdot  \ldots  \cdot ((p - 1)n) \equiv (p - 1)!\]<br>所以<br>\[(p - 1)!{n^{p - 1}} \equiv (p - 1)!(\bmod p)\]<br>所以<br>\[{n^{p - 1}} \equiv 1(\bmod p)\]</p>
+<h1 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h1><hr>
+<p>定义\(\varphi (m)\)为小于\(m\)且与其互素的正整数个数。</p>
+<p>所以我们有欧拉定理<br>\[{n^{\varphi (m)}} \equiv 1(\bmod m)\]<br>其中\(n \bot m\)，可以发现，当\(m\)是素数时，欧拉定理就是费马小定理，所以欧拉定理是费马小定理的推广形式。</p>
+<p>欧拉定理有很多有趣的性质，这里就不一一介绍了，详情见<a href="https://blog.csdn.net/howe_young/article/details/50282775" target="_blank" rel="external">博客地址</a>。</p>
+<h1 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h1><hr>
+<p>定义莫比乌斯函数\(\mu (m)\)为<br>\[\sum\limits_{d|m} {\mu (d)}  = [m = 1]\]</p>
+<p>这个定义看起来很奇怪是不是？其实这是一个递归定义，可以递归地计算得到所有的值。</p>
+<p>这个函数有什么用呢？主要用来进行莫比乌斯反演：<br>\[g(m) = \sum\limits_{d|m} {f(d)}  \Leftrightarrow f(m) = \sum\limits_{d|m} {\mu (d)g(\frac{m}{d})} \]</p>
+<p>详细的性质及应用也不介绍了，给大家推荐一个牛逼的博客<a href="https://blog.csdn.net/acdreamers/article/details/8542292" target="_blank" rel="external">博客地址</a>，我当时学ACM的时候这部分都是看着他的学的。</p>
+<h1 id="组合数入门"><a href="#组合数入门" class="headerlink" title="组合数入门"></a>组合数入门</h1><hr>
+<p>定义组合数\(\left( {\begin{array}{c}n\\k\end{array}} \right)\)为从\(n\)个物品中取出\(k\)个物品的方法数，具体计算为<br>\[\left( {\begin{array}{c}n\\k\end{array}} \right) = \frac{ {n(n - 1) \ldots (n - k + 1)}}{ {k(k - 1) \ldots 1}}\]</p>
+<p>推广到实数领域，定义<br>\[\left( {\begin{array}{c}r\\k\end{array}} \right) = \left\{ {\begin{array}{c}{\frac{ {r(r - 1) \ldots (r - k + 1)}}{ {k(k - 1) \ldots 1}} = \frac{ { {r^{\underline{k}}}}}{ {k!}},k \ge 0}\\{0,k &lt; 0}\end{array}} \right.\]</p>
+<p>下面介绍一些组合数性质。</p>
+<h2 id="性质1"><a href="#性质1" class="headerlink" title="性质1"></a>性质1</h2><p>\[\left( {\begin{array}{c}n\\k\end{array}} \right) = \left( {\begin{array}{c}n\\{n - k}\end{array}} \right),n,k \in \mathbb{Z},n \ge 0\]<br>这里为什么要限定\(n \ge 0\)呢？举个例子，如果\(n = -1\)，那么有<br>\[\left( {\begin{array}{c}{ - 1}\\k\end{array}} \right) \ne \left( {\begin{array}{c}{ - 1}\\{ - 1 - k}\end{array}} \right)\]<br>因为左边等于\({( - 1)^k}\)，而右边等于\({( - 1)^{-1-k}}\)。</p>
+<h2 id="性质2"><a href="#性质2" class="headerlink" title="性质2"></a>性质2</h2><p>\[\left( {\begin{array}{c}r\\k\end{array}} \right) = \frac{r}{k}\left( {\begin{array}{c}{r - 1}\\{k - 1}\end{array}} \right)\]</p>
+<h2 id="性质3"><a href="#性质3" class="headerlink" title="性质3"></a>性质3</h2><p>\[(r - k)\left( {\begin{array}{c}r\\k\end{array}} \right) = r\left( {\begin{array}{c}{r - 1}\\k\end{array}} \right)\]</p>
+<h2 id="性质4"><a href="#性质4" class="headerlink" title="性质4"></a>性质4</h2><p>\[\left( {\begin{array}{c}r\\k\end{array}} \right) = \left( {\begin{array}{c}{r - 1}\\k\end{array}} \right) + \left( {\begin{array}{c}{r - 1}\\{k - 1}\end{array}} \right)\]<br>这条性质可以通过性质3和性质4两边分别相加得到。</p>
+<h2 id="性质5"><a href="#性质5" class="headerlink" title="性质5"></a>性质5</h2><p>\[\sum\limits_{k \le n} {\left( {\begin{array}{c}{r + k}\\k\end{array}} \right)}  = \left( {\begin{array}{c}{r + n + 1}\\n\end{array}} \right)\]</p>
+<h2 id="性质6"><a href="#性质6" class="headerlink" title="性质6"></a>性质6</h2><p>\[\sum\limits_{0 \le k \le n} {\left( {\begin{array}{c}k\\m\end{array}} \right)}  = \left( {\begin{array}{c}{n + 1}\\{m + 1}\end{array}} \right)\]</p>
+<h2 id="性质7"><a href="#性质7" class="headerlink" title="性质7"></a>性质7</h2><p>微分形式：<br>\[\Delta \left( {\left( {\begin{array}{c}x\\m\end{array}} \right)} \right) = \left( {\begin{array}{c}{x + 1}\\m\end{array}} \right) - \left( {\begin{array}{c}x\\m\end{array}} \right) = \left( {\begin{array}{c}x\\{m - 1}\end{array}} \right)\]<br>\[\sum {\left( {\begin{array}{c}x\\m\end{array}} \right)\delta x = } \left( {\begin{array}{c}x\\{m + 1}\end{array}} \right) + C\]</p>
+<h1 id="二项式系数"><a href="#二项式系数" class="headerlink" title="二项式系数"></a>二项式系数</h1><hr>
+<p>\[{(x + y)^r} = \sum\limits_k {\left( {\begin{array}{c}r\\k\end{array}} \right)} {x^k}{y^{r - k}},r \in \mathbb{Z}\]</p>
+<p>二项式系数也有很多有趣的性质。</p>
+<p>\[{2^n} = \left( {\begin{array}{c}n\\0\end{array}} \right) + \left( {\begin{array}{c}n\\1\end{array}} \right) +  \cdots  + \left( {\begin{array}{c}n\\n\end{array}} \right)\]</p>
+<p>\[{0^n} = \left( {\begin{array}{c}n\\0\end{array}} \right) - \left( {\begin{array}{c}n\\1\end{array}} \right) +  \cdots  + {( - 1)^n}\left( {\begin{array}{c}n\\n\end{array}} \right)\]<br>即奇数项系数和等于偶数项系数和。</p>
+<p>推广到实数域：<br>\[{(1 + z)^r} = \sum\limits_k {\left( {\begin{array}{c}r\\k\end{array}} \right){z^k}} ,\left| z \right| &lt; 1,r \in \mathbb{R}\]<br>可以通过泰勒展开证明。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/05/07/concrete-math-11/" data-toggle="tooltip" data-placement="top" title="具体数学-第11课">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+                <p></p>
+                <div id="cyReward" role="cylabs" data-use="reward" align="center"></div>
+                    
+                    <div id="SOHUCS" ></div> 
+                    <script type="text/javascript"> 
+                    (function(){ 
+                    var appid = 'cytdwHIyN'; 
+                    var conf = 'prod_a8118d12ad20449218d5a5d7e94c0000'; 
+                    var width = window.innerWidth || document.documentElement.clientWidth; 
+                    if (width < 960) { 
+                    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+                    <script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
+                    <script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cytdwHIyN"></script>
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#例题1"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">例题1</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#费马最后定理"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">费马最后定理</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#费马小定理"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">费马小定理</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#欧拉函数"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">欧拉函数</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#莫比乌斯函数"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">莫比乌斯函数</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#组合数入门"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">组合数入门</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性质1"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">性质1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性质2"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">性质2</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性质3"><span class="toc-nav-number">6.3.</span> <span class="toc-nav-text">性质3</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性质4"><span class="toc-nav-number">6.4.</span> <span class="toc-nav-text">性质4</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性质5"><span class="toc-nav-number">6.5.</span> <span class="toc-nav-text">性质5</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性质6"><span class="toc-nav-number">6.6.</span> <span class="toc-nav-text">性质6</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#性质7"><span class="toc-nav-number">6.7.</span> <span class="toc-nav-text">性质7</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#二项式系数"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">二项式系数</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#具体数学" title="具体数学">具体数学</a>
+                        
+                          <a class="tag" href="/tags/#Concrete Mathematics" title="Concrete Mathematics">Concrete Mathematics</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.csdn.net/cww97" target="_blank">cww97</a></li>
+                    
+                        <li><a href="https://www.dreamwings.cn/" target="_blank">dreamwings</a></li>
+                    
+                        <li><a href="http://hzwer.com/" target="_blank">hzwer</a></li>
+                    
+                        <li><a href="https://www.jxtxzzw.com/wordpress" target="_blank">jxtxzzw空间</a></li>
+                    
+                        <li><a href="http://zerol.me/" target="_blank">zerol</a></li>
+                    
+                        <li><a href="http://www.itaowei.cn/" target="_blank">望城风景</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!--  <script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>  -->
+<style>
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<script type="text/javascript" src="/js/zooming.js"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://user.qzone.qq.com/792321264">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-qq fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; WeiYang 2018 
+                </p>
+                <p class="copyright text-muted">
+                    <!-- <a target="_blank" title="web analytic"><img alt="web analytic" src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_visitors/counter.png" style="border-width:0" /></a> -->
+                    <!-- <a><img alt="web trackers" src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_visitors/counter.png" 
+                    style="border-width:0"/></a> -->
+                    <a><img border="0" src="http://cc.amazingcounters.com/counter.php?i=3221735&c=9665518" alt="AmazingCounters.com"></a>
+                    <!-- <span id="busuanzi_container_site_pv">
+					    <span id="busuanzi_value_site_pv"></span>
+					</span> -->
+					<!-- <a target="_blank" title="webstats program"><img alt="webstats program" 
+					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
+					style="border-width:0" /></a> -->
+					visitors since 2017/09/11, 
+                    <span class="post-count">49.9k words altogether</span>
+                </p>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://godweiyang.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '46e79e71af0709a5b9106bf20cecc493';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script> -->
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://godweiyang.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>
