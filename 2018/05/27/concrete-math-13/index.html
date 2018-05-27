@@ -15,11 +15,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          K-best Iterative Viterbi Parsing - WeiYang Blog | 韦阳的博客
+          具体数学-第13课 - WeiYang Blog | 韦阳的博客
         
     </title>
 
-    <link rel="canonical" href="http://godweiyang.com/2018/04/24/IVP-EACL17/">
+    <link rel="canonical" href="http://godweiyang.com/2018/05/27/concrete-math-13/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -102,22 +102,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                              <a class="tag" href="/tags/#具体数学" title="具体数学">具体数学</a>
                             
-                              <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
-                            
-                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
-                            
-                              <a class="tag" href="/tags/#EACL" title="EACL">EACL</a>
-                            
-                              <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
+                              <a class="tag" href="/tags/#Concrete Mathematics" title="Concrete Mathematics">Concrete Mathematics</a>
                             
                         </div>
-                        <h1>K-best Iterative Viterbi Parsing</h1>
-                        <h2 class="subheading">K-best迭代维特比句法分析</h2>
+                        <h1>具体数学-第13课</h1>
+                        <h2 class="subheading">组合数各种性质</h2>
                         <span class="meta">
                             Posted by WeiYang on
-                            2018-04-24
+                            2018-05-27
                         </span>
                     </div>
                 
@@ -252,56 +246,35 @@ var _hmt = _hmt || [];
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=426852531&auto=1&height=66"></iframe></div>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=33035611&auto=1&height=66"></iframe></div>
 
-<p>本文链接：<a href="https://www.aclweb.org/anthology/E/E17/E17-2049.pdf" target="_blank" rel="external">EACL17</a></p>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><hr>
-<p>CKY算法或维特比inside算法是成分句法分析的主要方法之一，但是当产生式数量特别大之后，时间复杂度也线性增大。可行的一种方法是剪枝，但是剪枝会造成准确率的下降。所以本文就提出了一种迭代的维特比句法分析算法，通过剪枝去除掉没用的边。实验表明，时间上加快了一个数量级，但是本文并没有说准确率怎么样。。。</p>
-<p>本文用到的inside和outside算法之前已经介绍过了，详见<a href="http://godweiyang.com/2018/04/19/inside-outside/">PCFG中inside和outside算法详解</a>。</p>
-<h1 id="算法框架"><a href="#算法框架" class="headerlink" title="算法框架"></a>算法框架</h1><hr>
-<h2 id="分层聚类"><a href="#分层聚类" class="headerlink" title="分层聚类"></a>分层聚类</h2><p>首先提出分层聚类的概念。</p>
-<p><img src="/2018/04/24/IVP-EACL17/1.jpg" data-action="zoom"><br>如上图所示，原来的类别标记有很多，将他们聚类成几个小类，再将这几个小类聚成更小的类，依次下去，最后类别标记会少很多很多。<br><img src="/2018/04/24/IVP-EACL17/2.jpg" data-action="zoom"><br>以上图为例，\({X_1}{\rm{ = \{ }}A,B{\rm{\} ,}}{X_2}{\rm{ = \{ }}C,D{\rm{\} }}\)，聚类之后的分析表为b图，原始的分析表为a图，聚类之后的表（下面叫<strong>粗表</strong>）b唯一对应了聚类之前的表（下面叫<strong>原始表</strong>）a，而反过来原始表a能对应多种不同的粗表b。</p>
-<h2 id="形式化定义"><a href="#形式化定义" class="headerlink" title="形式化定义"></a>形式化定义</h2><p>我们将类别分为\(m + 1\)层，分别表示为\({N_0} \ldots {N_m}\)，那么第\(m\)层的类别集合\(N_m\)就是原始的类别集合，而\(0\)到\(m - 1\)层的类别就称之为<strong>收缩符号</strong>。</p>
-<p>对于\(0 \le i \le j \le m\)，我们定义\({\pi _{i \to j}}:{N_i} \mapsto \Im ({N_j})\)，其中\(\Im ({N_j})\)就是\(N_j\)的一个子集。该式将\(N_i\)中的一个类别\(X_i\)映射为了\(N_j\)中所有聚类为\(X_i\)的类别集合。</p>
-<p>举个例子吧，在第一张图中，\({\pi _{1 \to 2}}(ADJ\_) = \{ JJ,JJR,JJS\} \)。如果\(i = j\)，那么\({\pi _{i \to j}}(A) = \{ A\} \)。</p>
-<p>那么对于\({X_i} \in {N_i},{X_j} \in {N_j},{X_k} \in {N_k}\)，我们定义产生式\({X_i} \to {X_j}{X_k}\)的概率为：<br>\[\log q({X_i} \to {X_j}{X_k}) = \mathop {\max }\limits_{\scriptstyle A \in {\pi _{i \to m}}({X_i})\atop{\scriptstyle B \in {\pi _{j \to m}}({X_j})\atop\scriptstyle C \in {\pi _{k \to m}}({X_k})}} \log q(A \to BC)\]<br>也就是说，粗表中的每一棵句法树都给出了它在原始表中的句法树的分数的上界，通俗说就是，如果把粗表中的收缩符号全部替换成原始表中的符号，那么新的句法树的分数一定会小于等于粗表中的句法树。</p>
-<h2 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h2><blockquote>
-<p>如果粗表中的最优句法树\({\hat d}\)不包含任意收缩符号，那么它等价于原始表中的最优句法树。</p>
+<blockquote>
+<p>首先庆祝我自己顺利毕业了，忙完了毕业论文答辩一直在浪，所以上周的具体数学没有更新，现在补更一下，大家见谅。</p>
 </blockquote>
-<p><strong>证明：</strong><br>令\(Y\)等于原始表中的句法树集合，\(Y’ \subset Y\)等于没有出现在粗表中，但是出现在原始表中的句法树集合，\({Y’’}\)等于粗表中的句法树集合。</p>
-<p>那么对于每一个句法树\(d \in Y’\)，都存在唯一的句法树\(d’ \in Y’’\)与之对应。所以可以推出：<br>\[\forall d \in Y,\exists d’ \in Y’’,s(d) \le s(d’) &lt; s(\hat d)\]<br>这就意味着\(\hat d\)也是原始表中的最优句法树。</p>
-<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><p><img src="/2018/04/24/IVP-EACL17/3.jpg" data-action="zoom"></p>
-<ul>
-<li><p>\(lb\)初始化为句法树的最优得分或者负无穷，其中<code>det()</code>用来求解句法树的最优得分，但是没有必要真的求出最优句法树，只需要在每个结点处保留得分最高的边即可。尽管这样得出来的句法树基本不是最高的，但是能够缩小\(lb\)范围即可。</p>
-</li>
-<li><p><code>init-chart()</code>首先初始化分析表，全部初始化为收缩符号。</p>
-</li>
-<li><p>然后开始迭代过程，首先执行维特比inside算法，也就是CKY算法<code>Viterbi-inside()</code>，得到最优句法树\(\hat d\)。</p>
-</li>
-<li><p>如果最优句法树不含有任意收缩符号，那么迭代结束，直接返回该句法树。</p>
-</li>
-<li><p>否则的话，更新\(lb\)为最优句法树的分数<code>best()</code>。</p>
-</li>
-<li><p><code>expand-chart()</code>将所有收缩符号替换为下一层的收缩符号。</p>
-</li>
-<li><p><code>Viterbi-outside()</code>计算outside值。</p>
-</li>
-<li><p><code>prune-chart()</code>进行剪枝，过滤掉无用的边。</p>
-</li>
-</ul>
-<h2 id="剪枝过程"><a href="#剪枝过程" class="headerlink" title="剪枝过程"></a>剪枝过程</h2><p>算法的重要部分就是<code>prune-chart()</code>剪枝过程，这里要详细讲一下。</p>
-<p>对于一条边\(e = (A,i,j)\)，定义\(\alpha \beta (e) = \alpha (e) + \beta (e)\)为含有边\(e\)的句法树的最大分数。那么如果<br>\(\alpha \beta (e) &lt; lb\)，这条边\(e\)就没有搜索的必要了，可以从分析表中去掉。</p>
-<p>但是每次迭代都从原始表中计算\(\alpha \beta (e)\)值太麻烦了，可以在每次迭代的时候计算粗表中的值：<br>\[\alpha \beta (e) \le \hat \alpha (e) + \hat \beta (e) = \hat {\alpha \beta} (e)\]</p>
-<p>所以当\(\hat {\alpha \beta} (e) &lt; lb\)时，从分析表中删除这条边。虽然搜索空间减少了，但是不影响算法的迭代轮数。</p>
-<p>虽然在<code>expand-chart()</code>这一步要扩展收缩符号为下一层所有符号，但是实际运行起来时间比普通的CKY算法大大减少。</p>
-<h2 id="K-best扩展"><a href="#K-best扩展" class="headerlink" title="K-best扩展"></a>K-best扩展</h2><p><img src="/2018/04/24/IVP-EACL17/4.jpg" data-action="zoom"></p>
-<p>基本框架和1-best是一样的，主要思路就是首先求出最优句法树，如果包含收缩符号，那么就下面步骤和1-best一样。否则的话求出后面k-1棵最优的句法树，如果都不包含收缩符号，直接返回k-best棵句法树。否则从中选出最好的一棵含有收缩符号的句法树，下面的步骤和1-best一样。</p>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><hr>
-<p>数据集用的是PTB中长度小于35的句子。<br><img src="/2018/04/24/IVP-EACL17/5.jpg" data-action="zoom"></p>
-<p>上面这张表显示出，IVP算法的边的数量远远小于CKY算法，虽然迭代次数大大增加，但是总时间仍然远远小于CKY算法，而且边数减少了之后inside和outside算法的时间可以忽略不计了。最后一行是平均数据。<br><img src="/2018/04/24/IVP-EACL17/6.jpg" data-action="zoom"><br>上图说明了，当k较小时，IVP算法时间快于普通的k-best算法，但是k大了之后就变慢了，原因如下图所示：<br><img src="/2018/04/24/IVP-EACL17/7.jpg" data-action="zoom"><br>当k太大了之后，lb不能很好的得到最优得分的下界，所以无法有效地剪枝。而且k越小，算法收敛的也越快。</p>
-<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><hr>
-<p>提出了K-best IVP算法，基本框架还是inside-outside算法。</p>
-<p>但是全文自始自终没有提及算法的准确率，感觉应该不是很高，不知道有没有又高又快的优化方法？</p>
+<p>首先这节课讲的基本都是组合数的相关性质，而且特别多，所以我就不在这里详细证明了，如果你们对某一个性质感兴趣，可以自己证明去。</p>
+<h1 id="性质1"><a href="#性质1" class="headerlink" title="性质1"></a>性质1</h1><hr>
+<p>首先将组合数推广到负数域，也就是底数为负数的情况：<br>\[\left( {\begin{array}{*{20}{c}}r\\k\end{array}} \right) = {( - 1)^k}\left( {\begin{array}{*{20}{c}}{k - r - 1}\\k\end{array}} \right)\]<br>证明可以从下降阶乘幂的定义直接得到。</p>
+<h1 id="性质2"><a href="#性质2" class="headerlink" title="性质2"></a>性质2</h1><hr>
+<p>由于<br>\[\left( {\begin{array}{*{20}{c}}{m + n}\\m\end{array}} \right) = \left( {\begin{array}{*{20}{c}}{m + n}\\n\end{array}} \right)\]<br>所以由性质1可得<br>\[{( - 1)^m}\left( {\begin{array}{*{20}{c}}{ - n - 1}\\m\end{array}} \right) = {( - 1)^n}\left( {\begin{array}{*{20}{c}}{ - m - 1}\\n\end{array}} \right)\]</p>
+<h1 id="性质3"><a href="#性质3" class="headerlink" title="性质3"></a>性质3</h1><hr>
+<p>\[\sum\limits_{k \le m} {\left( {\begin{array}{*{20}{c}}r\\k\end{array}} \right){ {( - 1)}^k}}  = {( - 1)^m}\left( {\begin{array}{*{20}{c}}{r - 1}\\m\end{array}} \right)\]<br>这就说明了杨辉三角同一行的前面若干项交错和是可以求得的，但是它们的直接和是无法求出的。</p>
+<h1 id="性质4"><a href="#性质4" class="headerlink" title="性质4"></a>性质4</h1><hr>
+<p>\[\sum\limits_{k \le m} {\left( {\begin{array}{*{20}{c}}{m + r}\\k\end{array}} \right){x^k}{y^{m - k}} = \sum\limits_{k \le m} {\left( {\begin{array}{*{20}{c}}{ - r}\\k\end{array}} \right){ {( - x)}^k}{ {(x + y)}^{m - k}}} } \]<br>证明可以通过令<br>\[{S_m} = \sum\limits_{k \le m} {\left( {\begin{array}{*{20}{c}}{m + r}\\k\end{array}} \right){x^k}{y^{m - k}}}  = \sum\limits_{k \le m} {\left( {\begin{array}{*{20}{c}}{m + r - 1}\\k\end{array}} \right){x^k}{y^{m - k}}}  + \sum\limits_{k \le m} {\left( {\begin{array}{*{20}{c}}{m + r - 1}\\{k - 1}\end{array}} \right){x^k}{y^{m - k}}} \]<br>将左边表示成递归式的形式，同理如果右边可以表示成相同的递归式，那么左右就相等了。</p>
+<p>性质4看起来特别复杂，那么它有什么用呢？如果令\(x\)和\(y\)等于不同的值，那么就可以得到许多不同的恒等式。</p>
+<h1 id="性质5"><a href="#性质5" class="headerlink" title="性质5"></a>性质5</h1><hr>
+<p>令\(x =  - 1,y = 1\)可以得到<br>\[\sum\limits_{k \le m} {\left( {\begin{array}{*{20}{c}}{m + r}\\k\end{array}} \right){ {( - 1)}^k}}  = \left( {\begin{array}{*{20}{c}}{ - r}\\m\end{array}} \right)\]<br>这其实就是性质3的特例。</p>
+<h1 id="性质6"><a href="#性质6" class="headerlink" title="性质6"></a>性质6</h1><hr>
+<p>令\(x = y = 1,r = m + 1\)可以得到<br>\[\sum\limits_{k \le m} {\left( {\begin{array}{*{20}{c}}{2m + 1}\\k\end{array}} \right)}  = \sum\limits_{k \le m} {\left( {\begin{array}{*{20}{c}}{m + k}\\k\end{array}} \right){2^{m - k}}} \]<br>左边就是杨辉三角一行中左边一半的和，所以可以得到<br>\[\sum\limits_{k \le m} {\left( {\begin{array}{*{20}{c}}{m + k}\\k\end{array}} \right){2^{ - k}}} {\rm{ = }}{2^m}\]</p>
+<h1 id="性质7"><a href="#性质7" class="headerlink" title="性质7"></a>性质7</h1><hr>
+<p>\[\left( {\begin{array}{*{20}{c}}r\\m\end{array}} \right)\left( {\begin{array}{*{20}{c}}m\\k\end{array}} \right) = \left( {\begin{array}{*{20}{c}}r\\k\end{array}} \right)\left( {\begin{array}{*{20}{c}}{r - k}\\{m - k}\end{array}} \right)\]<br>这个公式可以形象理解为，从\(r\)个物品中取\(m\)个，再从这\(m\)个中取\(k\)个的方法数等于从\(r\)个物品中取\(k\)个，再从剩下的\(r-k\)个中取\(m-k\)个的方法数。证明的话直接用定义可证。</p>
+<h1 id="性质8"><a href="#性质8" class="headerlink" title="性质8"></a>性质8</h1><hr>
+<p>之前介绍了二项式系数，那么可以推广到任意\(m\)个未知数，它的展开式为<br>\[{({x_1} + {x_2} +  \cdots  + {x_m})^n} = \sum\limits_{\scriptstyle0 \le {a_1},{a_2}, \cdots ,{a_m} \le n\atop\scriptstyle{a_1} + {a_2} +  \cdots  + {a_m} = n} {\left( {\begin{array}{*{20}{c}}{ {a_1} + {a_2} +  \cdots  + {a_m}}\\{ {a_1},{a_2}, \cdots ,{a_m}}\end{array}} \right)} {x_1}^{ {a_1}}{x_2}^{ {a_2}} \cdots {x_m}^{ {a_m}}\]<br>其中<br>\[\left( {\begin{array}{*{20}{c}}{ {a_1} + {a_2} +  \cdots  + {a_m}}\\{ {a_1},{a_2}, \cdots ,{a_m}}\end{array}} \right) = \left( {\begin{array}{*{20}{c}}{ {a_1} + {a_2} +  \cdots  + {a_m}}\\{ {a_2} +  \cdots  + {a_m}}\end{array}} \right) \cdots \left( {\begin{array}{*{20}{c}}{ {a_{m - 1}} + {a_m}}\\{ {a_m}}\end{array}} \right)\]</p>
+<h1 id="性质9"><a href="#性质9" class="headerlink" title="性质9"></a>性质9</h1><hr>
+<p>范德蒙德卷积式：<br>\[\sum\limits_k {\left( {\begin{array}{*{20}{c}}r\\{m + k}\end{array}} \right)} \left( {\begin{array}{*{20}{c}}s\\{n - k}\end{array}} \right) = \left( {\begin{array}{*{20}{c}}{r + s}\\{m + n}\end{array}} \right)\]<br>很多公式都可以通过替换其中的一些变量推导得到：<br>\[\begin{array}{l}\sum\limits_k {\left( {\begin{array}{*{20}{c}}l\\{m + k}\end{array}} \right)} \left( {\begin{array}{*{20}{c}}s\\{n + k}\end{array}} \right) = \left( {\begin{array}{*{20}{c}}{l + s}\\{l - m + n}\end{array}} \right)\\\sum\limits_k {\left( {\begin{array}{*{20}{c}}l\\{m + k}\end{array}} \right)} \left( {\begin{array}{*{20}{c}}{s + k}\\n\end{array}} \right){( - 1)^k} = {( - 1)^{l + m}}\left( {\begin{array}{*{20}{c}}{s - m}\\{n - l}\end{array}} \right)\\\sum\limits_{k \le l} {\left( {\begin{array}{*{20}{c}}{l - k}\\m\end{array}} \right)} \left( {\begin{array}{*{20}{c}}s\\{k - n}\end{array}} \right){( - 1)^k} = {( - 1)^{l + m}}\left( {\begin{array}{*{20}{c}}{s - m - 1}\\{l - m - n}\end{array}} \right)\\\sum\limits_{0 \le k \le l} {\left( {\begin{array}{*{20}{c}}{l - k}\\m\end{array}} \right)} \left( {\begin{array}{*{20}{c}}{q + k}\\n\end{array}} \right) = \left( {\begin{array}{*{20}{c}}{l + q + 1}\\{m + n + 1}\end{array}} \right)\end{array}\]</p>
+<h1 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a>例题1</h1><hr>
+<p>最后详细求解一道组合题，其他的题目就不介绍了，可以去看具体数学英文版第173页。</p>
+<p>求下面式子的闭形式解：<br>\[\sum\limits_{k = 0}^m {\left( {\begin{array}{*{20}{c}}m\\k\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\k\end{array}} \right)} ,n \ge m \ge 0\]</p>
+<p>根据性质7，可以得到<br>\[\left( {\begin{array}{*{20}{c}}m\\k\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\k\end{array}} \right) = \left( {\begin{array}{*{20}{c}}{n - k}\\{m - k}\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\m\end{array}} \right)\]<br>所以<br>\[\sum\limits_{k = 0}^m {\left( {\begin{array}{*{20}{c}}m\\k\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\k\end{array}} \right)}  = \sum\limits_{k = 0}^m {\left( {\begin{array}{*{20}{c}}{n - k}\\{m - k}\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\m\end{array}} \right)} \]<br>而<br>\[\begin{array}{l}\sum\limits_{k \ge 0} {\left( {\begin{array}{*{20}{c}}{n - k}\\{m - k}\end{array}} \right)}  = \sum\limits_{m - k \ge 0} {\left( {\begin{array}{*{20}{c}}{n - (m - k)}\\{m - (m - k)}\end{array}} \right)} \\ = \sum\limits_{k \le m} {\left( {\begin{array}{*{20}{c}}{n - m + k}\\k\end{array}} \right)} \\ = \left( {\begin{array}{*{20}{c}}{(n - m) + m + 1}\\m\end{array}} \right)\\ = \left( {\begin{array}{*{20}{c}}{n + 1}\\m\end{array}} \right)\end{array}\]<br>所以<br>\[\sum\limits_{k = 0}^m {\left( {\begin{array}{*{20}{c}}m\\k\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\k\end{array}} \right)}  = \left( {\begin{array}{*{20}{c}}{n + 1}\\m\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\m\end{array}} \right) = \frac{ {n + 1}}{ {n + 1 - m}}\]</p>
 
                 
 
@@ -309,13 +282,9 @@ var _hmt = _hmt || [];
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2018/04/28/concrete-math-10/" data-toggle="tooltip" data-placement="top" title="具体数学-第10课">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2018/04/23/concrete-math-9/" data-toggle="tooltip" data-placement="top" title="具体数学-第9课">Next Post &rarr;</a>
+                            <a href="/2018/05/14/concrete-math-12/" data-toggle="tooltip" data-placement="top" title="具体数学-第12课">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -343,7 +312,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#算法框架"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">算法框架</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#分层聚类"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">分层聚类</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#形式化定义"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">形式化定义</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#引理"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">引理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#伪代码"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">伪代码</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#剪枝过程"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">剪枝过程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#K-best扩展"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">K-best扩展</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#实验"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">实验</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#结论"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">结论</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#性质1"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">性质1</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#性质2"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">性质2</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#性质3"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">性质3</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#性质4"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">性质4</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#性质5"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">性质5</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#性质6"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">性质6</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#性质7"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">性质7</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#性质8"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">性质8</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#性质9"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">性质9</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#例题1"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">例题1</span></a></li></ol>
         
         </div>
       </aside>
@@ -363,15 +332,9 @@ var _hmt = _hmt || [];
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                          <a class="tag" href="/tags/#具体数学" title="具体数学">具体数学</a>
                         
-                          <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
-                        
-                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
-                        
-                          <a class="tag" href="/tags/#EACL" title="EACL">EACL</a>
-                        
-                          <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
+                          <a class="tag" href="/tags/#Concrete Mathematics" title="Concrete Mathematics">Concrete Mathematics</a>
                         
                     </div>
                 </section>

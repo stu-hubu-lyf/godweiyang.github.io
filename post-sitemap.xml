@@ -7,8 +7,16 @@
     </url>
 
     <url>
+        <loc>http://godweiyang.com/2018/05/27/concrete-math-13/</loc>
+        <lastmod>2018-05-27T15:06:35.388Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://godweiyang.com/2018/05/14/concrete-math-12/</loc>
-        <lastmod>2018-05-14T11:44:28.726Z</lastmod>
+        <lastmod>2018-05-27T08:32:18.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -40,7 +48,7 @@
 
     <url>
         <loc>http://godweiyang.com/2017/09/19/recommend/</loc>
-        <lastmod>2018-04-23T07:54:53.630Z</lastmod>
+        <lastmod>2018-04-23T07:54:54.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -48,7 +56,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/04/23/concrete-math-9/</loc>
-        <lastmod>2018-04-23T06:32:43.379Z</lastmod>
+        <lastmod>2018-04-23T06:32:44.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -64,7 +72,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/04/20/concrete-math-hw3/</loc>
-        <lastmod>2018-04-20T06:20:30.963Z</lastmod>
+        <lastmod>2018-04-20T06:20:32.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -72,7 +80,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/02/27/concrete-math-1/</loc>
-        <lastmod>2018-04-19T04:02:21.483Z</lastmod>
+        <lastmod>2018-04-19T04:02:22.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -80,7 +88,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/04/16/concrete-math-8/</loc>
-        <lastmod>2018-04-16T06:45:09.979Z</lastmod>
+        <lastmod>2018-04-16T06:45:10.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -88,7 +96,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/04/09/concrete-math-7/</loc>
-        <lastmod>2018-04-16T04:35:00.943Z</lastmod>
+        <lastmod>2018-04-16T04:35:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -96,7 +104,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/04/02/concrete-math-6/</loc>
-        <lastmod>2018-04-16T04:32:52.550Z</lastmod>
+        <lastmod>2018-04-16T04:32:54.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -104,7 +112,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/03/26/concrete-math-5/</loc>
-        <lastmod>2018-04-16T04:32:28.190Z</lastmod>
+        <lastmod>2018-04-16T04:32:30.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -112,7 +120,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/03/19/concrete-math-4/</loc>
-        <lastmod>2018-04-16T04:32:09.817Z</lastmod>
+        <lastmod>2018-04-16T04:32:10.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -120,7 +128,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/03/12/concrete-math-3/</loc>
-        <lastmod>2018-04-16T04:31:56.596Z</lastmod>
+        <lastmod>2018-04-16T04:31:58.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -128,7 +136,7 @@
 
     <url>
         <loc>http://godweiyang.com/2018/03/05/concrete-math-2/</loc>
-        <lastmod>2018-04-16T04:31:29.533Z</lastmod>
+        <lastmod>2018-04-16T04:31:30.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
