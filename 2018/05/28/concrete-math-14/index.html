@@ -176,13 +176,6 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -191,6 +184,13 @@ var _hmt = _hmt || [];
                         
                         <li>
                             <a href="/bbs/">BBS</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -256,6 +256,7 @@ var _hmt = _hmt || [];
 <h1 id="生成函数应用"><a href="#生成函数应用" class="headerlink" title="生成函数应用"></a>生成函数应用</h1><hr>
 <p>那么生成函数有什么应用呢？一个很重要的应用就是用来求解递归式。</p>
 <p>例如大家很熟悉的斐波那契数列：<br>\[\begin{array}{l}{g_0} = 0;{g_1} = 1\\{g_n} = {g_{n - 1}} + {g_{n - 2}},n \ge 2\end{array}\]</p>
+<p>首先为了统一表示，将递归式改写为如下形式：<br>\[{g_n} = {g_{n - 1}} + {g_{n - 2}} + [n = 1]\]<br>然后两边同时乘以\(z^n\)，得到：<br>\[{g_n}{z^n} = {g_{n - 1}}{z^n} + {g_{n - 2}}{z^n} + [n = 1]{z^n}\]<br>两边对指标\(n\)同时求和，可以得到：<br>\[G(z) = zG(z) + {z^2}G(z) + z\]<br>所以<br>\[G(z) = \frac{z}{ {1 - z - {z^2}}}\]<br>最后只要将\(\frac{z}{ {1 - z - {z^2}}}\)表示成多项式的形式就行了，\([{z^n}]\frac{z}{ {1 - z - {z^2}}}\)就是斐波那契数列的通项公式了。</p>
 
                 
 
@@ -460,7 +461,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">52.3k words altogether</span>
+                    <span class="post-count">52.4k words altogether</span>
                 </p>
                   
                 </div>
