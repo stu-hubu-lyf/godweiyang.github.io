@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>http://godweiyang.com/2018/05/31/ACL18-ConParsing/</loc>
+        <lastmod>2018-05-31T16:01:45.409Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/2018/04/24/IVP-EACL17/</loc>
+        <lastmod>2018-05-31T15:39:54.300Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://godweiyang.com/2018/05/28/concrete-math-14/</loc>
         <lastmod>2018-05-28T12:07:59.652Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -41,14 +57,6 @@
     <url>
         <loc>http://godweiyang.com/2018/04/28/concrete-math-10/</loc>
         <lastmod>2018-04-28T11:26:38.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://godweiyang.com/2018/04/24/IVP-EACL17/</loc>
-        <lastmod>2018-04-24T16:15:14.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
