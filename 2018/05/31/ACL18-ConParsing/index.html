@@ -102,13 +102,13 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#EACL" title="EACL">EACL</a>
-                            
                               <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
                             
                               <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
                             
                               <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                            
+                              <a class="tag" href="/tags/#EACL" title="EACL">EACL</a>
                             
                               <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
                             
@@ -182,14 +182,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -252,15 +252,25 @@ var _hmt = _hmt || [];
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <div align="middle"><audio src="http://stor.cloudmusics.cn/mp3/2018/05/c2c046c03cfdcc36ae19f3913e3ee535.mp3" controls autoplay><br>Your browser does not support the element.<br></audio></div>
-
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=27890306&auto=1&height=66"></iframe></div>
 <p><strong>论文地址：</strong><a href="https://arxiv.org/pdf/1804.07853.pdf" target="_blank" rel="external">What’s Going On in Neural Constituency Parsers? An Analysis</a></p>
-<p><img src="/2018/05/31/ACL18-ConParsing/1.jpg" data-action="zoom"></p>
-<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><hr>
+<img src="/2018/05/31/ACL18-ConParsing/1.jpg" data-action="zoom">
+<h1>摘要</h1>
+<hr>
 <p>最近几年，成分句法分析的方法发生了巨大的变化。传统的有基于PCFG的CKY算法，最近几年随着神经网络的兴起又产生了基于转移的方法、CRF句法分析、重排序方法等等。</p>
 <p>本文是伯克利大学在ACL18提出的一种基于神经网络的句法分析方法，和传统的方法不同的是，完全不使用语法规则和词汇特征，只需要用神经网络学习出短语的表示即可。通过实验可以发现，神经网络的确也很好的隐式学习出了传统的方法显式用到的语法规则和其他一些特征。在PTB数据集上，该方法达到了92.08%的F1值，这也直接超过了传统的大多数方法。而在下一篇伯克利的ACL18论文中，他们提出的基于Multi-Head Attention的成分句法分析方法更是达到了95.13%的F1值。</p>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><hr>
-<p>在过去几年，成分句法分析方法发生了巨大的变化。最大的变化就是语法规则和人工的词汇特征变得越来越不那么重要，取而代之的用循环神经网络学习短语的表示。但是还没有什么人对这种神经网络表示的有效性做研究分析，本文提出了一种用RNN学习表示用来句法分析的模型，并对模型的各个方面进行了分析。</p>
+<h1>介绍</h1>
+<hr>
+<p>在过去几年，成分句法分析方法发生了巨大的变化。最大的变化就是语法规则和人工的词汇特征变得越来越不那么重要，取而代之的用循环神经网络学习短语的表示，但是还没有什么人对这种神经网络表示的有效性做研究分析。本文提出了一种用RNN学习表示用来句法分析的模型，并对模型的各个方面进行了分析。</p>
+<h1>句法分析模型</h1>
+<hr>
+<h2>模型总览</h2>
+<p>和传统的CKY算法一样，该模型还是采用动态规划的算法求解每个短语的最大得分对应的类别以及分割点。只不过这里的短语得分不再是产生式概率之积，而是用RNN训练出来的短语得分。</p>
+<p>用\(s(i,j,l)\)表示短语\(x_{i;j}\)类别为\(l\)的得分，句法树\(T\)的得分表示为所有产生式的得分总和：<br>
+\[s(T) = \sum\limits_{(i,j,l) \in T} {s(i,j,l)} \]</p>
+<p><strong>值得一提的是，该句法分析模型不需要句法树是二叉树，所以可以直接分析出\(n\)叉树结构。</strong></p>
+<p>模型的任务依然是寻找得分最高的句法分析树：<br>
+\[\hat T = \mathop {\arg \max }\limits_T s(T)\]</p>
 
                 
 
@@ -302,7 +312,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#介绍"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">介绍</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">句法分析模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">模型总览</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -322,13 +332,13 @@ var _hmt = _hmt || [];
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#EACL" title="EACL">EACL</a>
-                        
                           <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
                         
                           <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
                         
                           <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                        
+                          <a class="tag" href="/tags/#EACL" title="EACL">EACL</a>
                         
                           <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
                         
@@ -475,7 +485,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">53.8k words altogether</span>
+                    <span class="post-count">54.0k words altogether</span>
                 </p>
                   
                 </div>
