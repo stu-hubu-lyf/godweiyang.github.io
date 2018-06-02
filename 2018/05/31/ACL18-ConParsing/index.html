@@ -102,13 +102,13 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#EACL" title="EACL">EACL</a>
-                            
                               <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
                             
                               <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
                             
                               <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                            
+                              <a class="tag" href="/tags/#EACL" title="EACL">EACL</a>
                             
                               <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
                             
@@ -175,6 +175,13 @@ var _hmt = _hmt || [];
 
                         
                         <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -183,13 +190,6 @@ var _hmt = _hmt || [];
                         
                         <li>
                             <a href="/bbs/">BBS</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -271,7 +271,14 @@ var _hmt = _hmt || [];
 <p>最后将字符级别的词表示和预训练的词向量拼接起来作为最终的单词表示。也可以用外部序列标注器预测出单词的词性，并拼接上去作为输入，但是在这里只要Char-BiLSTM训练的足够好，就不需要词性标注了。</p>
 <h2 id="短语表示"><a href="#短语表示" class="headerlink" title="短语表示"></a>短语表示</h2><p>对句子单词序列跑一遍双向LSTM，得到每个单词的前向后向上下文表示\({ {\bf{f}}_i}\)和\({ {\bf{b}}_i}\)，然后对于短语\(x_{ij}\)，用两者的上下文表示的差值拼接起来作为该短语的向量表示：<br>\[{ {\bf{r}}_{ij}} = [{ {\bf{f}}_j} - { {\bf{f}}_i},{ {\bf{b}}_i} - { {\bf{b}}_j}]\]<br>图1是一个具体的例子：<br><img src="/2018/05/31/ACL18-ConParsing/2.jpg" data-action="zoom"></p>
 <h2 id="短语类别得分"><a href="#短语类别得分" class="headerlink" title="短语类别得分"></a>短语类别得分</h2><p>最后将短语表示输入到一个单层前馈神经网络中，输出得分向量，其中得分向量每个维度就对应了每个类别的概率。具体计算公式如下：<br>\[s(i,j,l) = {[{ {\bf{W}}_2}ReLU({ {\bf{W}}_1}{ {\bf{r}}_{ij}} + { {\bf{z}}_1}) + { {\bf{z}}_2}]_l}\]</p>
-<h2 id="句法分析"><a href="#句法分析" class="headerlink" title="句法分析"></a>句法分析</h2>
+<h2 id="句法分析"><a href="#句法分析" class="headerlink" title="句法分析"></a>句法分析</h2><p>虽然现在是\(n\)叉树，但是依然可以用CKY算法来进行句法分析。这时候就需要定义一个虚拟短语类别\(\emptyset\)，表示实际上不能构成短语的临时短语。例如对于产生式\(A \to BCD\)，分析的时候可以将其分析为\(A \to \emptyset D,\emptyset  \to BC\)。定义虚拟短语类别的得分为0，即\(s(i,j,\emptyset ) = 0\)。</p>
+<p>定义\({s_{best}}(i,j)\)为短语\(x_{ij}\)得分最高的句法分析树的得分。首先对长度为1的短语即单词进行初始化：<br>\[{s_{best}}(i,i + 1) = \mathop {\max }\limits_l s(i,i + 1,l)\]<br>然后对于短语\(x_{ij}\)，运用动态规划算法计算得分最高的句法分析树：<br>\[{s_{best}}(i,j) = \mathop {\max }\limits_l s(i,j,l) + \mathop {\max }\limits_k [{s_{best}}(i,k) + {s_{best}}(k,j)]\]<br>注意到这里对类别的预测和分割点的预测是分开的，短语的最高分数就是最优子树的每个结点的类别得分之和。</p>
+<p>自底向上进行计算，最终整个句子的最高得分就是\({s_{best}}(0,n)\)。然后自顶向下回溯得到整个句子的句法分析树，注意如果回溯遇到了虚拟短语类别\(\emptyset\)，就直接忽略它，继续往下回溯。</p>
+<p>整个算法的时间复杂度为\(O({n^3} + L{n^2})\)，因为没有用到语法规则，所以\(n^3\)的常数系数\(\left| G \right|\)就没有了，复杂度大大降低！</p>
+<h2 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h2><p>损失函数依然使用的是max-margin，即<br>\[\mathcal L = \max \left( {0,\mathop {\max }\limits_T [s(T) + \Delta (T,{T^*})] - s({T^*})} \right)\]<br>这里提到了一点加快计算的方法，\({\Delta (T,{T^*})}\)可以融入到动态规划算法中一起计算，即将短语类别得分\(s(i,j,l)\)替换为\(s(i,j,l) + 1[l \ne l_{ij}^*]\)，其中\(l_{ij}^*\)是标准树中短语\(x_{ij}\)的类别。</p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>经过10轮训练之后，模型在验证集上的F1值达到了92.22%，在测试集上的F1值为92.08%。</p>
+<h1 id="输出相关分析"><a href="#输出相关分析" class="headerlink" title="输出相关分析"></a>输出相关分析</h1><hr>
+
                 
 
                 <hr>
@@ -312,7 +319,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#介绍"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#句法分析模型"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">句法分析模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#模型总览"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">模型总览</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#单词表示"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">单词表示</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#短语表示"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">短语表示</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#短语类别得分"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">短语类别得分</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#句法分析"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">句法分析</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#介绍"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#句法分析模型"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">句法分析模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#模型总览"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">模型总览</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#单词表示"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">单词表示</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#短语表示"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">短语表示</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#短语类别得分"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">短语类别得分</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#句法分析"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">句法分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#模型训练"><span class="toc-nav-number">3.6.</span> <span class="toc-nav-text">模型训练</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#实验结果"><span class="toc-nav-number">3.7.</span> <span class="toc-nav-text">实验结果</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#输出相关分析"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">输出相关分析</span></a></li></ol>
         
         </div>
       </aside>
@@ -332,13 +339,13 @@ var _hmt = _hmt || [];
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#EACL" title="EACL">EACL</a>
-                        
                           <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
                         
                           <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
                         
                           <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                        
+                          <a class="tag" href="/tags/#EACL" title="EACL">EACL</a>
                         
                           <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
                         
@@ -485,7 +492,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">54.4k words altogether</span>
+                    <span class="post-count">54.9k words altogether</span>
                 </p>
                   
                 </div>
