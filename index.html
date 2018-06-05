@@ -159,6 +159,13 @@ var _hmt = _hmt || [];
 
                         
                         <li>
+                            <a href="/bbs/">BBS</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -174,13 +181,6 @@ var _hmt = _hmt || [];
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/bbs/">BBS</a>
                         </li>
                         
                     
@@ -286,13 +286,48 @@ ACM退役
 
 <div class="post-preview">
 
+    <a href="/2018/06/05/eoj3006/">
+        <h2 class="post-title">
+            
+            EOJ3006. 计算多项式的系数II
+        </h2>
+        <h3 class="post-subtitle">
+            二项式系数与lucas定理
+        </h3>
+        <div class="post-content-preview">
+            
+
+题目链接：EOJ3006
+题意
+给定一个多项式\({(ax + by)^k}\)，计算多项式展开后\({x^n}{y^m}\)项的系数，结果对1000000007取模。
+题解
+由二项式定理可以得知，\({x^n}{y^m}\)项的系数就是\[{a^n}{b^m}C_k^n\]然后再对1000000007取模，其中\({a^n}{b^m}\)取模很方便，用快速幂就行了，剩下的问题就是如何求......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by WeiYang on
+            2018-06-05
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#EOJ" title="EOJ">EOJ</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2018/06/05/eoj2854/">
         <h2 class="post-title">
             
             EOJ2854. 统计特定字串模式的个数
         </h2>
         <h3 class="post-subtitle">
-            
+            动态规划
         </h3>
         <div class="post-content-preview">
             
@@ -579,48 +614,6 @@ LR序列表示对于任意分数\(\frac{a}{b}\)，我们从\(\frac{1}{1}\)开始
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2018/04/24/IVP-EACL17/">
-        <h2 class="post-title">
-            
-            K-best Iterative Viterbi Parsing
-        </h2>
-        <h3 class="post-subtitle">
-            K-best迭代维特比句法分析
-        </h3>
-        <div class="post-content-preview">
-            
-
-本文链接：EACL17
-介绍
-CKY算法或维特比inside算法是成分句法分析的主要方法之一，但是当产生式数量特别大之后，时间复杂度也线性增大。可行的一种方法是剪枝，但是剪枝会造成准确率的下降。所以本文就提出了一种迭代的维特比句法分析算法，通过剪枝去除掉没用的边。实验表明，时间上加快了一个数量级，但是本文并没有说准确率怎么样。。。
-本文用到的inside和outside算法之前已经介绍过......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by WeiYang on
-            2018-04-24
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#NLP" title="NLP">NLP</a>
-            
-              <a href="/tags/#神经网络" title="神经网络">神经网络</a>
-            
-              <a href="/tags/#深度学习" title="深度学习">深度学习</a>
-            
-              <a href="/tags/#EACL" title="EACL">EACL</a>
-            
-              <a href="/tags/#句法分析" title="句法分析">句法分析</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -670,11 +663,11 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
             
         
             
-            <a href="/tags/#ICLR" title="ICLR" rel="1">ICLR</a>
+            <a href="/tags/#EMNLP" title="EMNLP" rel="2">EMNLP</a>
             
         
             
-            <a href="/tags/#EMNLP" title="EMNLP" rel="2">EMNLP</a>
+            <a href="/tags/#序列标注" title="序列标注" rel="5">序列标注</a>
             
         
             
@@ -682,7 +675,7 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
             
         
             
-            <a href="/tags/#序列标注" title="序列标注" rel="5">序列标注</a>
+            <a href="/tags/#ICLR" title="ICLR" rel="1">ICLR</a>
             
         
             
@@ -698,7 +691,7 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
             
         
             
-            <a href="/tags/#dynet" title="dynet" rel="1">dynet</a>
+            <a href="/tags/#AAAI" title="AAAI" rel="1">AAAI</a>
             
         
             
@@ -710,7 +703,7 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
             
         
             
-            <a href="/tags/#AAAI" title="AAAI" rel="1">AAAI</a>
+            <a href="/tags/#dynet" title="dynet" rel="1">dynet</a>
             
         
             
@@ -734,10 +727,6 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
             
         
             
-            <a href="/tags/#EOJ" title="EOJ" rel="2">EOJ</a>
-            
-        
-            
             <a href="/tags/#LaTeX" title="LaTeX" rel="1">LaTeX</a>
             
         
@@ -747,6 +736,14 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
         
             
             <a href="/tags/#ppt" title="ppt" rel="1">ppt</a>
+            
+        
+            
+            <a href="/tags/#EOJ" title="EOJ" rel="3">EOJ</a>
+            
+        
+            
+            <a href="/tags/#随笔" title="随笔" rel="1">随笔</a>
             
         
             
@@ -762,15 +759,7 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
             
         
             
-            <a href="/tags/#随笔" title="随笔" rel="1">随笔</a>
-            
-        
-            
             <a href="/tags/#软件安装与配置" title="软件安装与配置" rel="2">软件安装与配置</a>
-            
-        
-            
-            <a href="/tags/#Sublime Text" title="Sublime Text" rel="1">Sublime Text</a>
             
         
             
@@ -783,6 +772,10 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
         
             
             <a href="/tags/#C#" title="C#" rel="1">C#</a>
+            
+        
+            
+            <a href="/tags/#Sublime Text" title="Sublime Text" rel="1">Sublime Text</a>
             
         
     </div>
@@ -867,6 +860,10 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
     <ul>
       
         <li>
+          <a href="/2018/06/05/eoj3006/">EOJ3006. 计算多项式的系数II</a>
+        </li>
+      
+        <li>
           <a href="/2018/06/05/eoj2854/">EOJ2854. 统计特定字串模式的个数</a>
         </li>
       
@@ -880,10 +877,6 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
       
         <li>
           <a href="/2018/05/28/concrete-math-14/">具体数学-第14课</a>
-        </li>
-      
-        <li>
-          <a href="/2018/05/27/concrete-math-13/">具体数学-第13课</a>
         </li>
       
     </ul>
@@ -916,7 +909,7 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">8</span></li></ul>
     </div>
 
         <hr>
@@ -925,7 +918,7 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
 
     <h5>categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/EOJ/">EOJ</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/句法分析/">句法分析</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/序列标注/">序列标注</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/">数学</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/树形LSTM/">树形LSTM</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/模板/">模板</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/问答系统/">问答系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/EOJ/">EOJ</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/句法分析/">句法分析</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/序列标注/">序列标注</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/">数学</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/树形LSTM/">树形LSTM</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/模板/">模板</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/问答系统/">问答系统</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">3</span></li></ul>
     </div>
 
         <hr>
@@ -1012,7 +1005,7 @@ CKY算法或维特比inside算法是成分句法分析的主要方法之一，�
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">55.4k words altogether</span>
+                    <span class="post-count">56.1k words altogether</span>
                 </p>
                   
                 </div>

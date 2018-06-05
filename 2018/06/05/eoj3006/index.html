@@ -15,11 +15,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          保研第一，我还是选择留在了本校 - WeiYang Blog | 韦阳的博客
+          EOJ3006. 计算多项式的系数II - WeiYang Blog | 韦阳的博客
         
     </title>
 
-    <link rel="canonical" href="http://godweiyang.com/2017/09/19/baoyan/">
+    <link rel="canonical" href="http://godweiyang.com/2018/06/05/eoj3006/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -102,14 +102,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#保研" title="保研">保研</a>
+                              <a class="tag" href="/tags/#EOJ" title="EOJ">EOJ</a>
                             
                         </div>
-                        <h1>保研第一，我还是选择留在了本校</h1>
-                        <h2 class="subheading"></h2>
+                        <h1>EOJ3006. 计算多项式的系数II</h1>
+                        <h2 class="subheading">二项式系数与lucas定理</h2>
                         <span class="meta">
                             Posted by WeiYang on
-                            2017-09-19
+                            2018-06-05
                         </span>
                     </div>
                 
@@ -244,7 +244,21 @@ var _hmt = _hmt || [];
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>保研去哪？其实我刚开始也纠结过。看到其他同学忙着申报各大名校，我也曾经动摇过，但是现在却没什么感觉了。很多人不理解为什么第一不去试试清北复交，我承认，这些学校是优势很大，毕竟还是高了一个档次的。<br>想当年高考时，我的梦想就是考上清华，但是最后考砸了只能来了华师。现在想来也罢了，或许本来就没有那个实力吧。从小学开始，我就一直是考上了最好的学校却去了低一个档次的学校。那时候都是因为体质不好吧，不让去太远的学校，现在反而习惯了那种拿第一的感觉。<br>暑假开始前，很多人就准备报名夏令营了，我却回家考驾照了，一个也没报。其实当时就已经打算留读本校了，当时考虑是研究生阶段学校影响没有导师和专业强了，而且其他学校导师也都不熟悉，很难找到一个人品好学术好的好导师，于是就决心本校找一个了。其他原因也都是些无关紧要的了，比如本校环境熟悉、还不用大费周折搬家等等，说起来挺幼稚，哪有前途重要。<br>现在也差不多定了吧，我觉得还是成事在人吧。既然自己选择了这条路，不去走更宽敞的路，那就要把它走好。去了好学校不能骄纵，留在差学校也不能自暴自弃吧，就当作是激励自己的动力吧。<br>还是谢谢大家的关心，让你们失望了，我不是没有梦想，也不是懒。只要你足够努力，梦想在哪里都能发芽。<br>看来不能因为保了研而放松自己了，还有那么多为了考研在奋斗的学生。下面一年三大计划：毕业论文、实习、研一的活。不管是保了研的还是还在考研的或者准备工作的，大家一起加油吧。</p>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=109174&auto=1&height=66"></iframe></div>
+
+<p><strong>题目链接：<a href="https://acm.ecnu.edu.cn/problem/3006/" target="_blank" rel="external">EOJ3006</a></strong></p>
+<h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><hr>
+<p>给定一个多项式\({(ax + by)^k}\)，计算多项式展开后\({x^n}{y^m}\)项的系数，结果对1000000007取模。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><hr>
+<p>由二项式定理可以得知，\({x^n}{y^m}\)项的系数就是<br>\[{a^n}{b^m}C_k^n\]<br>然后再对1000000007取模，其中\({a^n}{b^m}\)取模很方便，用快速幂就行了，剩下的问题就是如何求解<br>\[C_k^n\bmod p\]<br>这里由于\(n,k\)都很大，所以不能直接采用组合数计算公式求出答案，再进行取模。</p>
+<p>这里要用到一个大组合数取模的定理，叫做lucas定理：</p>
+<blockquote>
+<p><strong>定理：</strong><br>对于组合数取模<br>\[C_n^m\bmod p\]<br>其中\(p\)是质数。<br>如果令\(n=sp+q,m=tp+r. (q,r&lt;p)\)<br>那么有<br>\[C_{sp + q}^{tp + r} \equiv C_s^tC_q^r\bmod p\]<br><strong>证明:</strong><br>\[\begin{array}{l}{(1 + x)^n} \equiv {(1 + x)^{sp + q}} \equiv {(1 + x)^{sp}}{(1 + x)^q}\\ \equiv {({(1 + x)^p})^s}{(1 + x)^q} \equiv {(1 + {x^p})^s}{(1 + x)^q}\\ \equiv \sum\limits_{i = 0}^s {C_s^i{x^{ip}}} \sum\limits_{j = 0}^q {C_q^j{x^j}} \bmod p\end{array}\]<br>其中\((1 + x)^n\)中\(x^{tp+r}\)项的系数为\(C_{sp + q}^{tp + r}\)，而在同余号右边\(x^{tp+r}\)项的系数只能为\(C_s^tC_q^r\)。<br>因为假设<br>\[tp + r = ip + j\]<br>所以<br>\[(t - i)p = j - r\]<br>而<br>\[ - p &lt;  - r \le j - r \le q - r &lt; p - r \le p\]<br>所以只能是<br>\[t - i = 0,j - r = 0\]<br>所以<br>\[C_{sp + q}^{tp + r} \equiv C_s^tC_q^r\bmod p\]</p>
+</blockquote>
+<p>在代码实现中，应用lucas定理之后，将\(C_n^m\)替换为\(C_s^t\)继续调用lucas定理即可。递归终止条件是\(t=0\)。</p>
+<p>最后计算\(C_q^r\bmod p\)时直接应用组合数定义即可：<br>\[C_q^r \equiv \frac{ {q!}}{ {r!(q - r)!}} \equiv q!{(r!(q - r)!)^{p - 2}} \equiv q!{(r!(q - r)!\bmod p)^{p - 2}}\bmod p\]<br>这里还用到了逆元：<br>\[{a^{ - 1}} \equiv {a^{p - 2}}\bmod p\]<br>证明详见我的另一篇博客：<a href="http://godweiyang.com/2018/05/14/concrete-math-12/">具体数学-第12课</a>中的费马小定理和欧拉定理。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1000000</span> + <span class="number">10</span>;</div><div class="line"><span class="keyword">const</span> LL MOD = <span class="number">1e9</span> + <span class="number">7</span>;</div><div class="line"></div><div class="line">LL f[MAXN];</div><div class="line"></div><div class="line"><span class="function">LL <span class="title">QuickPow</span><span class="params">(LL a, LL n, LL p)</span> </span>&#123;</div><div class="line">    LL res = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (n &amp; <span class="number">1</span>) &#123;</div><div class="line">            res = (res * a) % p;</div><div class="line">        &#125;</div><div class="line">        a = (a * a) % p;</div><div class="line">        n &gt;&gt;= <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">LL <span class="title">Lucas</span><span class="params">(LL n, LL m, LL p)</span> </span>&#123;</div><div class="line">    LL res = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (n &amp;&amp; m) &#123;</div><div class="line">        LL a = n % p, b = m % p;</div><div class="line">        <span class="keyword">if</span> (a &lt; b) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        res = res * f[a] * QuickPow((f[b] * f[a-b]) % p, p - <span class="number">2</span>, p) % p;</div><div class="line">        n /= p;</div><div class="line">        m /= p;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">    f[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; MAXN; ++i) &#123;</div><div class="line">        f[i] = (f[i - <span class="number">1</span>] * i) % MOD;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    init();</div><div class="line">    <span class="keyword">int</span> T;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">0</span>; t &lt; T; ++t) &#123;</div><div class="line">        LL a, b, k, n, m;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld%lld%lld"</span>, &amp;a, &amp;b, &amp;k, &amp;n, &amp;m);</div><div class="line">        LL res = (((QuickPow(a, n, MOD) * QuickPow(b, m, MOD)) % MOD) * Lucas(k, n, MOD)) % MOD;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"case #%d:\n%lld\n"</span>, t, res);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
                 
 
@@ -252,13 +266,9 @@ var _hmt = _hmt || [];
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2017/09/19/context/" data-toggle="tooltip" data-placement="top" title="ACL2017论文解读[P17-2036]">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/09/19/recommend/" data-toggle="tooltip" data-placement="top" title="一位长者关于保研的一些人生经验">Next Post &rarr;</a>
+                            <a href="/2018/06/05/eoj2854/" data-toggle="tooltip" data-placement="top" title="EOJ2854. 统计特定字串模式的个数">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -286,7 +296,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#题意"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">题意</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#题解"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">题解</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#代码"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">代码</span></a></li></ol>
         
         </div>
       </aside>
@@ -306,7 +316,7 @@ var _hmt = _hmt || [];
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#保研" title="保研">保研</a>
+                          <a class="tag" href="/tags/#EOJ" title="EOJ">EOJ</a>
                         
                     </div>
                 </section>
