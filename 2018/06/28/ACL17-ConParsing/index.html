@@ -102,6 +102,8 @@
                     <div class="post-heading">
                         <div class="tags">
                             
+                              <a class="tag" href="/tags/#ACL" title="ACL">ACL</a>
+                            
                               <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
                             
                               <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
@@ -109,8 +111,6 @@
                               <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
                             
                               <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
-                            
-                              <a class="tag" href="/tags/#ACL" title="ACL">ACL</a>
                             
                         </div>
                         <h1>A Minimal Span-Based Neural Constituency Parser</h1>
@@ -189,14 +189,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/bbs/">BBS</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/bbs/">BBS</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -254,6 +254,20 @@ var _hmt = _hmt || [];
 
                 <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=41500990&auto=1&height=66"></iframe></div>
 
+<p>论文地址：<a href="https://www.aclweb.org/anthology/P/P17/P17-1076.pdf" target="_blank" rel="external">ACL17</a><br>代码地址：<a href="https://github.com/mitchellstern/minimal-span-parser" target="_blank" rel="external">github</a></p>
+<p>今天要分享的是伯克利2017年发表在ACL的一篇成分句法分析论文，论文和代码地址都已经放在上面了，代码里还给出了处理过的PTB数据集，使用起来非常方便。</p>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><hr>
+<p>本文提出了一种不同于传统方法的成分句法分析方法。</p>
+<p>传统的句法分析器需要预处理出语法规则集合，然后利用语法规则来进行各种句法分析，这类方法的弊端有很多，我列举了主要的三点：</p>
+<ul>
+<li>语法规则集合构造的好坏直接影响到分析效果的好坏。</li>
+<li>不仅如此，利用语法规则的方法时间复杂度高，因为每次都要遍历一遍语法规则集合来决定每个短语采用哪一条语法规则。</li>
+<li>还有一种弊端就是利用语法规则的方法无法产生新的产生式，也就是说如果测试集中的语法规则没有在训练集中出现过，那么是无法预测出来的。</li>
+</ul>
+<p>而本文提出的模型不需要预先构造出语法规则集合，只需要预测出每个短语的类别和分割点就行了，这样就能构造出一棵完整的句法树。</p>
+<p>该模型分为编码与解码两部分，其中编码部分就是利用双向LSTM将每个词和短语表示成向量，解码部分提出了两种模型，一种是chart模型，就是CKY算法，另一种是top-down模型，就是自顶向下的贪心算法，具体模型之后介绍。</p>
+<h1 id="编码模型"><a href="#编码模型" class="headerlink" title="编码模型"></a>编码模型</h1><hr>
+
                 
 
                 <hr>
@@ -290,7 +304,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#编码模型"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">编码模型</span></a></li></ol>
         
         </div>
       </aside>
@@ -310,6 +324,8 @@ var _hmt = _hmt || [];
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
+                          <a class="tag" href="/tags/#ACL" title="ACL">ACL</a>
+                        
                           <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
                         
                           <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
@@ -317,8 +333,6 @@ var _hmt = _hmt || [];
                           <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
                         
                           <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
-                        
-                          <a class="tag" href="/tags/#ACL" title="ACL">ACL</a>
                         
                     </div>
                 </section>
@@ -465,7 +479,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">56.1k words altogether</span>
+                    <span class="post-count">56.5k words altogether</span>
                 </p>
                   
                 </div>
