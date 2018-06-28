@@ -182,7 +182,7 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -253,10 +253,11 @@ var _hmt = _hmt || [];
                 post-container">
 
                 <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=41500990&auto=1&height=66"></iframe></div>
-
-<p>论文地址：<a href="https://www.aclweb.org/anthology/P/P17/P17-1076.pdf" target="_blank" rel="external">ACL17</a><br>代码地址：<a href="https://github.com/mitchellstern/minimal-span-parser" target="_blank" rel="external">github</a></p>
+<p>论文地址：<a href="https://www.aclweb.org/anthology/P/P17/P17-1076.pdf" target="_blank" rel="external">ACL17</a><br>
+代码地址：<a href="https://github.com/mitchellstern/minimal-span-parser" target="_blank" rel="external">github</a></p>
 <p>今天要分享的是伯克利2017年发表在ACL的一篇成分句法分析论文，论文和代码地址都已经放在上面了，代码里还给出了处理过的PTB数据集，使用起来非常方便。</p>
-<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><hr>
+<h1>摘要</h1>
+<hr>
 <p>本文提出了一种不同于传统方法的成分句法分析方法。</p>
 <p>传统的句法分析器需要预处理出语法规则集合，然后利用语法规则来进行各种句法分析，这类方法的弊端有很多，我列举了主要的三点：</p>
 <ul>
@@ -266,7 +267,53 @@ var _hmt = _hmt || [];
 </ul>
 <p>而本文提出的模型不需要预先构造出语法规则集合，只需要预测出每个短语的类别和分割点就行了，这样就能构造出一棵完整的句法树。</p>
 <p>该模型分为编码与解码两部分，其中编码部分就是利用双向LSTM将每个词和短语表示成向量，解码部分提出了两种模型，一种是chart模型，就是CKY算法，另一种是top-down模型，就是自顶向下的贪心算法，具体模型之后介绍。</p>
-<h1 id="编码模型"><a href="#编码模型" class="headerlink" title="编码模型"></a>编码模型</h1><hr>
+<h1>编码模型</h1>
+<hr>
+<p>一棵句法分析树可以看做是\((label, span)\)的集合，也就是句法树中的每一个结点的类别是\(label\)，该结点对应的短语在句子中的下标范围就是\(span\)。所以模型的任务就是要预测这个集合，给每一个\(label\)和\(span\)一个得分，找出使得一个句子得分最高的\((label, span)\)集合即可。</p>
+<p>那么我们的编码模型任务就是要得出每一个短语的表示，并将其转换为短语的\(label\)得分和\(span\)得分。这里用到的就是最简单的双向LSTM，对于句子的第\(i\)个位置，得到它的双向表示\(f_i\)和\(b_i\)，那么\(span(i,j)\)就可以表示为\([f_j-f_i,b_i-b_j]\)。</p>
+<p>然后将短语表示输入到两个单独的单层前馈神经网络中，就能分别得到\(label\)得分和\(span\)得分了。假设用\(s_{ij}\)表示\(span(i,j)\)的短语表示，那么\(label\)得分和\(span\)得分可以分别表示为：<br>
+\[\begin{array}{l}{s_{labels}}(i,j) = { {\bf{V}}_l}g({ {\bf{W}}<em>l}{s</em>{ij}} + { {\bf{b}}<em>l})\{s</em>{span}}(i,j) = { {\bf{v}}<em>s}^{\rm{T}}g({ {\bf{W}}<em>s}{s</em>{ij}} + { {\bf{b}}<em>s})\end{array}\]<br>
+注意到这里计算出来的\(label\)得分是一个向量，维数为\(label\)的类别数，而\(span\)得分计算出来就是一个标量了。而对于某一个特定的类别，它的得分就可以直接从\(label\)得分向量中取出对应的那一维就行了：<br>
+\[{s</em>{label}}(i,j,l) = {[{s</em>{labels}}(i,j)]_l}\]</p>
+<p>还有个重要的问题就是一元和\(n\)元的产生式怎么处理，对于一元产生式，可以将所有的类别合并为一个新的类别，然后加入类别集合中共同预测就行了，不过在实现代码中，貌似chart模型并没有实现一元产生式的预测，而top-down模型实现了。对于\(n\)元的产生式，可以添加一个临时类别\(\emptyset \)，相当于进行了二叉化，所有的新增节点全部预测为\(\emptyset \)。</p>
+<h1>chart解码模型</h1>
+<hr>
+<p>chart模型本质上就是一个动态规划算法，类似于CKY算法。</p>
+<p>首先一棵句法树的总得分可以表示为组成它的\((label, span)\)集合的\(label\)得分与\(span\)得分之和：<br>
+\[{s_{tree}}(T) = \sum\limits_{(l,(i,j)) \in T} {[{s_{label}}(i,j,l) + {s_{span}}(i,j)]} \]<br>
+我们目的就是寻找使得该式最大的集合\(T\)，利用动态规划可以将时间复杂度降到\(O(n^3)\)。</p>
+<p>对于叶子结点的情况，因为没有分割点，所以我们只需要预测最大得分的\(label\)就行了：<br>
+\[{s_{best}}(i,i + 1) = \mathop {\max }\limits_l [{s_{label}}(i,i + 1,l)]\]<br>
+而对于一般的\(span(i,j)\)，我们不仅要预测\(label\)，还得预测分割点。对于分割点\(k\)，我们可以将分割点得分表示为：<br>
+\[{s_{split}}(i,k,j) = {s_{span}}(i,k) + {s_{span}}(k,j)\]<br>
+那么最大得分可以表示为：<br>
+\[{s_{best}}(i,j) = \mathop {\max }\limits_l [{s_{label}}(i,j,l)] + \mathop {\max }\limits_k [{s_{split}}(i,k,j) + {s_{best}}(i,k) + {s_{best}}(k,j)]\]<br>
+这样就可以对\(label\)和分割点单独预测，在实际代码实现中，去掉了\({s_{split}}(i,k,j)\)这一部分，也就是只预测\(label\)得分之和最高的分割点。这样做的一个好处就是防止了二叉化过程中，从左边开始合并和从右边开始合并得到的分数不一样，从而导致偏差，另外加上这部分效果提升也不大，所以为了简便就删掉了。</p>
+<p>训练的话采用的还是Max-Margin：<br>
+\[max\left( {0,\Delta (\hat T,{T^*}) - {s_{tree}}({T^*}) + {s_{tree}}(\hat T)} \right)\]<br>
+至于句法树差异\({\Delta (\hat T,{T^*})}\)，可以方便的将\({s_{label}}(i,j,l)\)替换为\({s_{label}}(i,j,l) + {\bf{1}}(l \ne l_{ij}^*)\)，其中\(l_{ij}^*\)就是\(span(i,j)\)在标准树中的\(label\)。</p>
+<h1>top-down解码模型</h1>
+<hr>
+<p>top-down模型其实就是自顶向下贪心的选择每一个短语的最大类别和分割点。</p>
+<p>其中叶子结点处依然还是直接找得分最高的那一维：<br>
+\[\hat l = \mathop {arg\max }\limits_l [{s_{label}}(i,i + 1,l)]\]<br>
+对于一般的\(span(i,j)\)，直接贪心的寻找得分最高的\(label\)和分割点就行了：<br>
+\[\begin{array}{l}\hat l = \mathop {\arg \max }\limits_l [{s_{label}}(i,j,l)]\\hat k = \mathop {\arg \max }\limits_k [{s_{split}}(i,k,j)]\end{array}\]<br>
+虽然这种贪心的方法看上去并不十分科学，但是实际效果却比动态规划算法还要好一点，并且它的时间复杂度只有\(O(n^2)\)。</p>
+<p>下面是top-down模型进行解析的一个例子：<br>
+<img src="/2018/06/28/ACL17-ConParsing/1.png" data-action="zoom"><br>
+其中\(\emptyset \)在构造句法树的时候就直接忽略，最后可以还原成\(n\)元的产生式。并且一元产生式\(S \to VP\)被直接替换为了新的类别\(S-VP\)。</p>
+<p>训练过程类似，对标准树中的每一个\(span(i,j)\)，分别计算\(label\)和分割点的loss就行了：<br>
+\[\begin{array}{l}\max \left( {0,1 - {s_{label}}(i,j,{l^*}) + {s_{label}}(i,j,\hat l)} \right)\\max \left( {0,1 - {s_{split}}(i,{k^*},j) + {s_{split}}(i,\hat k,j)} \right)\end{array}\]<br>
+最后累加求出总的loss即可。</p>
+<p><strong>Dynamic Oracle</strong><br>
+待续</p>
+<h1>其他的得分计算方法</h1>
+<hr>
+<p>待续</p>
+<h1>实验</h1>
+<hr>
+<p>待续</p>
 
                 
 
@@ -304,7 +351,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#编码模型"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">编码模型</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">编码模型</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">chart解码模型</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">top-down解码模型</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">其他的得分计算方法</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">实验</span></a></li></ol>
         
         </div>
       </aside>
@@ -479,7 +526,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">56.5k words altogether</span>
+                    <span class="post-count">57.9k words altogether</span>
                 </p>
                   
                 </div>
