@@ -102,13 +102,13 @@
                     <div class="post-heading">
                         <div class="tags">
                             
+                              <a class="tag" href="/tags/#ACL" title="ACL">ACL</a>
+                            
                               <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
                             
                               <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
                             
                               <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
-                            
-                              <a class="tag" href="/tags/#ACL" title="ACL">ACL</a>
                             
                               <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
                             
@@ -175,7 +175,7 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -189,7 +189,7 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -285,7 +285,7 @@ var _hmt = _hmt || [];
 <p><strong>动态Oracle</strong><br>top-down模型在每一个\(span(i,j)\)处都计算出得分最高的label和split，然后与标准树对应的\(span(i,j)\)作比较，计算出loss。但是这样存在一个很严重的问题，就是如果这个预测出来的\(span(i,j)\)没有出现在标准树中，那么他在标准树中的label和split是什么呢？这时候就要用到这里提到的动态Oracle技术了。</p>
 <p>对于label而言，如果\(span(i,j)\)出现在标准树中，那么label就是标准树中的label，否则的话就是\(\emptyset \)。</p>
 <p>对于split而言，定义\(b(i,j)\)为\(span(i,j)\)的split集合，因为可能是\(n\)元的，所以split可能不止一个。如果\(span(i,j)\)在标准树中，那么\(b(i,j)\)显然就是标准树中\(span(i,j)\)的split集合。如果\(span(i,j)\)不在标准树中，那么就寻找一个标准树中包含\(span(i,j)\)的最小span，该span的split集合中位于\(i,j\)之间的split就构成了\(b(i,j)\)。</p>
-<p>形式化定义为，寻找：<br>\[({i^*},{j^*}) = \min \left\\{ {(i’,j’) \in T:i’ \le i &lt; j \le j’} \right\\}\]<br>其中这里的最小是定义在区间长度上的偏序关系。所以\(b(i,j)\)就可以定义为：<br>\[b(i,j) = \left\\{ {k \in b({i^*},{j^*}):i &lt; k &lt; j} \right\\}\]</p>
+<p>形式化定义为，寻找：<br>\[({i^*},{j^*}) = \min \left\{ {(i’,j’) \in T:i’ \le i &lt; j \le j’} \right\}\]<br>其中这里的最小是定义在区间长度上的偏序关系。所以\(b(i,j)\)就可以定义为：<br>\[b(i,j) = \left\{ {k \in b({i^*},{j^*}):i &lt; k &lt; j} \right\}\]</p>
 <p>这样对于任意的\(span(i,j)\)，都能在标准树中找到对应的split集合，然后计算出loss。这样也能解决因为\(n\)叉树不同的二叉化导致的不同的split产生的问题。在实际的代码中，直接采用了\(b(i,j)\)集合中最左边的split作为标准树中的split，当然也可以选择得分最高的一个split，不过提升不大没有必要。</p>
 <p>采用动态Oracle有两个好处：</p>
 <ul>
@@ -371,13 +371,13 @@ var _hmt = _hmt || [];
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
+                          <a class="tag" href="/tags/#ACL" title="ACL">ACL</a>
+                        
                           <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
                         
                           <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
                         
                           <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
-                        
-                          <a class="tag" href="/tags/#ACL" title="ACL">ACL</a>
                         
                           <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
                         
