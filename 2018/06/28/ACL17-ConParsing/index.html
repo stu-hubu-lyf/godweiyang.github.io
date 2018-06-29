@@ -182,14 +182,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/bbs/">BBS</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/bbs/">BBS</a>
                         </li>
                         
                     
@@ -302,8 +302,7 @@ var _hmt = _hmt || [];
 <p>label的得分也由三部分求和得到：<br>\[{s_{label}}(i,j,({l_t},{l_m},{l_b})) = {s_{top}}(i,j,{l_t}) + {s_{middle}}(i,j,{l_m}) + {s_{bottom}}(i,j,{l_b})\]<br>求最大得分的时候也可以三部分分开求。</p>
 <p><strong>左右span得分</strong><br>其实就是在计算split得分时，将左右span的得分区别为left和right两部分：<br>\[{s_{split}}(i,k,j) = {s_{left}}(i,k) + {s_{right}}(k,j)\]</p>
 <p><strong>span连接得分</strong><br>之前计算split得分都是将左右span得分直接相加，当然也可以将他们拼接起来，输入到单层前馈神经网络里，输出作为得分：<br>\[{s_{split}}(i,k,j) = {v^{\rm{T}}}g({W_s}[{s_{ik}};{s_{kj}}] + {b_s})\]</p>
-<p><strong>深度双仿射span得分</strong><br>这个方法在下一篇要讲的论文中会详细讲到，F1值达到了95%，是最高的模型了，这里简单介绍一下。</p>
-<p>首先令\({h_{ik}} = {f_{left}}({s_{ik}}),{h_{kj}} = {f_{right}}({s_{kj}})\)，然后split得分可以计算为：<br>\[{s_{split}}(i,k,j) = h_{ik}^{\rm{T}}{W_s}{h_{kj}} + v_{left}^{\rm{T}}{h_{ik}} + v_{right}^{\rm{T}}{h_{kj}}\]</p>
+<p><strong>深度双仿射span得分</strong><br>首先令\({h_{ik}} = {f_{left}}({s_{ik}}),{h_{kj}} = {f_{right}}({s_{kj}})\)，然后split得分可以计算为：<br>\[{s_{split}}(i,k,j) = h_{ik}^{\rm{T}}{W_s}{h_{kj}} + v_{left}^{\rm{T}}{h_{ik}} + v_{right}^{\rm{T}}{h_{kj}}\]</p>
 <p><strong>结构化label损失</strong><br>对于两个label集合，定义它们之间的结构化Hamming损失为：<br>\[\left| { {l_1}\backslash {l_2}} \right| + \left| { {l_2}\backslash {l_1}} \right|\]<br>这个loss可以被用在之前的训练过程中。</p>
 <h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><hr>
 <p>具体代码细节以及超参数设置请参看代码。</p>
@@ -313,7 +312,7 @@ var _hmt = _hmt || [];
 <p>在PTB数据集上，实验结果都要好于之前的所有parser，结果如下：<br><img src="/2018/06/28/ACL17-ConParsing/3.png" data-action="zoom"></p>
 <p>不仅结果更好，处理速度也有很大提升，chart模型一秒钟能处理20.3句话，top-down模型一秒钟能处理75.5句话。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
-<p>近些年来，效果最好的成分句法分析器基本都是基于转移系统的，还有诸如基于CRF之类的句法分析器。本文提出的基于span表示与得分，从而进行chart解析或者top-down解析的模型是当时结果最好的模型。而且该模型非常的简单，不再需要复杂的语法规则。模型仍然有很多改进之处，体现在span表示的计算方式，各种得分的计算方式。</p>
+<p>近些年来，效果最好的成分句法分析器基本都是基于转移系统的，还有诸如基于CRF之类的句法分析器。本文提出的基于span表示与得分，从而进行chart解析或者top-down解析的模型是当时结果最好的模型。而且该模型非常的简单，不再需要复杂的语法规则。模型仍然有很多改进之处，体现在span表示的计算方式，各种得分的计算方式。在下一篇博客中，我将为大家介绍一篇伯克利最新的成分句法分析论文，使用的是自注意力机制的编码器，F1值达到了惊人的95.15%。</p>
 
                 
 
