@@ -15,11 +15,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          具体数学-第三章作业解答 - WeiYang Blog | 韦阳的博客
+          What&#39;s Going On in Neural Constituency Parsers? An Analysis - WeiYang Blog | 韦阳的博客
         
     </title>
 
-    <link rel="canonical" href="http://godweiyang.com/2018/04/20/concrete-math-hw3/">
+    <link rel="canonical" href="http://godweiyang.com/2018/07/03/NAACL18-ConParsing/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -102,16 +102,22 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#具体数学" title="具体数学">具体数学</a>
+                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
                             
-                              <a class="tag" href="/tags/#Concrete Mathematics" title="Concrete Mathematics">Concrete Mathematics</a>
+                              <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                            
+                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                            
+                              <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
+                            
+                              <a class="tag" href="/tags/#NAACL" title="NAACL">NAACL</a>
                             
                         </div>
-                        <h1>具体数学-第三章作业解答</h1>
-                        <h2 class="subheading">Homework of Concrete Mathematics</h2>
+                        <h1>What&#39;s Going On in Neural Constituency Parsers? An Analysis</h1>
+                        <h2 class="subheading">关于神经成分句法分析器的分析</h2>
                         <span class="meta">
                             Posted by WeiYang on
-                            2018-04-20
+                            2018-07-03
                         </span>
                     </div>
                 
@@ -246,28 +252,31 @@ var _hmt = _hmt || [];
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29534449&auto=1&height=66"></iframe></div>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=27890306&auto=1&height=66"></iframe></div>
 
-<h1 id="题3"><a href="#题3" class="headerlink" title="题3"></a>题3</h1><hr>
-<p><strong>题目</strong><br>求\(\left\lfloor {nx} \right\rfloor  = n\left\lfloor x \right\rfloor \)的充要条件。<br><strong>解答</strong><br>因为</p>
-<p>\[<br>x = \left\lfloor x \right\rfloor  + \{ x\}<br>\]<br>所以</p>
-<p>\[<br>\left\lfloor {nx} \right\rfloor  = \left\lfloor {n(\left\lfloor x \right\rfloor  + \{ x\} )} \right\rfloor  = n\left\lfloor x \right\rfloor  + \left\lfloor {n\{ x\} } \right\rfloor<br>\]<br>要使得\(\left\lfloor {nx} \right\rfloor  = n\left\lfloor x \right\rfloor\)，就必须有</p>
-<p>\[<br>\left\lfloor {n\{ x\} } \right\rfloor  = 0<br>\]<br>所以</p>
-<p>\[<br>n\{ x\}  &lt; 1<br>\]<br>即</p>
-<p>\[<br>\{ x\}  &lt; \frac{1}{n}<br>\]</p>
-<h1 id="题7"><a href="#题7" class="headerlink" title="题7"></a>题7</h1><hr>
-<p><strong>题目</strong><br>求下列递推式<br>\[\begin{array}{l}{X_n} = n,0 \le n &lt; m\\{X_n} = {X_{n - m}} + 1,n \ge m\end{array}\]<br><strong>解答</strong><br>因为</p>
-<p>\[<br>n - \left\lfloor {\frac{n}{m}} \right\rfloor m = n\bmod m &lt; m<br>\]<br>所以</p>
-<p>\[<br>\begin{array}{l}{X_n} = {X_{n - m}} + 1 = {X_{n - 2m}} + 2 =  \cdots \\ = {X_{n - \left\lfloor {\frac{n}{m}} \right\rfloor m}} + \left\lfloor {\frac{n}{m}} \right\rfloor  = n - \left\lfloor {\frac{n}{m}} \right\rfloor m + \left\lfloor {\frac{n}{m}} \right\rfloor \\ = n\,\bmod \,m + \left\lfloor {\frac{n}{m}} \right\rfloor \end{array}<br>\]</p>
-<h1 id="题8"><a href="#题8" class="headerlink" title="题8"></a>题8</h1><hr>
-<p><strong>题目</strong><br>\(n\)个物品放到\(m\)个盒子中，求证至少有一个盒子物品数大于等于\(\left\lceil {\frac{n}{m}} \right\rceil\)，至少有一个盒子物品数小于等于\(\left\lfloor {\frac{n}{m}} \right\rfloor\)。<br><strong>解答</strong><br>假设所有的盒子物品数都小于\(\left\lceil {\frac{n}{m}} \right\rceil\)，那么总物品数\(S\)满足</p>
-<p>\[<br>S \le m(\left\lceil {\frac{n}{m}} \right\rceil  - 1)<br>\]<br>令\(n = qm + r,0 \le r &lt; m\)，那么有</p>
-<p>\[<br>S \le m(\left\lceil {q + \frac{r}{m}} \right\rceil  - 1) = qm - m + m\left\lceil {\frac{r}{m}} \right\rceil<br>\]<br>如果\(r=0\)，那么有</p>
-<p>\[<br>S \le qm - m &lt; n<br>\]<br>如果\(r&gt;0\)，那么有</p>
-<p>\[<br>S \le qm &lt; n<br>\]<br>这与\(S=n\)矛盾！所以至少有一个盒子物品数大于等于\(\left\lceil {\frac{n}{m}} \right\rceil\)。</p>
-<p>假设所有的盒子物品数都大于\(\left\lfloor {\frac{n}{m}} \right\rfloor\)，那么总物品数\(S\)满足</p>
-<p>\[<br>S \ge m(\left\lfloor {\frac{n}{m}} \right\rfloor  + 1)<br>\]<br>令\(n = qm + r,0 \le r &lt; m\)，那么有</p>
-<p>\[<br>S \ge m(\left\lfloor {q + \frac{r}{m}} \right\rfloor  + 1) = qm + m + m\left\lfloor {\frac{r}{m}} \right\rfloor  = qm + m &gt; qm + r = n<br>\]<br>这与\(S=n\)矛盾！所以至少有一个盒子物品数小于等于\(\left\lfloor {\frac{n}{m}} \right\rfloor\)。</p>
+<p><strong>论文地址：</strong><a href="https://arxiv.org/pdf/1804.07853.pdf" target="_blank" rel="external">What’s Going On in Neural Constituency Parsers? An Analysis</a><br><strong>代码地址：</strong><a href="https://github.com/dgaddy/parser-analysis" target="_blank" rel="external">github</a></p>
+<p><img src="/2018/07/03/NAACL18-ConParsing/1.jpg" data-action="zoom"></p>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><hr>
+<p>最近几年，成分句法分析的方法发生了巨大的变化。传统的有基于PCFG的CKY算法，最近几年随着神经网络的兴起又产生了基于转移的方法、CRF句法分析、重排序方法等等。</p>
+<p>本文是伯克利大学在NAACL18提出的一种基于神经网络的句法分析方法，和传统的方法不同的是，完全不使用语法规则和词汇特征，只需要用神经网络学习出短语的表示即可。通过实验可以发现，神经网络的确也很好的隐式学习出了传统的方法显式用到的语法规则和其他一些特征。在PTB数据集上，该方法达到了92.08%的F1值，这也直接超过了传统的大多数方法。而在下一篇伯克利的ACL18论文中，他们提出的基于Multi-Head Attention的成分句法分析方法更是达到了95.13%的F1值。</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><hr>
+<p>在过去几年，成分句法分析方法发生了巨大的变化。最大的变化就是语法规则和人工的词汇特征变得越来越不那么重要，取而代之的用循环神经网络学习短语的表示，但是还没有什么人对这种神经网络表示的有效性做研究分析。本文提出了一种用RNN学习表示用来句法分析的模型，并对模型的各个方面进行了分析。</p>
+<h1 id="句法分析模型"><a href="#句法分析模型" class="headerlink" title="句法分析模型"></a>句法分析模型</h1><hr>
+<h2 id="模型总览"><a href="#模型总览" class="headerlink" title="模型总览"></a>模型总览</h2><p>和传统的CKY算法一样，该模型还是采用动态规划的算法求解每个短语的最大得分对应的类别以及分割点。只不过这里的短语得分不再是产生式概率之积，而是用RNN训练出来的短语得分。</p>
+<p>用\(s(i,j,l)\)表示短语\(x_{ij}\)类别为\(l\)的得分，句法树\(T\)的得分表示为所有产生式的得分总和：<br>\[s(T) = \sum\limits_{(i,j,l) \in T} {s(i,j,l)} \]</p>
+<p><strong>值得一提的是，该句法分析模型不需要句法树是二叉树，所以可以直接分析出\(n\)叉树结构。</strong></p>
+<p>模型的任务依然是寻找得分最高的句法分析树：<br>\[\hat T = \mathop {\arg \max }\limits_T s(T)\]</p>
+<p>短语得分\(s(i,j,l)\)的计算可以通过三个部分实现：单词表示、短语表示、短语类别得分。</p>
+<h2 id="单词表示"><a href="#单词表示" class="headerlink" title="单词表示"></a>单词表示</h2><p>首先采用Char-BiLSTM训练出每个单词的字符级别的表示，这种表示方法已经很常见了，优点是可以捕捉到单词的前缀后缀等信息，还可以解决未登录词的表示问题。</p>
+<p>最后将字符级别的词表示和预训练的词向量拼接起来作为最终的单词表示。也可以用外部序列标注器预测出单词的词性，并拼接上去作为输入，但是在这里只要Char-BiLSTM训练的足够好，就不需要词性标注了。</p>
+<h2 id="短语表示"><a href="#短语表示" class="headerlink" title="短语表示"></a>短语表示</h2><p>对句子单词序列跑一遍双向LSTM，得到每个单词的前向后向上下文表示\({ {\bf{f}}_i}\)和\({ {\bf{b}}_i}\)，然后对于短语\(x_{ij}\)，用两者的上下文表示的差值拼接起来作为该短语的向量表示：<br>\[{ {\bf{r}}_{ij}} = [{ {\bf{f}}_j} - { {\bf{f}}_i},{ {\bf{b}}_i} - { {\bf{b}}_j}]\]<br>图1是一个具体的例子：<br><img src="/2018/07/03/NAACL18-ConParsing/2.jpg" data-action="zoom"></p>
+<h2 id="短语类别得分"><a href="#短语类别得分" class="headerlink" title="短语类别得分"></a>短语类别得分</h2><p>最后将短语表示输入到一个单层前馈神经网络中，输出得分向量，其中得分向量每个维度就对应了每个类别的概率。具体计算公式如下：<br>\[s(i,j,l) = {[{ {\bf{W}}_2}ReLU({ {\bf{W}}_1}{ {\bf{r}}_{ij}} + { {\bf{z}}_1}) + { {\bf{z}}_2}]_l}\]</p>
+<h2 id="句法分析"><a href="#句法分析" class="headerlink" title="句法分析"></a>句法分析</h2><p>虽然现在是\(n\)叉树，但是依然可以用CKY算法来进行句法分析。这时候就需要定义一个虚拟短语类别\(\emptyset\)，表示实际上不能构成短语的临时短语。例如对于产生式\(A \to BCD\)，分析的时候可以将其分析为\(A \to \emptyset D,\emptyset  \to BC\)。定义虚拟短语类别的得分为0，即\(s(i,j,\emptyset ) = 0\)。</p>
+<p>定义\({s_{best}}(i,j)\)为短语\(x_{ij}\)得分最高的句法分析树的得分。首先对长度为1的短语即单词进行初始化：<br>\[{s_{best}}(i,i + 1) = \mathop {\max }\limits_l s(i,i + 1,l)\]<br>然后对于短语\(x_{ij}\)，运用动态规划算法计算得分最高的句法分析树：<br>\[{s_{best}}(i,j) = \mathop {\max }\limits_l s(i,j,l) + \mathop {\max }\limits_k [{s_{best}}(i,k) + {s_{best}}(k,j)]\]<br>注意到这里对类别的预测和分割点的预测是分开的，短语的最高分数就是最优子树的每个结点的类别得分之和。</p>
+<p>自底向上进行计算，最终整个句子的最高得分就是\({s_{best}}(0,n)\)。然后自顶向下回溯得到整个句子的句法分析树，注意如果回溯遇到了虚拟短语类别\(\emptyset\)，就直接忽略它，继续往下回溯。</p>
+<p>整个算法的时间复杂度为\(O({n^3} + L{n^2})\)，因为没有用到语法规则，所以\(n^3\)的常数系数\(\left| G \right|\)就没有了，复杂度大大降低！</p>
+<h2 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h2><p>损失函数依然使用的是max-margin，即<br>\[\mathcal L = \max \left( {0,\mathop {\max }\limits_T [s(T) + \Delta (T,{T^*})] - s({T^*})} \right)\]<br>这里提到了一点加快计算的方法，\({\Delta (T,{T^*})}\)可以融入到动态规划算法中一起计算，即将短语类别得分\(s(i,j,l)\)替换为\(s(i,j,l) + 1[l \ne l_{ij}^*]\)，其中\(l_{ij}^*\)是标准树中短语\(x_{ij}\)的类别。</p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>经过10轮训练之后，模型在验证集上的F1值达到了92.22%，在测试集上的F1值为92.08%。</p>
 
                 
 
@@ -276,12 +285,12 @@ var _hmt = _hmt || [];
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2018/04/23/concrete-math-9/" data-toggle="tooltip" data-placement="top" title="具体数学-第9课">&larr; Previous Post</a>
+                            <a href="/2018/07/04/Constituency-Parsing-with-a-Self-Attentive-Encoder/" data-toggle="tooltip" data-placement="top" title="Constituency Parsing with a Self-Attentive Encoder">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2018/04/19/inside-outside/" data-toggle="tooltip" data-placement="top" title="PCFG中inside和outside算法详解">Next Post &rarr;</a>
+                            <a href="/2018/06/28/ACL17-ConParsing/" data-toggle="tooltip" data-placement="top" title="A Minimal Span-Based Neural Constituency Parser">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -309,7 +318,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#题3"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">题3</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#题7"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">题7</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#题8"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">题8</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#介绍"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#句法分析模型"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">句法分析模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#模型总览"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">模型总览</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#单词表示"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">单词表示</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#短语表示"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">短语表示</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#短语类别得分"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">短语类别得分</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#句法分析"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">句法分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#模型训练"><span class="toc-nav-number">3.6.</span> <span class="toc-nav-text">模型训练</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#实验结果"><span class="toc-nav-number">3.7.</span> <span class="toc-nav-text">实验结果</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -329,9 +338,15 @@ var _hmt = _hmt || [];
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#具体数学" title="具体数学">具体数学</a>
+                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
                         
-                          <a class="tag" href="/tags/#Concrete Mathematics" title="Concrete Mathematics">Concrete Mathematics</a>
+                          <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                        
+                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                        
+                          <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
+                        
+                          <a class="tag" href="/tags/#NAACL" title="NAACL">NAACL</a>
                         
                     </div>
                 </section>
