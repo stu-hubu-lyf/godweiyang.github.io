@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://godweiyang.com/2018/07/04/Constituency-Parsing-with-a-Self-Attentive-Encoder/</loc>
+        <lastmod>2018-07-04T14:52:19.071Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://godweiyang.com/2018/06/28/ACL17-ConParsing/</loc>
         <lastmod>2018-06-29T14:28:06.427Z</lastmod>
         <changefreq>weekly</changefreq>
