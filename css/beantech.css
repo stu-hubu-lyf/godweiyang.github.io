@@ -976,3 +976,5 @@ body {
 .page-fullscreen footer .copyright a:hover {
   color: #ddd;
 }
+
+#feedAv{ margin-top: -250px!important;transform: scale(0);}
