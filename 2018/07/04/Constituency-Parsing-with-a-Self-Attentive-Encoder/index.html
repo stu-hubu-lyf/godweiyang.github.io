@@ -173,13 +173,6 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -188,6 +181,13 @@ var _hmt = _hmt || [];
                         
                         <li>
                             <a href="/bbs/">BBS</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -250,7 +250,9 @@ var _hmt = _hmt || [];
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p><strong>论文地址：</strong><a href="https://arxiv.org/pdf/1805.01052.pdf" target="_blank" rel="external">Constituency Parsing with a Self-Attentive Encoder</a><br><strong>代码地址：</strong><a href="https://github.com/nikitakit/self-attentive-parser" target="_blank" rel="external">github</a></p>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=493316158&auto=1&height=66"></iframe></div>
+
+<p><strong>论文地址：</strong><a href="https://arxiv.org/pdf/1805.01052.pdf" target="_blank" rel="external">Constituency Parsing with a Self-Attentive Encoder</a><br><strong>代码地址：</strong><a href="https://github.com/nikitakit/self-attentive-parser" target="_blank" rel="external">github</a></p>
 <p>今天要介绍的这篇论文是成分句法分析领域目前的state-of-the-art，结果最高的几篇paper可以参见ruder在github整理的列表：<a href="https://github.com/sebastianruder/NLP-progress/blob/master/constituency_parsing.md" target="_blank" rel="external">github</a>。<br>下面就是成分句法分析目前排名：</p>
 <table>
 <thead>
@@ -309,6 +311,27 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><hr>
+<p>本篇论文将之前<a href="http://godweiyang.com/2018/06/28/ACL17-ConParsing/">A Minimal Span-Based Neural Constituency Parser</a>这篇论文中模型的编码器部分由LSTM替换为了Self-Attentive，来捕捉句子单词内容(content)与位置(position)之间的联系。实验结果可以达到93.55%的F1值，如果再加上预训练的词向量ELMo，那么F1值可以提升到95.13%。这是目前效果最好的一个模型了。</p>
+<h1 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h1><hr>
+<h2 id="基本模型"><a href="#基本模型" class="headerlink" title="基本模型"></a>基本模型</h2><p>这部分详见我之前写的一篇笔记：<a href="http://godweiyang.com/2018/06/28/ACL17-ConParsing/">A Minimal Span-Based Neural Constituency Parser</a>，解码器部分和之前模型基本一致。本文主要探讨的是编码器的构造，也就是如何求出每个span的向量表示，从而得到span的得分\(s(i,j,l)\)，然后应用解码器进行解码，生成成分句法分析树。</p>
+<h2 id="词向量表示"><a href="#词向量表示" class="headerlink" title="词向量表示"></a>词向量表示</h2><p>第\(t\)个单词的词向量由三个部分组成：</p>
+<ul>
+<li>word embdding：\(w_t\)，这部分可以用随机初始化的向量，也可以用CharLSTM，也可以用预训练的词向量。</li>
+<li>tag embdding：\(m_t\)</li>
+<li>位置向量：\(p_t\)</li>
+</ul>
+<p>最终词向量为三部分的加和：<br>\[z_t = w_t + m_t + p_t\]</p>
+<h2 id="Self-Attentive"><a href="#Self-Attentive" class="headerlink" title="Self-Attentive"></a>Self-Attentive</h2><p>未完待续</p>
+<h2 id="Span得分"><a href="#Span得分" class="headerlink" title="Span得分"></a>Span得分</h2><p>未完待续</p>
+<h1 id="模型分析"><a href="#模型分析" class="headerlink" title="模型分析"></a>模型分析</h1><hr>
+<h2 id="Content-vs-Position-Attention"><a href="#Content-vs-Position-Attention" class="headerlink" title="Content vs Position Attention"></a>Content vs Position Attention</h2><p>未完待续</p>
+<h2 id="窗口Attention"><a href="#窗口Attention" class="headerlink" title="窗口Attention"></a>窗口Attention</h2><p>未完待续</p>
+<h1 id="模型的一些改进"><a href="#模型的一些改进" class="headerlink" title="模型的一些改进"></a>模型的一些改进</h1><hr>
+<p>未完待续</p>
+<h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h1><hr>
+<p>未完待续</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<p>未完待续</p>
 
                 
 
@@ -346,7 +369,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#模型"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#基本模型"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">基本模型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#词向量表示"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">词向量表示</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Self-Attentive"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Self-Attentive</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Span得分"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Span得分</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#模型分析"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">模型分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Content-vs-Position-Attention"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Content vs Position Attention</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#窗口Attention"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">窗口Attention</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#模型的一些改进"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">模型的一些改进</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#实验结果"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">实验结果</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">总结</span></a></li></ol>
         
         </div>
       </aside>
@@ -521,7 +544,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">59.4k words altogether</span>
+                    <span class="post-count">59.7k words altogether</span>
                 </p>
                   
                 </div>
