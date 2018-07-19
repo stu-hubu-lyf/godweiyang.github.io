@@ -182,13 +182,6 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -197,6 +190,13 @@ var _hmt = _hmt || [];
                         
                         <li>
                             <a href="/bbs/">BBS</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -261,6 +261,7 @@ var _hmt = _hmt || [];
 <p>本文提出了一种新的概念叫做“syntactic distance”，以下称作句法距离，这个概念首次提出是2017年一篇语言模型的论文中的，本文将其用在了句法分析中。主要思想是这样的：对于一棵二叉树，它的中序遍历的split序列和二叉树是唯一对应的，所以只需要预测这个split序列就行了，而每个split就是用句法距离来表示。下图就是一棵句法树对应的句法距离：<br><img src="/2018/07/19/ConParsing-Syntactic-Distance/1.png" data-action="zoom"><br>这棵树有两个split，第一个split的高度更高，所以对应的句法距离数值更大。</p>
 <p>最后通过top-down顺序进行解码，解码时间复杂度为\(O(n\log n)\)。最后模型在PTB上取得了91.8的F1值，CTB上取得了86.5的F1值。</p>
 <h1 id="Syntactic-Distances"><a href="#Syntactic-Distances" class="headerlink" title="Syntactic Distances"></a>Syntactic Distances</h1><hr>
+<p>一棵句法树的句法距离如下定义：</p>
 
                 
 
