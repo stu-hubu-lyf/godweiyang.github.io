@@ -8,7 +8,15 @@
 
     <url>
         <loc>http://godweiyang.com/2018/07/19/ConParsing-Syntactic-Distance/</loc>
-        <lastmod>2018-07-19T16:59:27.263Z</lastmod>
+        <lastmod>2018-07-20T15:16:00.795Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://godweiyang.com/2018/07/04/Constituency-Parsing-with-a-Self-Attentive-Encoder/</loc>
+        <lastmod>2018-07-20T04:37:35.919Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,14 +25,6 @@
     <url>
         <loc>http://godweiyang.com/2018/01/22/mood/</loc>
         <lastmod>2018-07-10T11:29:46.148Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://godweiyang.com/2018/07/04/Constituency-Parsing-with-a-Self-Attentive-Encoder/</loc>
-        <lastmod>2018-07-10T09:05:50.972Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
