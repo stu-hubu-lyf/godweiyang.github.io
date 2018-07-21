@@ -2,22 +2,22 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <sitemap>
-        <loc>http://godweiyang.com/post-sitemap.xml</loc>
+        <loc>https://godweiyang.com/post-sitemap.xml</loc>
         <lastmod>2018-07-20T15:16:00.795Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://godweiyang.com/page-sitemap.xml</loc>
+        <loc>https://godweiyang.com/page-sitemap.xml</loc>
         <lastmod>2018-06-01T10:36:05.730Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://godweiyang.com/category-sitemap.xml</loc>
+        <loc>https://godweiyang.com/category-sitemap.xml</loc>
         <lastmod>2018-03-30T01:41:58.000Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://godweiyang.com/tag-sitemap.xml</loc>
+        <loc>https://godweiyang.com/tag-sitemap.xml</loc>
         <lastmod>2018-03-30T01:44:54.000Z</lastmod>
     </sitemap>
 
