@@ -173,6 +173,13 @@ var _hmt = _hmt || [];
 
                         
                         <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -181,13 +188,6 @@ var _hmt = _hmt || [];
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -254,8 +254,9 @@ var _hmt = _hmt || [];
 <p>下面就将从定义、证明以及具体实践方面来详细阐述Dynamic Oracle。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><hr>
 <p><strong>定义1：</strong> 定义\(c{ \vdash _\tau }c’\)为状态\(c\)经过动作\(\tau \)之后转移到状态\({c’}\)，写成函数的形式就是\(c’ = \tau ({c})\)。另外定义\( \vdash \)为所有动作\(\tau \)的并集，也就是状态\(c\)经过任意动作之后转移到状态\({c’}\)。定义\({ \vdash ^*}\)为\( \vdash \)的自反和传递闭包。</p>
-<p><strong>定义2：</strong> 定义\(D({c})\)为从状态\(c\)出发，最终可以产生的句法树的集合，即<br>\[D({c}) = \left\\{ {t|c{ \vdash ^*}\left\langle {z,\sigma ,t} \right\rangle } \right\\}\]也可以称作“派生树”或者“可到达的树”。</p>
+<p><strong>定义2：</strong> 定义\(D({c})\)为从状态\(c\)出发，最终可以产生的句法树的集合，即<br>\[D({c}) = \left\{ {t|c{ \vdash ^*}\left\langle {z,\sigma ,t} \right\rangle } \right\}\]也可以称作“派生树”或者“可到达的树”。</p>
 <p><strong>定义3：</strong> 定义预测树\(t\)关于标准树\(t_G\)的\(F_1\)值为<br>\[{F_1}(t) = \frac{ {rp}}{ {r + p}}\]其中\(r = \frac{ {\left| {t \cap {t_G}} \right|}}{ {\left| { {t_G}} \right|}},p = \frac{ {\left| {t \cap {t_G}} \right|}}{ {\left| t \right|}}\)。</p>
+<p><strong>定义4：</strong> 将\(F_1\)扩展为状态\(c\)的函数，定义\({F_1}({c})\)为从状态\(c\)出发可以产生的\(F_1\)值最高的句法树的\(F_1\)值，即</p>
 
                 
 
