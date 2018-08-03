@@ -7,8 +7,16 @@
     </url>
 
     <url>
+        <loc>https://godweiyang.com/2018/08/03/dynamic-oracles/</loc>
+        <lastmod>2018-08-03T13:39:47.355Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://godweiyang.com/2018/07/19/ConParsing-Syntactic-Distance/</loc>
-        <lastmod>2018-07-20T15:16:00.795Z</lastmod>
+        <lastmod>2018-08-03T08:24:00.794Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
