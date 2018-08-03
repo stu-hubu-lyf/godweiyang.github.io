@@ -173,14 +173,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -243,7 +243,9 @@ var _hmt = _hmt || [];
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>本文将从定义到证明，一步步理清成分句法分析中用到的Dynamic Oracle函数。</p>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=4875075&auto=1&height=66"></iframe></div>
+
+<p>本文将从定义到证明，一步步理清成分句法分析中用到的Dynamic Oracle函数。</p>
 <h1 id="成分句法分析系统"><a href="#成分句法分析系统" class="headerlink" title="成分句法分析系统"></a>成分句法分析系统</h1><hr>
 <p>首先本文用到的成分句法分析系统是基于span-based的转移系统，在这里只做简略介绍，详见<a href="http://ir.library.oregonstate.edu/downloads/0g354j52q" target="_blank" rel="external">Parsing with Recurrent Neural Networks</a>。<br><img src="/2018/08/03/dynamic-oracles/1.png" data-action="zoom"><br>上图展示了该转移系统的转移过程，其中结构化预测只用到了shift(sh)和combine(comb)两种动作，因为stack中存放的是span的左右边界下标，所以comb动作不需要区分左右，这与另一种转移系统的reduce动作不同。而对于label的预测，如果栈首的span不构成短语结点，那么就预测为nolabel，否则就预测为\(_i{X_j}\)。</p>
 <p>每个时刻的状态用三元组\(\left\langle {z,\sigma ,t} \right\rangle \)表示，分别表示第几个动作、栈（span的split序列）、当前已生成的结点\(_i{X_j}\)集合。注意到对于长度为\(n\)的句子，只需要用\(4n-2\)个动作就可以分析出句法树了，并且第偶数个动作做结构预测（sh和comb），第奇数个动作做label预测。<br><img src="/2018/08/03/dynamic-oracles/2.png" data-action="zoom"><br>上图是一个转移的具体例子，下面将全部以这个句子为例进行介绍。注意到多叉树隐式的转化为了二叉树，临时结点预测为nolabel。</p>
