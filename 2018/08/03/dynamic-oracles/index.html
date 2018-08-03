@@ -173,14 +173,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -243,20 +243,60 @@ var _hmt = _hmt || [];
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>本文将从定义到证明再到实践，一步步理清成分句法分析中用到的Dynamic Oracle函数。</p>
-<h1 id="成分句法分析系统"><a href="#成分句法分析系统" class="headerlink" title="成分句法分析系统"></a>成分句法分析系统</h1><hr>
-<p>首先本文用到的成分句法分析系统是基于span-based的转移系统，在这里只做简略介绍，详见<a href="http://ir.library.oregonstate.edu/downloads/0g354j52q" target="_blank" rel="external">Parsing with Recurrent Neural Networks</a>。<br><img src="/2018/08/03/dynamic-oracles/1.png" data-action="zoom"><br>上图展示了该转移系统的转移过程，其中结构化预测只用到了shift(sh)和combine(comb)两种动作，因为stack中存放的是span的左右边界下标，所以comb动作不需要区分左右，这与另一种转移系统的reduce动作不同。而对于label的预测，如果栈首的span不构成短语结点，那么就预测为nolabel，否则就预测为\(_i{X_j}\)。</p>
-<p>每个时刻的状态用三元组\(\left\langle {z,\sigma ,t} \right\rangle \)表示，分别表示第几个动作、栈（span的split序列）、当前已生成的结点\(_i{X_j}\)集合。注意到对于长度为\(n\)的句子，只需要用\(4n-2\)个动作就可以分析出句法树了，并且第偶数个动作做结构预测（sh和comb），第奇数个动作做label预测。<br><img src="/2018/08/03/dynamic-oracles/2.png" data-action="zoom"><br>上图是一个转移的具体例子，下面将全部以这个句子为例进行介绍。注意到多叉树隐式的转化为了二叉树，临时结点预测为nolabel。</p>
-<h1 id="Dynamic-Oracle"><a href="#Dynamic-Oracle" class="headerlink" title="Dynamic Oracle"></a>Dynamic Oracle</h1><hr>
+                <p>本文将从定义到证明，一步步理清成分句法分析中用到的Dynamic Oracle函数。</p>
+<h1>成分句法分析系统</h1>
+<hr>
+<p>首先本文用到的成分句法分析系统是基于span-based的转移系统，在这里只做简略介绍，详见<a href="http://ir.library.oregonstate.edu/downloads/0g354j52q" target="_blank" rel="external">Parsing with Recurrent Neural Networks</a>。<br>
+<img src="/2018/08/03/dynamic-oracles/1.png" data-action="zoom"><br>
+上图展示了该转移系统的转移过程，其中结构化预测只用到了shift(sh)和combine(comb)两种动作，因为stack中存放的是span的左右边界下标，所以comb动作不需要区分左右，这与另一种转移系统的reduce动作不同。而对于label的预测，如果栈首的span不构成短语结点，那么就预测为nolabel，否则就预测为\(_i{X_j}\)。</p>
+<p>每个时刻的状态用三元组\(\left\langle {z,\sigma ,t} \right\rangle \)表示，分别表示第几个动作、栈（span的split序列）、当前已生成的结点\(_i{X_j}\)集合。注意到对于长度为\(n\)的句子，只需要用\(4n-2\)个动作就可以分析出句法树了，并且第偶数个动作做结构预测（sh和comb），第奇数个动作做label预测。<br>
+<img src="/2018/08/03/dynamic-oracles/2.png" data-action="zoom"><br>
+上图是一个转移的具体例子，下面将全部以这个句子为例进行介绍。注意到多叉树隐式的转化为了二叉树，临时结点预测为nolabel。</p>
+<h1>Dynamic Oracle</h1>
+<hr>
 <p>Dynamic Oracle是Goldberg和Nivre在2013年总结出来的，发表在TACL上面：<a href="https://www.aclweb.org/anthology/Q/Q13/Q13-1033.pdf" target="_blank" rel="external">Training Deterministic Parsers with Non-Deterministic Oracles</a>。</p>
 <p>提出的动机就是为了解决测试阶段贪心预测错误导致误差越来越大的问题。在训练的时候，原来的静态Oracle方法就是每一步都严格按照标准树的动作来进行预测，最终拟合得和标准树动作序列相同，但是测试的时候没有标准树了，如果某一步预测错误，可能会到达一个训练中没有出现过的状态，那就会导致之后的预测越来越错。所以就提出了Dynamic Oracle的技巧，在训练过程中的每一步预测，不再局限于标准树中的一个动作，而扩展为一个动作集合，只要采取集合中的动作，那么最终得到的动作序列一定也是最优的。</p>
-<p>这种方法主要用于贪心的预测方法，例如本文的转移系统就是在每一步贪心的预测当前动作，再如之前介绍过的成分句法分析top-down模型<a href="https://www.aclweb.org/anthology/P/P17/P17-1076.pdf" target="_blank" rel="external">A Minimal Span-Based Neural Constituency Parser</a>中，自顶向下贪心的选择每一个span的最佳split，也要用到Dynamic Oracle来防止错误扩大。之前的博客有过专门介绍，可以去翻看一下：<a href="https://godweiyang.com/2018/06/28/ACL17-ConParsing/#top-down解码模型">Dynamic Oracle</a></p>
-<p>下面就将从定义、证明以及具体实践方面来详细阐述Dynamic Oracle。</p>
-<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><hr>
+<p>这种方法主要用于贪心的预测方法，例如本文的转移系统就是在每一步贪心的预测当前动作，再如之前介绍过的成分句法分析top-down模型<a href="https://www.aclweb.org/anthology/P/P17/P17-1076.pdf" target="_blank" rel="external">A Minimal Span-Based Neural Constituency Parser</a>中，自顶向下贪心的选择每一个span的最佳split，也要用到Dynamic Oracle来防止错误扩大。之前的博客有过专门介绍，可以去翻看一下：<a href="https://godweiyang.com/2018/06/28/ACL17-ConParsing/#top-down%E8%A7%A3%E7%A0%81%E6%A8%A1%E5%9E%8B">Dynamic Oracle</a></p>
+<p>下面就将从定义、证明等方面来详细阐述Dynamic Oracle。</p>
+<h1>定义</h1>
+<hr>
 <p><strong>定义1：</strong> 定义\(c{ \vdash _\tau }c’\)为状态\(c\)经过动作\(\tau \)之后转移到状态\({c’}\)，写成函数的形式就是\(c’ = \tau ({c})\)。另外定义\( \vdash \)为所有动作\(\tau \)的并集，也就是状态\(c\)经过任意动作之后转移到状态\({c’}\)。定义\({ \vdash ^*}\)为\( \vdash \)的自反和传递闭包。</p>
-<p><strong>定义2：</strong> 定义\(D({c})\)为从状态\(c\)出发，最终可以产生的句法树的集合，即<br>\[D({c}) = \left\{ {t|c{ \vdash ^*}\left\langle {z,\sigma ,t} \right\rangle } \right\}\]也可以称作“派生树”或者“可到达的树”。</p>
-<p><strong>定义3：</strong> 定义预测树\(t\)关于标准树\(t_G\)的\(F_1\)值为<br>\[{F_1}(t) = \frac{ {rp}}{ {r + p}}\]其中\(r = \frac{ {\left| {t \cap {t_G}} \right|}}{ {\left| { {t_G}} \right|}},p = \frac{ {\left| {t \cap {t_G}} \right|}}{ {\left| t \right|}}\)。</p>
-<p><strong>定义4：</strong> 将\(F_1\)扩展为状态\(c\)的函数，定义\({F_1}({c})\)为从状态\(c\)出发可以产生的\(F_1\)值最高的句法树的\(F_1\)值，即</p>
+<p><strong>定义2（派生树/可到达树）：</strong> 定义\(D({c})\)为从状态\(c\)出发，最终可以产生的句法树的集合，即<br>
+\[D({c}) = \left{ {t|c{ \vdash ^*}\left\langle {z,\sigma ,t} \right\rangle } \right}\]<br>
+也可以称作“派生树”或者“可到达树”。</p>
+<p><strong>定义3（\(F_1\)值）：</strong> 定义预测树\(t\)关于标准树\(t_G\)的\(F_1\)值为<br>
+\[{F_1}(t) = \frac{ {rp}}{ {r + p}}\]<br>
+其中\(r = \frac{ {\left| {t \cap {t_G}} \right|}}{ {\left| { {t_G}} \right|}},p = \frac{ {\left| {t \cap {t_G}} \right|}}{ {\left| t \right|}}\)。</p>
+<p><strong>定义4：</strong> 将\(F_1\)扩展为状态\(c\)的函数，定义\({F_1}({c})\)为从状态\(c\)出发可以产生的\(F_1\)值最高的句法树的\(F_1\)值，即<br>
+\[{F_1}© = {\max _{t \in D©}}{F_1}(t)\]</p>
+<p><strong>定义5（oracle）：</strong> 定义状态\(c\)的oracle为使状态\(c\)转移过后最优\(F_1\)值不变的动作集合，即<br>
+\[oracle© = \left{ {\tau |{F_1}(\tau ©) = {F_1}©} \right}\]<br>
+至于这个集合该怎么求解，下面将会讲到。</p>
+<p><strong>定义6（span包含）：</strong> span\((i,j)\)被span\((p,q)\)包含，当且仅当\(p \le i &lt; j \le q\)，记为<br>
+\[(i,j) \preceq (p,q)\]</p>
+<p><strong>定义7（严格包含）：</strong> span\((i,j)\)被span\((p,q)\)严格包含，当且仅当\((i,j) \preceq (p,q)\)，并且\((i,j) \ne (p,q)\)，记为<br>
+\[(i,j) \prec (p,q)\]<br>
+同样可以将偏序关系从span扩展到类别，即\(_i{X_j}{ \prec _p}{Y_q}\)，当且仅当\((i,j) \prec (p,q)\)。</p>
+<p><strong>定义8（可到达类别）：</strong> 对于任意状态\(c = \left\langle {z,\sigma |i|j,t} \right\rangle \)，定义它的可到达类别集合为<br>
+\[reach© = left© \cup right©\]<br>
+其中左右可到达类别集合又分别定义为<br>
+\[\begin{array}{l}left© = \left{ {_p{X_q} \in {t_G}|(i,j) \prec (p,q),p \in \sigma |i} \right}\right© = \left{ {_p{X_q} \in {t_G}|p \ge j} \right}\end{array}\]<br>
+光看定义可能有点生涩，通俗理解就是，\(left©\)为标准树中包含span\((i,j)\)的类别集合，并且类别的左端点与栈中的span没有交叉，也就是说类别的左端点就是栈中除了\(j\)以外的其余split中的某一个。而\(right©\)为标准树中还处于队列中没有进栈的类别集合。<br>
+<img src="/2018/08/03/dynamic-oracles/3.png" data-action="zoom"><br>
+如上图所示，还以之前的句法树为例，现在的状态为\(\left\langle {10,[0,1,2,4],\left{ {_0N{P_1}} \right}} \right\rangle \)，此时的栈顶span\((i,j)=(2,4)\)，也就是红色梯形部分，那么\(left©\)就是深蓝色类别，\(right©\)就是天蓝色类别。而灰色类别因为与红色类别交叉了，所以属于不可到达类别，而标准树中还有一个类别\(_0N{P_1}\)由于已经被识别出来了，所以也属于不可到达类别。</p>
+<p>上面定义是基于动作序号为偶数的情况，而对于动作序号为奇数的情况，也就是预测label的动作，只需要将偏序\(\prec\)修改为\(\preceq\)即可，因为转移过后span依然是本身，所以不是严格包含关系。</p>
+<p>特殊情况（初始值）：<br>
+\[reach(\left\langle {0,[0],\emptyset } \right\rangle ) = {t_G}\]<br>
+很显然，初始时\(t_G\)中所有类别都属于\(right©\)。</p>
+<p>最后需要注意的一点是，根据以上定义有<br>
+\[reach© \cap t = \emptyset ,reach© \subseteq {t_G} - t\]<br>
+这一点也是很显然的，\(left©\)都是严格包含span\((i,j)\)的，所以与\(t\)不存在交集，而\(right©\)在队列里，更不可能存在交集，观察上面的例子会更加好理解。</p>
+<p><strong>定义8（next类别）：</strong> 对于任意状态\(c = \left\langle {z,\sigma |i|j,t} \right\rangle \)，上面已经定义了它的可到达类别集合，最后再定义它的下一个可到达类别为严格包含span\((i,j)\)的可到达类别集合（即\(left©\)）中偏序关系最小的类别<br>
+\[next© = {\min _ \prec }left©\]</p>
+<h1>结构化和label Oracles</h1>
+<hr>
+<h1>正确性证明</h1>
+<hr>
 
                 
 
@@ -282,7 +322,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#成分句法分析系统"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">成分句法分析系统</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Dynamic-Oracle"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Dynamic Oracle</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#定义"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">定义</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">成分句法分析系统</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Dynamic Oracle</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">定义</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">结构化和label Oracles</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">正确性证明</span></a></li></ol>
         
         </div>
       </aside>
@@ -463,7 +503,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">65.0k words altogether</span>
+                    <span class="post-count">65.8k words altogether</span>
                 </p>
                   
                 </div>
