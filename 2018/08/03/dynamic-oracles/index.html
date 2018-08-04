@@ -173,13 +173,6 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -188,6 +181,13 @@ var _hmt = _hmt || [];
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -268,7 +268,7 @@ var _hmt = _hmt || [];
 <p>最后需要注意的一点是，根据以上定义有<br>\[reach(c) \cap t = \emptyset ,reach(c) \subseteq {t_G} - t\]<br>这一点也是很显然的，\(left(c)\)都是严格包含span\((i,j)\)的，所以与\(t\)不存在交集，而\(right(c)\)在队列里，更不可能存在交集，观察上面的例子会更加好理解。</p>
 <p><strong>定义9（next类别）：</strong> 对于任意状态\(c = \left\langle {z,\sigma |i|j,t} \right\rangle \)，上面已经定义了它的可到达类别集合，最后再定义它的下一个可到达类别为严格包含span\((i,j)\)的可到达类别集合（即\(left(c)\)）中偏序关系最小的类别<br>\[next(c) = {\min _ \prec }left(c)\]</p>
 <h1 id="结构化和label-Oracles"><a href="#结构化和label-Oracles" class="headerlink" title="结构化和label Oracles"></a>结构化和label Oracles</h1><hr>
-<p>对于任意动作序号为偶数的状态\(c = \left\langle {z,\sigma |i|j,t} \right\rangle \)，记\(next(c){ = _p}{X_q}\)，那么定义它的结构化Dynamic Oracle为<br><img src="/2018/08/03/dynamic-oracles/4.png" data-action="zoom"><br>也就是使当前状态向着标准树中最接近它的状态\(next(c)\)转移，如果\(p = i,q &gt; j\)，那么应该再移进栈里一些单词；如果\(p &lt; i,q = j\)，那么不能再移进了，而应该再栈里combine两个span；如果\(p &lt; i,q &gt; j\)，那么移进或者归约都可以，反正总能达到前两种状态。</p>
+<p>对于任意动作序号为偶数的状态\(c = \left\langle {z,\sigma |i|j,t} \right\rangle \)，记\(next(c){ = _p}{X_q}\)，那么定义它的结构化Dynamic Oracle为<br><img src="/2018/08/03/dynamic-oracles/4.png" data-action="zoom"><br>也就是使当前状态向着标准树中最接近它的状态\(next(c)\)转移，如果\(p = i,q &gt; j\)，那么应该在移进栈里一些单词；如果\(p &lt; i,q = j\)，那么不能再移进了，而应该再栈里combine两个span；如果\(p &lt; i,q &gt; j\)，那么移进或者归约都可以，反正总能达到前两种状态。</p>
 <p>特殊情况（初始值）：<br>\[dyna(\left\langle {0,[0],\emptyset } \right\rangle ) = \{ sh\} \]<br>即使当前预测的span是错的，也可以经过Dynamic Oracle指导，几步之后预测到正确的\(next(c)\)。而如果没有Dynamic Oracle，可能就一直错下去了。<br><img src="/2018/08/03/dynamic-oracles/5.png" data-action="zoom"><br>上图是几种任意状态的Dynamic Oracle示例，除了第一种之外，其余三个都是预测错误的，如果没有Dynamic Oracle，甚至都不知道下一步转移的动作是什么。</p>
 <p><strong>引理1：</strong> 对于任意状态\(c\)，任意动作\(\tau  \in dyna(c)\)，有<br>\[reach(\tau (c)) = reach(c)\]<br>而对于任意动作\(\tau  \notin dyna(c)\)，有<br>\[reach(\tau (c)) \not\subset reach(c)\]</p>
 <p>最后是label Dynamic Oracle，这个就很简单了，如果span\((i,j)\)出现在了标准树中，那么预测类别就行了，否则的话预测为nolabel：<br><img src="/2018/08/03/dynamic-oracles/6.png" data-action="zoom"></p>
