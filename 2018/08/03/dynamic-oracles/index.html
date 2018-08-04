@@ -173,7 +173,7 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -187,7 +187,7 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -245,7 +245,7 @@ var _hmt = _hmt || [];
 
                 <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=4875075&auto=1&height=66"></iframe></div>
 
-<p>本文将从定义到证明，一步步理清成分句法分析中用到的Dynamic Oracle函数。</p>
+<p>本文将从定义到证明，一步步理清成分句法分析中用到的Dynamic Oracle函数。参考了James Cross在2016年发表在EMNLP上面的论文：<a href="https://www.aclweb.org/anthology/D/D16/D16-1001.pdf" target="_blank" rel="external">论文地址</a>，该论文还是当年的best paper。</p>
 <h1 id="成分句法分析系统"><a href="#成分句法分析系统" class="headerlink" title="成分句法分析系统"></a>成分句法分析系统</h1><hr>
 <p>首先本文用到的成分句法分析系统是基于span-based的转移系统，在这里只做简略介绍，详见<a href="http://ir.library.oregonstate.edu/downloads/0g354j52q" target="_blank" rel="external">Parsing with Recurrent Neural Networks</a>。<br><img src="/2018/08/03/dynamic-oracles/1.png" data-action="zoom"><br>上图展示了该转移系统的转移过程，其中结构化预测只用到了shift(sh)和combine(comb)两种动作，因为stack中存放的是span的左右边界下标，所以comb动作不需要区分左右，这与另一种转移系统的reduce动作不同。而对于label的预测，如果栈首的span不构成短语结点，那么就预测为nolabel，否则就预测为\(_i{X_j}\)。</p>
 <p>每个时刻的状态用三元组\(\left\langle {z,\sigma ,t} \right\rangle \)表示，分别表示第几个动作、栈（span的split序列）、当前已生成的结点\(_i{X_j}\)集合。注意到对于长度为\(n\)的句子，只需要用\(4n-2\)个动作就可以分析出句法树了，并且第偶数个动作做结构预测（sh和comb），第奇数个动作做label预测。<br><img src="/2018/08/03/dynamic-oracles/2.png" data-action="zoom"><br>上图是一个转移的具体例子，下面将全部以这个句子为例进行介绍。注意到多叉树隐式的转化为了二叉树，临时结点预测为nolabel。</p>
@@ -275,6 +275,11 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>最后是label Dynamic Oracle，这个就很简单了，如果span\((i,j)\)出现在了标准树中，那么预测类别就行了，否则的话预测为nolabel：<br><img src="/2018/08/03/dynamic-oracles/6.png" data-action="zoom"></p>
 <h1 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明"></a>正确性证明</h1><hr>
+<p>主要证明两点内容：</p>
+<ul>
+<li>首先定义一个特殊的树\(t^*{(c)}\)，下面会证明它是从状态\(c\)开始可以得到的得分最高的树。</li>
+<li>然后证明从状态\(c\)开始按照Dynamic Oracle策略，确实可以得到最优树\(t^*{(c)}\)。</li>
+</ul>
 
                 
 
@@ -481,7 +486,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">66.2k words altogether</span>
+                    <span class="post-count">66.3k words altogether</span>
                 </p>
                   
                 </div>
