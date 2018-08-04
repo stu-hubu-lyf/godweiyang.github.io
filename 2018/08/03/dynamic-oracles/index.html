@@ -180,14 +180,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -291,7 +291,7 @@ var _hmt = _hmt || [];
 <p><strong>定理2：</strong> \(dyna()\)函数符合定义5中的oracle定义，即对于任意状态\(c\)，有<br>\[dyna(c) = oracle(c)\]</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
 <p>至此关于Dynamic Oracle已经全部介绍完了，在黄亮老师的个人主页上面，还有这篇论文的会议视频和ppt，还有github源码，大家可以去深入学习：<a href="http://web.engr.oregonstate.edu/~huanlian/" target="_blank" rel="external">Liang Huang</a>。</p>
-<p>当然，在具体实现中，由于在训练集上过早的拟合，单纯使用Dynamic Oracle并没有得到任何效果提升，所以要加入exploration机制，也就是认为的干预动作分类，使模型故意预测错误的动作，这样就能学习到更多的情况了，事实证明这样的确得到了略微提升。PTB上的结果如下：<br><img src="/2018/08/03/dynamic-oracles/8.png" data-action="zoom"></p>
+<p>当然，在具体实现中，由于在训练集上过早的拟合，单纯使用Dynamic Oracle并没有得到任何效果提升，所以要加入exploration机制，也就是人为的干预动作分类，使模型故意预测错误的动作，这样就能学习到更多的情况了，事实证明这样的确得到了略微提升。PTB上的结果如下：<br><img src="/2018/08/03/dynamic-oracles/8.png" data-action="zoom"></p>
 <p>最后提一个小疑问，关于引理1，原文说之后定理的证明会用到它，但我没看出来哪里用到了。而且我对它的正确性也有所怀疑，按照Dynamic Oracle转移之后，\(reach(c)\)不可能一直不变啊，按理说会先不变，再变少，交替变化，最后生成句法树后变为空集。并且原文中引理1符号也出现了一个小错误，我在这里修改正确了。</p>
 <p>关于这一点疑问，我已经发邮件请教了原作者James Cross，他也已经回复我了，更深入的解答不久应该就会告诉我了，到时候我再更新一下。如果大家有想法的话，也可以提出来。</p>
 
