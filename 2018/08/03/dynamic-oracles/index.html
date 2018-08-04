@@ -180,14 +180,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -266,13 +266,11 @@ var _hmt = _hmt || [];
 <p>上面定义是基于动作序号为偶数的情况，而对于动作序号为奇数的情况，也就是预测label的动作，只需要将偏序\(\prec\)修改为\(\preceq\)即可，因为转移过后span依然是本身，所以不是严格包含关系。</p>
 <p>特殊情况（初始值）：<br>\[reach(\left\langle {0,[0],\emptyset } \right\rangle ) = {t_G}\]<br>很显然，初始时\(t_G\)中所有类别都属于\(right(c)\)。</p>
 <p>最后需要注意的一点是，根据以上定义有<br>\[reach(c) \cap t = \emptyset ,reach(c) \subseteq {t_G} - t\]<br>这一点也是很显然的，\(left(c)\)都是严格包含span\((i,j)\)的，所以与\(t\)不存在交集，而\(right(c)\)在队列里，更不可能存在交集，观察上面的例子会更加好理解。</p>
-<p><strong>定义8（next类别）：</strong> 对于任意状态\(c = \left\langle {z,\sigma |i|j,t} \right\rangle \)，上面已经定义了它的可到达类别集合，最后再定义它的下一个可到达类别为严格包含span\((i,j)\)的可到达类别集合（即\(left(c)\)）中偏序关系最小的类别<br>\[next(c) = {\min _ \prec }left(c)\]</p>
+<p><strong>定义9（next类别）：</strong> 对于任意状态\(c = \left\langle {z,\sigma |i|j,t} \right\rangle \)，上面已经定义了它的可到达类别集合，最后再定义它的下一个可到达类别为严格包含span\((i,j)\)的可到达类别集合（即\(left(c)\)）中偏序关系最小的类别<br>\[next(c) = {\min _ \prec }left(c)\]</p>
 <h1 id="结构化和label-Oracles"><a href="#结构化和label-Oracles" class="headerlink" title="结构化和label Oracles"></a>结构化和label Oracles</h1><hr>
 <p>对于任意动作序号为偶数的状态\(c = \left\langle {z,\sigma |i|j,t} \right\rangle \)，记\(next(c){ = _p}{X_q}\)，那么定义它的结构化Dynamic Oracle为<br><img src="/2018/08/03/dynamic-oracles/4.png" data-action="zoom"><br>也就是使当前状态向着标准树中最接近它的状态\(next(c)\)转移，如果\(p = i,q &gt; j\)，那么应该再移进栈里一些单词；如果\(p &lt; i,q = j\)，那么不能再移进了，而应该再栈里combine两个span；如果\(p &lt; i,q &gt; j\)，那么移进或者归约都可以，反正总能达到前两种状态。</p>
 <p>特殊情况（初始值）：<br>\[dyna(\left\langle {0,[0],\emptyset } \right\rangle ) = \{ sh\} \]<br>即使当前预测的span是错的，也可以经过Dynamic Oracle指导，几步之后预测到正确的\(next(c)\)。而如果没有Dynamic Oracle，可能就一直错下去了。<br><img src="/2018/08/03/dynamic-oracles/5.png" data-action="zoom"><br>上图是几种任意状态的Dynamic Oracle示例，除了第一种之外，其余三个都是预测错误的，如果没有Dynamic Oracle，甚至都不知道下一步转移的动作是什么。</p>
-<blockquote>
 <p><strong>引理1：</strong> 对于任意状态\(c\)，任意动作\(\tau  \in dyna(c)\)，有<br>\[reach(\tau (c)) = reach(c)\]<br>而对于任意动作\(\tau  \notin dyna(c)\)，有<br>\[reach(\tau (c)) \not\subset reach(c)\]</p>
-</blockquote>
 <p>最后是label Dynamic Oracle，这个就很简单了，如果span\((i,j)\)出现在了标准树中，那么预测类别就行了，否则的话预测为nolabel：<br><img src="/2018/08/03/dynamic-oracles/6.png" data-action="zoom"></p>
 <h1 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明"></a>正确性证明</h1><hr>
 <p>主要证明两点内容：</p>
@@ -280,6 +278,22 @@ var _hmt = _hmt || [];
 <li>首先定义一个特殊的树\(t^*{(c)}\)，下面会证明它是从状态\(c\)开始可以得到的得分最高的树。</li>
 <li>然后证明从状态\(c\)开始按照Dynamic Oracle策略，确实可以得到最优树\(t^*{(c)}\)。</li>
 </ul>
+<p><strong>定义10（\(t^*{(c)}\)）：</strong> 对于任意状态\(c = \left\langle {z,\sigma,t} \right\rangle \)，定义最优树\(t^*{(c)}\)为\(c\)中的子树\(t\)并上当前状态可到达的类别集合，也就是<br>\[{t^*}(c) = t \cup reach(c)\]<br>下面我们会证明，\(t^*{(c)}\)的确是当前状态可以得到的得分最高的树。<br><img src="/2018/08/03/dynamic-oracles/7.png" data-action="zoom"><br>上图形象的说明了几种树之间的关系。当前子树\(t\)与标准树\(t_G\)不一定完全重合，可能有预测错误的，所以是交叉的。那么接下来的预测如果全部预测为标准树中的\(reach(c)\)，那么得分一定是最高的。而剩余的白色部分就是与\(t\)的span产生交叉的类别，属于不可到达的。</p>
+<p><strong>引理2：</strong> 对于任意状态\(c\)，最优树\(t^*{(c)}\)一定是\(c\)的派生树，也就是<br>\[{t^*}(c) \in D(c)\]</p>
+<p><strong>定理1：</strong> 对于任意状态\(c\)，有<br>\[{F_1}({t^*}(c)) = {F_1}(c)\]</p>
+<p>也就是说最优树\(t^*{(c)}\)的得分一定是当前状态可以得到的最高分数。</p>
+<p>证明也很简单，根据召回率和准确率公式，最优树\(t^*{(c)}\)是在\(t\)的基础上加入了所有的标准树中的可到达类别\(reach(c)\)，所以召回率分子不会降下来，召回率不可能更高了；同时并没有加入任何不在标准树中的类别，所以准确率的分母也不可能减小，准确率也不会更高了。因此\(t^*{(c)}\)就是当前状态可以得到的最优树。</p>
+<p><strong>推论1：</strong> 对于任意状态\(c = \left\langle {z,\sigma,t} \right\rangle \)，对任意\(t’ \in D(c),t’ \ne {t^*}(c)\)，都有<br>\[{F_1}(t’) &lt; {F_1}(c)\]<br>上面已经证明了\(t^*{(c)}\)是最优树，所以自然其余的树得分都比它低了。</p>
+<p>最后需要证明的一点就是，按照Dynamic Oracle策略进行转移，一定能到达这个最优树吗？</p>
+<p><strong>引理3：</strong> 对于任意状态\(c = \left\langle {z,\sigma,t} \right\rangle \)，对任意动作\(\tau  \in dyna(c)\)，都有<br>\[{t^*}(\tau (c)) = {t^*}(c)\]<br>反之如果\(\tau  \notin dyna(c)\)，那么有<br>\[{t^*}(\tau (c)) \ne {t^*}(c)\]<br>原文并没有给出证明，粗略理解的话，按照Dynamic Oracle策略，下面应该向着\(next(c)\)这个类别靠近，而在这个过程中，包含在\(next(c)\)内的\(right(c)\)都会被sh动作识别，而其余不在标准树中的类别都会被识别为nolabel，\(next(c)\)又是第一个\(left(c)\)，所以所有的\(reach(c)\)都可以被识别，所以这是符合\(t^*{(c)}\)定义的。</p>
+<p>反之如果不按照Dynamic Oracle策略来转移，下一步产生的span一定会与\(next(c)\)产生交叉，因此\(next(c)\)再也无法被包括进最终的句法树中，所以第二点也成立。</p>
+<p>最终综合引理3、定理1和推论1，得到了本文中最关键的结论：</p>
+<p><strong>定理2：</strong> \(dyna()\)函数符合定义5中的oracle定义，即对于任意状态\(c\)，有<br>\[dyna(c) = oracle(c)\]</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<p>至此关于Dynamic Oracle已经全部介绍完了，在黄亮老师的个人主页上面，还有这篇论文的会议视频和ppt，还有github源码，大家可以去深入学习：<a href="http://web.engr.oregonstate.edu/~huanlian/" target="_blank" rel="external">Liang Huang</a>。</p>
+<p>当然，在具体实现中，由于在训练集上过早的拟合，单纯使用Dynamic Oracle并没有得到任何效果提升，所以要加入exploration机制，也就是认为的干预动作分类，使模型故意预测错误的动作，这样就能学习到更多的情况了，事实证明这样的确得到了略微提升。PTB上的结果如下：<br><img src="/2018/08/03/dynamic-oracles/8.png" data-action="zoom"></p>
+<p>最后提一个小疑问，关于引理1，原文说之后定理的证明会用到它，但我没看出来哪里用到了。而且我对它的正确性也有所怀疑，按照Dynamic Oracle转移之后，\(reach(c)\)不可能一直不变啊，按理说会先不变，再变少，交替变化，最后生成句法树后变为空集。并且原文中引理1符号也出现了一个小错误，我在这里修改正确了。</p>
+<p>关于这一点疑问，我已经发邮件请教了原作者James Cross，他也已经回复我了，更深入的解答不久应该就会告诉我了，到时候我再更新一下。如果大家有想法的话，也可以提出来。</p>
 
                 
 
@@ -305,7 +319,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#成分句法分析系统"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">成分句法分析系统</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Dynamic-Oracle"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Dynamic Oracle</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#定义"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">定义</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#结构化和label-Oracles"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">结构化和label Oracles</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#正确性证明"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">正确性证明</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#成分句法分析系统"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">成分句法分析系统</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Dynamic-Oracle"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Dynamic Oracle</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#定义"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">定义</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#结构化和label-Oracles"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">结构化和label Oracles</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#正确性证明"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">正确性证明</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">总结</span></a></li></ol>
         
         </div>
       </aside>
@@ -486,7 +500,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">66.3k words altogether</span>
+                    <span class="post-count">67.4k words altogether</span>
                 </p>
                   
                 </div>
