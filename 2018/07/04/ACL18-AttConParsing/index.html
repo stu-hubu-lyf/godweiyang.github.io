@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="baidu-site-verification" content="rlXUrNbP8h" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ECNU AntNLP Group - WeiYang">
+    <meta name="keyword"  content="ECNU NLP DeepLearning">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Constituency Parsing with a Self-Attentive Encoder - WeiYang Blog | 韦阳的博客
+        
+    </title>
+
+    <link rel="canonical" href="https://godweiyang.com/2018/07/04/ACL18-AttConParsing/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('header.jpg')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#ACL" title="ACL">ACL</a>
+                            
+                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                            
+                              <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                            
+                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                            
+                              <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
+                            
+                        </div>
+                        <h1>Constituency Parsing with a Self-Attentive Encoder</h1>
+                        <h2 class="subheading">基于Self-Attentive编码器的成分句法分析</h2>
+                        <span class="meta">
+                            Posted by WeiYang on
+                            2018-07-04
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">WeiYang Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=493316158&auto=1&height=66"></iframe></div>
+
+<p><strong>论文地址：</strong><a href="https://arxiv.org/pdf/1805.01052.pdf" target="_blank" rel="external">Constituency Parsing with a Self-Attentive Encoder</a><br><strong>代码地址：</strong><a href="https://github.com/nikitakit/self-attentive-parser" target="_blank" rel="external">github</a></p>
+<p>今天要介绍的这篇论文是成分句法分析领域目前的state-of-the-art，结果最高的几篇paper可以参见ruder在github整理的列表：<a href="https://github.com/sebastianruder/NLP-progress/blob/master/constituency_parsing.md" target="_blank" rel="external">github</a>。<br>下面就是成分句法分析目前排名：</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align:center">F1 score</th>
+<th>Paper / Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Self-attentive encoder + ELMo (Kitaev and Klein, 2018)</td>
+<td style="text-align:center">95.13</td>
+<td><a href="https://arxiv.org/abs/1805.01052" target="_blank" rel="external">Constituency Parsing with a Self-Attentive Encoder</a></td>
+</tr>
+<tr>
+<td>Model combination (Fried et al., 2017)</td>
+<td style="text-align:center">94.66</td>
+<td><a href="https://arxiv.org/abs/1707.03058" target="_blank" rel="external">Improving Neural Parsing by Disentangling Model Combination and Reranking Effects</a></td>
+</tr>
+<tr>
+<td>In-order (Liu and Zhang, 2017)</td>
+<td style="text-align:center">94.2</td>
+<td><a href="http://aclweb.org/anthology/Q17-1029" target="_blank" rel="external">In-Order Transition-based Constituent Parsing</a></td>
+</tr>
+<tr>
+<td>Semi-supervised LSTM-LM (Choe and Charniak, 2016)</td>
+<td style="text-align:center">93.8</td>
+<td><a href="http://www.aclweb.org/anthology/D16-1257" target="_blank" rel="external">Parsing as Language Modeling</a></td>
+</tr>
+<tr>
+<td>Stack-only RNNG (Kuncoro et al., 2017)</td>
+<td style="text-align:center">93.6</td>
+<td><a href="https://arxiv.org/abs/1611.05774" target="_blank" rel="external">What Do Recurrent Neural Network Grammars Learn About Syntax?</a></td>
+</tr>
+<tr>
+<td>RNN Grammar (Dyer et al., 2016)</td>
+<td style="text-align:center">﻿93.3</td>
+<td><a href="https://www.aclweb.org/anthology/N16-1024" target="_blank" rel="external">Recurrent Neural Network Grammars</a></td>
+</tr>
+<tr>
+<td>Transformer (Vaswani et al., 2017)</td>
+<td style="text-align:center">92.7</td>
+<td><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="external">Attention Is All You Need</a></td>
+</tr>
+<tr>
+<td>Semi-supervised LSTM (Vinyals et al., 2015)</td>
+<td style="text-align:center">92.1</td>
+<td><a href="https://papers.nips.cc/paper/5635-grammar-as-a-foreign-language.pdf" target="_blank" rel="external">Grammar as a Foreign Language</a></td>
+</tr>
+<tr>
+<td>Self-trained parser (McClosky et al., 2006)</td>
+<td style="text-align:center">92.1</td>
+<td><a href="https://pdfs.semanticscholar.org/6f0f/64f0dab74295e5eb139c160ed79ff262558a.pdf" target="_blank" rel="external">Effective Self-Training for Parsing</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><hr>
+<p>本篇论文将之前<a href="http://godweiyang.com/2018/06/28/ACL17-ConParsing/">A Minimal Span-Based Neural Constituency Parser</a>这篇论文中模型的编码器部分由LSTM替换为了Self-Attentive，来捕捉句子单词内容(content)与位置(position)之间的联系。实验结果可以达到93.55%的F1值，如果再加上预训练的词向量ELMo，那么F1值可以提升到95.13%。这是目前效果最好的一个模型了。</p>
+<p>Attention的主要想法借鉴了谷歌的神作：<a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" rel="external">Attention Is All You Need</a>，这篇论文网上也有很多讲解了，我挑选了一篇讲解比较好的，大家可以先看看：<a href="https://yq.aliyun.com/articles/342508?utm_content=m_39938" target="_blank" rel="external">Attention Is All You Need</a>。</p>
+<h1 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h1><hr>
+<h2 id="基本模型"><a href="#基本模型" class="headerlink" title="基本模型"></a>基本模型</h2><p>这部分详见我之前写的一篇笔记：<a href="http://godweiyang.com/2018/06/28/ACL17-ConParsing/">A Minimal Span-Based Neural Constituency Parser</a>，解码器部分和之前模型基本一致。本文主要探讨的是编码器的构造，也就是如何求出每个span的向量表示，从而得到span的得分\(s(i,j,l)\)，然后应用解码器进行解码，生成成分句法分析树。</p>
+<h2 id="词向量表示"><a href="#词向量表示" class="headerlink" title="词向量表示"></a>词向量表示</h2><p>第\(t\)个单词的词向量由三个部分组成：</p>
+<ul>
+<li>word embdding：\(w_t\)，这部分可以用随机初始化的向量，也可以用CharLSTM，也可以用预训练的词向量。</li>
+<li>tag embdding：\(m_t\)</li>
+<li>位置向量：\(p_t\)</li>
+</ul>
+<p>最终词向量为三部分的加和：<br>\[z_t = w_t + m_t + p_t\]</p>
+<h2 id="Self-Attentive"><a href="#Self-Attentive" class="headerlink" title="Self-Attentive"></a>Self-Attentive</h2><p>模型结构如下图所示：<br><img src="/2018/07/04/ACL18-AttConParsing/1.png" data-action="zoom"><br>这一部分是不同位置单词互相联系的唯一方式，采用谷歌<a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" rel="external">Attention Is All You Need</a>中的Self-Attentive模型。</p>
+<p>模型一共由8个SingleHead组成，每个SingleHead结构如下图：<br><img src="/2018/07/04/ACL18-AttConParsing/2.png" data-action="zoom"><br>计算方式如下：<br>\[{\rm{SingleHead}}(X) = \left[ { {\rm{Softmax}}\left( {\frac{ {Q{K^{\rm{T}}}}}{ {\sqrt { {d_k}} }}} \right)V} \right]{W_o}\]<br>其中\(Q = X{W_Q};K = X{W_K};V = X{W_V}\)，而\(W_O\)用来将输出映射到与输入相同的维度。</p>
+<p>详细分析一下计算过程，首先输入矩阵\(X = [{z_1},{z_2}, \ldots ,{z_T}]\)是由一个句子中所有词向量组成的矩阵，拼接在一起是为了并行，加快计算速度，\(X \in {\mathbb{R}^{T \times {d_{ {model}}}}}\)。</p>
+<p>然后将\(X\)映射为三个矩阵，query矩阵\(Q\)，key矩阵\(K\)，value矩阵\(V\)，其中\(Q,K \in {\mathbb{R}^{ {d_{ {model}}} \times {d_k}}}\)。</p>
+<p>我们想要计算单词\(i\)和单词\(j\)之间的Attention大小，可以用两者query向量和key向量元素乘得到：<br>\[p(i \to j) \propto \exp \left( {\frac{ { {q_i} \cdot {k_j}}}{ {\sqrt { {d_k}} }}} \right)\]<br>所有单词的value向量乘以单词\(i\)对它的Attention值，加权求和之后得到的结果就是单词\(i\)最后的向量表示：<br>\[{ {\bar v}_i} = \sum\nolimits_j {p(i \to j){v_j}} \]<br>最后乘以\(W_O\)映射到与输入\(X\)相同的维度。</p>
+<p>整个过程如果写成矩阵形式就是最开始的那个矩阵式子。注意到式子中\(Q{K^{\rm{T}}} \in {\mathbb{R}^{ {\rm{T \times T}}}}\)，矩阵中的每个元素恰好就是Attention值\(p(i \to j)\)。\(\sqrt { {d_k}}\)是归一化因子。</p>
+<p>最后将8个SingleHead的结果求和得到MultiHead结果，注意这8个SingleHead参数不共享：<br>\[{\rm{MultiHead(}}X) = \sum\limits_{i = 1}^8 { {\rm{SingleHea}}{ {\rm{d}}^{(i)}}(X)} \]</p>
+<p>注意到Attention模型有一个很严重的问题，就是无论单词的顺序是怎么样的，都不影响最终的结果。所以在输入中要添加位置向量\(p_t\)，否则之后会有实验表明，不加的话效果大大下降。</p>
+<p>图一中还有一个前馈神经网络的部分，使用的是一个双层前馈神经网络：<br>\[{\rm{FeedForward}}(x) = {W_2}{\rm{relu}}({W_1}x + {b_1}) + {b_2}\]</p>
+<h2 id="Span得分"><a href="#Span得分" class="headerlink" title="Span得分"></a>Span得分</h2><p>最终的span得分计算方式如下：<br>\[s(i,j, \cdot ) = {M_2}{\rm{relu}}({\rm{LayerNorm}}({M_1}v + {c_1})) + {c_2}\]<br>其中\(v\)就是短语的向量表示，由之前的每个单词的向量输出得到：<br>\[v = [{ {\vec y}_j} - { {\vec y}_i},{ {\mathord{\buildrel{\lower3pt\hbox{$\scriptscriptstyle\leftarrow$}} \over y} }_{j + 1}} - { {\mathord{\buildrel{\lower3pt\hbox{$\scriptscriptstyle\leftarrow$}} \over y} }_{i + 1}}]\]<br>在之前的LSTM模型中前向后向表示很容易得到，在这里只能通过将输出向量一分为二，一半作为前向表示，一半作为后向表示，实际实现中，偶数维度作为前向表示，奇数维度作为后向表示。</p>
+<h1 id="模型分析"><a href="#模型分析" class="headerlink" title="模型分析"></a>模型分析</h1><hr>
+<h2 id="Content-vs-Position-Attention"><a href="#Content-vs-Position-Attention" class="headerlink" title="Content vs Position Attention"></a>Content vs Position Attention</h2><p>之前的模型中，我们采用元素加将三个输入向量求和作为输入，期待模型自己训练出它们之间的权重，将它们很好地分开，但是实际上效果并不好。</p>
+<p>下面论文做了许多实验来探讨content和position的重要性。</p>
+<p>首先修改模型输入，令\(Q=PW_Q,K=PW_K\)，也就是丢弃了content信息，但是最后结果只下降了0.27个百分点，说明了content信息对模型影响不是很大。</p>
+<p>然后为了验证是不是元素加导致content和position信息混合在一起模型无法分开，实验将输入向量显示分开，输入改为<br>\[z_t=[w_t+m_t;p_t]\]<br>但是实验结果只下降了0.07个百分点，说明不是这个因素导致的。事实上元素加和拼接操作在高维度上面是相似的，特别是之后立即乘上了一个矩阵，这就会混合里面的信息。</p>
+<p>所以最好的解决办法就是将content和position向量分开计算attention，最后求和。这样attention矩阵就可以表示为：<br>\[QK^{\rm{T}} = {Q_c}K_c^{\rm{T}} + {Q_p}K_p^{\rm{T}}\]<br>这时的权重矩阵\(W\)就可以写为<br>\[W = \left[ {\begin{array}{*{20}{c}}{ {W_c}}&amp;0\\0&amp;{ {W_p}}\end{array}} \right]\]</p>
+<p>通过将content和position信息分开，模型的效果从92.67%提升到了93.15%，模型示意图如下：<br><img src="/2018/07/04/ACL18-AttConParsing/3.png" data-action="zoom"></p>
+<p>最后的实验在测试阶段的8层模型中，每一层手动选择采不采用content或者position attention，实验结果如下：<br><img src="/2018/07/04/ACL18-AttConParsing/4.png" data-action="zoom"><br>可以发现，不用position信息的话结果大大下降，接近传统的CKY算法，这也说明了普通的CKY算法是无法捕捉到全局的信息的。还有就是content信息主要作用在最后几层，这也说明了前面几层有点类似于扩张卷积网络。</p>
+<h2 id="窗口Attention"><a href="#窗口Attention" class="headerlink" title="窗口Attention"></a>窗口Attention</h2><p>这一部分也不是什么新鲜玩意了，谷歌的论文中也有提到，主要思想就是限制attention的范围，每个单词只与周围窗口大小内的单词进行计算。在本文中还提出一个relaxed变体，就是除了窗口大小范围外，再加入首尾各两个单词进行attention操作。</p>
+<p>如果只在测试阶段进行窗口attention的话，实验结果如下：<br><img src="/2018/07/04/ACL18-AttConParsing/5.png" data-action="zoom"><br>可以看出，首尾的4个单词对模型效果有很大的影响，如果加上的话，即使窗口很小，效果下降也不会很多。</p>
+<p>然后如果训练和测试阶段都采用窗口attention，结果如下：<br><img src="/2018/07/04/ACL18-AttConParsing/6.png" data-action="zoom"><br>这时结果下降反而不是很明显了，其实模型的8层就类似于卷积操作，假设窗口大小为10，那么经过8层计算之后，窗口其实可以覆盖到长度为80的句子，这已经足够了，所以性能没有下降太多不足为奇。</p>
+<h1 id="模型的一些改进"><a href="#模型的一些改进" class="headerlink" title="模型的一些改进"></a>模型的一些改进</h1><hr>
+<h2 id="Subword-Features"><a href="#Subword-Features" class="headerlink" title="Subword Features"></a>Subword Features</h2><p>可以尝试加入CharLSTM来代替随机初始化的tag embdding，并且可以直接删除随机初始化的word embdding，只保留tag embdding和位置向量，效果反而能有提升。</p>
+<p>受到其他工作的启发，还可以将每个单词的前后各8个字符向量拼接起来作为输入，但是实验结果不如CharLSTM。</p>
+<p>上面的实验结果如下图所示：<br><img src="/2018/07/04/ACL18-AttConParsing/7.png" data-action="zoom"><br>可以看出，采用CharLSTM输出作为tag embdding，并且不采用word embdding的效果最好。</p>
+<h2 id="外部词向量"><a href="#外部词向量" class="headerlink" title="外部词向量"></a>外部词向量</h2><hr>
+<p>如果采用另一项关于词向量的工作成果ELMo，将其预训练的结果作为word embdding，实验结果可以更高。因为该词向量已经很好的学习到了全局的信息，所以模型可以减少到4层，效果比8层更好，结果如下：<br><img src="/2018/07/04/ACL18-AttConParsing/8.png" data-action="zoom"><br>F1值大大提高，达到了惊人的95.21%。</p>
+<h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h1><hr>
+<p>在PTB数据集上，无论是单模型还是多模型或者加入外部词向量，本文的模型结果都是近来最好的，单模型93.55%，多模型95.13%，对比结果如下：<br><img src="/2018/07/04/ACL18-AttConParsing/9.png" data-action="zoom"><br>本文开头已经提到了最高的几个排名，大家可以去看看其他的方法学习学习。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<p>之前的工作大多数围绕解码器的算法优化，但是本文对编码器进行了改进，使其能更好的捕捉全局信息。</p>
+<p>同时提出了几点重要的改进：</p>
+<ul>
+<li>subword的信息（CharLSTM）和预训练的词向量非常重要。</li>
+<li>将content和position信息分开可以提升实验结果。</li>
+</ul>
+<p>同时在阅读<a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" rel="external">Attention Is All You Need</a>的同时，我也发现了谷歌的attention模型其实还是有很多问题的，例如模型本身无法捕捉位置信息，需要加入position embdding来表示位置信息，但这只是临时应付措施，今后工作可以探讨更好的解决方案。</p>
+
+
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+                <div id="gitalk-container"></div>     <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: 'c3ac6e20697ee5422b43',
+                        clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
+                        repo: 'godweiyang.github.io',
+                        owner: 'godweiyang',
+                        admin: ['godweiyang'],
+                        id: '2018/07/04/ACL18-AttConParsing/',
+                        distractionFreeMode: true,
+                        createIssueManually: true,
+                    });
+                    gitalk.render('gitalk-container');
+                </script> 
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/07/19/ConParsing-Syntactic-Distance/" data-toggle="tooltip" data-placement="top" title="Straight to the Tree： Constituency Parsing with Neural Syntactic Distance">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/07/03/NAACL18-ConParsing/" data-toggle="tooltip" data-placement="top" title="What's Going On in Neural Constituency Parsers? An Analysis">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+                <p></p>
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#模型"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#基本模型"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">基本模型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#词向量表示"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">词向量表示</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Self-Attentive"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Self-Attentive</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Span得分"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Span得分</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#模型分析"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">模型分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Content-vs-Position-Attention"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Content vs Position Attention</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#窗口Attention"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">窗口Attention</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#模型的一些改进"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">模型的一些改进</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Subword-Features"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">Subword Features</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#外部词向量"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">外部词向量</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#实验结果"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">实验结果</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#ACL" title="ACL">ACL</a>
+                        
+                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                        
+                          <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                        
+                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                        
+                          <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.csdn.net/cww97" target="_blank">cww97</a></li>
+                    
+                        <li><a href="https://www.dreamwings.cn/" target="_blank">dreamwings</a></li>
+                    
+                        <li><a href="https://www.gofun4.top/" target="_blank">Fun4wut</a></li>
+                    
+                        <li><a href="http://hzwer.com/" target="_blank">hzwer</a></li>
+                    
+                        <li><a href="https://www.jxtxzzw.com/wordpress" target="_blank">jxtxzzw空间</a></li>
+                    
+                        <li><a href="https://blog.csdn.net/MIKASA3" target="_blank">kewlgrl</a></li>
+                    
+                        <li><a href="http://zerol.me/" target="_blank">zerol</a></li>
+                    
+                        <li><a href="http://www.navazil.com/" target="_blank">孙哥我还是看不透生死</a></li>
+                    
+                        <li><a href="http://www.itaowei.cn/" target="_blank">望城风景</a></li>
+                    
+                        <li><a href="https://chrisju.cn/" target="_blank">咸鱼的自我修养</a></li>
+                    
+                        <li><a href="http://blog.sina.com.cn/u/5848707168" target="_blank">隐函数_北极鹅</a></li>
+                    
+                        <li><a href="http://jiaqianlee.com/" target="_blank">最萌小姐姐</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!--  <script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>  -->
+<style>
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<script type="text/javascript" src="/js/zooming.js"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://user.qzone.qq.com/792321264">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-qq fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; WeiYang 2018 
+                </p>
+                <p class="copyright text-muted">
+                    <!-- <a target="_blank" title="web analytic"><img alt="web analytic" src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_visitors/counter.png" style="border-width:0" /></a> -->
+                    <!-- <a><img alt="web trackers" src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_visitors/counter.png" 
+                    style="border-width:0"/></a> -->
+                    <a><img border="0" src="https://cc.amazingcounters.com/counter.php?i=3221735&c=9665518" alt="AmazingCounters.com"></a>
+                    <!-- <span id="busuanzi_container_site_pv">
+					    <span id="busuanzi_value_site_pv"></span>
+					</span> -->
+					<!-- <a target="_blank" title="webstats program"><img alt="webstats program" 
+					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
+					style="border-width:0" /></a> -->
+					visitors since 2017/09/11, 
+                    <span class="post-count">68.1k words altogether</span>
+                </p>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://godweiyang.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '46e79e71af0709a5b9106bf20cecc493';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script> -->
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://godweiyang.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>
