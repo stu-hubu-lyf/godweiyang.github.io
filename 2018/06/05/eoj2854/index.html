@@ -258,6 +258,26 @@ var _hmt = _hmt || [];
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (n &lt; m) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (n == m) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">int</span> res = <span class="number">2</span> * f(n - <span class="number">1</span>, m) - f(n - m - <span class="number">1</span>, m) + (<span class="number">1</span> &lt;&lt; (n - m - <span class="number">1</span>));</div><div class="line">	<span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> n, m;</div><div class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m) &amp;&amp; (n != <span class="number">-1</span> || m != <span class="number">-1</span>)) &#123;</div><div class="line">    	<span class="keyword">int</span> res = f(n, m);</div><div class="line">    	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, res);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
                 
+                <!-- Gitalk 评论 start  -->
+
+                <!-- Link Gitalk 的支持文件  -->
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+                <div id="gitalk-container"></div>     <script type="text/javascript">
+                    var gitalk = new Gitalk({
+
+                    // gitalk的主要参数
+                        clientID: 'c3ac6e20697ee5422b43',
+                        clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
+                        repo: 'godweiyang.github.io',
+                        owner: 'godweiyang',
+                        admin: ['godweiyang'],
+                        id: '2018/06/05/eoj2854/',
+                    
+                    });
+                    gitalk.render('gitalk-container');
+                </script> 
+                <!-- Gitalk end -->
 
                 <hr>
                 <!-- Pager -->

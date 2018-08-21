@@ -251,6 +251,26 @@ var _hmt = _hmt || [];
 <p><strong>题目：</strong><br>证明<br>\[<br>\sum\limits_k {\left( {\begin{array}{*{20}{c}}{n - 1}\\k\end{array}} \right){n^{ - k}}(k + 1)!}  = n<br>\]<br><strong>解答：</strong><br>等号左边可以写为<br>\[<br>\sum\limits_{0 \le k \le n - 1} {\left( {\begin{array}{*{20}{c}}{n - 1}\\k\end{array}} \right){n^{ - k}}(k + 1)!}<br>\]<br>替换\(k\)为\(n-1-k\)，得到<br>\[<br>\sum\limits_{0 \le k \le n - 1} {\left( {\begin{array}{*{20}{c}}{n - 1}\\k\end{array}} \right){n^{1 + k - n}}(n - k)!}<br>\]<br>即证<br>\[<br>\sum\limits_{0 \le k \le n - 1} {\left( {\begin{array}{*{20}{c}}{n - 1}\\k\end{array}} \right){n^{1 + k - n}}(n - k)!}  = n<br>\]<br>等式两边同时乘以\(n^{n-1}\)，即证<br>\[<br>\sum\limits_{0 \le k \le n - 1} {\left( {\begin{array}{*{20}{c}}{n - 1}\\k\end{array}} \right){n^k}(n - k)!}  = {n^n}<br>\]<br>等式左边等于<br>\[<br>\begin{array}{l}\sum\limits_{0 \le k \le n - 1} {\left( {\begin{array}{*{20}{c}}{n - 1}\\k\end{array}} \right){n^k}(n - k)!} \\ = (n - 1)!\sum\limits_{0 \le k \le n - 1} {\frac{ { {n^k}(n - k)}}{ {k!}}} \\ = (n - 1)!\sum\limits_{0 \le k \le n - 1} {\left( {\frac{ { {n^{k + 1}}}}{ {k!}} - \frac{ { {n^k}}}{ {(k - 1)!}}} \right)} \\ = (n - 1)!\frac{ { {n^n}}}{ {(n - 1)!}}\\ = {n^n}\end{array}<br>\]<br>得证。</p>
 
                 
+                <!-- Gitalk 评论 start  -->
+
+                <!-- Link Gitalk 的支持文件  -->
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+                <div id="gitalk-container"></div>     <script type="text/javascript">
+                    var gitalk = new Gitalk({
+
+                    // gitalk的主要参数
+                        clientID: 'c3ac6e20697ee5422b43',
+                        clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
+                        repo: 'godweiyang.github.io',
+                        owner: 'godweiyang',
+                        admin: ['godweiyang'],
+                        id: '2018/06/01/concrete-math-hw5/',
+                    
+                    });
+                    gitalk.render('gitalk-container');
+                </script> 
+                <!-- Gitalk end -->
 
                 <hr>
                 <!-- Pager -->

@@ -308,6 +308,26 @@ var _hmt = _hmt || [];
 <p>近些年来，效果最好的成分句法分析器基本都是基于转移系统的，还有诸如基于CRF之类的句法分析器。本文提出的基于span表示与得分，从而进行chart解析或者top-down解析的模型是当时结果最好的模型。而且该模型非常的简单，不再需要复杂的语法规则。模型仍然有很多改进之处，体现在span表示的计算方式，各种得分的计算方式。在下一篇博客中，我将为大家介绍一篇伯克利最新的成分句法分析论文，使用的是自注意力机制的编码器，F1值达到了惊人的95.15%。</p>
 
                 
+                <!-- Gitalk 评论 start  -->
+
+                <!-- Link Gitalk 的支持文件  -->
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+                <div id="gitalk-container"></div>     <script type="text/javascript">
+                    var gitalk = new Gitalk({
+
+                    // gitalk的主要参数
+                        clientID: 'c3ac6e20697ee5422b43',
+                        clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
+                        repo: 'godweiyang.github.io',
+                        owner: 'godweiyang',
+                        admin: ['godweiyang'],
+                        id: '2018/06/28/ACL17-ConParsing/',
+                    
+                    });
+                    gitalk.render('gitalk-container');
+                </script> 
+                <!-- Gitalk end -->
 
                 <hr>
                 <!-- Pager -->

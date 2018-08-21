@@ -253,6 +253,26 @@ var _hmt = _hmt || [];
 <p>求<br>\[S = \sum\limits_{0 \le k \le n} {k{x^k}} \]<br>这里用到另一种求和的方法。<br>两边同时加上第\(n+1\)项，得到<br>\[\begin{array}{l}S + (n + 1){x^{n + 1}}\\ = \sum\limits_{0 \le k \le n + 1} {k{x^k}} \\ = \sum\limits_{1 \le k \le n + 1} {k{x^k}} \\ = \sum\limits_{0 \le k \le n} {(k + 1){x^{k + 1}}} \\ = x\sum\limits_{0 \le k \le n} {(k{x^k} + {x^k})} \\ = xS + x\sum\limits_{0 \le k \le n} { {x^k}} \\ = xS + x\frac{ {1 - {x^{n + 1}}}}{ {1 - x}}\end{array}\]<br>所以<br>\[S = \frac{ {x - (n + 1){x^{n + 1}} + n{x^{n + 2}}}}{ { { {(1 - x)}^2}}}\]<br>这里介绍另一种方法来求解。<br>令<br>\[f(x) = \sum\limits_{0 \le k \le n} { {x^k}}  = \frac{ {1 - {x^{n + 1}}}}{ {1 - x}}\]<br>求导得到<br>\[f’(x) = \sum\limits_{0 \le k \le n} {k{x^{k - 1}}}  = \frac{1}{x}S\]<br>所以<br>\[\frac{1}{x}S = \frac{ {\partial f}}{ {\partial x}}(\frac{ {1 - {x^{n + 1}}}}{ {1 - x}}) = \frac{ {1 - (n + 1){x^n} + n{x^{n + 1}}}}{ { { {(1 - x)}^2}}}\]<br>同样可以得到<br>\[S = \frac{ {x - (n + 1){x^{n + 1}} + n{x^{n + 2}}}}{ { { {(1 - x)}^2}}}\]</p>
 
                 
+                <!-- Gitalk 评论 start  -->
+
+                <!-- Link Gitalk 的支持文件  -->
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+                <div id="gitalk-container"></div>     <script type="text/javascript">
+                    var gitalk = new Gitalk({
+
+                    // gitalk的主要参数
+                        clientID: 'c3ac6e20697ee5422b43',
+                        clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
+                        repo: 'godweiyang.github.io',
+                        owner: 'godweiyang',
+                        admin: ['godweiyang'],
+                        id: '2018/03/12/concrete-math-3/',
+                    
+                    });
+                    gitalk.render('gitalk-container');
+                </script> 
+                <!-- Gitalk end -->
 
                 <hr>
                 <!-- Pager -->

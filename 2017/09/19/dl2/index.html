@@ -278,6 +278,26 @@ var _hmt = _hmt || [];
 <p>logistic回归的梯度用向量可以表示为<br>\[dz = A - Y\]<br>\[dw = \frac{1}{m}Xd{z^T}\]<br>下面两节课都是讲的python的广播和向量的一些说明，在此就不细讲了，大家可以去查看python文档。其中讲到的一个写python程序的好习惯就是用到向量的时候如果不确定维数，那么你就<code>reshape()</code>一下，还有就是加一句<code>assert()</code>语句判断一下维数。</p>
 
                 
+                <!-- Gitalk 评论 start  -->
+
+                <!-- Link Gitalk 的支持文件  -->
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+                <div id="gitalk-container"></div>     <script type="text/javascript">
+                    var gitalk = new Gitalk({
+
+                    // gitalk的主要参数
+                        clientID: 'c3ac6e20697ee5422b43',
+                        clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
+                        repo: 'godweiyang.github.io',
+                        owner: 'godweiyang',
+                        admin: ['godweiyang'],
+                        id: '2017/09/19/dl2/',
+                    
+                    });
+                    gitalk.render('gitalk-container');
+                </script> 
+                <!-- Gitalk end -->
 
                 <hr>
                 <!-- Pager -->

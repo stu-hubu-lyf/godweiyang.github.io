@@ -270,6 +270,26 @@ var _hmt = _hmt || [];
 <p>根据性质7，可以得到<br>\[\left( {\begin{array}{*{20}{c}}m\\k\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\k\end{array}} \right) = \left( {\begin{array}{*{20}{c}}{n - k}\\{m - k}\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\m\end{array}} \right)\]<br>所以<br>\[\sum\limits_{k = 0}^m {\left( {\begin{array}{*{20}{c}}m\\k\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\k\end{array}} \right)}  = \sum\limits_{k = 0}^m {\left( {\begin{array}{*{20}{c}}{n - k}\\{m - k}\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\m\end{array}} \right)} \]<br>而<br>\[\begin{array}{l}\sum\limits_{k \ge 0} {\left( {\begin{array}{*{20}{c}}{n - k}\\{m - k}\end{array}} \right)}  = \sum\limits_{m - k \ge 0} {\left( {\begin{array}{*{20}{c}}{n - (m - k)}\\{m - (m - k)}\end{array}} \right)} \\ = \sum\limits_{k \le m} {\left( {\begin{array}{*{20}{c}}{n - m + k}\\k\end{array}} \right)} \\ = \left( {\begin{array}{*{20}{c}}{(n - m) + m + 1}\\m\end{array}} \right)\\ = \left( {\begin{array}{*{20}{c}}{n + 1}\\m\end{array}} \right)\end{array}\]<br>所以<br>\[\sum\limits_{k = 0}^m {\left( {\begin{array}{*{20}{c}}m\\k\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\k\end{array}} \right)}  = \left( {\begin{array}{*{20}{c}}{n + 1}\\m\end{array}} \right)/\left( {\begin{array}{*{20}{c}}n\\m\end{array}} \right) = \frac{ {n + 1}}{ {n + 1 - m}}\]</p>
 
                 
+                <!-- Gitalk 评论 start  -->
+
+                <!-- Link Gitalk 的支持文件  -->
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+                <div id="gitalk-container"></div>     <script type="text/javascript">
+                    var gitalk = new Gitalk({
+
+                    // gitalk的主要参数
+                        clientID: 'c3ac6e20697ee5422b43',
+                        clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
+                        repo: 'godweiyang.github.io',
+                        owner: 'godweiyang',
+                        admin: ['godweiyang'],
+                        id: '2018/05/27/concrete-math-13/',
+                    
+                    });
+                    gitalk.render('gitalk-container');
+                </script> 
+                <!-- Gitalk end -->
 
                 <hr>
                 <!-- Pager -->
