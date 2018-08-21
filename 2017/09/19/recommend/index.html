@@ -174,14 +174,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -269,27 +269,23 @@ var _hmt = _hmt || [];
 </ul>
 <p>最后附上今年保研最终排名，见笑了（好基友非要我给他打码，那我就照办了）：<br><img src="/2017/09/19/recommend/top.jpg" data-action="zoom"></p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2017/09/19/recommend/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->

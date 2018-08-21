@@ -180,14 +180,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -263,27 +263,23 @@ var _hmt = _hmt || [];
 <h1 id="5-结论"><a href="#5-结论" class="headerlink" title="5 结论"></a>5 结论</h1><hr>
 <p>提出一种神经序列标注的迁移学习方法，主要有三个方面：跨领域、跨应用、跨语言。<br>以下三个因素对迁移学习性能有很大影响：目标任务标签数量、源任务和目标任务相关性、能够共享的参数数量。<br>在以后的工作中，可以在跨语言迁移学习中尝试结合基于模型的迁移和基于资源的迁移。</p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2017/11/13/ICLR17-1/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->

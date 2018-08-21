@@ -182,14 +182,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -258,27 +258,23 @@ var _hmt = _hmt || [];
 <h3 id="基于图的后验估计"><a href="#基于图的后验估计" class="headerlink" title="基于图的后验估计"></a>基于图的后验估计</h3><p>估计后验概率方法如下：<br>首先基于词的语义相似度构造出一个图，然后使用CRF边际函数作为正则化因子在图上进行标签传播，最后应用到神经网络中。</p>
 <h4 id="图的构造"><a href="#图的构造" class="headerlink" title="图的构造"></a>图的构造</h4><p>图中的结点代表单词，边代表词之间的语义相似性。整个图的结点数量等于标注数据和未标注数据总单词数。<br>单词的表示是用前后共5个单词的词向量、和他最近的动词的词向量、一组离散特征例如词性和大写连接而成，然后用PCA降维到100维。<br>定义两个结点之间的边权重等于欧几里得距离，如果两个点中至少一个点在另一个点的K近邻里。</p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2017/12/19/EMNLP17-2/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->

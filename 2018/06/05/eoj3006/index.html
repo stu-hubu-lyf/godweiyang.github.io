@@ -174,14 +174,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -254,27 +254,23 @@ var _hmt = _hmt || [];
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1000000</span> + <span class="number">10</span>;</div><div class="line"><span class="keyword">const</span> LL MOD = <span class="number">1e9</span> + <span class="number">7</span>;</div><div class="line"></div><div class="line">LL f[MAXN];</div><div class="line"></div><div class="line"><span class="function">LL <span class="title">QuickPow</span><span class="params">(LL a, LL n, LL p)</span> </span>&#123;</div><div class="line">    LL res = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (n &amp; <span class="number">1</span>) &#123;</div><div class="line">            res = (res * a) % p;</div><div class="line">        &#125;</div><div class="line">        a = (a * a) % p;</div><div class="line">        n &gt;&gt;= <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">LL <span class="title">C</span><span class="params">(LL n, LL m, LL p)</span> </span>&#123;</div><div class="line">    LL res = f[n] * QuickPow((f[m] * f[n-m]) % p, p - <span class="number">2</span>, p) % p;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">    f[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; MAXN; ++i) &#123;</div><div class="line">        f[i] = (f[i - <span class="number">1</span>] * i) % MOD;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    init();</div><div class="line">    <span class="keyword">int</span> T;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">0</span>; t &lt; T; ++t) &#123;</div><div class="line">        LL a, b, k, n, m;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld%lld%lld"</span>, &amp;a, &amp;b, &amp;k, &amp;n, &amp;m);</div><div class="line">        LL res = (((QuickPow(a, n, MOD) * QuickPow(b, m, MOD)) % MOD) * C(k, n, MOD)) % MOD;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"case #%d:\n%lld\n"</span>, t, res);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2018/06/05/eoj3006/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->

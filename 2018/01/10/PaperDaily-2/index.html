@@ -182,14 +182,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -262,27 +262,23 @@ var _hmt = _hmt || [];
 <p>其实我的任务不用PCFG，看起来减少了工作量？嘿嘿，其实貌似麻烦的一笔啊。。。我的模型主要的思想就是直接用SU-RNN训练出句法分析树！那枚举复杂度太高了怎么办？用动态规划啊！不是不能用吗？没事，假装它能用，要是效果好强行解释一波就行了。。。而且原模型的RNN是递归神经网络哦，这次我改成了循环神经网络，用LSTM来计算得分。看起来貌似挺麻烦的，纠结了好几天。LSTM每个节点总得有一个\(x\)输入，一个\(h\)隐层输入吧，所以可能还要给每两个节点指定一个作为head。。。</p>
 <p>感觉心态炸了哦，一堆非主流写法？也不知道最后能不能写出来，也不知道写出来结果怎么样。。。说不定要延毕了？哈哈，自嘲一波吧，暑假好好研究研究了，python基础还是不行，写起来太累了。。。</p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2018/01/10/PaperDaily-2/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->

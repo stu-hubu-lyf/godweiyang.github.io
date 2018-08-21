@@ -176,14 +176,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -278,27 +278,23 @@ var _hmt = _hmt || [];
 <p>图的右半部分是神经网络训练的流程。首先你要想出一个算法，然后你要实现代码，最后运行结果进行训练。如果训练时间很短，比如10分钟或者一天以内，那么你就可以调整算法，继续优化训练。如果训练时间要一个月，那么你就只能实现很少的想法了。</p><p></p>
 <p>可喜的是，现在数据和硬件还在继续发展着，我们要做的就是继续研究新的算法和进行算法的优化。所以我们坚信，深度学习还会继续发展进步下去。</p><p></p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2017/09/19/dl1/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->

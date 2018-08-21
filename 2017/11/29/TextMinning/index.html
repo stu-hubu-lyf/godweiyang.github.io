@@ -106,9 +106,9 @@
                             
                               <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
                             
-                              <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
-                            
                               <a class="tag" href="/tags/#序列标注" title="序列标注">序列标注</a>
+                            
+                              <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
                             
                               <a class="tag" href="/tags/#自然语言处理" title="自然语言处理">自然语言处理</a>
                             
@@ -184,14 +184,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -254,27 +254,23 @@ var _hmt = _hmt || [];
 <h3 id="Matthew-E-Peters-Waleed-Ammar-Chandra-Bhagavatula-Russell-Power-Semi-supervised-sequence-tagging-with-bidirectional-language-models-ACL-2017"><a href="#Matthew-E-Peters-Waleed-Ammar-Chandra-Bhagavatula-Russell-Power-Semi-supervised-sequence-tagging-with-bidirectional-language-models-ACL-2017" class="headerlink" title="Matthew E. Peters, Waleed Ammar, Chandra Bhagavatula, Russell Power. Semi-supervised sequence tagging with bidirectional language models. ACL, 2017."></a>Matthew E. Peters, Waleed Ammar, Chandra Bhagavatula, Russell Power. <em>Semi-supervised sequence tagging with bidirectional language models. ACL, 2017.</em></h3><p>这篇论文就是半监督序列标注模型中我看到的效果最好的一个了。<br>和上面一篇相同的是，都加入了语言模型，来对单词上下文信息进行编码。但是不同的是，上文将语言模型和序列标注模型融合在了一起，所以只需要少量的标注数据就行了，无法利用大量的无标注数据。这篇的模型将其分开，预先对大量的无标注数据训练语言模型，然后将训练好的词表示加入到序列标注模型中，和原始的词向量结合，然后进行训练。<br>模型结构如下所示：<br><img src="/2017/11/29/TextMinning/6.png" data-action="zoom"></p>
 <h3 id="Yi-Luan-Mari-Ostendorf-Hannaneh-Hajishirzi-Scientific-Information-Extraction-with-Semi-supervised-Neural-Tagging-EMNLP-2017"><a href="#Yi-Luan-Mari-Ostendorf-Hannaneh-Hajishirzi-Scientific-Information-Extraction-with-Semi-supervised-Neural-Tagging-EMNLP-2017" class="headerlink" title="Yi Luan, Mari Ostendorf, Hannaneh Hajishirzi. Scientific Information Extraction with Semi-supervised Neural Tagging. EMNLP, 2017."></a>Yi Luan, Mari Ostendorf, Hannaneh Hajishirzi. <em>Scientific Information Extraction with Semi-supervised Neural Tagging. EMNLP, 2017.</em></h3><p>这篇论文任务是科技文章的关键词提取，然后分类为task、process、material三类，可以将其看成一个序列标注任务。<br>这篇论文介绍了一种基于图的半监督方法</p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2017/11/29/TextMinning/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->
@@ -326,9 +322,9 @@ var _hmt = _hmt || [];
                         
                           <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
                         
-                          <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
-                        
                           <a class="tag" href="/tags/#序列标注" title="序列标注">序列标注</a>
+                        
+                          <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
                         
                           <a class="tag" href="/tags/#自然语言处理" title="自然语言处理">自然语言处理</a>
                         

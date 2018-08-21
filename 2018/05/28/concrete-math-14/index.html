@@ -176,14 +176,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -251,27 +251,23 @@ var _hmt = _hmt || [];
 <p>例如大家很熟悉的斐波那契数列：<br>\[\begin{array}{l}{g_0} = 0;{g_1} = 1\\{g_n} = {g_{n - 1}} + {g_{n - 2}},n \ge 2\end{array}\]</p>
 <p>首先为了统一表示，将递归式改写为如下形式：<br>\[{g_n} = {g_{n - 1}} + {g_{n - 2}} + [n = 1]\]<br>然后两边同时乘以\(z^n\)，得到：<br>\[{g_n}{z^n} = {g_{n - 1}}{z^n} + {g_{n - 2}}{z^n} + [n = 1]{z^n}\]<br>两边对指标\(n\)同时求和，可以得到：<br>\[G(z) = zG(z) + {z^2}G(z) + z\]<br>所以<br>\[G(z) = \frac{z}{ {1 - z - {z^2}}}\]<br>最后只要将\(\frac{z}{ {1 - z - {z^2}}}\)表示成多项式的形式就行了，\([{z^n}]\frac{z}{ {1 - z - {z^2}}}\)就是斐波那契数列的通项公式了。</p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2018/05/28/concrete-math-14/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->

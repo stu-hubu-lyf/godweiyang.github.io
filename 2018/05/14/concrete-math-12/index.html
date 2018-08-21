@@ -176,14 +176,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -281,27 +281,23 @@ var _hmt = _hmt || [];
 <p>\[{0^n} = \left( {\begin{array}{c}n\\0\end{array}} \right) - \left( {\begin{array}{c}n\\1\end{array}} \right) +  \cdots  + {( - 1)^n}\left( {\begin{array}{c}n\\n\end{array}} \right)\]<br>即奇数项系数和等于偶数项系数和。</p>
 <p>推广到实数域：<br>\[{(1 + z)^r} = \sum\limits_k {\left( {\begin{array}{c}r\\k\end{array}} \right){z^k}} ,\left| z \right| &lt; 1,r \in \mathbb{R}\]<br>可以通过泰勒展开证明。</p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2018/05/14/concrete-math-12/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->

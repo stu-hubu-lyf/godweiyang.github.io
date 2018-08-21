@@ -178,14 +178,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -244,27 +244,23 @@ var _hmt = _hmt || [];
                 <p>分享一套自用ppt模板，使用 <code>XeLaTeX</code> 编译<br>链接地址：<a href="https://github.com/godweiyang/ECNU_BeamerTemplate" target="_blank" rel="external">传送门</a></p>
 <h1 id="界面示例"><a href="#界面示例" class="headerlink" title="界面示例"></a>界面示例</h1><p><img src="/2017/12/29/ecnu-ppt/1.png" data-action="zoom"><br>觉得还可以的下载了用哦，欢迎修改的更美观！</p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2017/12/29/ecnu-ppt/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->

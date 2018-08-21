@@ -182,14 +182,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -265,27 +265,23 @@ var _hmt = _hmt || [];
 <p>这个模型主要是用在了文本分类和情感分类上，我在想能不能用在我的毕设上面。</p>
 <p>我觉得head机制可以加进去，但是反向LSTM貌似是不可行的，因为这里的短语结构树全部是给定的，所以向下计算知道什么时候停止。但是我是做句法分析任务的，没有给定句法树，向下计算无法知道什么时候停止扩展，情况有无数种！向上计算倒是无所谓，最多卡特兰数级别，加上动态规划，可以缩小到\(n\log n\)级别。</p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2018/01/13/PaperDaily-3/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->

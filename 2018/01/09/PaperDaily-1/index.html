@@ -108,9 +108,9 @@
                             
                               <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
                             
-                              <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
-                            
                               <a class="tag" href="/tags/#序列标注" title="序列标注">序列标注</a>
+                            
+                              <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
                             
                               <a class="tag" href="/tags/#AAAI" title="AAAI">AAAI</a>
                             
@@ -184,14 +184,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -263,27 +263,23 @@ var _hmt = _hmt || [];
 <p>其实我个人认为，这零点几的提升意义并不是很大，时间大大缩短倒是挺不错的，毕竟<code>Peter 2017.</code>那篇32个GPU都要训练半个月。。。<br>更远一步思考，也许可以将语言模型和序列标注独立开来训练，先用语言模型来训练character level LSTM，再用它产生每个token的表示，直接输入到序列标注的LSTM中，当然highway layer还是必要的，毕竟表示空间是不同的。这样可以利用大量的无标注数据了，但是训练时间也会大大加长，而且感觉和<code>Peter 2017.</code>的模型区别貌似不大了？只是联合训练了一个character level LSTM而已。</p>
 <p>以上都是我的拙见，毕竟这篇也就粗略读了一下没仔细看，各位有什么想法也欢迎和我讨论。</p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2018/01/09/PaperDaily-1/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->
@@ -337,9 +333,9 @@ var _hmt = _hmt || [];
                         
                           <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
                         
-                          <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
-                        
                           <a class="tag" href="/tags/#序列标注" title="序列标注">序列标注</a>
+                        
+                          <a class="tag" href="/tags/#迁移学习" title="迁移学习">迁移学习</a>
                         
                           <a class="tag" href="/tags/#AAAI" title="AAAI">AAAI</a>
                         

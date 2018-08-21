@@ -174,14 +174,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -268,27 +268,23 @@ var _hmt = _hmt || [];
 <p>然后就成功啦，但是运行dynet程序的时候还是会报错，找不到libcudart库，这时执行下面三条语句就行了：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo cp /usr/local/cuda-<span class="number">8.0</span>/lib64/libcudart.so.<span class="number">8.0</span> /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">libcudart</span>.<span class="title">so</span>.8.0 &amp;&amp; <span class="title">sudo</span> <span class="title">ldconfig</span></span></div><div class="line">sudo cp /usr/local/cuda-<span class="number">8.0</span>/lib64/libcublas.so.<span class="number">8.0</span> /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">libcublas</span>.<span class="title">so</span>.8.0 &amp;&amp; <span class="title">sudo</span> <span class="title">ldconfig</span></span></div><div class="line">sudo cp /usr/local/cuda-<span class="number">8.0</span>/lib64/libcurand.so.<span class="number">8.0</span> /usr/local/<span class="class"><span class="keyword">lib</span>/<span class="title">libcurand</span>.<span class="title">so</span>.8.0 &amp;&amp; <span class="title">sudo</span> <span class="title">ldconfig</span></span></div></pre></td></tr></table></figure></p>
 <p>然后终于可以运行了，感动哭了。。。</p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2018/03/09/nvidia-cuda-dynet/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->

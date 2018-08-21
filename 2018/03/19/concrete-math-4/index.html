@@ -176,14 +176,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -257,27 +257,23 @@ var _hmt = _hmt || [];
 <h3 id="方法3"><a href="#方法3" class="headerlink" title="方法3"></a>方法3</h3><p>按对角线求和：<br>\[\begin{array}{l}S = \sum\limits_{1 \le j &lt; k \le n} {\frac{1}{ {k - j}}} \\ = \sum\limits_{1 \le j &lt; k + j \le n} {\frac{1}{k}} \\ = \sum\limits_{1 \le k \le n} {\sum\limits_{1 \le j \le n - k} {\frac{1}{k}} } \\ = \sum\limits_{1 \le k \le n} {\frac{ {n - k}}{k}} \\ = n\sum\limits_{1 \le k \le n} {\frac{1}{k} - } \sum\limits_{1 \le k \le n} 1 \\ = n{H_n} - n\end{array}\]</p>
 <p>由此得到了一个完全不同的表示形式！<br>所以我们得到了：<br>\[\sum\limits_{0 \le j &lt; n} { {H_j}}  = n{H_n} - n\]</p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2018/03/19/concrete-math-4/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->

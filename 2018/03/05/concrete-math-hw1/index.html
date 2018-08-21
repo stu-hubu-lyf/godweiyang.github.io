@@ -176,14 +176,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -245,27 +245,23 @@ var _hmt = _hmt || [];
 <p>总体做下来，只有最后一题的第二小问一开始算错了，正如题目所说，的确有点难想。我看了标准答案的式子，想了一会儿才想出来的。。。</p>
 <p><img src="/2018/03/05/concrete-math-hw1/1.jpg" data-action="zoom"><br><img src="/2018/03/05/concrete-math-hw1/2.jpg" data-action="zoom"><br><img src="/2018/03/05/concrete-math-hw1/3.jpg" data-action="zoom"><br><img src="/2018/03/05/concrete-math-hw1/4.jpg" data-action="zoom"></p>
 
-                
-                <!-- Gitalk 评论 start  -->
 
-                <!-- Link Gitalk 的支持文件  -->
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
                     var gitalk = new Gitalk({
-
-                    // gitalk的主要参数
                         clientID: 'c3ac6e20697ee5422b43',
                         clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
                         id: '2018/03/05/concrete-math-hw1/',
-                    
+                        distractionFreeMode: true,
+                        createIssueManually: true,
                     });
                     gitalk.render('gitalk-container');
                 </script> 
-                <!-- Gitalk end -->
+
 
                 <hr>
                 <!-- Pager -->
