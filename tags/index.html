@@ -166,14 +166,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -239,23 +239,23 @@ var _hmt = _hmt || [];
                 
                     <a href="#序列标注" title="序列标注" rel="5">序列标注</a>
                 
-                    <a href="#EACL" title="EACL" rel="1">EACL</a>
-                
                     <a href="#ICLR" title="ICLR" rel="1">ICLR</a>
                 
-                    <a href="#NAACL" title="NAACL" rel="2">NAACL</a>
+                    <a href="#EACL" title="EACL" rel="1">EACL</a>
                 
                     <a href="#dynet" title="dynet" rel="1">dynet</a>
+                
+                    <a href="#NAACL" title="NAACL" rel="2">NAACL</a>
                 
                     <a href="#AAAI" title="AAAI" rel="1">AAAI</a>
                 
                     <a href="#LSTM" title="LSTM" rel="2">LSTM</a>
                 
+                    <a href="#TACL" title="TACL" rel="1">TACL</a>
+                
                     <a href="#自然语言处理" title="自然语言处理" rel="4">自然语言处理</a>
                 
                     <a href="#半监督学习" title="半监督学习" rel="2">半监督学习</a>
-                
-                    <a href="#TACL" title="TACL" rel="1">TACL</a>
                 
                     <a href="#保研" title="保研" rel="2">保研</a>
                 
@@ -2330,6 +2330,32 @@ var _hmt = _hmt || [];
             </div>
             
             <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="ICLR">
+                    <span class="tag-text">ICLR</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2017/11/13/ICLR17-1/">
+                        <h2 class="post-title">
+                            ICLR2017论文解读
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                基于层次递归网络的序列标注迁移学习
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="EACL">
                     <span class="tag-text">EACL</span>
                 </span>
@@ -2356,8 +2382,8 @@ var _hmt = _hmt || [];
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="ICLR">
-                    <span class="tag-text">ICLR</span>
+                <span class="fa fa-tag listing-seperator" id="dynet">
+                    <span class="tag-text">dynet</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -2365,13 +2391,13 @@ var _hmt = _hmt || [];
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/2017/11/13/ICLR17-1/">
+                     <a href="/2018/01/01/POS-LM/">
                         <h2 class="post-title">
-                            ICLR2017论文解读
+                            词性标注+语言模型简易实现
                         </h2>
                         
                             <h3 class="post-subtitle">
-                                基于层次递归网络的序列标注迁移学习
+                                基于Semi-supervised sequence tagging with bidirectional language models
                             </h3>
                         
                     </a>
@@ -2417,32 +2443,6 @@ var _hmt = _hmt || [];
                         
                             <h3 class="post-subtitle">
                                 自顶向下树状LSTM网络
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="dynet">
-                    <span class="tag-text">dynet</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2018/01/01/POS-LM/">
-                        <h2 class="post-title">
-                            词性标注+语言模型简易实现
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                基于Semi-supervised sequence tagging with bidirectional language models
                             </h3>
                         
                     </a>
@@ -2501,6 +2501,32 @@ var _hmt = _hmt || [];
                     <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
                 </div>
                 <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/2018/01/13/PaperDaily-3/">
+                        <h2 class="post-title">
+                            Head-Lexicalized Bidirectional Tree LSTMs
+                        </h2>
+                        
+                            <h3 class="post-subtitle">
+                                头部词汇化的双向树形LSTM
+                            </h3>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="TACL">
+                    <span class="tag-text">TACL</span>
+                </span>
                 
                   <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
@@ -2638,32 +2664,6 @@ var _hmt = _hmt || [];
                         
                             <h3 class="post-subtitle">
                                 Presentation of Text Minning course
-                            </h3>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="TACL">
-                    <span class="tag-text">TACL</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/2018/01/13/PaperDaily-3/">
-                        <h2 class="post-title">
-                            Head-Lexicalized Bidirectional Tree LSTMs
-                        </h2>
-                        
-                            <h3 class="post-subtitle">
-                                头部词汇化的双向树形LSTM
                             </h3>
                         
                     </a>
@@ -3883,7 +3883,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">68.1k words altogether</span>
+                    <span class="post-count">68.6k words altogether</span>
                 </p>
                   
                 </div>
