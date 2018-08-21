@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>https://godweiyang.com/2018/01/22/mood/</loc>
+        <lastmod>2018-08-21T04:46:34.005Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://godweiyang.com/2018/08/05/k-bandit/</loc>
         <lastmod>2018-08-05T09:38:09.155Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -33,14 +41,6 @@
     <url>
         <loc>https://godweiyang.com/2018/07/04/ACL18-AttConParsing/</loc>
         <lastmod>2018-07-20T04:37:35.919Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/01/22/mood/</loc>
-        <lastmod>2018-07-10T11:29:46.148Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
