@@ -70,13 +70,6 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2018-08-05T09:38:09.155Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/categories/%E9%9A%8F%E7%AC%94/</loc>
         <lastmod>2018-08-21T04:46:34.005Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -86,6 +79,13 @@
     <url>
         <loc>https://godweiyang.com/categories/%E8%BD%AF%E4%BB%B6/</loc>
         <lastmod>2018-08-21T05:39:25.875Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2018-08-24T03:02:16.216Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
