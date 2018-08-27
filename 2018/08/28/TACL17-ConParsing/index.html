@@ -15,11 +15,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          一位长者关于保研的一些人生经验 - WeiYang Blog | 韦阳的博客
+          In-Order Transition-based Constituent Parsing - WeiYang Blog | 韦阳的博客
         
     </title>
 
-    <link rel="canonical" href="https://godweiyang.com/2017/09/19/recommend/">
+    <link rel="canonical" href="https://godweiyang.com/2018/08/28/TACL17-ConParsing/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -102,14 +102,22 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#保研" title="保研">保研</a>
+                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                            
+                              <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                            
+                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                            
+                              <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
+                            
+                              <a class="tag" href="/tags/#TACL" title="TACL">TACL</a>
                             
                         </div>
-                        <h1>一位长者关于保研的一些人生经验</h1>
-                        <h2 class="subheading"></h2>
+                        <h1>In-Order Transition-based Constituent Parsing</h1>
+                        <h2 class="subheading">基于中序转移的成分句法分析</h2>
                         <span class="meta">
                             Posted by WeiYang on
-                            2017-09-19
+                            2018-08-28
                         </span>
                     </div>
                 
@@ -237,37 +245,79 @@ var _hmt = _hmt || [];
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>经过三年的艰苦学习，终于也艰难保上研了，因此在此给学弟学妹们一点人生经验，粗鄙之见，大家随便看看。</p>
-<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><hr>
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=366752&auto=1&height=66"></iframe></div>
+
+<p><strong>论文地址：</strong><a href="https://www.aclweb.org/anthology/Q/Q17/Q17-1029.pdf" target="_blank" rel="external">In-Order Transition-based Constituent Parsing</a><br><strong>代码地址：</strong><a href="https://github.com/LeonCrashCode/InOrderParser" target="_blank" rel="external">github</a></p>
+<p>今天要介绍的这篇论文是成分句法分析领域目前的第三名，结果最高的几篇paper可以参见ruder在github整理的列表：<a href="https://github.com/sebastianruder/NLP-progress/blob/master/constituency_parsing.md" target="_blank" rel="external">github</a>。<br>下面就是成分句法分析目前排名：</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th style="text-align:center">F1 score</th>
+<th>Paper / Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Self-attentive encoder + ELMo (Kitaev and Klein, 2018)</td>
+<td style="text-align:center">95.13</td>
+<td><a href="https://arxiv.org/abs/1805.01052" target="_blank" rel="external">Constituency Parsing with a Self-Attentive Encoder</a></td>
+</tr>
+<tr>
+<td>Model combination (Fried et al., 2017)</td>
+<td style="text-align:center">94.66</td>
+<td><a href="https://arxiv.org/abs/1707.03058" target="_blank" rel="external">Improving Neural Parsing by Disentangling Model Combination and Reranking Effects</a></td>
+</tr>
+<tr>
+<td>In-order (Liu and Zhang, 2017)</td>
+<td style="text-align:center">94.2</td>
+<td><a href="http://aclweb.org/anthology/Q17-1029" target="_blank" rel="external">In-Order Transition-based Constituent Parsing</a></td>
+</tr>
+<tr>
+<td>Semi-supervised LSTM-LM (Choe and Charniak, 2016)</td>
+<td style="text-align:center">93.8</td>
+<td><a href="http://www.aclweb.org/anthology/D16-1257" target="_blank" rel="external">Parsing as Language Modeling</a></td>
+</tr>
+<tr>
+<td>Stack-only RNNG (Kuncoro et al., 2017)</td>
+<td style="text-align:center">93.6</td>
+<td><a href="https://arxiv.org/abs/1611.05774" target="_blank" rel="external">What Do Recurrent Neural Network Grammars Learn About Syntax?</a></td>
+</tr>
+<tr>
+<td>RNN Grammar (Dyer et al., 2016)</td>
+<td style="text-align:center">﻿93.3</td>
+<td><a href="https://www.aclweb.org/anthology/N16-1024" target="_blank" rel="external">Recurrent Neural Network Grammars</a></td>
+</tr>
+<tr>
+<td>Transformer (Vaswani et al., 2017)</td>
+<td style="text-align:center">92.7</td>
+<td><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="external">Attention Is All You Need</a></td>
+</tr>
+<tr>
+<td>Semi-supervised LSTM (Vinyals et al., 2015)</td>
+<td style="text-align:center">92.1</td>
+<td><a href="https://papers.nips.cc/paper/5635-grammar-as-a-foreign-language.pdf" target="_blank" rel="external">Grammar as a Foreign Language</a></td>
+</tr>
+<tr>
+<td>Self-trained parser (McClosky et al., 2006)</td>
+<td style="text-align:center">92.1</td>
+<td><a href="https://pdfs.semanticscholar.org/6f0f/64f0dab74295e5eb139c160ed79ff262558a.pdf" target="_blank" rel="external">Effective Self-Training for Parsing</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><hr>
+<p>基于转移的成分句法分析主要分为两种：</p>
 <ul>
-<li>好好学习自然不用多说，自觉性是最重要的，作业不能拖拉，不要拖到最后一刻才做作业。<br>就拿我自己说吧，我每次上完课都会立即把上课讲的再看一遍，把没听懂的搞懂，不然时间长了会慢慢忘掉的，等到期末就更难搞懂了。还有就是作业，我每次都会当天就开始做，尽量提前很早做完。这样好处多多哦，既可以不至于最后一天很忙，又可以把作业完成的很好，最后自然就拿高分啦。</li>
-<li>图书馆可以多去去的，虽然我这一年都没去过。<br>想当年大一大二在闵行的时候，那时候还是有女票的(&gt;﹏&lt;)，基本上天天都会去图书馆呆着吧，很怀念那时候的日子。</li>
-<li>上课少玩手机，多听讲，这样期末复习起来才轻松一点。<br>不过我自己上课也玩哈哈哈，我也有很多课听不懂或者很无聊的课，都会戳一戳手机解解闷。有时下午太困了还会打个盹。但是一定要记住，课上缺的，课后一定要补回来，就算花再多时间也要弄懂。</li>
+<li>一种是自顶向下（top-down）的方法，按照前序遍历（pre-order）的顺序生成句法树。这种方法可以更好地利用全局信息，但是需要一个强大的编码器来对每个短语成分进行编码。</li>
+<li>一种是自底向上（bottom-up）的方法，按照后序遍历（post-order）的顺序生成句法树。这种方法可以充分利用子树的特征来进行分析，但是却无法利用全局信息。</li>
 </ul>
-<h1 id="竞赛项目"><a href="#竞赛项目" class="headerlink" title="竞赛项目"></a>竞赛项目</h1><hr>
-<ul>
-<li>有实力和天赋的话搞搞ACM竞赛也是好处极大的，奖学金和保研加分多多的，也极大提升代码能力。<br>想当年我刚高中毕业的那个暑假，还连信息学竞赛都没听说过，但是出于兴趣暑假自学了c语言和基础的算法。于是刚开学就被招进了ACM实验室。不过当时搞的人也少，于是我也就有了出去打比赛的机会。现在这几年人越来越多了，要好好加油了啊。<br>不过我后来太懒了，都没怎么训练，现在光荣的退役咯，老学长只能给你们加油了。</li>
-<li>项目的话我没怎么搞过，真心想搞可以好好弄弄，想水一水的那就别浪费时间了，加分也不多。<br>想当年还有过打算搞搞大夏杯啥的，后来也没了音讯，毕竟ACM太忙了。</li>
-</ul>
-<h1 id="娱乐"><a href="#娱乐" class="headerlink" title="娱乐"></a>娱乐</h1><hr>
-<ul>
-<li>也别老学习啊，多累啊，出去散散步逛逛街玩玩。<br>找个女票啊，带她一起出去玩玩。实在没有的话，和好基友出去玩也行啊！</li>
-<li>日常开黑打打游戏啊，但别耽误了学习做作业。<br>像我就玩英雄联盟、炉石之类的啊，别玩物丧志，通宵玩伤了身体就好。室友之间有个共同爱好挺不错的。</li>
-</ul>
-<h1 id="恋爱"><a href="#恋爱" class="headerlink" title="恋爱"></a>恋爱</h1><hr>
-<ul>
-<li>这方面我很失败，就不谈经验了，谈谈教训吧。</li>
-<li>要好好待人家，别只顾自己学习和玩乐。</li>
-<li>别太自私，毕竟人家为你付出了青春。</li>
-<li>为我自己加油。</li>
-</ul>
-<h1 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h1><hr>
-<ul>
-<li>千万别熬夜了，大一大二你还年轻，熬得起。等到了大三大四，身体吃不消了，你会越来越感觉累的。</li>
-<li>还是那句话，学在平时，别在考试前最后一天通宵学习。</li>
-<li>现在想来，还是多运动运动散散步好，整天呆在宿舍太闷了，恐怕是老了吧。</li>
-</ul>
-<p>最后附上今年保研最终排名，见笑了（好基友非要我给他打码，那我就照办了）：<br><img src="/2017/09/19/recommend/top.jpg" data-action="zoom"></p>
+<p>本文的模型就对这两种方法进行了改进，采用中序遍历（in-order）的顺序来生成句法树。单模型最终取得了91.8%的F1值（貌似也不是特别高？），采用监督重排序之后F1值提升到了93.6%，采用半监督重排序之后F1值提升到了94.2%。所以看起来还是重排序起了很大的作用。</p>
+<h1 id="基于转移的成分句法分析"><a href="#基于转移的成分句法分析" class="headerlink" title="基于转移的成分句法分析"></a>基于转移的成分句法分析</h1><hr>
+<p>首先简要介绍一下这三种基于转移的句法分析方法。</p>
+<h2 id="自底向上的转移系统"><a href="#自底向上的转移系统" class="headerlink" title="自底向上的转移系统"></a>自底向上的转移系统</h2><h2 id="自顶向下的转移系统"><a href="#自顶向下的转移系统" class="headerlink" title="自顶向下的转移系统"></a>自顶向下的转移系统</h2><h2 id="采用中序遍历的转移系统"><a href="#采用中序遍历的转移系统" class="headerlink" title="采用中序遍历的转移系统"></a>采用中序遍历的转移系统</h2><h1 id="句法分析模型"><a href="#句法分析模型" class="headerlink" title="句法分析模型"></a>句法分析模型</h1><hr>
+<h2 id="单词表示"><a href="#单词表示" class="headerlink" title="单词表示"></a>单词表示</h2><h2 id="栈表示"><a href="#栈表示" class="headerlink" title="栈表示"></a>栈表示</h2><h2 id="贪心动作预测"><a href="#贪心动作预测" class="headerlink" title="贪心动作预测"></a>贪心动作预测</h2><h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><hr>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><hr>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
 
 
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
@@ -279,7 +329,7 @@ var _hmt = _hmt || [];
                         repo: 'godweiyang.github.io',
                         owner: 'godweiyang',
                         admin: ['godweiyang'],
-                        id: '2017/09/19/recommend/',
+                        id: '2018/08/28/TACL17-ConParsing/',
                         distractionFreeMode: true,
                     });
                     gitalk.render('gitalk-container');
@@ -290,13 +340,9 @@ var _hmt = _hmt || [];
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2017/09/19/baoyan/" data-toggle="tooltip" data-placement="top" title="保研第一，我还是选择留在了本校">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/09/19/eoj3328/" data-toggle="tooltip" data-placement="top" title="EOJ3328. 时空交织的代价">Next Post &rarr;</a>
+                            <a href="/2018/08/05/k-bandit/" data-toggle="tooltip" data-placement="top" title="K-摇臂赌博机算法与实现">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -312,7 +358,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#学习"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">学习</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#竞赛项目"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">竞赛项目</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#娱乐"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">娱乐</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#恋爱"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">恋爱</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#生活"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">生活</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#摘要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">摘要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#基于转移的成分句法分析"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">基于转移的成分句法分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#自底向上的转移系统"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">自底向上的转移系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#自顶向下的转移系统"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">自顶向下的转移系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#采用中序遍历的转移系统"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">采用中序遍历的转移系统</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#句法分析模型"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">句法分析模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#单词表示"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">单词表示</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#栈表示"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">栈表示</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#贪心动作预测"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">贪心动作预测</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#实验"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">实验</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#分析"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">分析</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">总结</span></a></li></ol>
         
         </div>
       </aside>
@@ -332,7 +378,15 @@ var _hmt = _hmt || [];
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#保研" title="保研">保研</a>
+                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                        
+                          <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                        
+                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                        
+                          <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
+                        
+                          <a class="tag" href="/tags/#TACL" title="TACL">TACL</a>
                         
                     </div>
                 </section>
