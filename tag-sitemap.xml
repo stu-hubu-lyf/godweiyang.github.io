@@ -9,6 +9,13 @@
     </url>
 
     <url>
+        <loc>https://godweiyang.com/tags/ICLR/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://godweiyang.com/tags/EMNLP/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -30,21 +37,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/ICLR/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/tags/EACL/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/tags/dynet/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -65,7 +58,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/%E4%BF%9D%E7%A0%94/</loc>
+        <loc>https://godweiyang.com/tags/dynet/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -86,6 +79,13 @@
     </url>
 
     <url>
+        <loc>https://godweiyang.com/tags/%E4%BF%9D%E7%A0%94/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://godweiyang.com/tags/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -94,13 +94,6 @@
 
     <url>
         <loc>https://godweiyang.com/tags/Concrete-Mathematics/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/tags/EOJ/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -128,6 +121,27 @@
     </url>
 
     <url>
+        <loc>https://godweiyang.com/tags/EOJ/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://godweiyang.com/tags/Hexo/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -143,27 +157,6 @@
 
     <url>
         <loc>https://godweiyang.com/tags/%E5%8D%9A%E5%AE%A2/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/tags/%E9%9A%8F%E7%AC%94/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -235,6 +228,13 @@
     <url>
         <loc>https://godweiyang.com/tags/NAACL/</loc>
         <lastmod>2018-09-03T17:51:14.037Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/tags/%E9%9A%8F%E7%AC%94/</loc>
+        <lastmod>2018-09-11T04:40:28.348Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
