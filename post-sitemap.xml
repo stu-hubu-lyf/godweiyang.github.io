@@ -7,8 +7,32 @@
     </url>
 
     <url>
+        <loc>https://godweiyang.com/2018/10/11/python-advice/</loc>
+        <lastmod>2018-10-11T17:53:17.343Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/10/02/sublime/</loc>
+        <lastmod>2018-10-11T17:53:10.390Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/09/26/constituent-parsing-summary/</loc>
+        <lastmod>2018-09-27T17:13:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://godweiyang.com/2018/01/22/mood/</loc>
-        <lastmod>2018-09-11T04:40:28.348Z</lastmod>
+        <lastmod>2018-09-11T04:40:30.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +40,7 @@
 
     <url>
         <loc>https://godweiyang.com/2018/09/02/RNNG/</loc>
-        <lastmod>2018-09-03T17:51:14.037Z</lastmod>
+        <lastmod>2018-09-03T17:51:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -376,14 +400,6 @@
 
     <url>
         <loc>https://godweiyang.com/2017/11/13/ICLR17-1/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2017/10/02/sublime/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
