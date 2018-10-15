@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>https://godweiyang.com/2018/01/22/mood/</loc>
+        <lastmod>2018-10-15T15:03:08.391Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/09/26/constituent-parsing-summary/</loc>
+        <lastmod>2018-10-15T15:00:03.215Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://godweiyang.com/2018/10/15/ACL18-BeamSpanParser/</loc>
         <lastmod>2018-10-15T14:56:21.407Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -23,24 +39,8 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2018/01/22/mood/</loc>
-        <lastmod>2018-10-12T02:02:16.458Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/2017/10/02/sublime/</loc>
         <lastmod>2018-10-11T17:53:10.390Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/09/26/constituent-parsing-summary/</loc>
-        <lastmod>2018-09-27T17:13:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
