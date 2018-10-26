@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="baidu-site-verification" content="rlXUrNbP8h" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ECNU AntNLP Group - WeiYang">
+    <meta name="keyword"  content="ECNU NLP DeepLearning">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Two Local Models for Neural Constituent Parsing - WeiYang Blog | 韦阳的博客
+        
+    </title>
+
+    <link rel="canonical" href="https://godweiyang.com/2018/10/18/COLING18-2LocalModels/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('header.jpg')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                            
+                              <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                            
+                              <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                            
+                              <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
+                            
+                              <a class="tag" href="/tags/#COLING" title="COLING">COLING</a>
+                            
+                        </div>
+                        <h1>Two Local Models for Neural Constituent Parsing</h1>
+                        <h2 class="subheading">两种成分句法分析的局部特征模型</h2>
+                        <span class="meta">
+                            Posted by WeiYang on
+                            2018-10-18
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">WeiYang Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=167876&auto=1&height=66"></iframe></div>
+
+<blockquote>
+<p>我们究竟是活了365天，还是活了1天，重复了364遍。</p>
+</blockquote>
+<p><strong>论文地址：</strong><a href="http://aclweb.org/anthology/C18-1011" target="_blank" rel="external">Two Local Models for Neural Constituent Parsing</a><br><strong>代码地址：</strong><a href="https://github.com/zeeeyang/two-local-neural-conparsers" target="_blank" rel="external">github</a></p>
+<p>今天要介绍的论文来自COLING 2018，本文主要探讨了局部特征对成分句法分析到底有多大的影响，并同时提出了两种局部特征模型，在PTB上面取得了92.4的F1值。</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><hr>
+<p>对于传统句法分析模型，需要使用大量的全局特征来指导每一步的决策。同时全局的损失函数也是必不可少的，可以用来避免预测偏差的问题，也就是loss mismatch问题。但是随着神经网络的加入，越来越多的模型使用了局部的特征来进行句法分析，主要原因是可以采用双向LSTM预先对句子进行编码，从而捕获全部特征。</p>
+<p>因此本文主要探讨局部特征对句法分析的影响，顺带提出了两个句法分析模型。模型是chart-based的，但是将结构预测和标签预测分成了两个模型，首先通过双仿射模型来产生一棵无标签的句法树，然后再上面跑一遍Tree-LSTM来产生每一个结点的label。</p>
+<h1 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h1><hr>
+<p>模型分为两部分，第一部分是无标签模型，用来预测不带label的句法树，第二部分是标签模型，用来在无标签模型预测出来的句法树上预测出每一个结点的label。</p>
+<p>对于无标签模型，有两种方法来生成句法树，第一种叫做span模型，预测任意span是否属于标准树，也就是二分类。第二种叫做rule模型，也就是普通的chart-based方法，类似于CKY算法，预测每个span的得分最高的split。</p>
+<p>对于标签模型，在生成的句法树上跑一遍Tree-LSTM，计算出每个结点的向量表示，这是Encoder部分。然后对于每个结点，运行一遍Decoder，也就是一个LSTM，解码出该结点处的label，如果label只有一个，那么就解码出“X - &lt;\L&gt;”，其中&lt;\L&gt;是结束符，而如果label不止一个，也就是一元产生式，那么就会解码出一系列非终结符。</p>
+<p>下面我们一个个介绍编码和解码模型，我尽量不使用太多的公式来解释模型，一是因为本质上模型也都是很老的了，二是因为公式太多了我也懒得打嘻嘻。</p>
+<h2 id="Span模型"><a href="#Span模型" class="headerlink" title="Span模型"></a>Span模型</h2><p>主要思想就是对于句子的每一个可能的span，预测它是否属于标准树，属于标签就是1，不属于就是0。因为一共有\(n(n + 1) / 2\)个span，所以时间复杂度为\(O(n^2)\)。在代码实现中，因为长度为1和长度为n的span一定属于标准树，所以不考虑这两种span。</p>
+<p>模型通过一个双向LSTM来对短语进行编码，这个之前的文章已经说过很多次了，可以用来捕获全局信息。span\((i, j)\)的向量表示和之前略有不同，这里不是用两端的差值，而是改用直接拼接得到：<br>\[v[i, j] = [f_{i + 1}; r_i; f_{j + 1}; r_j]\]<br>然后将每个span的表示输入到一个两层的前馈神经网络中，最后通过一个softmax进行二分类：<br>\[\begin{array}{l}o[i,j] = \tanh ({W_o}v[i,j] + {b_o})\\\\u[i,j] = {W_u}o[i,j] + {b_u}\\\\P({Y_{[i,j]}}|S,\Theta ) = softmax(u[i,j])\end{array}\]<br>其中\(Y_{[i, j]}\)可以取值1或者0，最终要使得正确span标签为1的概率与错误span标签为0的概率之和最高。</p>
+<p>训练完毕之后，在预测阶段，使用CKY算法求解最优的句法树。注意这里不能直接采用\(Y_{[i, j]} = 1\)概率比较大的那些span组成句法树，因为可能根本就是一棵不合法的句法树。对于span\((i, j)\)，它的split为k的概率为：<br>\[P(r|S, \Theta) = P(Y_{[i, k]} = 1|S, \Theta)P(Y_{[k + 1, j]} = 1|S, \Theta)\]</p>
+<p>模型还有个扩展版本，就是在softmax层改二分类为预测每个label的概率。然后损失函数也稍做修改，对于每个标准树中的span，对所有label求和（求和主要针对的是一元产生式的多个label），使概率之和最大。在预测阶段解码时，依然使用CKY算法，只不过span的概率要修改为：\(Y_{[i, j]} = 1\)的概率为label不为终结符的概率之和，\(Y_{[i, j]} = 0\)的概率为label是终结符的概率。</p>
+<h2 id="Rule模型"><a href="#Rule模型" class="headerlink" title="Rule模型"></a>Rule模型</h2><p>span模型是训练出每个span属于标准树的概率，然后预测时计算出产生式的概率。而rule模型就直接训练每个产生式的概率，对于span\((i, j)\)，假设它的split为k的分数为\(ps_k\)，那么产生式的概率就为：<br>\[P([i, j] \to [i, k][k + 1, j] | S, \Theta) = \frac{\exp (ps_k)}{\sum\nolimits_{k’ = i}^{j - 1} {\exp (p{s_{k’}})} }\]<br>最终的损失函数就是标准树中所有产生式概率的负对数之和。解码依然使用CKY算法，只是这里产生式概率直接得到了，所以直接计算即可。</p>
+<p>这种方法本质上其实就是用神经网络来拟合PCFG，得到和它类似的效果，最后再用CKY算法解码出句法树。</p>
+<p>而上面的\(ps_k\)是怎么得到的呢？这里首先还是用双向LSTM的边界差值作为span的表示（我也不知道这里为什么又突然用这个表示了）：<br>\[s[i, j] = [f_{j + 1} - f_i; r_i - r_{j + 1}]\]<br>然后将span之前和span和span之后三部分的表示拼接起来：<br>\[sr[i, j] = [s[0, i - 1]; s[i, j]; s[j + 1, n - 1]]\]<br>然后将它输入到一个单层前馈神经网络：<br>\[r[i, j] = \phi (W_r^M sr[i, j] + b_r^M)\]<br>注意到这里的W和b是分为三种：父结点、左儿子、右儿子。</p>
+<p>然后就是最后一步了，终于可以得到最终的span表示了。。。这里又有两种方法，一种是线性模型，直接对左右儿子的r向量加权求和。另一种是双仿射模型，这个方法也可以解决span长度不一导致的类别数可变的多分类问题，双仿射模型得分首先在父结点和左儿子向量上进行操作：<br>\[lps_k = {[r[i,j];1]^T}{W_{pl}}[r[i,k];1]\]<br>然后在父结点和右儿子向量上进行类似操作得到\(rps_k\)，最后相加得到最终的split得分：<br>\[ps_k = lps_k + rps_k\]</p>
+<h2 id="标签生成模型"><a href="#标签生成模型" class="headerlink" title="标签生成模型"></a>标签生成模型</h2><p>首先用Tree-LSTM得到每个span的向量表示，然后再通过一个LSTM依次得到span的一个或者若干个label，这个就不详细解释了。</p>
+<h2 id="联合训练"><a href="#联合训练" class="headerlink" title="联合训练"></a>联合训练</h2><p>整个模型总的损失函数是无标签模型损失加上标签生成模型的损失，其中无标签模型分为三种：二分类、多分类、rule模型。</p>
+<p>整个模型的流程如下图所示：<br><img src="/2018/10/18/COLING18-2LocalModels/1.jpg" data-action="zoom"><br>span模型和rule模型的span得分计算如下图所示：<br><img src="/2018/10/18/COLING18-2LocalModels/2.jpg" data-action="zoom"></p>
+<h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h1><hr>
+<p>几种模型在PTB上的F1值如下：<br><img src="/2018/10/18/COLING18-2LocalModels/3.jpg" data-action="zoom"><br>可以看出对于二分类span模型，用\(v[i, j]\)作为span表示效果最好，而对于rule模型，采用的是双仿射，那么用\(sr[i, j]\)，也就是拼接上span左右的span效果更好。总体来说，多分类的span模型F1值是最高的。</p>
+<p>而和其他模型的比较如下表所示：<br><img src="/2018/10/18/COLING18-2LocalModels/4.jpg" data-action="zoom"><br>左侧是多模型融合的结果，右侧是单模型，本文的几个模型结果都是最高的。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<p>这篇论文模型和变体有点多，其实仔细分析下来可以发现本质上也还是那么些东西，在这里简单总结一下几种模型：<br>首先是结构预测：</p>
+<ul>
+<li>二分类span模型：预测每个span属于标准树的概率，测试阶段使用CKY算法解码，通过span正确的概率计算得到产生式概率。</li>
+<li>多分类span模型：在二分类的基础上，预测每个span是每个label的概率，最后求和得到它属于标准树的概率，测试过程和二分类相同。</li>
+<li>线性组合rule模型：通过split的得分直接预测每个产生式的概率，采用线性组合计算概率，解码采用CKY算法。</li>
+<li>双仿射rule模型：除了概率计算采用双仿射，其他部分和线性组合rule模型完全相同。</li>
+</ul>
+<p>然后是标签预测：<br>都是采用Tree-LSTM产生每个结点的编码，然后创新地使用LSTM来预测label，而不是用传统的label列表。</p>
+<p>这篇论文可借鉴的地方还挺多的，结构和标签分开预测，span特征继续堆叠，双仿射变换等等。准备之后在以往模型上加上去试试，然后可以想想神经网络训练PCFG这类点子，其实本质上和chart-based的没啥大区别。</p>
+
+
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+                <div id="gitalk-container"></div>     <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                        clientID: 'c3ac6e20697ee5422b43',
+                        clientSecret: '3ccf19d2ec7e33b55f71aaeec74542a3938772f6',
+                        repo: 'godweiyang.github.io',
+                        owner: 'godweiyang',
+                        admin: ['godweiyang'],
+                        id: '2018/10/18/COLING18-2LocalModels/',
+                        distractionFreeMode: true,
+                    });
+                    gitalk.render('gitalk-container');
+                </script>
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/10/25/MetaMTL/" data-toggle="tooltip" data-placement="top" title="面向序列建模的元多任务学习">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/10/15/ACL18-BeamSpanParser/" data-toggle="tooltip" data-placement="top" title="Linear-Time Constituency Parsing with RNNs and Dynamic Programming">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+                <p></p>
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#模型"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Span模型"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Span模型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Rule模型"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Rule模型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#标签生成模型"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">标签生成模型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#联合训练"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">联合训练</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#实验结果"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">实验结果</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#NLP" title="NLP">NLP</a>
+                        
+                          <a class="tag" href="/tags/#神经网络" title="神经网络">神经网络</a>
+                        
+                          <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
+                        
+                          <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
+                        
+                          <a class="tag" href="/tags/#COLING" title="COLING">COLING</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://blog.csdn.net/cww97" target="_blank">cww97</a></li>
+                    
+                        <li><a href="https://www.dreamwings.cn/" target="_blank">dreamwings</a></li>
+                    
+                        <li><a href="https://www.elainelv.top/" target="_blank">elainelv</a></li>
+                    
+                        <li><a href="https://www.gofun4.top/" target="_blank">Fun4wut</a></li>
+                    
+                        <li><a href="http://haelchan.me/" target="_blank">Hael&#39;s Blog</a></li>
+                    
+                        <li><a href="http://hzwer.com/" target="_blank">hzwer</a></li>
+                    
+                        <li><a href="https://www.jxtxzzw.com/wordpress" target="_blank">jxtxzzw空间</a></li>
+                    
+                        <li><a href="https://blog.csdn.net/MIKASA3" target="_blank">kewlgrl</a></li>
+                    
+                        <li><a href="http://jiaqianlee.com/" target="_blank">LJQ&#39;s Blog</a></li>
+                    
+                        <li><a href="https://chrisqiqiang.com/" target="_blank">Qi Qiang</a></li>
+                    
+                        <li><a href="https://xuzhongyou.github.io/" target="_blank">xuzhongyou</a></li>
+                    
+                        <li><a href="http://zerol.me/" target="_blank">zerol</a></li>
+                    
+                        <li><a href="http://codewithzhangyi.com/" target="_blank">Zhang Yi</a></li>
+                    
+                        <li><a href="https://spaces.ac.cn/" target="_blank">科学空间</a></li>
+                    
+                        <li><a href="http://www.navazil.com/" target="_blank">孙哥我还是看不透生死</a></li>
+                    
+                        <li><a href="http://www.itaowei.cn/" target="_blank">望城风景</a></li>
+                    
+                        <li><a href="https://chrisju.cn/" target="_blank">咸鱼的自我修养</a></li>
+                    
+                        <li><a href="http://blog.sina.com.cn/u/5848707168" target="_blank">隐函数_北极鹅</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!--  <script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>  -->
+<style>
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<script type="text/javascript" src="/js/zooming.js"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/godweiyang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://user.qzone.qq.com/792321264">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-qq fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; WeiYang 2018 
+                </p>
+                <p class="copyright text-muted">
+                    <!-- <a target="_blank" title="web analytic"><img alt="web analytic" src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_visitors/counter.png" style="border-width:0" /></a> -->
+                    <!-- <a><img alt="web trackers" src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_visitors/counter.png" 
+                    style="border-width:0"/></a> -->
+                    <a><img border="0" src="https://cc.amazingcounters.com/counter.php?i=3221735&c=9665518" alt="AmazingCounters.com"></a>
+                    <!-- <span id="busuanzi_container_site_pv">
+					    <span id="busuanzi_value_site_pv"></span>
+					</span> -->
+					<!-- <a target="_blank" title="webstats program"><img alt="webstats program" 
+					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
+					style="border-width:0" /></a> -->
+					visitors since 2017/09/11, 
+                    <span class="post-count">89.2k words altogether</span>
+                </p>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://godweiyang.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '46e79e71af0709a5b9106bf20cecc493';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script> -->
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="https://godweiyang.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+
+</html>
