@@ -35,13 +35,6 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/categories/NLP/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/categories/%E6%A8%A1%E6%9D%BF/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -56,6 +49,13 @@
     </url>
 
     <url>
+        <loc>https://godweiyang.com/categories/NLP/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://godweiyang.com/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -64,7 +64,7 @@
 
     <url>
         <loc>https://godweiyang.com/categories/%E9%9A%8F%E7%AC%94/</loc>
-        <lastmod>2018-10-15T15:13:15.600Z</lastmod>
+        <lastmod>2018-10-15T15:13:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -85,7 +85,7 @@
 
     <url>
         <loc>https://godweiyang.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2018-10-26T13:14:08.267Z</lastmod>
+        <lastmod>2018-10-29T08:00:50.539Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
