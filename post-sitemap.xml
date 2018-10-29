@@ -7,6 +7,102 @@
     </url>
 
     <url>
+        <loc>https://godweiyang.com/2017/11/29/TextMinning/</loc>
+        <lastmod>2018-10-29T08:16:53.152Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/12/30/text-minning-ppt/</loc>
+        <lastmod>2018-10-29T08:16:48.146Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/08/05/k-bandit/</loc>
+        <lastmod>2018-10-29T08:16:16.320Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/04/19/inside-outside/</loc>
+        <lastmod>2018-10-29T08:15:34.034Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/11/13/ICLR17-1/</loc>
+        <lastmod>2018-10-29T08:14:31.008Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/12/19/EMNLP17-2/</loc>
+        <lastmod>2018-10-29T08:12:05.211Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/12/19/EMNLP17-1/</loc>
+        <lastmod>2018-10-29T08:11:56.903Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/08/03/dynamic-oracles/</loc>
+        <lastmod>2018-10-29T08:11:44.634Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/09/19/context/</loc>
+        <lastmod>2018-10-29T08:10:50.562Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/09/26/constituent-parsing-summary/</loc>
+        <lastmod>2018-10-29T08:09:27.739Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/10/25/ACL17-2027/</loc>
+        <lastmod>2018-10-29T08:08:58.317Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/10/03/ACL17-1161/</loc>
+        <lastmod>2018-10-29T08:08:28.466Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://godweiyang.com/2018/10/25/MetaMTL/</loc>
         <lastmod>2018-10-29T08:00:50.539Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -47,14 +143,6 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2018/09/26/constituent-parsing-summary/</loc>
-        <lastmod>2018-10-15T15:00:04.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/2018/10/11/python-advice/</loc>
         <lastmod>2018-10-13T03:32:10.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -73,22 +161,6 @@
     <url>
         <loc>https://godweiyang.com/2018/08/28/TACL17-ConParsing/</loc>
         <lastmod>2018-09-03T07:10:44.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/08/05/k-bandit/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/08/03/dynamic-oracles/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -199,14 +271,6 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2018/04/19/inside-outside/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/2018/04/16/concrete-math-8/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -272,14 +336,6 @@
 
     <url>
         <loc>https://godweiyang.com/2018/03/12/concrete-math-3/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/03/11/graduate-outline/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -375,14 +431,6 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2017/12/30/text-minning-ppt/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/2017/12/29/ecnu-ppt/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -391,39 +439,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2017/12/19/EMNLP17-2/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2017/12/19/EMNLP17-1/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2017/11/29/TextMinning/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/2017/11/16/sw-compiler/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2017/11/13/ICLR17-1/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -456,14 +472,6 @@
 
     <url>
         <loc>https://godweiyang.com/2017/09/19/dl1/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2017/09/19/context/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -504,22 +512,6 @@
 
     <url>
         <loc>https://godweiyang.com/2018/06/28/ACL17-ConParsing/</loc>
-        <lastmod>2018-09-03T07:10:40.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2017/10/25/ACL17-2027/</loc>
-        <lastmod>2018-09-03T07:10:40.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2017/10/03/ACL17-1161/</loc>
         <lastmod>2018-09-03T07:10:40.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
