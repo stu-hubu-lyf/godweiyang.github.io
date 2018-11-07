@@ -182,14 +182,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -257,14 +257,19 @@ var _hmt = _hmt || [];
 <p>其中bottom-up转移系统的Dynamic Oracle在<a href="http://aclweb.org/anthology/D16-1001" target="_blank" rel="external">Span-Based Constituency Parsing with a Structure-Label System and Provably Optimal Dynamic Oracles</a>中有很详细的证明，也可以参看我之前的博客<a href="https://godweiyang.com/2018/08/03/dynamic-oracles/">Deep Understanding of Dynamic Oracle in Constituent Parsing</a>。</p>
 <p>而本文就提出了另外两种转移系统的Dynamic Oracle，其中top-down转移系统主要基于<a href="http://aclweb.org/anthology/N16-1024" target="_blank" rel="external">Recurrent Neural Network Grammars</a>，in-order转移系统主要基于<a href="http://aclweb.org/anthology/Q17-1029" target="_blank" rel="external">In-Order Transition-based Constituent Parsing</a>。</p>
 <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><hr>
-<p>bottom-up的转移系统这里就不讨论了，这里主要讨论另外两种转移系统。转移系统的状态用五元组\(c = \left\langle {\sum ,i,f,\gamma ,\alpha } \right\rangle \)表示，五元组内元素分别表示stack、buffer第一个单词的下标、in-order转移系统中结束标记、已经生成的短语成分集合、stack中非终结符集合。</p>
+<h2 id="形式化定义"><a href="#形式化定义" class="headerlink" title="形式化定义"></a>形式化定义</h2><p>bottom-up的转移系统这里就不讨论了，这里主要讨论另外两种转移系统。转移系统的状态用五元组\(c = \left\langle {\sum ,i,f,\gamma ,\alpha } \right\rangle \)表示，五元组内元素分别表示stack、buffer第一个单词的下标、in-order转移系统中结束标记、已经生成的短语成分集合、stack中非终结符集合。</p>
 <p>每个短语成分用三元组\((X, l, r)\)表示，其中X是非终结符，l和r是短语的边界下标。而非终结符用二元组\((X, j)\)表示，其中j表示X入栈后下一个入栈的单词的下标。</p>
 <p><img src="/2018/11/06/EMNLP18-dynamic-oracle/1.jpg" data-action="zoom"></p>
 <p>例如对于上图中的句法树，它的gold短语成分集合是<br>\[(S,0,6),(NP,0,2),(VP,2,5),(ADVP,3,4),(ADJP,4,5)\]如果采用top-down的转移系统，非终结符入栈的顺序为<br>\[(S, 0), (NP, 0), (VP, 2), (ADVP, 3), (ADJP, 4)\]如果采用in-order的转移系统，非终结符入栈的顺序为<br>\[(NP, 1), (S, 2), (VP, 3), (ADVP, 4), (ADJP, 5)\]<br>正如之前所说，top-down中非终结符的下标就是短语的第一个单词的下标，但是in-order不是的，因为短语的第一个子结点已经在非终结符入栈之前形成了，所以它的下标是第二个子结点表示的短语的第一个单词的下标。</p>
-<p>之前的top-down和in-order转移系统中并没有用到预测的短语集合\(\gamma\)和stack里的非终结符集合\(\alpha\)，但是在本文的转移系统中需要用到，因为本文要用它来改进loss函数，以此来实现Dynamic Oracle。<br><img src="/2018/11/06/EMNLP18-dynamic-oracle/2.jpg" data-action="zoom"><br><img src="/2018/11/06/EMNLP18-dynamic-oracle/3.jpg" data-action="zoom"></p>
+<p>之前的top-down和in-order转移系统中并没有用到预测的短语集合\(\gamma\)和stack里的非终结符集合\(\alpha\)，但是在本文的转移系统中需要用到，因为本文要用它来改进loss函数，以此来实现Dynamic Oracle。</p>
+<h2 id="top-down转移系统"><a href="#top-down转移系统" class="headerlink" title="top-down转移系统"></a>top-down转移系统</h2><p><img src="/2018/11/06/EMNLP18-dynamic-oracle/2.jpg" data-action="zoom"><br><img src="/2018/11/06/EMNLP18-dynamic-oracle/3.jpg" data-action="zoom"></p>
 <p>上面两张图分别是top-down转移系统的转移过程和具体的转移示例。注意到REDUCE动作会将新的短语加入到\(\gamma\)集合中，并且从非终结符集合\(\alpha\)中删去该非终结符。而NT-X动作会将新的非终结符X加入到非终结符集合\(\alpha\)中。</p>
-<p><img src="/2018/11/06/EMNLP18-dynamic-oracle/4.jpg" data-action="zoom"><br><img src="/2018/11/06/EMNLP18-dynamic-oracle/5.jpg" data-action="zoom"></p>
+<h2 id="in-order转移系统"><a href="#in-order转移系统" class="headerlink" title="in-order转移系统"></a>in-order转移系统</h2><p><img src="/2018/11/06/EMNLP18-dynamic-oracle/4.jpg" data-action="zoom"><br><img src="/2018/11/06/EMNLP18-dynamic-oracle/5.jpg" data-action="zoom"></p>
 <p>上面两张图分别是in-order转移系统的转移过程和具体的转移示例，大致细节和top-down转移系统类似。</p>
+<h2 id="Dynamic-Oracles简介"><a href="#Dynamic-Oracles简介" class="headerlink" title="Dynamic Oracles简介"></a>Dynamic Oracles简介</h2><p>最后再解释一下Dynamic Oracle是干嘛用的，传统的Static Oracle就是在转移的每一步按照标准转移序列中的action进行转移，但是这样会有一个问题，如果预测的时候某一步预测错了，遇到了一个训练阶段没有出现过的状态，那么该怎么进行转移呢？这时候就要用到Dynamic Oracle，用来针对不同的错误情况进行动态的指导，引导它转移到正确的状态中去。另外在训练时可以手动加入一些错误状态，来训练模型，不然的话遇到的错误状态还是太少了，不足以训练好模型。</p>
+<h1 id="Dynamic-Oracles"><a href="#Dynamic-Oracles" class="headerlink" title="Dynamic Oracles"></a>Dynamic Oracles</h1><hr>
+<p>Goldberg (2012)证明了Dynamic Oracle可以通过定义一个损失函数来直接实现，而这个损失函数可以用来衡量当前状态可以产生的最优句法树和标准句法树的距离。最小化这个距离就会使得错误状态也会转移到最终错误最少的状态。而这个损失函数就要和当前状态c挂钩了，这样才能达到和传统的Dynamic Oracle类似的效果。</p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>传统的损失函数定义为预测短语成分集合和标准短语成分集合不相交的元素数量，即：<br>\[\mathcal{l}(c) = \min_{\gamma | c \to \gamma} \mathcal{L}(\gamma, \gamma_G) = \left| { {\gamma _G}\backslash \gamma } \right| + \left| {\gamma \backslash {\gamma _G}} \right|\]</p>
 
 
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
@@ -287,6 +292,10 @@ var _hmt = _hmt || [];
                 <!-- Pager -->
                 <ul class="pager">
                     
+                        <li class="previous">
+                            <a href="/2018/11/07/2018-conclusion/" data-toggle="tooltip" data-placement="top" title="二零一八年终总结">&larr; Previous Post</a>
+                        </li>
+                    
                     
                         <li class="next">
                             <a href="/2018/10/25/MetaMTL/" data-toggle="tooltip" data-placement="top" title="Meta Multi-Task Learning for Sequence Modeling">Next Post &rarr;</a>
@@ -305,7 +314,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#基础知识"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">基础知识</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#基础知识"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">基础知识</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#形式化定义"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">形式化定义</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#top-down转移系统"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">top-down转移系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#in-order转移系统"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">in-order转移系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Dynamic-Oracles简介"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">Dynamic Oracles简介</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Dynamic-Oracles"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Dynamic Oracles</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#损失函数"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">损失函数</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -502,7 +511,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">89.8k words altogether</span>
+                    <span class="post-count">90.2k words altogether</span>
                 </p>
                   
                 </div>
