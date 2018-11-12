@@ -173,14 +173,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -273,6 +273,21 @@ var _hmt = _hmt || [];
 <p>如果第二种情况满足，即\(j \le l &lt; r\)，那么可以通过不断SHIFT再一个REDUCE来得到短语\((X, l, r)\)。那么T’集合又如何能全部生成呢？可以发现T’集合中的短语，要么是左边界等于l并且右边界大于r的（根据定义），这种可以继续SHUFT再REDUCE得到（满足条件3）。要么是左边界大于等于r的（因为都是标准树中的短语，所以不会有边界交叉），这种满足条件2，也可达。<strong>论文中就说了这两种情况，是否还存在一种左边界大于等于l，右边界小于等于r的情况呢？当然这种情况满足条件1，因为在生成\((X, l, r)\)的时候就已经生成了。</strong>所以最终T集合还是全部可达的。</p>
 <p>如果第三种情况满足，即l是栈里某个短语的边界，而r大于等于j，那么这种情况依然可以通过不断SHIFT再REDUCE得到，而T集合仍然可以全部可达，原因和上一种情况类似。</p>
 <p>所以可以证得，从状态c开始，存在某个转移序列，使得所有可达短语全部生成，那么只有不可达的短语会被错过，即：<br>\[\min_{\gamma |c \to \gamma} \left| {\gamma_G \backslash {\gamma}} \right| = \left| { \mathcal{U}(c, \gamma_G)} \right|\]</p>
+<p>最后一步就是证明另一项\(\left| {\gamma \backslash {\gamma_G}} \right|\)等于\(\left| {\gamma_c \backslash {\gamma_G}} \right|\)。首先因为前者肯定包含了后者，因为随着转移的进行，预测错误的短语只会增加，不会减少。然后证明最优句法树不会再增加新的错误短语，即从状态c开始的最优句法树一定是\(\mathcal{R}(c, \gamma_G) \cup \left| {\gamma_c \backslash {\gamma_G}} \right|\)。这里不是很好想，可以想象从包含当前栈顶短语的最小的标准短语开始，一步步的进行转移，按照<a href="https://www.aclweb.org/anthology/D/D16/D16-1001.pdf" target="_blank" rel="external">James and Huang</a>中的Dynamic Oracle。</p>
+<p>至此已经证明了，这个损失函数可以保证每一步都按照最优的策略来进行转移。</p>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><hr>
+<p>实验采用的转移模型都是基于<a href="http://aclweb.org/anthology/N16-1024" target="_blank" rel="external">Dyer et al.</a>，并且也采用了<a href="https://www.aclweb.org/anthology/D/D16/D16-1001.pdf" target="_blank" rel="external">James and Huang</a>中的exploration策略来增加错误状态，提高Dynamic Oracle的准确率。</p>
+<p>在PTB上的实验结果如下：<br><img src="/2018/11/07/arxiv-18-SR-CP-bottom-up/3.jpg" data-action="zoom"></p>
+<p>结果其实也不是很高，现在来看算低的了，本文只和其他的转移系统结果进行了比较，可以说在转移系统上还算比较高的吧，虽然今年转移系统也做到了92.0了。在运行速度上，本文的模型也比其他转移系统略有提升，我感觉虽然不需要二叉化了，但是REDUCE#k动作的增加同样会增加复杂度，这是自底向上转移系统的一个固有的问题。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<p>本文提出了一个非二叉化的自底向上的转移系统，主要有如下几个贡献点吧：</p>
+<ul>
+<li>非二叉化预测，采用REDUCE#k动作。</li>
+<li>采用损失函数来实现Dynamic Oracle。</li>
+<li>准确率上超过了除了in-order的大多数转移系统。</li>
+<li>训练速度上是所有转移系统中最快的。</li>
+</ul>
+<p>看完这篇，我准备在chart-based的top-down模型上面也搞一个这种Dynamic Oracle试试，需要改变的就是每个状态的损失函数，现在的F1还只有91.87，希望能有所突破吧。</p>
 
 
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
@@ -313,7 +328,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#自底向上的转移系统"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">自底向上的转移系统</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Dynamic-Oracle"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Dynamic Oracle</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#短语的可达性"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">短语的可达性</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#损失函数"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">损失函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#正确性证明"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">正确性证明</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#自底向上的转移系统"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">自底向上的转移系统</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Dynamic-Oracle"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Dynamic Oracle</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#短语的可达性"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">短语的可达性</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#损失函数"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">损失函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#正确性证明"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">正确性证明</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#实验"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">实验</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">总结</span></a></li></ol>
         
         </div>
       </aside>
@@ -508,7 +523,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">92.1k words altogether</span>
+                    <span class="post-count">92.7k words altogether</span>
                 </p>
                   
                 </div>
