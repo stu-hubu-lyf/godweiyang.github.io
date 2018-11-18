@@ -175,14 +175,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -270,7 +270,7 @@ var _hmt = _hmt || [];
 <h1 id="Dynamic-Oracles"><a href="#Dynamic-Oracles" class="headerlink" title="Dynamic Oracles"></a>Dynamic Oracles</h1><hr>
 <p>Goldberg (2012)证明了Dynamic Oracle可以通过定义一个损失函数来直接实现，而这个损失函数可以用来衡量当前状态可以产生的最优句法树和标准句法树的距离。最小化这个距离就会使得错误状态也会转移到最终错误最少的状态。而这个损失函数就要和当前状态c挂钩了，这样才能达到和传统的Dynamic Oracle类似的效果。</p>
 <h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>传统的损失函数定义为预测短语成分集合和标准短语成分集合不相交的元素数量，即：<br>\[\mathcal{l}(c) = \min_{\gamma | c \to \gamma} \mathcal{L}(\gamma, \gamma_G) = \left| { {\gamma _G}\backslash \gamma } \right| + \left| {\gamma \backslash {\gamma _G}} \right|\]</p>
-<p>根据<a href="https://godweiyang.com/2018/11/06/EMNLP18-dynamic-oracle/">上一篇博文</a>的推导，该损失函数可以计算为<br>\[\mathcal{l}(c) = \min_{\gamma | c \to \gamma} \mathcal{L}(\gamma, \gamma_G) = \left| \mathcal{U}(c, \gamma_G) \right| + \left| {\gamma_c \backslash {\gamma _G}} \right|\]</p>
+<p>根据<a href="https://godweiyang.com/2018/11/06/arxiv-18-SR-CP-bottom-up/">上一篇博文</a>的推导，该损失函数可以计算为<br>\[\mathcal{l}(c) = \min_{\gamma | c \to \gamma} \mathcal{L}(\gamma, \gamma_G) = \left| \mathcal{U}(c, \gamma_G) \right| + \left| {\gamma_c \backslash {\gamma _G}} \right|\]</p>
 <p>上面的损失函数是上一篇论文中介绍的bottom-up的转移系统的Dynamic Oracle，但是本文主要讨论top-down和in-order的转移系统，因为转移系统多了non-terminal，所以需要新加入两项损失，用来衡量当前状态可以产生的最优句法树与标准句法树之间的汉明损失。</p>
 <p>这两项新加的损失分别是：</p>
 <ul>
