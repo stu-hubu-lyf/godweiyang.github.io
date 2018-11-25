@@ -9,14 +9,14 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/LSTM/</loc>
+        <loc>https://godweiyang.com/tags/dynet/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/dynet/</loc>
+        <loc>https://godweiyang.com/tags/LSTM/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -149,14 +149,14 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/Sublime-Text/</loc>
+        <loc>https://godweiyang.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</loc>
         <lastmod>2018-10-26T11:39:48.356Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</loc>
+        <loc>https://godweiyang.com/tags/Sublime-Text/</loc>
         <lastmod>2018-10-26T11:39:48.356Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -184,14 +184,14 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/%E5%BA%8F%E5%88%97%E6%A0%87%E6%B3%A8/</loc>
+        <loc>https://godweiyang.com/tags/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/</loc>
         <lastmod>2018-10-29T08:16:53.152Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/</loc>
+        <loc>https://godweiyang.com/tags/%E5%BA%8F%E5%88%97%E6%A0%87%E6%B3%A8/</loc>
         <lastmod>2018-10-29T08:16:53.152Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -255,7 +255,7 @@
 
     <url>
         <loc>https://godweiyang.com/tags/%E9%9A%8F%E7%AC%94/</loc>
-        <lastmod>2018-11-25T08:41:14.704Z</lastmod>
+        <lastmod>2018-11-25T08:46:13.022Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
