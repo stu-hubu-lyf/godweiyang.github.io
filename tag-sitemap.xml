@@ -149,13 +149,6 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</loc>
-        <lastmod>2018-10-26T11:39:48.356Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/tags/Sublime-Text/</loc>
         <lastmod>2018-10-26T11:39:48.356Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -255,7 +248,14 @@
 
     <url>
         <loc>https://godweiyang.com/tags/%E9%9A%8F%E7%AC%94/</loc>
-        <lastmod>2019-01-07T11:42:53.087Z</lastmod>
+        <lastmod>2019-01-13T10:09:41.175Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</loc>
+        <lastmod>2019-01-13T10:36:28.260Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
