@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>https://godweiyang.com/2018/12/31/2018-conclusion/</loc>
+        <lastmod>2019-03-03T05:38:03.187Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/09/26/constituent-parsing-summary/</loc>
+        <lastmod>2019-03-03T05:37:59.170Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://godweiyang.com/2019/01/13/latex-pdf/</loc>
         <lastmod>2019-01-14T04:56:38.999Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,14 +33,6 @@
     <url>
         <loc>https://godweiyang.com/2018/01/22/mood/</loc>
         <lastmod>2019-01-13T10:09:41.175Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/12/31/2018-conclusion/</loc>
-        <lastmod>2019-01-07T11:42:53.087Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -121,14 +129,6 @@
     <url>
         <loc>https://godweiyang.com/2017/09/19/context/</loc>
         <lastmod>2018-10-29T08:10:50.562Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/09/26/constituent-parsing-summary/</loc>
-        <lastmod>2018-10-29T08:09:27.739Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
