@@ -85,7 +85,14 @@
 
     <url>
         <loc>https://godweiyang.com/categories/%E8%BD%AF%E4%BB%B6/</loc>
-        <lastmod>2019-03-06T09:31:43.063Z</lastmod>
+        <lastmod>2019-03-06T09:31:59.352Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/categories/%E9%98%85%E8%AF%BB%E7%90%86%E8%A7%A3/</loc>
+        <lastmod>2019-03-07T15:31:37.431Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
