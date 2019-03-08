@@ -8,8 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keyword"  content="">
+    <meta name="description" content="
+
+题目链接：EOJ3006
+题意
+给定一个多项式\({(ax + by)^k}\)，计算多项式展开后\({x^n}{y^m}\)项的系数，结果对1000000007取模。
+题解
+由二项式定理可以得知，\({x^n}{y^m}\)项的系数就是\[{a^n}{b^m}C_k^n\]然后再对1000000007取模，其中\({a^n}{b^m}\)取模很方便，用快速幂就行了，剩下的问题就是如何求...">
+    <meta name="keyword"  content="ECNU NLP DeepLearning">
     <link rel="shortcut icon" href="/img/ironman-draw.png">
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -167,13 +173,6 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -182,6 +181,13 @@ var _hmt = _hmt || [];
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     

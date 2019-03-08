@@ -8,8 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keyword"  content="">
+    <meta name="description" content="文本挖掘课的project，实现的是词性标注，增加了语言模型表示。语言模型在小数据下会过拟合，但是大数据训练要三个星期。。。所以还是放弃了，不添加语言模型好了。词性标注的话如果添加CRF效果反而会下降，也是很奇怪哦。。。如果直接用最裸的BiLSTM+charRNN的话，F1也能有97%左右，知足了，就这样吧。数据和完整程序下载地址：传送门
+下面是两组实验结果，由于速度太慢了，一组要1小时训练...">
+    <meta name="keyword"  content="ECNU NLP DeepLearning">
     <link rel="shortcut icon" href="/img/ironman-draw.png">
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -175,13 +176,6 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -190,6 +184,13 @@ var _hmt = _hmt || [];
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
