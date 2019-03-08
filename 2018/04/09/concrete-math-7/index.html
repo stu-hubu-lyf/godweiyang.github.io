@@ -267,6 +267,11 @@ var _hmt = _hmt || [];
 <p>谱有很多奇妙的性质，例如下面两个谱：<br>\[\begin{array}{l}Spec(\sqrt 2 ) = \{ \left\lfloor {\sqrt 2 } \right\rfloor ,\left\lfloor {2\sqrt 2 } \right\rfloor ,\left\lfloor {3\sqrt 2 } \right\rfloor , \ldots \} \\Spec(2{\rm{ + }}\sqrt 2 ) = \{ \left\lfloor {2{\rm{ + }}\sqrt 2 } \right\rfloor ,\left\lfloor {2(2{\rm{ + }}\sqrt 2 )} \right\rfloor ,\left\lfloor {3(2{\rm{ + }}\sqrt 2 )} \right\rfloor , \ldots \} \end{array}\]<br>可以发现，这两个谱正好划分了正整数集。<br>证明方法也很简单，只要证明对任意正整数\(n\)，两个集合中小于\(n\)的元素个数之和为\(n\)，过程如下：<br>\[\begin{array}{l}\left\lfloor {k\sqrt 2 } \right\rfloor  \le n\\ \Rightarrow k\sqrt 2  &lt; n + 1\\ \Rightarrow k &lt; \frac{ {n + 1}}{ {\sqrt 2 }}\end{array}\]<br>所以第一个集合中小于\(n\)的元素个数为<br>\[\left\lfloor {\frac{ {n + 1}}{ {\sqrt 2 }}} \right\rfloor \]<br>同理第二个集合中小于\(n\)的元素个数为<br>\[\left\lfloor {\frac{ {n + 1}}{ {2 + \sqrt 2 }}} \right\rfloor \]<br>所以总个数为<br>\[\begin{array}{l}\left\lfloor {\frac{ {n + 1}}{ {\sqrt 2 }}} \right\rfloor  + \left\lfloor {\frac{ {n + 1}}{ {2 + \sqrt 2 }}} \right\rfloor \\ = \left\lfloor {\frac{ {\sqrt 2 }}{2}(n + 1)} \right\rfloor  + \left\lfloor {\frac{ {2 - \sqrt 2 }}{2}(n + 1)} \right\rfloor \\ = n + 1 + \left\lfloor {\frac{ {\sqrt 2 }}{2}(n + 1)} \right\rfloor  + \left\lfloor { - \frac{ {\sqrt 2 }}{2}(n + 1)} \right\rfloor \\ = n + 1 + \left\lfloor {\frac{ {\sqrt 2 }}{2}(n + 1)} \right\rfloor  + \left\lfloor {\frac{ {\sqrt 2 }}{2}(n + 1)} \right\rfloor  - 1\\ = n\end{array}\]<br>得证。</p>
 
 
+                <br />
+                <div class="share-component" align="center" data-sites="qzone,qq,weibo,wechat" data-wechat-qrcode-title="请打开微信扫一扫分享" data-wechat-qrcode-helper=""></div>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
@@ -426,7 +431,6 @@ var _hmt = _hmt || [];
 
 <script type="text/javascript" src="/js/zooming.js"></script>
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 
 
     <!-- Footer -->

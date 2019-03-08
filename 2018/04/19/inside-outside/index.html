@@ -266,6 +266,11 @@ var _hmt = _hmt || [];
 <p>这里可能有人看不懂，似然函数和偏导是怎么来的呢？下面我详细写一下过程。<br>似然函数：<br>\[\begin{array}{l}L(D;\theta ) = \sum\limits_{(t,s) \in D} {\log \frac{ {\exp \sum\limits_{r \in t} {\sum\limits_i { {\theta _i}{f_i}(r,s)} } }}{ {\sum\limits_{t \in T(s)} {\exp \sum\limits_{r \in t} {\sum\limits_i { {\theta _i}{f_i}(r,s)} } } }}}  + \sum\limits_i {\frac{ {\theta _i^2}}{ {2{\sigma ^2}}}} \\ = \sum\limits_{(t,s) \in D} {\left( {\sum\limits_{r \in t} {\sum\limits_i { {\theta _i}{f_i}(r,s)} }  - \log \sum\limits_{t \in T(s)} {\exp \sum\limits_{r \in t} {\sum\limits_i { {\theta _i}{f_i}(r,s)} } } } \right)}  + \sum\limits_i {\frac{ {\theta _i^2}}{ {2{\sigma ^2}}}} \\ = \sum\limits_{(t,s) \in D} {\left( {\sum\limits_{r \in t} {\sum\limits_i { {\theta _i}{f_i}(r,s)} }  - {Z_s}} \right)}  + \sum\limits_i {\frac{ {\theta _i^2}}{ {2{\sigma ^2}}}} \end{array}\]<br>所以偏导为：<br>\[\frac{ {\partial L(D;\theta )}}{ {\partial {\theta _i}}} = \sum\limits_{(t,s) \in D} {\left( {\sum\limits_{r \in t} { {f_i}(r,s)}  - \frac{ {\partial \left( {\log \sum\limits_{t \in T(s)} {\exp \sum\limits_{r \in t} {\sum\limits_i { {\theta _i}{f_i}(r,s)} } } } \right)}}{ {\partial {\theta _i}}}} \right)}  + \frac{ { {\theta _i}}}{ { {\sigma ^2}}}\]<br>而<br>\[\begin{array}{l}\frac{ {\partial \left( {\log \sum\limits_{t \in T(s)} {\exp \sum\limits_{r \in t} {\sum\limits_i { {\theta _i}{f_i}(r,s)} } } } \right)}}{ {\partial {\theta _i}}}\\ = \frac{ {\sum\limits_{t \in T(s)} {\left( {\left( {\exp \sum\limits_{r \in t} {\sum\limits_i { {\theta _i}{f_i}(r,s)} } } \right) \cdot \sum\limits_{r \in t} { {f_i}(r,s)} } \right)} }}{ {\sum\limits_{t \in T(s)} {\exp \sum\limits_{r \in t} {\sum\limits_i { {\theta _i}{f_i}(r,s)} } } }}\\ = {E_\theta }[{f_i}|s]\end{array}\]<br>所以偏导就是这么来的。</p>
 
 
+                <br />
+                <div class="share-component" align="center" data-sites="qzone,qq,weibo,wechat" data-wechat-qrcode-title="请打开微信扫一扫分享" data-wechat-qrcode-helper=""></div>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
@@ -427,7 +432,6 @@ var _hmt = _hmt || [];
 
 <script type="text/javascript" src="/js/zooming.js"></script>
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 
 
     <!-- Footer -->

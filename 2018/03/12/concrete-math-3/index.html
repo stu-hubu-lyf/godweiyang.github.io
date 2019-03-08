@@ -253,6 +253,11 @@ var _hmt = _hmt || [];
 <p>求<br>\[S = \sum\limits_{0 \le k \le n} {k{x^k}} \]<br>这里用到另一种求和的方法。<br>两边同时加上第\(n+1\)项，得到<br>\[\begin{array}{l}S + (n + 1){x^{n + 1}}\\ = \sum\limits_{0 \le k \le n + 1} {k{x^k}} \\ = \sum\limits_{1 \le k \le n + 1} {k{x^k}} \\ = \sum\limits_{0 \le k \le n} {(k + 1){x^{k + 1}}} \\ = x\sum\limits_{0 \le k \le n} {(k{x^k} + {x^k})} \\ = xS + x\sum\limits_{0 \le k \le n} { {x^k}} \\ = xS + x\frac{ {1 - {x^{n + 1}}}}{ {1 - x}}\end{array}\]<br>所以<br>\[S = \frac{ {x - (n + 1){x^{n + 1}} + n{x^{n + 2}}}}{ { { {(1 - x)}^2}}}\]<br>这里介绍另一种方法来求解。<br>令<br>\[f(x) = \sum\limits_{0 \le k \le n} { {x^k}}  = \frac{ {1 - {x^{n + 1}}}}{ {1 - x}}\]<br>求导得到<br>\[f’(x) = \sum\limits_{0 \le k \le n} {k{x^{k - 1}}}  = \frac{1}{x}S\]<br>所以<br>\[\frac{1}{x}S = \frac{ {\partial f}}{ {\partial x}}(\frac{ {1 - {x^{n + 1}}}}{ {1 - x}}) = \frac{ {1 - (n + 1){x^n} + n{x^{n + 1}}}}{ { { {(1 - x)}^2}}}\]<br>同样可以得到<br>\[S = \frac{ {x - (n + 1){x^{n + 1}} + n{x^{n + 2}}}}{ { { {(1 - x)}^2}}}\]</p>
 
 
+                <br />
+                <div class="share-component" align="center" data-sites="qzone,qq,weibo,wechat" data-wechat-qrcode-title="请打开微信扫一扫分享" data-wechat-qrcode-helper=""></div>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
                 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
                 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
                 <div id="gitalk-container"></div>     <script type="text/javascript">
@@ -412,7 +417,6 @@ var _hmt = _hmt || [];
 
 <script type="text/javascript" src="/js/zooming.js"></script>
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 
 
     <!-- Footer -->
