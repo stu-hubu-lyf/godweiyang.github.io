@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="ECNU AntNLP Group - WeiYang">
     <meta name="keyword"  content="ECNU NLP DeepLearning">
+    <meta name="site" content="http://overtrue" />
+    <meta name="title" content="share.js" />
     <link rel="shortcut icon" href="/img/ironman-draw.png">
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -244,14 +246,13 @@ var _hmt = _hmt || [];
                 post-container">
 
                 <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=511083754&auto=1&height=66"></iframe></div>
+
 <blockquote>
 <p>闲来无事，膜拜一下巨佬的毕业论文，随手记一记，很不详细，随便看看就好，就按照论文的篇章结构来了。</p>
 </blockquote>
 <p>论文地址：<a href="https://cs.stanford.edu/~danqi/papers/thesis.pdf" target="_blank" rel="external">Neural Reading Comprehension and Beyond</a></p>
-<h1>Introduction</h1>
-<hr>
-<h2>Motivation</h2>
-<p>为了理解一段文本，前人主要对如下几大NLP任务做了研究：</p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><hr>
+<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>为了理解一段文本，前人主要对如下几大NLP任务做了研究：</p>
 <ul>
 <li>序列标注</li>
 <li>命名实体识别</li>
@@ -259,43 +260,29 @@ var _hmt = _hmt || [];
 <li>指代消解</li>
 </ul>
 <p><strong>阅读理解</strong>任务就是凌驾于这些任务之上，可以深刻理解文本语义的一项研究。</p>
-<img src="/2019/03/07/reading-comprehension/1.1.jpg" data-action="zoom">
-上图给出了一个阅读理解的例子，为了回答这三个问题，需要从之前的几大NLP任务中获得答案。
-<img src="/2019/03/07/reading-comprehension/1.2.jpg" data-action="zoom">
-上图是阅读理解在Google中的实际应用。
+<p><img src="/2019/03/07/reading-comprehension/1.1.jpg" data-action="zoom"><br>上图给出了一个阅读理解的例子，为了回答这三个问题，需要从之前的几大NLP任务中获得答案。<br><img src="/2019/03/07/reading-comprehension/1.2.jpg" data-action="zoom"><br>上图是阅读理解在Google中的实际应用。</p>
 <p>阅读理解不仅可以运用于QA系统，还可以用于对话系统。实际应用中，还可以用在比如个人助理之类的软件中。</p>
 <p>论文主要研究两个阅读理解应用：</p>
 <ul>
 <li>开放领域QA</li>
 <li>对话QA</li>
 </ul>
-<h2>Thesis Outline</h2>
-<p>论文分为两部分：</p>
+<h2 id="Thesis-Outline"><a href="#Thesis-Outline" class="headerlink" title="Thesis Outline"></a>Thesis Outline</h2><p>论文分为两部分：</p>
 <ul>
-<li>PART I NEURAL READING COMPREHENSION: FOUNDATIONS<br>
-第一部分介绍了阅读理解任务。<br>
-第2章介绍了发展历史、问题定义和分类、阅读理解和QA的差异，最后介绍了近来阅读理解发展主要是由于大规模数据集和神经网络模型的发展。<br>
-第3章介绍了几种阅读理解模型，并做了分析总结。<br>
-第4章介绍了一些未来的工作，未来模型和数据集的研究方向以及一些开放性问题。</li>
-<li>PART II NEURAL READING COMPREHENSION: APPLICATIONS<br>
-第5章介绍了阅读理解模型在开放领域QA系统上的应用。<br>
-第6章介绍了阅读理解模型在对话QA系统上的应用。</li>
+<li>PART I NEURAL READING COMPREHENSION: FOUNDATIONS<br>第一部分介绍了阅读理解任务。<br>第2章介绍了发展历史、问题定义和分类、阅读理解和QA的差异，最后介绍了近来阅读理解发展主要是由于大规模数据集和神经网络模型的发展。<br>第3章介绍了几种阅读理解模型，并做了分析总结。<br>第4章介绍了一些未来的工作，未来模型和数据集的研究方向以及一些开放性问题。</li>
+<li>PART II NEURAL READING COMPREHENSION: APPLICATIONS<br>第5章介绍了阅读理解模型在开放领域QA系统上的应用。<br>第6章介绍了阅读理解模型在对话QA系统上的应用。</li>
 </ul>
-<h2>Contributions</h2>
-<ul>
+<h2 id="Contributions"><a href="#Contributions" class="headerlink" title="Contributions"></a>Contributions</h2><ul>
 <li>陈丹琦是第一批研究神经网络阅读理解的人，提出的STANFORD ATTENTIVE READER在之前的任务上效果都最好。</li>
 <li>研究了神经网络阅读理解模型到底学到了什么信息，以及目前的缺陷。</li>
 <li>开拓了将神经网络阅读理解模型应用到开放领域QA系统中的研究方向，特别是DRQA系统。</li>
 <li>将阅读理解模型应用到对话QA系统中，特别是CoQA系统。</li>
 </ul>
-<h1>An Overview of Reading Comprehension</h1>
-<hr>
-<h2>History</h2>
-<h3>Early Systems</h3>
-
+<h1 id="An-Overview-of-Reading-Comprehension"><a href="#An-Overview-of-Reading-Comprehension" class="headerlink" title="An Overview of Reading Comprehension"></a>An Overview of Reading Comprehension</h1><hr>
+<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><h3 id="Early-Systems"><a href="#Early-Systems" class="headerlink" title="Early Systems"></a>Early Systems</h3>
 
                 <br />
-                <div class="share-component" align="center" data-sites="qzone,qq,weibo,wechat" data-wechat-qrcode-title="请打开微信扫一扫分享" data-wechat-qrcode-helper=""></div>
+                <div class="social-share" align="center" data-sites="qzone,qq,weibo,wechat" data-wechat-qrcode-title="请打开微信扫一扫分享" data-wechat-qrcode-helper=""></div>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 
@@ -337,7 +324,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Introduction</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Motivation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Thesis Outline</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Contributions</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">An Overview of Reading Comprehension</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">History</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">Early Systems</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Introduction"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Introduction</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Motivation"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Motivation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Thesis-Outline"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">Thesis Outline</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Contributions"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Contributions</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#An-Overview-of-Reading-Comprehension"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">An Overview of Reading Comprehension</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#History"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">History</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Early-Systems"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">Early Systems</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
