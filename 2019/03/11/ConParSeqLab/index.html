@@ -10,8 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="
 
+
+貌似已经有好几个月没怎么看过论文了，之前一直在写论文，一直没空更新博客，最近闲下来把最后几篇没看完的论文看了。
+
 论文地址：Constituent Parsing as Sequence Labeling
-">
+介绍
+本文定义了一种新的树的序列化方法，将树结构预测问题转化为了序列预测问题。该序列用相邻两个结点的公共祖先（CA）数量和最近公共祖先（LCA）的label来表示一棵树，并且证明了这...">
     <meta name="keyword"  content="ECNU NLP DeepLearning">
     <link rel="shortcut icon" href="/img/ironman-draw.png">
     <!-- Place this tag in your head or just before your close body tag. -->
@@ -250,7 +254,21 @@ var _hmt = _hmt || [];
 
                 <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=421885447&auto=1&height=66"></iframe></div>
 
+<blockquote>
+<p>貌似已经有好几个月没怎么看过论文了，之前一直在写论文，一直没空更新博客，最近闲下来把最后几篇没看完的论文看了。</p>
+</blockquote>
 <p><strong>论文地址：</strong><a href="http://aclweb.org/anthology/D18-1162" target="_blank" rel="external">Constituent Parsing as Sequence Labeling</a></p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><hr>
+<p>本文定义了一种新的树的序列化方法，将树结构预测问题转化为了序列预测问题。该序列用相邻两个结点的<strong>公共祖先（CA）数量</strong>和<strong>最近公共祖先（LCA）的label</strong>来表示一棵树，并且证明了这个树到序列的映射是单射但不是满射的，但是提出了一系列方法来解决这个问题。</p>
+<p>相比于之前的序列方法，比如<a href="http://www.aclweb.org/anthology/D16-1257" target="_blank" rel="external">Parsing as Language Modeling</a>，本文的序列化有所不同，主要体现在之前的方法都是seq2seq的，也就是输入句子，直接输出树的括号表达式序列。但是这种方法输出不是定长的，所以结果可能会比较差。本文的方法将输出长度固定在了句子长度减1上（只针对不存在一元产生式的句法树，这种情况之后讨论），所以可以将每个预测分配到每个单词上，然后用序列标注的方法来解决。</p>
+<h1 id="树的序列化"><a href="#树的序列化" class="headerlink" title="树的序列化"></a>树的序列化</h1><hr>
+<h2 id="记号和基础知识"><a href="#记号和基础知识" class="headerlink" title="记号和基础知识"></a>记号和基础知识</h2><p>记输入句子为\(\textbf{w} = [w_1, w_2, \ldots, w_N]\)，其中\(w_i \in V\)。\(T_N\)为拥有\(N\)个叶子结点的不含有一元产生式的句法树集合。句法分析的任务就是将输入句子\(\textbf{w}\)映射到句法树\(T_N\)。</p>
+<p>为了将句法分析转化为序列标注任务，需要定义一个树的序列化方法：\(\Phi_N : T_N \to L^{N - 1}\)，也就是将一棵有\(N\)个叶子结点的句法树转化为长度为\(N - 1\)的序列。并且该映射函数还得满足一定的条件，首先它一定得是一个<strong>函数</strong>（<em>也就是对于所有的句法树，都得找到一个对应的序列</em>），然后这个函数还得有<strong>单射性</strong>（<em>也就是句法树和序列要一一对应，不能存在两个句法树对应同一个序列，否则的话预测出来一个序列可能解码出两棵句法树，那就尴尬了</em>），当然要是还满足<strong>满射性</strong>就最好了（<em>也就是对于每一个序列，最好都能找到一棵句法树与之对应，不然预测出一个序列无法找到对应的句法树也很尴尬</em>），当然找不到也没事，后文有解决方法。</p>
+<p>然后需要定义一个函数，将句子映射为序列：\(F_{N, \theta} : V^N \to L^{N - 1}\)。这个映射就通过序列标注的LSTM来实现了，\(\theta\)就是LSTM的参数。</p>
+<p>最后通过函数\(F_{N, \theta} \circ \Phi_N^{-1}\)将输入句子转化为对应的句法树。那么\(F_{N, \theta}\)没什么好说的，就是一个序列标注模型，下面重点就是介绍如何设计函数\(\Phi_N\)。</p>
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>之前说到了将一棵有\(N\)个叶子结点的句法树转化为长度为\(N - 1\)的序列，这个序列是这样生成的：对于单词\(w_i\)，分配给它一个二元label \(l_i = (n_i, c_i)\)，其中\(n_i\)为单词\(w_i\)和\(w_{i + 1}\)的CA数量，\(c_i\)为它俩的LCA的label。</p>
+<p><img src="/2019/03/11/ConParSeqLab/1.jpg" data-action="zoom"></p>
+<p>如上图所示，这个序列的\(n_i\)有两种表示方法。一种就表示成CA的绝对数量，如图中第一行所示。还有一种</p>
 
 
                 <br />
@@ -300,7 +318,7 @@ var _hmt = _hmt || [];
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">介绍</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#树的序列化"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">树的序列化</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#记号和基础知识"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">记号和基础知识</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#编码"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">编码</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -340,6 +358,8 @@ var _hmt = _hmt || [];
                 <h5>FRIENDS</h5>
                 <ul class="list-inline">
 
+                    
+                        <li><a href="https://sweet-q.github.io" target="_blank">babyQ</a></li>
                     
                         <li><a href="http://blog.csdn.net/cww97" target="_blank">cww97</a></li>
                     
@@ -500,7 +520,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">97.6k words altogether</span>
+                    <span class="post-count">98.5k words altogether</span>
                 </p>
                   
                 </div>
