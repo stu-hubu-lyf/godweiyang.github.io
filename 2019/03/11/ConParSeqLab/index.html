@@ -268,7 +268,7 @@ var _hmt = _hmt || [];
 <p>最后通过函数\(F_{N, \theta} \circ \Phi_N^{-1}\)将输入句子转化为对应的句法树。那么\(F_{N, \theta}\)没什么好说的，就是一个序列标注模型，下面重点就是介绍如何设计函数\(\Phi_N\)。</p>
 <h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>之前说到了将一棵有\(N\)个叶子结点的句法树转化为长度为\(N - 1\)的序列，这个序列是这样生成的：对于单词\(w_i\)，分配给它一个二元label \(l_i = (n_i, c_i)\)，其中\(n_i\)为单词\(w_i\)和\(w_{i + 1}\)的CA数量，\(c_i\)为它俩的LCA的label。</p>
 <p><img src="/2019/03/11/ConParSeqLab/1.jpg" data-action="zoom"></p>
-<p>如上图所示，这个序列的\(n_i\)有两种表示方法。一种就表示成CA的绝对数量，如图中第一行所示。还有一种</p>
+<p>如上图所示，这个序列的\(n_i\)有两种表示方法。一种就表示成CA的绝对数量，如图中第一行所示。还有一种表示成后一个数与前一个数的差值，这样能减少元组的数量，但是会出现负数。</p>
 
 
                 <br />
@@ -520,7 +520,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">98.5k words altogether</span>
+                    <span class="post-count">98.6k words altogether</span>
                 </p>
                   
                 </div>

@@ -8,7 +8,7 @@
 
     <url>
         <loc>https://godweiyang.com/2019/03/11/ConParSeqLab/</loc>
-        <lastmod>2019-03-12T14:13:45.885Z</lastmod>
+        <lastmod>2019-03-12T15:11:38.137Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -239,78 +239,6 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2018/07/03/NAACL18-ConParsing/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/06/05/eoj3006/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/06/05/eoj2854/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/06/01/concrete-math-hw5/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/05/28/concrete-math-14/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/05/27/concrete-math-13/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/05/14/concrete-math-12/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/05/07/concrete-math-11/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/04/28/concrete-math-10/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/2018/04/24/IVP-EACL17/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -319,7 +247,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2018/04/23/concrete-math-9/</loc>
+        <loc>https://godweiyang.com/2018/07/03/NAACL18-ConParsing/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -327,7 +255,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2018/04/20/concrete-math-hw3/</loc>
+        <loc>https://godweiyang.com/2018/01/01/POS-LM/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -335,119 +263,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2018/04/16/concrete-math-8/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/04/13/hexo-blog/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/04/09/concrete-math-7/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/04/02/concrete-math-6/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/03/26/concrete-math-5/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/03/19/concrete-math-hw2/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/03/19/concrete-math-4/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/03/18/graduate-technique/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/03/12/concrete-math-3/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/03/09/nvidia-cuda-dynet/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/03/05/concrete-math-hw1/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/03/05/concrete-math-2/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/03/04/cs224n-introduction/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/02/27/concrete-math-1/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2018/02/26/biyelunwen/</loc>
+        <loc>https://godweiyang.com/2018/01/09/PaperDaily-1/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -479,7 +295,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2018/01/09/PaperDaily-1/</loc>
+        <loc>https://godweiyang.com/2017/09/19/baoyan/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -487,7 +303,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2018/01/01/POS-LM/</loc>
+        <loc>https://godweiyang.com/2018/02/27/concrete-math-1/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -495,7 +311,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2017/12/29/ecnu-ppt/</loc>
+        <loc>https://godweiyang.com/2018/02/26/biyelunwen/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -503,7 +319,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2017/11/16/sw-compiler/</loc>
+        <loc>https://godweiyang.com/2018/04/28/concrete-math-10/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -511,7 +327,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2017/09/20/dlhw2/</loc>
+        <loc>https://godweiyang.com/2018/05/07/concrete-math-11/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -519,7 +335,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2017/09/20/dlhw1/</loc>
+        <loc>https://godweiyang.com/2018/05/14/concrete-math-12/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -527,7 +343,111 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2017/09/19/dl2/</loc>
+        <loc>https://godweiyang.com/2018/05/27/concrete-math-13/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/05/28/concrete-math-14/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/03/12/concrete-math-3/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/03/05/concrete-math-2/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/03/26/concrete-math-5/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/03/19/concrete-math-4/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/04/02/concrete-math-6/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/04/16/concrete-math-8/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/04/09/concrete-math-7/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/03/05/concrete-math-hw1/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/03/19/concrete-math-hw2/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/04/20/concrete-math-hw3/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/06/01/concrete-math-hw5/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/03/04/cs224n-introduction/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -543,7 +463,87 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2017/09/19/baoyan/</loc>
+        <loc>https://godweiyang.com/2018/04/23/concrete-math-9/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/09/19/dl2/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/09/20/dlhw1/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/09/20/dlhw2/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/12/29/ecnu-ppt/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/06/05/eoj2854/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2017/09/19/eoj3328/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/03/18/graduate-technique/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/06/05/eoj3006/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/04/13/hexo-blog/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2018/03/09/nvidia-cuda-dynet/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -559,7 +559,7 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2017/09/19/eoj3328/</loc>
+        <loc>https://godweiyang.com/2017/11/16/sw-compiler/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
