@@ -44,13 +44,6 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/EOJ/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/tags/LaTeX/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -66,6 +59,13 @@
 
     <url>
         <loc>https://godweiyang.com/tags/ppt/</loc>
+        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/tags/EOJ/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
