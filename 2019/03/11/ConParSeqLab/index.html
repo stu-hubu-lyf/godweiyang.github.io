@@ -116,9 +116,9 @@
                             
                               <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
                             
-                              <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
-                            
                               <a class="tag" href="/tags/#EMNLP" title="EMNLP">EMNLP</a>
+                            
+                              <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
                             
                         </div>
                         <h1>Constituent Parsing as Sequence Labeling</h1>
@@ -190,14 +190,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -283,8 +283,7 @@ var _hmt = _hmt || [];
 <p><img src="/2019/03/11/ConParSeqLab/4.jpg" data-action="zoom"></p>
 <p>我尝试过了按照这个序列构建出一棵树的过程，画了个草图给大家看看，可能有点乱（参照的是上面那个非二叉树的图）：<br><img src="/2019/03/11/ConParSeqLab/5.jpg" data-action="zoom"></p>
 <p>还有一个小trick就是对于有些直接连到根结点的叶子，用\(({\rm ROOT}, c_i)\)作为它们的label。</p>
-<h2 id="理论证明"><a href="#理论证明" class="headerlink" title="理论证明"></a>理论证明</h2><p>占坑。</p>
-<h2 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h2><p>上面定义的序列化函数有两个缺点：一是非满射，二是不能处理一元产生式，下面介绍一下解决方法。</p>
+<h2 id="理论证明"><a href="#理论证明" class="headerlink" title="理论证明"></a>理论证明</h2><h2 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h2><p>上面定义的序列化函数有两个缺点：一是非满射，二是不能处理一元产生式，下面介绍一下解决方法。</p>
 <p><strong>对于一元产生式：</strong><br>有两种一元产生式，一种是中间结点，还有一种是叶子结点的label。</p>
 <p>对于中间结点，直接将一条链上的label合并成一个新的label就行了，方法和之前文章介绍的一样。</p>
 <p>而对于叶子结点的label，一个方法是在解码之前先用一个函数预测一下每个叶子结点的label，如果为空，说明没有label，否则就加上这个label，然后再进行正常的解码。另一个方法是将之前的序列化的二元组扩展为三元组\((n_i, c_i, u_i)\)，其中第三个元素就是每个叶子结点的label。</p>
@@ -376,9 +375,9 @@ var _hmt = _hmt || [];
                         
                           <a class="tag" href="/tags/#深度学习" title="深度学习">深度学习</a>
                         
-                          <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
-                        
                           <a class="tag" href="/tags/#EMNLP" title="EMNLP">EMNLP</a>
+                        
+                          <a class="tag" href="/tags/#句法分析" title="句法分析">句法分析</a>
                         
                     </div>
                 </section>
