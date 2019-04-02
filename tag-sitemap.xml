@@ -23,20 +23,6 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/tags/Concrete-Mathematics/</loc>
-        <lastmod>2018-09-03T07:10:42.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/tags/%E4%BF%9D%E7%A0%94/</loc>
         <lastmod>2018-09-03T07:10:42.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -156,13 +142,6 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/ICLR/</loc>
-        <lastmod>2018-10-29T08:14:31.008Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://godweiyang.com/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
         <lastmod>2018-10-29T08:16:16.320Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -233,36 +212,57 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/NLP/</loc>
-        <lastmod>2019-03-27T08:35:48.627Z</lastmod>
+        <loc>https://godweiyang.com/tags/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/</loc>
+        <lastmod>2019-03-27T09:08:25.474Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://godweiyang.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
-        <lastmod>2019-03-27T08:35:48.627Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2019-03-27T08:35:48.627Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/tags/%E5%8F%A5%E6%B3%95%E5%88%86%E6%9E%90/</loc>
-        <lastmod>2019-03-27T08:35:48.627Z</lastmod>
+        <loc>https://godweiyang.com/tags/Concrete-Mathematics/</loc>
+        <lastmod>2019-03-27T09:08:25.474Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://godweiyang.com/tags/NAACL/</loc>
-        <lastmod>2019-03-27T08:35:48.627Z</lastmod>
+        <lastmod>2019-03-31T08:12:43.138Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/tags/NLP/</loc>
+        <lastmod>2019-04-02T13:37:23.585Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
+        <lastmod>2019-04-02T13:37:23.585Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+        <lastmod>2019-04-02T13:37:23.585Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/tags/%E5%8F%A5%E6%B3%95%E5%88%86%E6%9E%90/</loc>
+        <lastmod>2019-04-02T13:37:23.585Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/tags/ICLR/</loc>
+        <lastmod>2019-04-02T13:37:23.585Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

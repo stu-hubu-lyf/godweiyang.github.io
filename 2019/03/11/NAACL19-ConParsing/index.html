@@ -192,14 +192,14 @@ var _hmt = _hmt || [];
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -289,7 +289,7 @@ var _hmt = _hmt || [];
 <p>具体实现的时候有好几个小Tips。</p>
 <p>第一个就是要将奖励减去一个baseline，这里定义为模型直接根据贪心求得的句法树的F1值：<br>\[<br>\Delta \mathcal R \approx \frac{1}{N}\sum\limits_{i = 1}^N {\sum\limits_{t = 1}^T {\Delta \log \pi ({l_t}|{s_t};\theta )({\mathcal R_i} - {B_i})} }<br>\]<br>这么做的目的就是为了让奖励有正有负，不然全部都是正数的话，因为采样不可能全部采样到，可能会导致高概率的样本概率越来越高，而没有采样到的低概率样本可能奖励非常高，却因此概率越来越低。</p>
 <p>第二个Tip就是加入熵作为正则项：<br>\[<br>\Delta \mathcal R \approx \frac{1}{N}\sum\limits_{i = 1}^N {\sum\limits_{t = 1}^T {\Delta \log \pi ({l_t}|{s_t};\theta )({\mathcal R_i} - {B_i}) + \beta \Delta H(\pi ({l_t}|{s_t};\theta ))} }<br>\]<br>目的就是使概率尽量不要太小，不然的话采样数不够的话就有可能造成采样不到小概率的样本。</p>
-<p>还有就是给策略加入噪声：<br>\[<br>\Delta \mathcal R \approx \frac{1}{N}\sum\limits_{i = 1}^N {\sum\limits_{t = 1}^T {\Delta (\log \pi ({l_t}|{s_t};\theta ) + N)({\mathcal R_i} - {B_i}) + \beta \Delta H(\pi ({l_t}|{s_t};\theta ) + N)} }<br>\]<br>当然这个可加可不加。。。</p>
+<p>还有就是给策略加入噪声：<br>\[<br>\Delta \mathcal R \approx \frac{1}{N}\sum\limits_{i = 1}^N {\sum\limits_{t = 1}^T {\Delta (\log \pi ({l_t}|{s_t};\theta ) + N)({\mathcal R_i} - {B_i}) + \beta \Delta H(\pi ({l_t}|{s_t};\theta ) + N)} }<br>\]<br>目的同样是加大概率，防止概率太接近于0，当然这个可加可不加。。。</p>
 <h1 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h1><hr>
 <p>首先测试了不同设置的影响：<br><img src="/2019/03/11/NAACL19-ConParsing/4.jpg" data-action="zoom"><br>可以看出上面提到的几种方法对性能都有提升，其中采用动态编码、多任务（也就是减少输出空间）、辅助任务（主要是预测前一个\(n_{t-1}\)）还有策略梯度可以获得最好的结果。</p>
 <p>最终模型在测试集上取得了90.6的F1值，虽然不是很高，但比之前的序列标注模型提升还是不少。<br><img src="/2019/03/11/NAACL19-ConParsing/5.jpg" data-action="zoom"></p>
@@ -322,6 +322,10 @@ var _hmt = _hmt || [];
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2019/03/31/iclr18-PRPN/" data-toggle="tooltip" data-placement="top" title="Neural Language Modeling by Jointly Learning Syntax and Lexicon">&larr; Previous Post</a>
+                        </li>
                     
                     
                         <li class="next">
@@ -545,7 +549,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">102.6k words altogether</span>
+                    <span class="post-count">104.6k words altogether</span>
                 </p>
                   
                 </div>
