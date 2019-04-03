@@ -182,6 +182,13 @@ var _hmt = _hmt || [];
 
                         
                         <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -190,13 +197,6 @@ var _hmt = _hmt || [];
                         
                         <li>
                             <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -287,8 +287,9 @@ var _hmt = _hmt || [];
 <p><strong>第2步：</strong><br>然后就可以根据句法距离，求出\(x_t\)最远到哪个位置有联系。用\(\alpha_j^t\)来衡量\(x_t\)与\(x_j\)的分别与前一个单词的句法距离的差距：<br>\[<br>\alpha_j^t = \frac{ {\rm hardtanh}((d_t - d_j) \cdot \tau) + 1}{2}<br>\]<br>这里的\({\rm hardtanh}\)就是当输入大于1或者小于-1时，截取掉，给它限制在-1到1这个范围内，所以最后\(\alpha\)的范围就是0到1。可以看出，如果\(\alpha_j^t\)很大，那么\(d_t\)就大于\(d_j\)，否则的话\(d_t\)就小于\(d_j\)。这也很合乎直观上的认知，如果\(d_t\)大于\(d_j\)，那么说明\(x_j\)和\(x_{j-1}\)的最近公共祖先的高度比较低，那么说明\(x_j\)和\(x_t\)在同一棵子树中，差值自然大，反之的话\(x_j\)是当前子树的最左边的子结点，差值就很小。</p>
 <p>所以模型只需要一步步往左寻找第一个\(\alpha_j^t\)最接近0的点，也就是之前提到过的\(l_t\)。为了实现这个目标，可以定义\(l_t = i\)的概率为：<br>\[<br>p(l_t = i | x_0, \ldots, x_t) = (1 - \alpha_i^t) \prod_{j=i+1}^{t-1} {\alpha_j^t}<br>\]<br>为什么这么设计呢？其实还是很有道理的。概率越大的话，说明\(\alpha_i^t\)越小，而其他的\(\alpha_j^t\)越大，这就印证了上面提出的观点。而如果取\(l_t &gt; i\)的话，\(1 - \alpha_i^t\)一定很小，会拉低概率；反之取\(l_t &lt; i\)的话，会乘上一个很小的项\(\alpha_i^t\)，也会拉低概率。所以取\(l_t = i\)就是最优的。</p>
 <p><strong>第3步：</strong><br>我们的最终目的是求出门\(g_i^t\)，也就是\(x_t\)与\(x_i\)的相关度。在之前的动机中，直接将\(l_t\)之后的设为1，之前的设为0，但是这样是离散序列，无法传播梯度，所以这里采用另一种方法来求。注意到只有\(p(l_t = i | x_0, \ldots, x_t)\)接近于1，而其他的概率都接近于0，所以只需要用概率密度函数来作为\(g_i^t\)就行了：<br>\[<br>g_i^t = P(l_t \le i) = \prod_{j=i+1}^{t-1} {\alpha_j^t}<br>\]<br>注意到这个概率密度函数在\(i &lt; l_t\)时值基本很小接近于0，而大于等于它时很大，越来越接近于1。这和设计的初衷已经很像了，所以可以近似用来作为\(g_i^t\)。</p>
-<p>这里要提几点证明。</p>
-<p>首先这个概率\(p(l_t = i | x_0, \ldots, x_t)\)的形式其实是一个狄利克雷过程，有两个特殊值要定义一下，一个是\(l_t = t-1\)时，概率为：<br>\[<br>p(l_t = t - 1 | x_0, \ldots, x_t) = (1 - \alpha_{t - 1}^t)<br>\]<br>还有就是当\(l_t = 0\)时，因为\(d_0\)实际不存在，所以定义为句法距离无穷大，那么\(\alpha_0^t\)定义为0，所以概率为：<br>\[<br>p(l_t = 0 | x_0, \ldots, x_t) = \prod_{j=1}^{t-1} {\alpha_j^t}<br>\]</p>
+<p><strong>这里要提几点证明。</strong></p>
+<p>首先这个概率\(p(l_t = i | x_0, \ldots, x_t)\)的形式其实是一个狄利克雷过程，有两个特殊值要定义一下，一个是\(l_t = t-1\)时，概率为：<br>\[<br>p(l_t = t - 1 | x_0, \ldots, x_t) = (1 - \alpha_{t - 1}^t)<br>\]<br>还有就是当\(l_t = 0\)时，因为\(d_0\)实际不存在，所以定义为句法距离无穷大，那么\(\alpha_0^t\)定义为0，所以概率为：<br>\[<br>p(l_t = 0 | x_0, \ldots, x_t) = \prod_{j=1}^{t-1} {\alpha_j^t}<br>\]<br>然后可以求出\(g_i^t\)的期望（<strong>这里论文中又写的一塌糊涂，符号定义都不统一。。。</strong>）：<br>\[<br>\mathbb E(g_i^t) = \prod_{j=1}^{t-1} {\alpha_j^t} + (1 - \alpha_1^t)\prod_{j=2}^{t-1} {\alpha_j^t} + \ldots + (1 - \alpha_i^t)\prod_{j=i+1}^{t-1} {\alpha_j^t}<br>\]<br>进一步可以写为：<br>\[<br>\mathbb E(g_i^t) = \sum_{j=0}^i {p(l_t = j | x_0, \dots, x_t)} = P(l_t \le i)<br>\]<br>上面的求和裂项相消可以得到：<br>\[<br>P(l_t \le i) = \prod_{j=i+1}^{t-1} {\alpha_j^t}<br>\]<br>这里也可以验证出\(P(l_t &lt; t) = 1\)，所以最终得到下面的门是正确的：<br>\[<br>g_i^t = \prod_{j=i+1}^{t-1} {\alpha_j^t}<br>\]</p>
+<p>然后要证明的就是根据这个策略求出的两个单词的关联区间没有交叉（但是可以完全覆盖）。首先放宽一下条件，证明当\(\alpha_j^t\)只取0或者1时，性质成立，也就是定义（<strong>这里原文又打错了。。。</strong>）：<br>\[<br>\alpha_j^t = \frac{ {\rm sign}(d_t - d_j) + 1}{2}<br>\]<br>也就是在原来的定义中令\(\tau\)为正无穷。这样的话如果\(d_t &gt; d_j\)，那么\(\alpha_j^t\)就是1，否则就是0。放宽了条件之后，\(g_i^t\)取值就只有1和0了，所以求出的\(l_t\)一定是满足句法距离\(d_i &gt; d_t\)所有位置中最右边的一个。而对于所有的\(l_t &lt; i &lt; t\)，都满足\(d_i &lt; d_t\)。证明也很简单，假设存在两个单词\(x_v\)和\(x_n\)，其中\(v &lt; n\)，它俩的关联区间交叉了，那么假设\(x_v\)的\(l_t\)为\(u\)，而\(x_n\)的\(l_t\)为\(m\)，所以\(u &lt; m &lt; v &lt; n\)。那么根据定义，有：<br>\[<br>\begin{array}{} {d_u &gt; d_v &gt; d_m \\ d_m &gt; d_n &gt; d_v} \end{array}<br>\]<br>这两个式子显然矛盾，所以证明了在宽松的条件下，这个不交叉的性质是成立的。</p>
 
 
                 <br />
@@ -538,7 +539,7 @@ var _hmt = _hmt || [];
 					src="http://monster.gostats.com/bin/count/a_494843/t_4/i_38/z_0/show_hits/counter.png" 
 					style="border-width:0" /></a> -->
 					visitors since 2017/09/11, 
-                    <span class="post-count">105.3k words altogether</span>
+                    <span class="post-count">105.7k words altogether</span>
                 </p>
                   
                 </div>
