@@ -7,8 +7,8 @@
     </url>
 
     <url>
-        <loc>https://godweiyang.com/2019/03/31/iclr18-PRPN/</loc>
-        <lastmod>2019-04-04T07:11:57.694Z</lastmod>
+        <loc>https://godweiyang.com/2019/04/20/NAACL19-URNNG/</loc>
+        <lastmod>2019-04-26T13:49:55.412Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +16,15 @@
 
     <url>
         <loc>https://godweiyang.com/2018/07/03/NAACL18-ConParsing/</loc>
-        <lastmod>2019-03-31T08:12:43.138Z</lastmod>
+        <lastmod>2019-04-26T13:41:36.455Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://godweiyang.com/2019/03/31/iclr18-PRPN/</loc>
+        <lastmod>2019-04-04T07:11:57.694Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -41,14 +49,6 @@
     <url>
         <loc>https://godweiyang.com/2019/03/11/ConParSeqLab/</loc>
         <lastmod>2019-03-22T15:00:35.115Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://godweiyang.com/2019/03/07/reading-comprehension/</loc>
-        <lastmod>2019-03-16T03:01:46.427Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
